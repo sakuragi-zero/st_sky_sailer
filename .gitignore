@@ -40,6 +40,9 @@ CODEX*.md
 !/frontend/public/assets/yacht-v2.webp
 !/frontend/public/assets/captain-v3.webp
 !/frontend/public/assets/streamlit-mark.svg
+!/frontend/public/assets/ruins-v1.webp
+!/frontend/public/assets/palms-v1.webp
+!/frontend/public/assets/rock-v2.webp
 !/frontend/public/assets/music/
 /frontend/public/assets/music/*
 !/frontend/public/assets/music/course-1-1-loop.ogg

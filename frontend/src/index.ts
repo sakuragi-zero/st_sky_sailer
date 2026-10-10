@@ -8,8 +8,8 @@ import { getCourse, VIEW, type Controls, type GameData, type Hud, type Phase, ty
 import "./index.css";
 
 type Evaluation = { attempt_id: string; rank: "S" | "A" | "B" | "C"; score: number; comment: string };
-type ComponentData = GameData & { evaluation?: Evaluation | null };
-type GameState = { result: Result | null } & HomeState;
+type ComponentData = GameData & { evaluation?: Evaluation | null; next_course_id?: string | null };
+type GameState = { result: Result | null; navigation: { action: "home" | "next"; run_id: string } | null } & HomeState;
 type ManagedRoot = HTMLElement & { __skySailer?: { runId: string; cleanup: () => void; evaluate: (evaluation?: Evaluation | null) => void } };
 const timeLabel = (ms: number) => `${Math.floor(ms / 60000).toString().padStart(2, "0")}:${Math.floor(ms / 1000 % 60).toString().padStart(2, "0")}`;
 const assetUrl = (file: string) => new URL((import.meta.env.DEV ? "/assets/" : "assets/") + file, import.meta.url).href;
@@ -42,22 +42,15 @@ const renderer: FrontendRenderer<GameState> = ({ parentElement, data: rawData, s
         <div class="ss-overlay" role="status"><span class="ss-overline">COURSE ${course.id}</span><h2>${course.title}へ</h2><p>帆に風を集めています…</p><span class="ss-loading">✦</span></div>
       </div></div>
       <div class="ss-pad">
-        <div class="ss-dpad" aria-label="方向パッド">
-          <button class="ss-direction ss-up" data-act="jump" aria-label="ジャンプ">▲</button>
-          <button class="ss-direction ss-left" data-act="left" aria-label="左・減速">◀</button>
-          <span class="ss-dpad-center">✦</span>
-          <button class="ss-direction ss-right" data-act="right" aria-label="右・加速">▶</button>
-          <button class="ss-direction ss-down" data-act="brake" aria-label="押している間は完全停止">▼</button>
-        </div>
-        <div class="ss-console-mark"><span>✦</span><small>SET SAIL<br>BEYOND THE BLUE</small></div>
         <div class="ss-actions">
           <div class="ss-action ss-action-a"><button class="ss-control ss-a" data-act="jump" aria-label="A ジャンプ">A</button><span>JUMP</span></div>
+          <div class="ss-console-mark"><span>✦</span><small>BEYOND<br>THE BLUE</small></div>
           <div class="ss-action ss-action-b"><button class="ss-control ss-b" data-act="boost" aria-label="B ブースト">B</button><span>BOOST</span><div class="ss-boost-meter"><i></i></div></div>
         </div>
       </div>
-      <div class="ss-system-row"><button class="ss-system" data-pause aria-label="航海を一時停止">Ⅱ PAUSE</button><button class="ss-system" data-anchor aria-label="停泊を切り替える" aria-pressed="false">⚓ STOP</button><button class="ss-system" data-guide aria-label="精霊ガイドを切り替える" aria-pressed="false">✧ GUIDE OFF</button><button class="ss-system" data-sound aria-label="効果音を有効にする" aria-pressed="false">♪ SOUND OFF</button></div>
+      <div class="ss-system-row"><button class="ss-system" data-pause aria-label="航海を一時停止">Ⅱ PAUSE</button><button class="ss-system" data-guide aria-label="精霊ガイドを切り替える" aria-pressed="false">✧ GUIDE OFF</button><button class="ss-system" data-sound aria-label="効果音を有効にする" aria-pressed="false">♪ SOUND OFF</button></div>
       <div class="ss-music-row"><button class="ss-system" data-music aria-label="${course.id==="4-1" ? "BGM未設定" : "BGMを無効にする"}" aria-pressed="${course.id!=="4-1"}" ${course.id==="4-1" ? "disabled" : ""}>♫ ${course.id==="4-1" ? "BGM 未設定" : "BGM ON"}</button><label>BGM音量<input data-music-volume type="range" min="0" max="100" value="50" aria-label="BGM音量"></label></div><p class="ss-music-message" data-music-message role="status" hidden></p>
-      <p class="ss-hint">Space / A ジャンプ　Shift / B ブースト　↓ 停止 / S 停泊</p>
+      <p class="ss-hint">A / Space ジャンプ　B / Shift ブースト</p>
     </section>`;
   const mount = root.querySelector<HTMLElement>(".ss-mount")!;
   const overlay = root.querySelector<HTMLElement>(".ss-overlay")!;
@@ -69,7 +62,6 @@ const renderer: FrontendRenderer<GameState> = ({ parentElement, data: rawData, s
   const pauseButton = root.querySelector<HTMLButtonElement>("[data-pause]")!;
   const soundButton = root.querySelector<HTMLButtonElement>("[data-sound]")!;
   const guideButton = root.querySelector<HTMLButtonElement>("[data-guide]")!;
-  const anchorButton = root.querySelector<HTMLButtonElement>("[data-anchor]")!;
   const musicButton = root.querySelector<HTMLButtonElement>("[data-music]")!;
   const musicVolume = root.querySelector<HTMLInputElement>("[data-music-volume]")!;
   const musicMessage = root.querySelector<HTMLElement>("[data-music-message]")!;
@@ -130,17 +122,16 @@ const renderer: FrontendRenderer<GameState> = ({ parentElement, data: rawData, s
     pauseButton.textContent = phase === "paused" ? "▶ RESUME" : "Ⅱ PAUSE";
     if (phase === "paused") {
       releaseAll();
-      overlay.innerHTML = `<span class="ss-overline">TAKE A BREATH</span><h2>風待ちのひととき</h2><p>準備ができたら、航海を続けよう。</p><button class="ss-button" data-resume>航海を再開</button>`;
+      overlay.innerHTML = `<span class="ss-overline">TAKE A BREATH</span><h2>風待ちのひととき</h2><p>準備ができたら、航海を続けよう。</p><div class="ss-overlay-actions"><button class="ss-button" data-resume>航海を再開</button><button class="ss-button ss-button-secondary" data-home>ホームに戻る</button></div>`;
     } else if (phase === "loading") {
-      anchorButton.textContent="⚓ STOP"; anchorButton.setAttribute("aria-pressed","false");
       overlay.innerHTML = `<span class="ss-overline">COURSE ${course.id}</span><h2>${course.title}へ</h2><p>帆に風を集めています…</p><span class="ss-loading">✦</span>`;
     } else if (phase === "error") {
       overlay.innerHTML = `<span class="ss-overline">WAITING FOR THE WIND</span><h2>航路を読み込めませんでした。</h2><p>通信を確認して、もう一度出航しよう。</p><button class="ss-button" data-reload>再読み込み</button>`;
     } else if (result) {
       releaseAll(); currentResult = result;
       overlay.innerHTML = result.status === "cleared"
-        ? `<span class="ss-overline">${course.id} · VOYAGE COMPLETE</span><div class="ss-result-rank">✦</div><h2>${course.goal_label}へ、到着。</h2><p class="ss-result-comment">航海を評価しています…</p><div class="ss-result-stats">${timeLabel(result.elapsed_ms)}<span>◆ ${result.crystals} / ${result.total_crystals}</span><span>ミス ${result.hit_count}</span></div><button class="ss-button" data-retry>もう一度出航する</button>`
-        : `<span class="ss-overline">${course.id} · THE SKY IS WAITING</span><h2>次の風に、乗ろう。</h2><p>${course.description}</p><div class="ss-result-stats">${timeLabel(result.elapsed_ms)}<span>◆ ${result.crystals} / ${result.total_crystals}</span></div><button class="ss-button" data-retry>もう一度出航する</button>`;
+        ? `<span class="ss-overline">${course.id} · VOYAGE COMPLETE</span><div class="ss-result-rank">✦</div><h2>${course.goal_label}へ、到着。</h2><p class="ss-result-comment">航海を評価しています…</p><div class="ss-result-stats">${timeLabel(result.elapsed_ms)}<span>◆ ${result.crystals} / ${result.total_crystals}</span><span>ミス ${result.hit_count}</span></div><div class="ss-overlay-actions">${data.next_course_id ? '<button class="ss-button" data-next-stage>次のステージへ</button>' : ''}<button class="ss-button ss-button-secondary" data-home>ホームに戻る</button><button class="ss-text-button" data-retry>もう一度出航する</button></div>`
+        : `<span class="ss-overline">${course.id} · THE SKY IS WAITING</span><h2>次の風に、乗ろう。</h2><p>${course.description}</p><div class="ss-result-stats">${timeLabel(result.elapsed_ms)}<span>◆ ${result.crystals} / ${result.total_crystals}</span></div><div class="ss-overlay-actions"><button class="ss-button" data-retry>もう一度出航する</button><button class="ss-button ss-button-secondary" data-home>ホームに戻る</button></div>`;
       evaluate(latestEvaluation);
     }
   };
@@ -169,7 +160,6 @@ const renderer: FrontendRenderer<GameState> = ({ parentElement, data: rawData, s
       guideButton.textContent=guideEnabled ? "✧ GUIDE ON" : "✧ GUIDE OFF";
       guideButton.setAttribute("aria-pressed",String(guideEnabled));
     }
-    if(target.closest("[data-anchor]")) toggleAnchor();
     if(target.closest("[data-music]")) {
       musicButton.disabled=true; musicMessage.hidden=true;
       void music.toggle().then(enabled=>{
@@ -185,6 +175,13 @@ const renderer: FrontendRenderer<GameState> = ({ parentElement, data: rawData, s
     }
     if (target.closest("[data-pause]")) { releaseAll(); if (scene.phase === "paused") scene.resumeVoyage(); else scene.pauseVoyage(); }
     if (target.closest("[data-resume]")) scene.resumeVoyage();
+    if (target.closest("[data-home]") || target.closest("[data-next-stage]")) {
+      const action = target.closest("[data-home]") ? "home" : "next";
+      if (action === "next" && (scene.phase !== "cleared" || !data.next_course_id)) return;
+      releaseAll(); scene.pauseVoyage(); music.setPlaying(false);
+      overlay.querySelectorAll<HTMLButtonElement>("button").forEach(button => button.disabled = true);
+      setStateValue("navigation", { action, run_id: data.run_id });
+    }
     if (target.closest("[data-reload]")) window.location.reload();
     if (target.closest("[data-retry]")) {
       currentResult = undefined; releaseAll(); setStateValue("result", null); scene.restartVoyage();
@@ -199,10 +196,8 @@ const renderer: FrontendRenderer<GameState> = ({ parentElement, data: rawData, s
   const onVisibility = () => { if (document.hidden) { releaseAll(); scene.pauseVoyage(); } };
   const onMusicVolume=()=>music.setVolume(Number(musicVolume.value)/100);
   const onBlur = () => { releaseAll(); scene.pauseVoyage(); };
-  const toggleAnchor = () => { const stopped=scene.toggleAnchor(); anchorButton.textContent=stopped ? "▶ SAIL" : "⚓ STOP"; anchorButton.setAttribute("aria-pressed",String(stopped)); };
   const onKey = (event: KeyboardEvent) => {
     music.unlock();
-    if(event.code==="KeyS" && !event.repeat) toggleAnchor();
     if (event.code === "Escape") { if (scene.phase === "paused") scene.resumeVoyage(); else scene.pauseVoyage(); }
   };
   root.addEventListener("pointerdown", onPointerDown);

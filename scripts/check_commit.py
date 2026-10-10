@@ -15,6 +15,7 @@ PRIVATE_PREFIXES = ("assets/", "docs/screenshots/", "docs/audio/", "docs/securit
 PRIVATE_NAMES = ("AGENTS*.md", "CLAUDE*.md", "GEMINI.md", "SKILL.md", "CODEX*.md", "copilot-instructions.md", ".env", ".env.*", ".aider*", ".npmrc", ".pypirc", ".netrc", ".gitconfig", "secrets.toml", "credentials*.json", "service-account*.json", "*service_account*.json", "*.pem", "*.key", "*.p12", "*.pfx", "*.keystore", "id_rsa*", "id_ed25519*", "*.log", "*.tmp", "*.bak", "*.sqlite*", "*.db", "*.pyc", "*.map", ".preview-*", ".visual-*")
 REFERENCE_NAMES = {"空翔るヨットの幻想世界.png", "浮遊島を望むStreamlit帆船.png", "魔法 sailor キャプテンの四面図.png", "Beyond_the_Far_Horizon.mp3", "Before_the_Morning_Thaw.mp3", "Where_the_Tide_Meets_Sky.mp3"}
 APPROVED_PUBLIC = {
+    "assets/ruins-v1.webp", "assets/palms-v1.webp", "assets/rock-v2.webp",
     "assets/world-v2.webp", "assets/world-ice-v1.webp", "assets/world-desert-v1.webp", "assets/world-cloud-v1.webp", "assets/yacht-v2.webp", "assets/captain-v3.webp", "assets/streamlit-mark.svg", "licenses/Phaser-MIT.txt",
     *(f"assets/music/course-{course}-loop.{ext}" for course in ("1-1", "2-1", "3-1") for ext in ("mp3", "ogg")),
 }

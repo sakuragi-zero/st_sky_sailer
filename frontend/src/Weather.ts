@@ -9,22 +9,26 @@ export class VoyageWeather {
   label="晴れ";
   private readonly sky:Phaser.GameObjects.Graphics;
   private readonly rain:Phaser.GameObjects.Graphics;
+  private lastDraw = -1000;
   constructor(scene:Phaser.Scene,private readonly theme:Theme) {
     this.sky=scene.add.graphics().setScrollFactor(0).setDepth(1);
     this.rain=scene.add.graphics().setScrollFactor(0).setDepth(14);
   }
-  draw(progress:number,time:number,delta:number) {
+  draw(progress:number,time:number,delta:number,detail=1,reducedMotion=false) {
     const target=smooth(.24,.38,progress)*(1-smooth(.64,.83,progress));
     this.intensity=Phaser.Math.Linear(this.intensity,target,1-Math.exp(-delta/650));
-    const strength=this.intensity,sky=this.sky.clear(),rain=this.rain.clear();
+    const strength=this.intensity;
     this.label=strength>.55 ? this.theme==="ice" ? "吹雪" : this.theme==="desert" ? "砂嵐" : "嵐" : strength>.12 ? progress>.64 ? "晴れ間へ" : "雲行きが変わる…" : "晴れ";
+    if(time-this.lastDraw < 1000/30) return;
+    this.lastDraw=time;
+    const sky=this.sky.clear(),rain=this.rain.clear();
     if(strength>.015) {
       sky.fillStyle(this.theme==="desert" ? 0x8a603d : 0x293758,.42*strength).fillRect(0,0,VIEW.width,VIEW.height);
       for(let i=0;i<8;i++) {
         const x=(i*173+time*(.018+i%3*.004))%1080-180;
         sky.fillStyle(this.theme==="desert" ? 0xb89366 : 0x42516a,.27*strength).fillEllipse(x,30+i%3*36,330,105);
       }
-      for(let i=0;i<85;i++) {
+      for(let i=0;i<Math.round(64*detail);i++) {
         const x=(i*137-time*(this.theme==="desert" ? .65 : .19))%880;
         const px=(x+880)%880-80;
         const y=(i*83+time*(this.theme==="desert" ? .055 : .48+i%3*.04))%540-30;
@@ -33,7 +37,7 @@ export class VoyageWeather {
           rain.lineStyle(1.5,0xffd79b,strength*.52).lineBetween(px,y,px+13+i%4*5,y-3);
         } else rain.lineStyle(1.2,0xddeaff,strength*.57).lineBetween(px,y,px-9,y+24);
       }
-      if(this.theme!=="desert" && strength>.8) {
+      if(!reducedMotion && this.theme!=="desert" && strength>.8) {
         const flash=(time%9400);
         if(flash<95 || flash>180 && flash<230) sky.fillStyle(0xf1f6ff,.21*strength).fillRect(0,0,VIEW.width,VIEW.height);
       }

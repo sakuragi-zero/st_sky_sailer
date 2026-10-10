@@ -1,6 +1,6 @@
 [
   {"id":"1-1","title":"雲海の航路","theme":"sea","world":"world-v2.webp","goal_label":"雲海の船着場","description":"流れる水路と滝の落差。金色に光る滝の流れで滝登り。","intro":"いっしょに、雲海へ！"},
-  {"id":"2-1","title":"氷晶の海","theme":"ice","world":"world-ice-v1.webp","goal_label":"氷晶の船着場","description":"せり上がる氷山と落ちるツララ。STOPで待機、光る滝で上の水路へ。","intro":"氷の海へ、出航！"},
+  {"id":"2-1","title":"氷晶の海","theme":"ice","world":"world-ice-v1.webp","goal_label":"氷晶の船着場","description":"淡いオーロラと氷晶の海。氷山とツララを越え、光る滝で上の水路へ。","intro":"氷の海へ、出航！"},
   {"id":"3-1","title":"砂漠のオアシス","theme":"desert","world":"world-desert-v1.webp","goal_label":"オアシスの船着場","description":"サボテンの水路とオアシスの滝。風と滝登りで船着場へ。","intro":"砂漠の風に、乗ろう！"},
   {"id":"4-1","title":"雲の階段","theme":"cloud","world":"world-cloud-v1.webp","goal_label":"天空の船着場","description":"雲の階段と大きな落差。金色の上昇気流で高い雲へ。","intro":"雲の航路へ、出航！"}
 ]

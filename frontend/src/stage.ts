@@ -1,9 +1,9 @@
-import manifest from "../../sky_sailer/courses.json";
+import manifest from "../../sky_sailer/courses.json" with { type: "json" };
 
 export const VIEW = { width: 720, height: 480 };
 export type Channel = { x: number; y: number; width: number };
 export type Theme = "sea" | "ice" | "desert" | "cloud";
-export type Obstacle = { x: number; y: number; kind: "whirl" | "iceberg" | "cactus" };
+export type Obstacle = { x: number; y: number; kind: "rock" | "iceberg" | "cactus" };
 export type Cascade = { x: number; nextX: number; fromY: number; toY: number; ascent: boolean };
 export type Course = { id: string; title: string; theme: Theme; world: string; goal_label: string; description: string; intro: string; channels: Channel[]; cascades: Cascade[]; crystals: {x:number;y:number;red:boolean}[]; hazards: Obstacle[]; icicles: {x:number;y:number}[]; goalX: number; goalY: number; minY: number };
 export const GOAL_X = 8860;
@@ -60,7 +60,7 @@ export function getCourse(id = "1-1"): Course {
     { x: channel.x + (i === 0 ? 360 : Math.min(190, channel.width * 0.4)), y: channel.y - (i % 2 === 0 ? 27 : 72), red: i % 3 === 0 },
     { x: channel.x + channel.width - 110, y: channel.y - 98, red: i % 3 === 2 },
   ]);
-  const hazards: Obstacle[] = theme === "sea" ? HAZARDS.map(point => ({ ...point, y: channels.find(channel=>point.x>=channel.x && point.x<channel.x+channel.width)!.y, kind: "whirl" })) : theme === "cloud" ? [] : channels.filter((_, i) => i > 0 && (theme === "desert" || i % 2 === 1)).map(channel => ({ x: channel.x + Math.min(335, channel.width * 0.55), y: channel.y, kind: theme === "ice" ? "iceberg" : "cactus" }));
+  const hazards: Obstacle[] = theme === "sea" ? HAZARDS.map(point => ({ ...point, y: channels.find(channel=>point.x>=channel.x && point.x<channel.x+channel.width)!.y, kind: "rock" })) : theme === "cloud" ? [] : channels.filter((_, i) => i > 0 && (theme === "desert" || i % 2 === 1)).map(channel => ({ x: channel.x + Math.min(335, channel.width * 0.55), y: channel.y, kind: theme === "ice" ? "iceberg" : "cactus" }));
   const icicles = theme === "ice" ? [{ x: 650, y: channels[0].y }, ...channels.filter((_, i) => i > 0 && i % 2 === 0).map(channel => ({ x: channel.x + 285, y: channel.y }))] : [];
   return { ...meta, theme, channels, cascades, crystals, hazards, icicles, goalX: theme === "sea" ? GOAL_X : last.x + last.width - 300, goalY: last.y, minY: Math.min(...channels.map(channel => channel.y)) - 650 };
 }

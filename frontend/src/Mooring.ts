@@ -6,12 +6,16 @@ import { waterY } from "./Waterway";
 export class Mooring {
   private readonly pen: Phaser.GameObjects.Graphics;
   private readonly label: Phaser.GameObjects.Text;
-  constructor(scene:Phaser.Scene,private readonly course:Course) {
+  constructor(private readonly scene:Phaser.Scene,private readonly course:Course) {
     this.pen=scene.add.graphics().setDepth(5);
     this.label=scene.add.text(course.goalX+55,course.goalY-185,course.goal_label,{fontFamily:"serif",fontSize:"20px",color:"#ffffff",stroke:"#244675",strokeThickness:3}).setDepth(7);
   }
   draw(anchorX:number,time:number) {
     const c=this.course, pen=this.pen.clear(), x=c.goalX+90, y=waterY(x,c.goalY,anchorX);
+    const camera=this.scene.cameras.main;
+    const visible=x+250>camera.scrollX && x-70<camera.scrollX+camera.width;
+    this.label.setVisible(visible);
+    if(!visible) return;
     const ice=c.theme==="ice", desert=c.theme==="desert", cloud=c.theme==="cloud";
     const top=ice?0xd4f5ff:desert?0xf7d7a0:cloud?0xf4f2ff:0xe7c799;
     const edge=ice?0x73bad7:desert?0xb27b4e:cloud?0x8b9fcd:0x8a654e;

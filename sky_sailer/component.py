@@ -10,13 +10,14 @@ _mount = st.components.v2.component(
 )
 
 
-def game(*, gravity: float, jump_power: float, run_id: str, course_id: str = "1-1", evaluation: dict | None = None, key: str = "sky_sailer_game"):
+def game(*, gravity: float, jump_power: float, run_id: str, course_id: str = "1-1", evaluation: dict | None = None, next_course_id: str | None = None, on_navigation_change=None, key: str = "sky_sailer_game"):
     """Mount the game and return its low-frequency completion state."""
     return _mount(
         key=key,
-        data={"gravity": gravity, "jump_power": jump_power, "run_id": run_id, "course_id": course_id, "evaluation": evaluation},
-        default={"result": None},
+        data={"gravity": gravity, "jump_power": jump_power, "run_id": run_id, "course_id": course_id, "evaluation": evaluation, "next_course_id": next_course_id},
+        default={"result": None, "navigation": None},
         on_result_change=lambda: None,
+        on_navigation_change=on_navigation_change,
     )
 
 

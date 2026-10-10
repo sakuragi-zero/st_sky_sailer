@@ -20,13 +20,14 @@ export class CourseHazards {
     const zones = scene.physics.add.staticGroup();
     for (const spec of course.hazards) {
       const iceberg = spec.kind === "iceberg", cactus = spec.kind === "cactus";
-      const zone = scene.add.rectangle(spec.x, spec.y - (cactus ? 46 : iceberg ? 44 : 20), cactus ? 30 : iceberg ? 48 : 22, cactus ? 92 : iceberg ? 88 : 32, 0xffffff, 0);
+      const zone = scene.add.rectangle(spec.x, spec.y - (cactus ? 46 : iceberg ? 44 : 24), cactus ? 30 : iceberg ? 48 : 50, cactus ? 92 : iceberg ? 88 : 48, 0xffffff, 0);
       scene.physics.add.existing(zone, true); zones.add(zone);
       const body = zone.body as Phaser.Physics.Arcade.StaticBody;
       body.enable = !iceberg;
-      const art = scene.add.image(spec.x, spec.y, iceberg ? "iceberg" : cactus ? "cactus" : "storm").setDepth(6);
+      const art = scene.add.image(spec.x, spec.y, spec.kind).setDepth(6);
       if (iceberg) art.setOrigin(0.5, 1).setDisplaySize(124, 124).setVisible(false);
       if (cactus) art.setOrigin(0.5, 1).setDisplaySize(68, 116);
+      if (spec.kind === "rock") art.setOrigin(0.5, 0.86).setDisplaySize(104, 104 * 2 / 3);
       this.raised.push({ spec, art, body, began: null, splashed: false });
     }
     scene.physics.add.overlap(player, zones, () => this.onHit());
@@ -38,9 +39,12 @@ export class CourseHazards {
     this.cue = "";
     for (const row of this.raised) {
       const { spec, art } = row;
+      const camera=this.scene.cameras.main;
+      if(spec.x<camera.scrollX-160 || spec.x>camera.scrollX+camera.width+360) { art.setVisible(false); continue; }
+      art.setVisible(true);
       if (spec.kind === "iceberg") {
         if (row.began === null && spec.x - anchorX < 360 && spec.x - anchorX > -100) row.began = time;
-        if (row.began === null) continue;
+        if (row.began === null) { art.setVisible(false); continue; }
         const rise = Phaser.Math.Clamp((time - row.began - 550) / 750, 0, 1);
         art.setVisible(rise > 0).setAlpha(Math.min(1, rise * 1.5)).setY(waterY(spec.x, spec.y + (1 - rise) * 116, anchorX));
         row.body.enable = rise > 0.6;
@@ -50,8 +54,12 @@ export class CourseHazards {
         }
         if (rise > 0.4 && !row.splashed) { row.splashed = true; this.onSplash(spec.x, spec.y); }
       } else {
-        art.setY(waterY(spec.x, spec.y - (spec.kind === "whirl" ? 20 : 0), anchorX));
-        if (spec.kind === "whirl") art.setRotation(Math.sin(time / 370) * 0.08);
+        art.setY(waterY(spec.x, spec.y, anchorX));
+        if (spec.kind === "rock") {
+          const surface = waterY(spec.x, spec.y, anchorX);
+          pen.lineStyle(2, 0xe0faff, 0.7).strokeEllipse(spec.x, surface + 1, 96 + Math.sin(time / 380) * 5, 17);
+          pen.lineStyle(1, 0xffffff, 0.45).strokeEllipse(spec.x, surface + 3, 112, 23);
+        }
         if (spec.kind === "cactus") {
           pen.fillStyle(0xe2b26e, 0.9).fillEllipse(spec.x, waterY(spec.x, spec.y + 7, anchorX), 87, 21);
           pen.lineStyle(1, 0xffedb8, 0.8).strokeEllipse(spec.x, waterY(spec.x, spec.y + 5, anchorX), 83, 18);
@@ -79,7 +87,7 @@ export class CourseHazards {
     }
     const snow = this.weather.clear();
     if (this.course.theme === "ice") {
-      for (let i = 0; i < 28; i++) {
+      for (let i = 0; i < 14; i++) {
         const x = (i * 139 + time * (0.012 + i % 3 * 0.004)) % 740 - 10;
         const y = (i * 77 + time * (0.025 + i % 4 * 0.008)) % 510 - 20;
         snow.fillStyle(0xffffff, 0.55).fillCircle(x, y, i % 3 + 1);

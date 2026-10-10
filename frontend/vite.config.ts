@@ -7,6 +7,7 @@ const root = dirname(fileURLToPath(import.meta.url));
 const shipped = [
   "assets/world-v2.webp", "assets/world-ice-v1.webp", "assets/world-desert-v1.webp", "assets/world-cloud-v1.webp",
   "assets/yacht-v2.webp", "assets/captain-v3.webp", "assets/streamlit-mark.svg",
+  "assets/ruins-v1.webp", "assets/palms-v1.webp", "assets/rock-v2.webp",
   ...["1-1", "2-1", "3-1"].flatMap(id => ["ogg", "mp3"].map(ext => `assets/music/course-${id}-loop.${ext}`)),
   "licenses/Phaser-MIT.txt",
 ];

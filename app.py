@@ -41,6 +41,26 @@ def start_voyage(selected: str, gravity: float, jump_power: float):
     st.rerun()
 
 
+def navigate_voyage():
+    state = st.session_state.get("sky_sailer_game", {})
+    navigation = state.get("navigation")
+    if not isinstance(navigation, dict) or navigation.get("run_id") != st.session_state.run_id:
+        return
+    if navigation.get("action") == "home":
+        st.session_state.mode = "ready"
+        st.session_state.pop("evaluation", None)
+    elif navigation.get("action") == "next":
+        event = state.get("result")
+        current = st.session_state.course_id
+        ids = list(COURSES)
+        index = ids.index(current) + 1
+        if not validate_result(event, st.session_state.run_id, current) or event["status"] != "cleared" or index >= len(ids):
+            return
+        st.session_state.course_id = st.session_state.course_setting = ids[index]
+        st.session_state.run_id = str(uuid4())
+        st.session_state.pop("evaluation", None)
+
+
 @st.cache_data
 def asset_uri(filename: str) -> str:
     path = Path(__file__).parent / "sky_sailer/frontend/build/assets" / filename
@@ -112,7 +132,7 @@ if not playing:
             gravity = st.slider("重力", 0.5, 1.8, 1.0, 0.1, key="gravity_setting", help="大きいほど落下が速くなります。")
         with columns[1]:
             jump_power = st.slider("ジャンプ力", 0.7, 1.5, 1.0, 0.1, key="jump_setting", help="大きいほど高く跳びます。")
-        st.markdown("""<div class="voyage-help"><div><b>01 · Sail</b><small>STOP / S で停泊<br>B / Shift でブースト</small></div><div><b>02 · Wind</b><small>クリスタルで追い風<br>A / Space でジャンプ</small></div><div><b>03 · Guide</b><small>GUIDEで精霊の光<br>船着場で S〜C の航海評価</small></div></div>""", unsafe_allow_html=True)
+        st.markdown("""<div class="voyage-help"><div><b>01 · Sail</b><small>A でジャンプ<br>B でブースト</small></div><div><b>02 · Wind</b><small>クリスタルで追い風<br>波と雲の切れ目を越えよう</small></div><div><b>03 · Guide</b><small>GUIDEで精霊の光<br>PAUSEからホームへ</small></div></div>""", unsafe_allow_html=True)
         if st.button("出航する  →", type="primary", use_container_width=True):
             start_voyage(course["id"], gravity, jump_power)
 else:
@@ -126,17 +146,8 @@ else:
             comments = {"S": "風と心がひとつになった、見事な航海。", "A": "美しい航跡を残して、船着場へ。", "B": "雲を越えて、無事にたどり着いた。", "C": "次の風に乗れば、もっと遠くへ。"}
             st.session_state.evaluation = {"attempt_id": event["attempt_id"], "rank": rank, "score": score, "comment": comments[rank]}
         evaluation = st.session_state.evaluation
-    game(gravity=st.session_state.gravity, jump_power=st.session_state.jump_power, run_id=st.session_state.run_id, course_id=course["id"], evaluation=evaluation, key="sky_sailer_game")
-    if validate_result(event, st.session_state.run_id, course["id"]):
-        st.caption("航海ランクは今回の設定での自己記録です。")
-        ids = list(COURSES)
-        next_index = ids.index(course["id"]) + 1
-        if event["status"] == "cleared" and next_index < len(ids):
-            next_course = ids[next_index]
-            if st.button(f"次のコース {next_course} →", type="primary", use_container_width=True):
-                start_voyage(next_course, st.session_state.gravity, st.session_state.jump_power)
-        if st.button("航海の設定に戻る", use_container_width=True):
-            st.session_state.mode = "ready"
-            st.rerun()
+    ids = list(COURSES)
+    next_index = ids.index(course["id"]) + 1
+    game(gravity=st.session_state.gravity, jump_power=st.session_state.jump_power, run_id=st.session_state.run_id, course_id=course["id"], evaluation=evaluation, next_course_id=ids[next_index] if next_index < len(ids) else None, on_navigation_change=navigate_voyage, key="sky_sailer_game")
 
 st.markdown('<div class="voyage-footer"><span>✦</span> SKY SAILER · A STREAMLIT VOYAGE</div>', unsafe_allow_html=True)

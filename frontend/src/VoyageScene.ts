@@ -8,6 +8,7 @@ import { SpiritGuide } from "./SpiritGuide";
 import { Mooring } from "./Mooring";
 import type { Cascade } from "./stage";
 import { VoyageWeather } from "./Weather";
+import { Atmosphere } from "./Atmosphere";
 
 type Hooks = { phase: (phase: Phase, result?: Result) => void; hud: (hud: Hud) => void; result: (result: Result) => void };
 const assetUrl = (file: string) => new URL((import.meta.env.DEV ? "/assets/" : "assets/") + file, import.meta.url).href;
@@ -23,9 +24,11 @@ export class VoyageScene extends Phaser.Scene {
   private guide!: SpiritGuide;
   private mooring!: Mooring;
   private weather!: VoyageWeather;
+  private atmosphere!: Atmosphere;
+  private reflection!: Phaser.GameObjects.Image;
+  private shadow!: Phaser.GameObjects.Ellipse;
   private liftSpeed = 300;
   private guideEnabled = false;
-  private anchored = false;
   private lift: Cascade | null = null;
   private readonly course: Course;
   private projected: { image: Phaser.GameObjects.Image | Phaser.GameObjects.Text; x: number; y: number; bob?: number }[] = [];
@@ -58,12 +61,15 @@ export class VoyageScene extends Phaser.Scene {
   }
 
   preload() {
-    const assets = { world: this.course.world, yacht: "yacht-v2.webp", captain: "captain-v3.webp", mark: "streamlit-mark.svg" };
+    const assets: Record<string,string> = { world: this.course.world, yacht: "yacht-v2.webp", captain: "captain-v3.webp", mark: "streamlit-mark.svg" };
+    if (this.course.theme === "sea") { assets["shore-sea"] = "ruins-v1.webp"; assets.rock = "rock-v2.webp"; }
+    if (this.course.theme === "desert") assets["shore-desert"] = "palms-v1.webp";
     for (const [key, file] of Object.entries(assets)) if (!this.textures.exists(key)) this.load.image(key, assetUrl(file));
   }
 
   create() {
-    if (!["world", "yacht", "captain", "mark"].every(key => this.textures.exists(key))) {
+    const required = ["world", "yacht", "captain", "mark", ...(this.course.theme === "sea" ? ["shore-sea", "rock"] : this.course.theme === "desert" ? ["shore-desert"] : [])];
+    if (!required.every(key => this.textures.exists(key))) {
       this.phase = "error"; this.hooks.phase("error"); return;
     }
     this.attempt++;
@@ -72,7 +78,7 @@ export class VoyageScene extends Phaser.Scene {
     this.boostUntil = this.boostReadyAt = this.immuneUntil = this.windUntil = 0;
     this.previousJump = this.previousBoost = false;
     this.boostQueued = false;
-    this.anchored = false; this.lift = null;
+    this.lift = null;
     this.projected = [];
     this.message = this.course.intro; this.messageUntil = 5000;
     this.checkpoint = { x: 200, y: this.course.channels[0].y };
@@ -83,11 +89,7 @@ export class VoyageScene extends Phaser.Scene {
     this.backdrop = this.add.image(0, 0, "world").setOrigin(0).setDisplaySize(VIEW.width, VIEW.height).setScrollFactor(0);
     this.backdropTwin = this.add.image(VIEW.width, 0, "world").setOrigin(0).setDisplaySize(VIEW.width, VIEW.height).setFlipX(true).setScrollFactor(0);
 
-    // Low clouds reveal depth below the elevated waterways.
-    for (let i = 0; i < 18; i++) {
-      const cloud = this.add.ellipse(i * 390, 470 + (i % 3) * 8, 250, 52, 0xf2fbff, 0.24).setScrollFactor(0.55).setDepth(2);
-      this.tweens.add({ targets: cloud, y: cloud.y + 8, duration: 2300 + i * 83, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
-    }
+    this.atmosphere = new Atmosphere(this, this.course);
     this.waterway = new Waterway(this, () => this.audio.splash(), this.course);
     this.windEffect = new WindEffect(this);
     this.guide = new SpiritGuide(this); this.guide.enabled = this.guideEnabled;
@@ -102,6 +104,8 @@ export class VoyageScene extends Phaser.Scene {
     this.makeTextures();
     this.player = this.physics.add.sprite(200, this.course.channels[0].y - 28, "hull").setVisible(false);
     this.player.setSize(92, 24);
+    this.shadow = this.add.ellipse(0, 0, 265, 21, 0x164b73, 0.13).setDepth(4);
+    this.reflection = this.add.image(0, 0, "yacht").setOrigin(0.5, 0).setFlipY(true).setDisplaySize(350, 58).setAlpha(0.13).setTint(0xa4deed).setDepth(4);
     const vessel = this.add.image(0, 0, "yacht").setOrigin(0.5, 0.97).setDisplaySize(355, 236.67);
     const sailMark = this.add.image(37, -135, "mark").setDisplaySize(62, 62 * 165 / 301);
     const captainArt = this.add.image(0, 0, "captain").setOrigin(0.5, 1).setDisplaySize(124, 186);
@@ -109,7 +113,7 @@ export class VoyageScene extends Phaser.Scene {
     this.captain = this.add.container(-72, -51, [captainArt, capMark]);
     this.yacht = this.add.container(154, 398, [vessel, sailMark, this.captain]).setDepth(10);
     this.physics.add.collider(this.player, waterSurfaces, undefined, () => !this.lift);
-    camera.startFollow(this.player, true, 0.09, 0.22, -140, 95);
+    camera.startFollow(this.player, false, 0.09, 0.22, -140, 95);
 
     const gems = this.physics.add.staticGroup();
     this.course.crystals.forEach((point, i) => {
@@ -133,7 +137,7 @@ export class VoyageScene extends Phaser.Scene {
     });
 
     this.hazards = new CourseHazards(this, this.course, this.player, () => this.damage(), (x,y) => this.waterway.splash(x,y));
-    this.sparkles = this.add.particles(0, 0, "spark", { emitting: false, lifespan: 650, speed: { min: 30, max: 105 }, angle: { min: 0, max: 360 }, scale: { start: 0.9, end: 0 }, alpha: { start: 0.9, end: 0 }, blendMode: Phaser.BlendModes.ADD }).setDepth(12);
+    this.sparkles = this.add.particles(0, 0, "spark", { emitting: false, maxParticles: 100, lifespan: 650, speed: { min: 30, max: 105 }, angle: { min: 0, max: 360 }, scale: { start: 0.9, end: 0 }, alpha: { start: 0.9, end: 0 }, blendMode: Phaser.BlendModes.ADD }).setDepth(12);
 
     if (this.input.keyboard) {
       this.keys = this.input.keyboard.addKeys({ left: "LEFT", right: "RIGHT", a: "A", d: "D", space: "SPACE", up: "UP", w: "W", shift: "SHIFT", down: "DOWN" }) as typeof this.keys;
@@ -165,12 +169,6 @@ export class VoyageScene extends Phaser.Scene {
       pen.lineStyle(1, 0xffffff, 0.8).lineBetween(17, 2, 17, 42).lineBetween(5, 23, 29, 23);
       pen.generateTexture(name, 34, 46); pen.clear();
     }
-    pen.fillStyle(0x24499b, 0.85).fillEllipse(23, 30, 44, 24);
-    pen.lineStyle(3, 0xbeeaff).strokeEllipse(23, 30, 42, 22);
-    pen.lineStyle(2, 0x75bff3).strokeEllipse(23, 29, 26, 13);
-    pen.fillStyle(0x1d306b).fillEllipse(23, 29, 12, 7);
-    pen.lineStyle(2, 0xffffff, 0.9).lineBetween(7, 20, 14, 17).lineBetween(34, 37, 41, 34);
-    pen.generateTexture("storm", 46, 48); pen.clear();
     pen.fillStyle(0xffffff).fillTriangle(8, 0, 10, 8, 8, 16).fillTriangle(0, 8, 8, 6, 16, 8).fillTriangle(0, 8, 8, 10, 16, 8);
     pen.generateTexture("spark", 16, 16); pen.destroy();
   }
@@ -210,7 +208,7 @@ export class VoyageScene extends Phaser.Scene {
     this.boostQueued = false;
     const boosted = this.elapsedMs < this.boostUntil;
     const windy = this.elapsedMs < this.windUntil;
-    const stopped = brake || this.anchored;
+    const stopped = brake;
     const target = (right ? 170 : 132) - (left ? 103 : 0) + (boosted ? 122 : 0) + (windy ? 125 : 0);
     // Stopping takes priority over both kinds of boost; gravity and hazards keep moving.
     body.setVelocityX(stopped ? 0 : Phaser.Math.Linear(body.velocity.x, Math.max(0, target), 1 - Math.exp(-delta / 180)));
@@ -240,20 +238,25 @@ export class VoyageScene extends Phaser.Scene {
     const bob = afloat ? Math.sin(this.elapsedMs / 270) * 2.4 : 0;
     this.yacht.setPosition(this.player.x - 6, this.player.y + 15 + bob).setRotation(Phaser.Math.Clamp(body.velocity.y / 4800, -0.11, 0.10) + (afloat ? Math.sin(this.elapsedMs / 430) * 0.009 : 0));
     this.captain.setRotation(-this.yacht.rotation * 0.6 + Math.sin(this.elapsedMs / 600) * 0.018);
+    this.shadow.setPosition(this.player.x - 8, this.player.y + 29).setVisible(afloat);
+    this.reflection.setPosition(this.player.x - 6, this.player.y + 33).setVisible(afloat && this.course.theme !== "cloud");
     for (const object of this.projected) {
       if (!object.image.active) continue;
       const bob = object.bob === undefined ? 0 : Math.sin(this.elapsedMs / 330 + object.bob) * 5;
-      object.image.setY(waterY(object.x, object.y, this.player.x) + bob);
+      const visible = object.x > this.cameras.main.scrollX - 60 && object.x < this.cameras.main.scrollX + VIEW.width + 60;
+      object.image.setVisible(visible);
+      if (visible) object.image.setY(waterY(object.x, object.y, this.player.x) + bob);
     }
-    this.waterway.draw(this.player.x, this.player.y, this.elapsedMs, Math.min(delta, 100), afloat && body.velocity.y >= 0, boosted || windy);
+    this.waterway.draw(this.player.x, this.player.y, this.elapsedMs, Math.min(delta, 100), afloat && body.velocity.y >= 0, boosted || windy, this.atmosphere.detail);
     this.hazards.update(this.player.x, this.player.y, this.elapsedMs, Math.min(delta,100));
     this.windEffect.draw(this.elapsedMs, Math.max(0,this.windUntil-this.elapsedMs));
-    this.weather.draw(this.player.x/this.course.goalX,this.elapsedMs,Math.min(delta,100));
+    this.weather.draw(this.player.x/this.course.goalX,this.elapsedMs,Math.min(delta,100),this.atmosphere.detail,this.atmosphere.reducedMotion);
+    this.atmosphere.update(this.player.x,this.elapsedMs,delta,this.weather.intensity);
     this.backdrop.setTint(this.weather.tint); this.backdropTwin.setTint(this.weather.tint);
     this.mooring.draw(this.player.x,this.elapsedMs);
     this.guide.draw(this.player.x,this.elapsedMs,body,this.hazards.guidePoints());
     this.yacht.setAlpha(this.elapsedMs < this.immuneUntil ? (Math.floor(this.elapsedMs / 100) % 2 ? 0.55 : 1) : 1);
-    if (this.elapsedMs - this.lastTrail > (boosted || windy ? 45 : 140)) {
+    if (this.elapsedMs - this.lastTrail > (boosted || windy ? 45 : 140) / this.atmosphere.detail) {
       this.sparkles.emitParticleAt(this.player.x - 88, this.player.y + 1, boosted || windy ? 3 : 1); this.lastTrail = this.elapsedMs;
     }
     if (this.player.x >= this.course.goalX) this.finish("cleared");
@@ -302,9 +305,9 @@ export class VoyageScene extends Phaser.Scene {
     const hazard = this.course.hazards.find(hazard => hazard.x - this.player.x > 60 && hazard.x - this.player.x < 290);
     const body = this.player.body as Phaser.Physics.Arcade.Body;
     const afloat = (body.blocked.down || body.touching.down) && body.velocity.y >= 0;
-    const obstacleCue = hazard?.kind === "cactus" ? "サボテン！ Aでジャンプ" : hazard?.kind === "iceberg" ? "氷山！ Aで越えよう" : "渦がきたよ！ Aでジャンプ";
+    const obstacleCue = hazard?.kind === "cactus" ? "サボテン！ Aでジャンプ" : hazard?.kind === "iceberg" ? "氷山！ Aで越えよう" : "岩があるよ！ Aでジャンプ";
     const cascade=this.course.cascades.find(c=>c.x-this.player.x>-60 && c.x-this.player.x<320);
-    const cue = this.hazards.cue || (this.lift ? this.message : this.anchored ? "停泊中。STOP / S で出航" : cascade ? cascade.ascent ? this.course.theme==="cloud" ? "金色の上昇気流に乗ろう" : "光る滝で、滝登り！" : "大きな落差！ 下の航路へ" : !afloat ? "" : next ? this.course.theme === "cloud" ? "雲の切れ目！ 次の段へジャンプ" : "滝の切れ目！ Aでひとっとび" : hazard ? obstacleCue : this.elapsedMs < this.messageUntil ? this.message : "");
+    const cue = this.hazards.cue || (this.lift ? this.message : cascade ? cascade.ascent ? this.course.theme==="cloud" ? "金色の上昇気流に乗ろう" : "光る滝で、滝登り！" : "大きな落差！ 下の航路へ" : !afloat ? "" : next ? this.course.theme === "cloud" ? "雲の切れ目！ 次の段へジャンプ" : "滝の切れ目！ Aでひとっとび" : hazard ? obstacleCue : this.elapsedMs < this.messageUntil ? this.message : "");
     this.hooks.hud({ elapsedMs: this.elapsedMs, hits: this.hits, crystals: this.collected, progress: Math.min(1, this.player.x / this.course.goalX), boostReady: Phaser.Math.Clamp(1 - (this.boostReadyAt - this.elapsedMs) / 3400, 0, 1), windMs: Math.max(0,this.windUntil-this.elapsedMs), cue, weather:this.weather.label, storm:this.weather.intensity });
   }
 
@@ -324,6 +327,5 @@ export class VoyageScene extends Phaser.Scene {
   }
   requestJump() { if (this.phase === "playing") this.jumpBuffer = this.elapsedMs + 150; }
   setGuide(enabled:boolean) { this.guideEnabled=enabled; if(this.guide) this.guide.enabled=enabled; }
-  toggleAnchor() { if(this.phase==="playing") this.anchored=!this.anchored; return this.anchored; }
   requestBoost() { if (this.phase === "playing") this.boostQueued = true; }
 }

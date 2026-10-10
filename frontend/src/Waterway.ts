@@ -13,21 +13,45 @@ export class Waterway {
   private wakes: Wake[] = [];
   private lastWake = 0;
   private afloat = false;
+  private cloudPuffs: Phaser.GameObjects.Image[] = [];
 
   constructor(private readonly scene: Phaser.Scene, private readonly onSplash: () => void, private readonly course: Course = getCourse()) {
     this.clouds = scene.add.graphics().setDepth(2);
     this.water = scene.add.graphics().setDepth(3);
     this.foam = scene.add.graphics().setDepth(11);
+    if (course.theme === "cloud") {
+      if (!scene.textures.exists("cloud-bank")) {
+        const texture=scene.textures.createCanvas("cloud-bank",192,112);
+        if(texture) {
+          const ctx=texture.context;
+          const puff=(x:number,y:number,rx:number,ry:number,top:string,base:string)=>{
+            ctx.save();ctx.translate(x,y);ctx.scale(rx,ry);
+            const gradient=ctx.createRadialGradient(-.2,-.38,.08,0,0,1);
+            gradient.addColorStop(0,top);gradient.addColorStop(.52,top);gradient.addColorStop(.83,base);gradient.addColorStop(1,"rgba(213,227,250,0)");
+            ctx.fillStyle=gradient;ctx.fillRect(-1,-1,2,2);ctx.restore();
+          };
+          puff(96,74,96,38,"#bbcce8","rgba(174,195,230,.7)");
+          puff(37,57,40,33,"#edf4ff","rgba(212,227,248,.8)");
+          puff(81,45,47,40,"#fffdf4","rgba(218,232,251,.9)");
+          puff(128,51,44,36,"#fffef8","rgba(208,225,248,.85)");
+          puff(165,62,30,28,"#f4f8ff","rgba(214,229,249,.7)");
+          texture.refresh();
+        }
+      }
+      for(let i=0;i<40;i++) this.cloudPuffs.push(scene.add.image(0,0,"cloud-bank").setOrigin(.5,.4).setDisplaySize(144,84).setDepth(3).setVisible(false));
+    }
   }
 
   splash(x: number, y: number) { this.wakes.push({ x, y, age: 0, splash: true }); if (this.course.theme !== "cloud") this.onSplash(); }
 
-  draw(anchorX: number, shipY: number, elapsed: number, delta: number, afloat: boolean, boosted: boolean) {
+  draw(anchorX: number, shipY: number, elapsed: number, delta: number, afloat: boolean, boosted: boolean, detail = 1) {
     const pen = this.water.clear();
     const scroll = this.scene.cameras.main.scrollX;
     const cloud = this.clouds.clear();
     const cameraY = this.scene.cameras.main.scrollY;
     const channels = this.course.channels, theme = this.course.theme;
+    let puffIndex=0;
+    for(const puff of this.cloudPuffs) puff.setVisible(false);
     const fogColor = theme === "desert" ? 0xffefd5 : 0xe8f8ff;
     // The routes float above cloud depth, so their gaps cannot resemble open sea.
     for (let band = 0; band < (theme === "cloud" ? 0 : 18); band++) {
@@ -55,11 +79,11 @@ export class Waterway {
       const end = Math.min(channel.x + channel.width, scroll + VIEW.width + 180);
       const y = (x: number, offset = 0) => waterY(x, channel.y + offset, anchorX);
       if (theme === "cloud") {
-        pen.fillStyle(0xa9c5e8, 0.9).fillPoints([{x:start,y:y(start,8)},{x:end,y:y(end,8)},{x:end-10,y:y(end,62)},{x:start+10,y:y(start,62)}],true);
-        for (let x = start + 18; x < end; x += 56) {
-          pen.fillStyle(0xe0eafb,0.95).fillEllipse(x,y(x,35),96,57);
-          pen.fillStyle(0xffffff,0.96).fillEllipse(x,y(x,-3)+Math.sin(x/67)*3,92,42);
-          pen.fillStyle(0xfff3df,0.42).fillEllipse(x-4,y(x,-11),62,18);
+        const first=Math.max(0,Math.floor((start-channel.x)/70));
+        for(let j=first;channel.x+28+j*70<end;j++) {
+          const x=channel.x+28+j*70,puff=this.cloudPuffs[puffIndex++];
+          if(!puff) break;
+          puff.setPosition(x,y(x,10)+Math.sin(j*2.1)*3).setVisible(true);
         }
         continue;
       }
@@ -80,7 +104,7 @@ export class Waterway {
         { x: end, y: y(end, -8) }, { x: start, y: y(start, -8) },
       ], true);
       // Current strokes travel through the water rather than sitting on its edge.
-      for (let row = 0; row < 5; row++) {
+      for (let row = 0; row < (detail < 1 ? 3 : 5); row++) {
         for (let x = start - 100 + ((elapsed * 0.10 + row * 47) % 140); x < end; x += 140) {
           const left = Math.max(start, x), right = Math.min(end, x + 64 + row * 5);
           if (left >= right) continue;
@@ -92,6 +116,14 @@ export class Waterway {
         }
       }
       pen.lineStyle(3, 0xf0ffff, 0.6).lineBetween(start, y(start, 32), end, y(end, 32));
+      // Small reflected highlights travel with the current, without a full-screen shader.
+      for(let i=0;i<Math.ceil((end-start)/100)*detail;i++) {
+        const x=start+((i*103+elapsed*.035)%(end-start));
+        const glint=Math.max(0,Math.sin(elapsed/540+i*2.7));
+        const gy=y(x,9+Math.sin(i*3)*20);
+        pen.lineStyle(1.5,0xfff4d1,glint*.72).lineBetween(x-7,gy,x+7,gy);
+        if(glint>.75) pen.lineStyle(1,0xffffff,glint*.65).lineBetween(x,gy-4,x,gy+4);
+      }
       const lip = channel.x + channel.width;
       if (lip < scroll - 140 || lip > scroll + VIEW.width + 160 || channel === channels.at(-1)) continue;
       const lipY = y(lip);
