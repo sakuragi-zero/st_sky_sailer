@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=83.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sky-sailer"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = ["streamlit==1.54.0", "GitPython==3.1.60", "pyarrow==23.0.1"]
+
+[tool.setuptools.packages.find]
+include = ["sky_sailer*"]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.package-data]
+sky_sailer = ["pyproject.toml", "courses.json", "frontend/build/**/*"]

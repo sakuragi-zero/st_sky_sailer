@@ -1,0 +1,16 @@
+{
+  "name": "Sky Sailer",
+  "build": { "dockerfile": "Dockerfile" },
+  "features": { "ghcr.io/devcontainers/features/node:1": { "version": "22" } },
+  "mounts": ["source=sky-sailer-node-modules,target=${containerWorkspaceFolder}/frontend/node_modules,type=volume"],
+  "forwardPorts": [8501],
+  "portsAttributes": { "8501": { "label": "Streamlit", "onAutoForward": "openBrowser" } },
+  "postCreateCommand": "sudo chown -R $(id -u):$(id -g) frontend/node_modules && python -m pip install --upgrade pip && python -m pip install -r requirements-dev.txt && git config --local core.hooksPath .githooks && cd frontend && npm ci && npm run build",
+  "postStartCommand": "bash .devcontainer/start.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python", "ms-python.vscode-pylance", "dbaeumer.vscode-eslint"],
+      "settings": { "python.defaultInterpreterPath": "/usr/local/bin/python", "editor.formatOnSave": true }
+    }
+  }
+}

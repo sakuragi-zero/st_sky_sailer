@@ -1,0 +1,4 @@
+streamlit==1.54.0
+GitPython==3.1.60
+pyarrow==23.0.1
+-e .

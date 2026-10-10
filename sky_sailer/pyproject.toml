@@ -1,0 +1,7 @@
+[project]
+name = "sky-sailer"
+version = "0.1.0"
+
+[[tool.streamlit.component.components]]
+name = "game"
+asset_dir = "frontend/build"

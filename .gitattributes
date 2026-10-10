@@ -1,0 +1,12 @@
+*Handoff*/** export-ignore
+*handoff*/** export-ignore
+.agents/** export-ignore
+.codex/** export-ignore
+.claude/** export-ignore
+.env* export-ignore
+.streamlit/secrets.toml export-ignore
+assets/** export-ignore
+docs/screenshots/** export-ignore
+docs/audio/** export-ignore
+docs/security/** export-ignore
+.security-audit/** export-ignore

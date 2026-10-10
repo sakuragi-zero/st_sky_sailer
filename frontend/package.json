@@ -1,0 +1,21 @@
+{
+  "name": "sky-sailer-frontend",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsc --noEmit && vite build",
+    "dev": "vite --host 0.0.0.0",
+    "test:browser": "playwright test"
+  },
+  "dependencies": {
+    "@streamlit/component-v2-lib": "^0.2.0",
+    "phaser": "^3.90.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "esbuild": "^0.25.12",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5"
+  }
+}

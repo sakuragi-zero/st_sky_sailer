@@ -1,0 +1,22 @@
+#!/bin/sh
+# No host Python/Node installation: run the guard in the Dev Container.
+set -eu
+repo_root=$(git rev-parse --show-toplevel)
+if [ -f /.dockerenv ]; then
+  exec python "$repo_root/scripts/check_commit.py"
+fi
+if ! command -v docker >/dev/null 2>&1; then
+  echo "Commit blocked: open the Dev Container to run the commit guard." >&2
+  exit 1
+fi
+container_id=$(docker ps --filter "label=devcontainer.local_folder=$repo_root" --format '{{.ID}}')
+if [ -z "$container_id" ]; then
+  echo "Commit blocked: start this repository's Dev Container first." >&2
+  exit 1
+fi
+case "$container_id" in
+  *'
+'*) echo "Commit blocked: more than one matching container is running." >&2; exit 1 ;;
+esac
+workspace="/workspaces/$(basename "$repo_root")"
+exec docker exec -u vscode -w "$workspace" "$container_id" python scripts/check_commit.py

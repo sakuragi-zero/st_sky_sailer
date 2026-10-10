@@ -1,0 +1,14 @@
+<!doctype html><html lang="ja"><meta charset="UTF-8"><title>Sky Sailer scene check</title>
+<style>body{margin:0;background:#eaf7ff}#game{width:720px;height:480px;margin:20px auto}</style>
+<div id="game"></div>
+<script type="module">
+import Phaser from "phaser";
+import { VoyageScene } from "/src/VoyageScene.ts";
+import { VoyageAudio } from "/src/audio.ts";
+import { ISLANDS, CRYSTALS, HAZARDS, GOAL_X } from "/src/stage.ts";
+const controls={left:false,right:false,jump:false,boost:false,brake:false};
+const results=[];
+const scene=new VoyageScene({gravity:1,jump_power:1,run_id:"scene-test"},controls,new VoyageAudio(),{phase:phase=>document.body.dataset.phase=phase,hud:hud=>window.hud=hud,result:result=>results.push(result)});
+const game=new Phaser.Game({type:Phaser.AUTO,width:720,height:480,parent:"game",banner:false,physics:{default:"arcade",arcade:{gravity:{x:0,y:900}}},scene:[scene]});
+window.voyageTest={scene,game,controls,results,islands:ISLANDS,crystals:CRYSTALS,hazards:HAZARDS,goal:GOAL_X};
+</script></html>
