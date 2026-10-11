@@ -13,7 +13,6 @@ ROOT = Path(__file__).resolve().parents[1]
 PRIVATE_PARTS = {".agents", ".agent", ".codex", ".claude", ".cursor", ".windsurf", ".gemini", ".skills", ".aws", ".azure", ".ssh", ".docker", ".pip", ".venv", "node_modules", "__pycache__", ".cache", ".npm", ".pytest_cache", ".mypy_cache", ".ruff_cache", ".idea", ".vscode", ".security-audit", "test-results", "playwright-report"}
 PRIVATE_PREFIXES = ("assets/", "docs/screenshots/", "docs/audio/", "docs/security/", ".github/agents/", ".github/instructions/")
 PRIVATE_NAMES = ("AGENTS*.md", "CLAUDE*.md", "GEMINI.md", "SKILL.md", "CODEX*.md", "copilot-instructions.md", ".env", ".env.*", ".aider*", ".npmrc", ".pypirc", ".netrc", ".gitconfig", "secrets.toml", "credentials*.json", "service-account*.json", "*service_account*.json", "*.pem", "*.key", "*.p12", "*.pfx", "*.keystore", "id_rsa*", "id_ed25519*", "*.log", "*.tmp", "*.bak", "*.sqlite*", "*.db", "*.pyc", "*.map", ".preview-*", ".visual-*")
-REFERENCE_NAMES = {"空翔るヨットの幻想世界.png", "浮遊島を望むStreamlit帆船.png", "魔法 sailor キャプテンの四面図.png", "Beyond_the_Far_Horizon.mp3", "Before_the_Morning_Thaw.mp3", "Where_the_Tide_Meets_Sky.mp3", "The_Well_of_Golden_Light.mp3", "Crown_of_the_Sky.mp3"}
 APPROVED_PUBLIC = {
     "assets/temple-mural-v1.webp",
     "assets/sfx/thunder-v1.mp3",
@@ -45,15 +44,13 @@ def git(*args):
 def private_path(name):
     normalized = unicodedata.normalize("NFC", name)
     path = PurePosixPath(normalized)
-    if len(path.parts) == 1 and normalized in {"ElevenLabs_遠くの雷鳴。.mp3", "雷鳴.mp3", "A_triumphant_10-seco_#2.mp3", "A_triumphant_10-seco_#1.mp3", "A_massive,_thunderou_#1.mp3", "古代神殿の女神と黄金帆船壁画.png"}:
+    if len(path.parts) == 1 and path.suffix.lower() in {".mp3", ".wav", ".ogg", ".flac", ".m4a", ".png", ".jpg", ".jpeg", ".webp", ".svg"}:
         return True
     if any(part in PRIVATE_PARTS or "handoff" in part.lower() or part.endswith(".egg-info") for part in path.parts):
         return True
     if any(normalized.startswith(prefix) for prefix in PRIVATE_PREFIXES):
         return True
     if normalized.startswith(".streamlit/") and normalized != ".streamlit/config.toml":
-        return True
-    if len(path.parts) == 1 and normalized in REFERENCE_NAMES:
         return True
     return any(fnmatch.fnmatchcase(path.name, pattern) for pattern in PRIVATE_NAMES)
 

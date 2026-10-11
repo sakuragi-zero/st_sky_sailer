@@ -16,6 +16,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
+SOURCE = ROOT / "assets/source/audio/music"
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
 RATE = 44100
 TRACKS = [("1-1", "Beyond_the_Far_Horizon.mp3"), ("2-1", "Before_the_Morning_Thaw.mp3"), ("3-1", "The_Well_of_Golden_Light.mp3"), ("4-1", "Crown_of_the_Sky.mp3")]
@@ -70,7 +71,7 @@ def features(samples, time):
 
 records = []
 for course, filename in TRACKS:
-    source = ROOT / filename
+    source = SOURCE / filename
     decoded = run(["-i", str(source), "-f", "f32le", "-ac", "2", "-ar", str(RATE), "-"])
     samples = np.frombuffer(decoded.stdout, np.float32).reshape(-1, 2).copy()
     duration = len(samples) / RATE

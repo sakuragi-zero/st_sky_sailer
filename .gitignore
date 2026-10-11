@@ -105,25 +105,23 @@ htmlcov/
 coverage/
 frontend/.preview-*
 frontend/.visual-*
-/空翔るヨットの幻想世界.png
-/浮遊島を望むStreamlit帆船.png
-/魔法 sailor キャプテンの四面図.png
-/魔法 sailor キャプテンの四面図.png
+# Imported originals are moved into the local assets/source tree.
+# Ignore root-level media so new originals cannot be published accidentally.
+/*.mp3
+/*.wav
+/*.ogg
+/*.flac
+/*.m4a
+/*.png
+/*.jpg
+/*.jpeg
+/*.webp
+/*.svg
 .DS_Store
-/Beyond_the_Far_Horizon.mp3
-/Before_the_Morning_Thaw.mp3
-/Where_the_Tide_Meets_Sky.mp3
-/The_Well_of_Golden_Light.mp3
-/Crown_of_the_Sky.mp3
-/ElevenLabs_遠くの雷鳴。.mp3
-/雷鳴.mp3
+
 !/frontend/public/assets/sfx/
 /frontend/public/assets/sfx/*
 !/frontend/public/assets/sfx/thunder-v1.mp3
 !/frontend/public/assets/sfx/goal-v1.mp3
-!/frontend/public/assets/sfx/star-launch-v1.mp3
-/A_triumphant_10-seco_#2.mp3
-/A_massive,_thunderou_#1.mp3
-/A_triumphant_10-seco_#1.mp3
-/古代神殿の女神と黄金帆船壁画.png
 !/frontend/public/assets/sfx/goal-alt-v1.mp3
+!/frontend/public/assets/sfx/star-launch-v1.mp3
