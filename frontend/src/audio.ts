@@ -1,26 +1,38 @@
 /** Small synthesized effects; recorded BGM is managed separately by VoyageMusic. */
 export class VoyageAudio {
-  enabled = false;
+  enabled = true;
   private context?: AudioContext;
   private cannonNoise?: AudioBuffer;
+  private disposed = false;
+
+  /** Called synchronously from pointer/key gestures to unlock browser audio. */
+  unlock() {
+    if (!this.enabled || this.disposed) return;
+    try {
+      this.context ??= new AudioContext();
+      if (this.context.state !== "running") void this.context.resume().catch(() => {});
+    } catch { /* A later gesture can retry if audio is temporarily unavailable. */ }
+  }
 
   async toggle(): Promise<boolean> {
+    if (this.disposed) return false;
     this.enabled = !this.enabled;
     if (this.enabled) {
       try {
         this.context ??= new AudioContext();
         await this.context.resume();
-        this.play("collect");
+        if (this.enabled && !this.disposed) this.play("collect");
       } catch { this.enabled = false; }
     }
     return this.enabled;
   }
 
   play(cue: "jump" | "boost" | "collect" | "hit" | "clear" | "launch") {
-    if (!this.enabled || !this.context || this.context.state !== "running") return;
+    if (!this.enabled || this.disposed || !this.context || this.context.state !== "running") return;
     const context = this.context;
     if (cue === "launch") { this.cannon(context); return; }
-    const frequencies = { jump: [330, 660], boost: [180, 480], collect: [880, 1320], hit: [180, 80], clear: [523, 659, 784, 1047] }[cue];
+    if (cue === "hit") { this.impact(context); return; }
+    const frequencies = { jump: [330, 660], boost: [180, 480], collect: [880, 1320], clear: [523, 659, 784, 1047] }[cue];
     frequencies.forEach((frequency, i) => {
       const oscillator = context.createOscillator();
       const gain = context.createGain();
@@ -51,7 +63,7 @@ export class VoyageAudio {
     filter.frequency.setValueAtTime(3200,start);
     filter.frequency.exponentialRampToValueAtTime(180,start+0.5);
     burst.gain.setValueAtTime(0,start);
-    burst.gain.linearRampToValueAtTime(0.2,start+0.004);
+    burst.gain.linearRampToValueAtTime(0.32,start+0.004);
     burst.gain.exponentialRampToValueAtTime(0.001,start+0.55);
     noise.connect(filter); filter.connect(burst); burst.connect(context.destination);
     noise.start(start); noise.stop(start+0.6);
@@ -59,14 +71,29 @@ export class VoyageAudio {
 
     const tone = context.createOscillator(), boom = context.createGain();
     tone.type = "triangle";
-    tone.frequency.setValueAtTime(140,start);
-    tone.frequency.exponentialRampToValueAtTime(38,start+0.45);
+    tone.frequency.setValueAtTime(240,start);
+    tone.frequency.exponentialRampToValueAtTime(65,start+0.45);
     boom.gain.setValueAtTime(0,start);
-    boom.gain.linearRampToValueAtTime(0.14,start+0.008);
+    boom.gain.linearRampToValueAtTime(0.22,start+0.008);
     boom.gain.exponentialRampToValueAtTime(0.001,start+0.6);
     tone.connect(boom); boom.connect(context.destination);
     tone.start(start); tone.stop(start+0.65);
     tone.onended = () => { tone.disconnect(); boom.disconnect(); };
+  }
+
+  private impact(context: AudioContext) {
+    const start = context.currentTime;
+    const oscillator = context.createOscillator(), filter = context.createBiquadFilter(), gain = context.createGain();
+    oscillator.type = "sawtooth";
+    oscillator.frequency.setValueAtTime(420,start);
+    oscillator.frequency.exponentialRampToValueAtTime(85,start+0.23);
+    filter.type = "lowpass"; filter.frequency.value = 1600; filter.Q.value = 0.7;
+    gain.gain.setValueAtTime(0,start);
+    gain.gain.linearRampToValueAtTime(0.16,start+0.006);
+    gain.gain.exponentialRampToValueAtTime(0.001,start+0.28);
+    oscillator.connect(filter); filter.connect(gain); gain.connect(context.destination);
+    oscillator.start(start); oscillator.stop(start+0.3);
+    oscillator.onended = () => { oscillator.disconnect(); filter.disconnect(); gain.disconnect(); };
   }
 
   splash() {
@@ -83,5 +110,5 @@ export class VoyageAudio {
     source.onended = () => { source.disconnect(); filter.disconnect(); gain.disconnect(); };
   }
 
-  dispose() { void this.context?.close(); }
+  dispose() { this.disposed = true; this.enabled = false; void this.context?.close(); }
 }

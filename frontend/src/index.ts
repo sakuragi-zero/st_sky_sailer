@@ -48,7 +48,7 @@ const renderer: FrontendRenderer<GameState> = ({ parentElement, data: rawData, s
           <div class="ss-action ss-action-b"><button class="ss-control ss-b" data-act="boost" aria-label="B ブースト">B</button><span>BOOST</span><div class="ss-boost-meter"><i></i></div></div>
         </div>
       </div>
-      <div class="ss-system-row"><button class="ss-system" data-pause aria-label="航海を一時停止">Ⅱ PAUSE</button><button class="ss-system" data-guide aria-label="精霊ガイドを切り替える" aria-pressed="false">✧ GUIDE OFF</button><button class="ss-system" data-sound aria-label="効果音を有効にする" aria-pressed="false">♪ SOUND OFF</button></div>
+      <div class="ss-system-row"><button class="ss-system" data-pause aria-label="航海を一時停止">Ⅱ PAUSE</button><button class="ss-system" data-guide aria-label="精霊ガイドを切り替える" aria-pressed="false">✧ GUIDE OFF</button><button class="ss-system" data-sound aria-label="効果音を無効にする" aria-pressed="true">♪ SOUND ON</button></div>
       <div class="ss-music-row"><button class="ss-system" data-music aria-label="${course.id==="4-1" ? "BGM未設定" : "BGMを無効にする"}" aria-pressed="${course.id!=="4-1"}" ${course.id==="4-1" ? "disabled" : ""}>♫ ${course.id==="4-1" ? "BGM 未設定" : "BGM ON"}</button><label>BGM音量<input data-music-volume type="range" min="0" max="100" value="50" aria-label="BGM音量"></label></div><p class="ss-music-message" data-music-message role="status" hidden></p>
       <p class="ss-hint">A / Space ジャンプ　B / Shift ブースト</p>
     </section>`;
@@ -144,6 +144,7 @@ const renderer: FrontendRenderer<GameState> = ({ parentElement, data: rawData, s
   });
 
   const onPointerDown = (event: PointerEvent) => {
+    audio.unlock();
     music.unlock();
     const button = (event.target as HTMLElement).closest<HTMLElement>("[data-act]");
     if (!button || scene.phase !== "playing") return;
@@ -197,6 +198,7 @@ const renderer: FrontendRenderer<GameState> = ({ parentElement, data: rawData, s
   const onMusicVolume=()=>music.setVolume(Number(musicVolume.value)/100);
   const onBlur = () => { releaseAll(); scene.pauseVoyage(); };
   const onKey = (event: KeyboardEvent) => {
+    audio.unlock();
     music.unlock();
     if (event.code === "Escape") { if (scene.phase === "paused") scene.resumeVoyage(); else scene.pauseVoyage(); }
   };
