@@ -33,14 +33,17 @@ def calculate_rank(result: dict, config: dict) -> tuple[str, int]:
         total = int(result.get("total_crystals", 0))
         gravity = float(config.get("gravity", 1.0))
         jump = float(config.get("jump_power", 1.0))
+        par_seconds = float(config.get("par_seconds", 45))
     except (TypeError, ValueError, OverflowError):
         return "C", 0
-    if not all(isfinite(v) for v in (elapsed, gravity, jump)):
+    if not all(isfinite(v) for v in (elapsed, gravity, jump, par_seconds)):
         return "C", 0
     if not (0 <= elapsed <= 600 and 0 <= hits <= 100 and 0 <= crystals <= 100 and 0 <= total <= 100 and total >= crystals):
         return "C", 0
     if not (0.5 <= gravity <= 1.8 and 0.7 <= jump <= 1.5):
         return "C", 0
-    score = max(0, min(100, round(100 - max(0, elapsed - 45) * 0.55 - hits * 14 - max(0, total - crystals) * 3)))
+    if not 30 <= par_seconds <= 300:
+        return "C", 0
+    score = max(0, min(100, round(100 - max(0, elapsed - par_seconds) * 0.55 - hits * 14 - max(0, total - crystals) * 3)))
     rank = "S" if score >= 90 else "A" if score >= 75 else "B" if score >= 55 else "C"
     return rank, score

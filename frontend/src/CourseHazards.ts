@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 import type { Course, Obstacle } from "./stage";
 import { waterY } from "./Waterway";
+import { makeSceneryTextures } from "./SceneryTextures";
 
 type RaisedHazard = { spec: Obstacle; art: Phaser.GameObjects.Image; body: Phaser.Physics.Arcade.StaticBody; began: number | null; splashed: boolean };
 type Icicle = { x: number; surfaceY: number; y: number; velocity: number; began: number | null; state: "waiting" | "warning" | "falling" | "spent"; art: Phaser.GameObjects.Image; hit: boolean };
@@ -14,7 +15,7 @@ export class CourseHazards {
   guidePoints() { return this.icicles.filter(spike=>spike.state==="falling").map(spike=>({x:spike.x,y:spike.y})); }
 
   constructor(private readonly scene: Phaser.Scene, private readonly course: Course, player: Phaser.Physics.Arcade.Sprite, private readonly onHit: () => void, private readonly onSplash: (x: number, y: number) => void) {
-    this.makeTextures();
+    makeSceneryTextures(scene, course.theme);
     this.warnings = scene.add.graphics().setDepth(7);
     this.weather = scene.add.graphics().setDepth(14).setScrollFactor(0);
     const zones = scene.physics.add.staticGroup();
@@ -25,8 +26,8 @@ export class CourseHazards {
       const body = zone.body as Phaser.Physics.Arcade.StaticBody;
       body.enable = !iceberg;
       const art = scene.add.image(spec.x, spec.y, spec.kind).setDepth(6);
-      if (iceberg) art.setOrigin(0.5, 1).setDisplaySize(124, 124).setVisible(false);
-      if (cactus) art.setOrigin(0.5, 1).setDisplaySize(68, 116);
+      if (iceberg) art.setOrigin(0.5, 0.91).setDisplaySize(142, 134).setVisible(false);
+      if (cactus) art.setOrigin(0.5, 0.93).setDisplaySize(78, 124);
       if (spec.kind === "rock") art.setOrigin(0.5, 0.86).setDisplaySize(104, 104 * 2 / 3);
       this.raised.push({ spec, art, body, began: null, splashed: false });
     }
@@ -57,12 +58,11 @@ export class CourseHazards {
         art.setY(waterY(spec.x, spec.y, anchorX));
         if (spec.kind === "rock") {
           const surface = waterY(spec.x, spec.y, anchorX);
-          pen.lineStyle(2, 0xe0faff, 0.7).strokeEllipse(spec.x, surface + 1, 96 + Math.sin(time / 380) * 5, 17);
-          pen.lineStyle(1, 0xffffff, 0.45).strokeEllipse(spec.x, surface + 3, 112, 23);
+          pen.lineStyle(1.3, 0xe0faff, 0.45).strokeEllipse(spec.x, surface + 1, 96 + Math.sin(time / 380) * 5, 13);
+          pen.lineStyle(1, 0xffffff, 0.25).strokeEllipse(spec.x, surface + 3, 112, 18);
         }
         if (spec.kind === "cactus") {
-          pen.fillStyle(0xe2b26e, 0.9).fillEllipse(spec.x, waterY(spec.x, spec.y + 7, anchorX), 87, 21);
-          pen.lineStyle(1, 0xffedb8, 0.8).strokeEllipse(spec.x, waterY(spec.x, spec.y + 5, anchorX), 83, 18);
+          for (let layer = 3; layer >= 0; layer--) pen.fillStyle(layer % 2 ? 0xe5c18c : 0xc39e6e, 0.17).fillEllipse(spec.x, waterY(spec.x, spec.y + 7, anchorX), 72 + layer * 9, 13 + layer * 4);
         }
       }
     }
@@ -103,24 +103,4 @@ export class CourseHazards {
     pen.fillStyle(0xffffff).fillCircle(x, y - 52, 1.5);
   }
 
-  private makeTextures() {
-    if (this.scene.textures.exists("iceberg")) return;
-    const pen = this.scene.add.graphics();
-    pen.fillStyle(0x7cd9f0).fillPoints([{x:5,y:120},{x:28,y:69},{x:47,y:86},{x:71,y:9},{x:91,y:52},{x:106,y:37},{x:145,y:120}], true);
-    pen.fillStyle(0xeafcff).fillTriangle(71,9,50,94,90,58).fillTriangle(106,37,83,111,123,76);
-    pen.fillStyle(0x56afd9).fillTriangle(71,9,76,119,96,80).fillTriangle(106,37,120,120,145,120);
-    pen.lineStyle(2,0xffffff,0.85).lineBetween(71,9,47,86).lineBetween(106,37,145,120);
-    pen.fillStyle(0xcdf3ff,0.75).fillEllipse(76,119,143,21);
-    pen.generateTexture("iceberg",150,150); pen.clear();
-    pen.fillStyle(0x2e8974).fillRoundedRect(29,12,23,110,11).fillRoundedRect(7,37,15,40,7).fillRoundedRect(55,25,14,41,7).fillRoundedRect(13,61,26,15,6).fillRoundedRect(42,50,23,15,6);
-    pen.lineStyle(2,0x95caa0,0.8).lineBetween(37,24,37,115).lineBetween(46,20,46,118).lineBetween(13,42,13,66).lineBetween(61,30,61,53);
-    pen.lineStyle(1,0xf5efbc,0.9);
-    for(let i=0;i<6;i++) { pen.lineBetween(29,30+i*14,24,27+i*14); pen.lineBetween(52,36+i*13,57,32+i*13); }
-    pen.fillStyle(0xff777c).fillCircle(39,12,9).fillCircle(31,8,5).fillCircle(45,5,5); pen.fillStyle(0xffe8a7).fillCircle(39,8,4);
-    pen.generateTexture("cactus",76,126); pen.clear();
-    pen.fillStyle(0x8ed6f2).fillTriangle(3,2,28,2,17,86);
-    pen.fillStyle(0xeafcff).fillTriangle(3,2,17,8,17,86);
-    pen.lineStyle(2,0xffffff,0.9).lineBetween(3,2,17,86).lineBetween(3,2,28,2);
-    pen.generateTexture("icicle",32,90); pen.destroy();
-  }
 }

@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { mkdir } from "node:fs/promises";
-import { GOAL_X, HAZARDS, ISLANDS } from "../src/stage";
+import { GOAL_X, HAZARDS, ISLANDS, getCourse } from "../src/stage";
 
 const screenshotDir = "../docs/screenshots";
 
@@ -41,12 +41,12 @@ for (const viewport of [{ width:390, height:844 }, { width:375, height:667 }, { 
   });
 }
 
-test("mobile can steer and jump with two fingers", async ({ browser }) => {
+test("mobile can boost and jump with two fingers", async ({ browser }) => {
   const page=await browser.newPage({viewport:{width:390,height:844},hasTouch:true,isMobile:true});
   await page.goto("/");
   await page.getByRole("button",{name:"出航する  →"}).click();
   await expect(page.locator(".sky-sailer-root")).toHaveAttribute("data-phase","playing",{timeout:30000});
-  const right=page.getByRole("button",{name:"右・加速"});
+  const right=page.getByRole("button",{name:"B ブースト"});
   const jump=page.getByRole("button",{name:"A ジャンプ"});
   const r=(await right.boundingBox())!, j=(await jump.boundingBox())!;
   const session=await page.context().newCDPSession(page);
@@ -86,9 +86,14 @@ test("default stage can be sailed from start to goal", async ({ page }) => {
       const grounded=p.body.blocked.down||p.body.touching.down;
       const island=t.islands.find((i:any)=>p.x>=i.x-45&&p.x<i.x+i.width+45);
       const nearEdge=island && island.x+island.width-p.x<65 && island.x+island.width-p.x>-40;
-      const obstacle=t.hazards.some((h:any)=>h.x-p.x>25&&h.x-p.x<115);
-      const gem=t.crystals.some((g:any)=>g.x-p.x>25&&g.x-p.x<80);
-      t.controls.jump=grounded && (nearEdge||obstacle||gem);
+      const lead=Math.max(140,p.body.velocity.x*.4+65);
+      const obstacle=t.hazards.some((h:any)=>h.x-p.x>25&&h.x-p.x<lead);
+      const approachingHazard=t.hazards.some((h:any)=>h.x-p.x>0&&h.x-p.x<450);
+      const gem=!approachingHazard&&(!island||island.x+island.width-p.x>240)&&t.crystals.some((g:any)=>g.x-p.x>25&&g.x-p.x<80);
+      const ring=t.course.rings.some((r:any)=>r.x-p.x>-40&&r.x-p.x<120);
+      t.controls.jump=false;
+      if(grounded && !ring && (nearEdge||obstacle||gem)) s.requestJump();
+      if(grounded && s.elapsedMs>=s.boostReadyAt) s.requestBoost();
       return false;
     });
     if(done)break;
@@ -108,6 +113,7 @@ test("Streamlit completion receives Python rank without restarting the game", as
   await expect(root).toHaveAttribute("data-phase","playing",{timeout:30000});
   await page.keyboard.down("ArrowRight");
   let lastJump=0;
+  let lastBoost=0;
   const started=Date.now();
   while(Date.now()-started<75000) {
     const phase=await root.getAttribute("data-phase");
@@ -116,14 +122,19 @@ test("Streamlit completion receives Python rank without restarting the game", as
     const x=percentage*GOAL_X/100;
     const island=ISLANDS.find(i=>x>=i.x-45 && x<i.x+i.width+45);
     const edge=island && island.x+island.width-x<80 && island.x+island.width-x>-20;
-    const hazard=HAZARDS.some(h=>h.x-x<120&&h.x-x>25);
-    if((edge||hazard)&&Date.now()-lastJump>1150){await page.keyboard.press("Space");lastJump=Date.now();}
+    const windy=await root.getAttribute("data-wind")==="active";
+    const boosting=Date.now()-lastBoost<1500;
+    const lead=(windy ? 195 : 140)+(boosting ? 55 : 0);
+    const hazard=HAZARDS.some(h=>h.x-x<lead&&h.x-x>25);
+    const ring=getCourse().rings.some(r=>r.x-x>-40&&r.x-x<150);
+    if(!ring&&(edge||hazard)&&Date.now()-lastJump>350){await page.getByRole("button",{name:"A ジャンプ"}).click();lastJump=Date.now();}
+    if(Date.now()-lastBoost>3500){await page.keyboard.press("Shift");lastBoost=Date.now();}
     await page.waitForTimeout(45);
   }
   await page.keyboard.up("ArrowRight");
   await expect(root).toHaveAttribute("data-phase","cleared");
   await expect(page.locator(".ss-result-rank")).toHaveAttribute("data-rank",/[SABC]/,{timeout:15000});
-  await expect(page.getByText("航海ランクは今回の設定での自己記録です。")).toBeVisible();
+  await expect(page.locator(".ss-result-comment")).not.toHaveText("航海を評価しています…");
   await page.waitForTimeout(1000);
   await expect(root).toHaveAttribute("data-phase","cleared");
   await page.screenshot({path:`${screenshotDir}/result-390.png`,fullPage:true});

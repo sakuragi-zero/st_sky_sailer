@@ -5,10 +5,13 @@
 import Phaser from "phaser";
 import { VoyageScene } from "/src/VoyageScene.ts";
 import { VoyageAudio } from "/src/audio.ts";
-import { ISLANDS, CRYSTALS, HAZARDS, GOAL_X } from "/src/stage.ts";
+import { getCourse } from "/src/stage.ts";
+const params=new URLSearchParams(location.search);
+const course=getCourse(params.get("course") || "1-1");
 const controls={left:false,right:false,jump:false,boost:false,brake:false};
 const results=[];
-const scene=new VoyageScene({gravity:1,jump_power:1,run_id:"scene-test"},controls,new VoyageAudio(),{phase:phase=>document.body.dataset.phase=phase,hud:hud=>window.hud=hud,result:result=>results.push(result)});
-const game=new Phaser.Game({type:Phaser.AUTO,width:720,height:480,parent:"game",banner:false,physics:{default:"arcade",arcade:{gravity:{x:0,y:900}}},scene:[scene]});
-window.voyageTest={scene,game,controls,results,islands:ISLANDS,crystals:CRYSTALS,hazards:HAZARDS,goal:GOAL_X};
+const gravity=Number(params.get("gravity") || 1),jump_power=Number(params.get("jump") || 1);
+const scene=new VoyageScene({gravity,jump_power,course_id:course.id,run_id:"scene-test"},controls,new VoyageAudio(),{phase:phase=>document.body.dataset.phase=phase,hud:hud=>window.hud=hud,result:result=>results.push(result)});
+const game=new Phaser.Game({type:Phaser.AUTO,width:720,height:480,parent:"game",banner:false,physics:{default:"arcade",arcade:{gravity:{x:0,y:900*gravity}}},scene:[scene]});
+window.voyageTest={scene,game,controls,results,course,islands:course.channels,crystals:course.crystals,hazards:course.hazards,goal:course.goalX};
 </script></html>

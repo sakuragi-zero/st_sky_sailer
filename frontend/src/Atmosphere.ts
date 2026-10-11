@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 import { VIEW, type Course } from "./stage";
 import { waterY } from "./Waterway";
+import { makeSceneryTextures } from "./SceneryTextures";
 
 /** Reusable textures and a fixed sprite pool keep the scenery independent of course length. */
 export class Atmosphere {
@@ -124,10 +125,18 @@ export class Atmosphere {
     });
     const key = `shore-${this.course.theme}`;
     if (this.scene.textures.exists(key) || this.course.theme !== "ice") return;
-    const pen = this.scene.add.graphics();
-    pen.fillStyle(0x91bdd5,.6).fillEllipse(90,140,163,24);
-    for(let i=0;i<5;i++) { const x=27+i*29,h=42+(i*23%59);pen.fillStyle(0x94d8e9).fillTriangle(x-16,139,x,139-h,x+21,139);pen.fillStyle(0xebffff).fillTriangle(x-16,139,x,139-h,x+2,139);pen.lineStyle(1,0xffffff,.9).lineBetween(x,139-h,x+21,139); }
-    pen.fillStyle(0xf4fcff).fillEllipse(91,142,158,14);
-    pen.generateTexture(key, 190, 164); pen.destroy();
+    makeSceneryTextures(this.scene, this.course.theme);
+    this.canvas(key, 240, 170, ctx => {
+      const ice = this.scene.textures.get("iceberg").getSourceImage() as HTMLCanvasElement;
+      ctx.globalAlpha = 0.8;
+      for (let i = 0; i < 4; i++) {
+        const height = 78 + i * 17 % 44;
+        ctx.drawImage(ice, i * 49, 154-height, 100, height);
+      }
+      ctx.globalAlpha = 1;
+      const snow = ctx.createRadialGradient(120,149,4,120,149,110);
+      snow.addColorStop(0,"rgba(237,250,253,.9)");snow.addColorStop(1,"rgba(185,219,235,0)");
+      ctx.fillStyle=snow;ctx.beginPath();ctx.ellipse(120,149,115,13,0,0,Math.PI*2);ctx.fill();
+    });
   }
 }

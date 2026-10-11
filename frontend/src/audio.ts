@@ -15,10 +15,10 @@ export class VoyageAudio {
     return this.enabled;
   }
 
-  play(cue: "jump" | "boost" | "collect" | "hit" | "clear") {
+  play(cue: "jump" | "boost" | "collect" | "hit" | "clear" | "launch") {
     if (!this.enabled || !this.context || this.context.state !== "running") return;
     const context = this.context;
-    const frequencies = { jump: [330, 660], boost: [180, 480], collect: [880, 1320], hit: [180, 80], clear: [523, 659, 784, 1047] }[cue];
+    const frequencies = { jump: [330, 660], boost: [180, 480], collect: [880, 1320], hit: [180, 80], clear: [523, 659, 784, 1047], launch: [196, 392, 784, 1568] }[cue];
     frequencies.forEach((frequency, i) => {
       const oscillator = context.createOscillator();
       const gain = context.createGain();

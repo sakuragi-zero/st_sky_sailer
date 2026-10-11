@@ -148,7 +148,7 @@ else:
     if validate_result(event, st.session_state.run_id, course["id"]) and event["status"] == "cleared":
         stored = st.session_state.get("evaluation")
         if not stored or stored["attempt_id"] != event["attempt_id"]:
-            rank, score = calculate_rank(event, {"gravity": st.session_state.gravity, "jump_power": st.session_state.jump_power})
+            rank, score = calculate_rank(event, {"gravity": st.session_state.gravity, "jump_power": st.session_state.jump_power, "par_seconds": course["par_seconds"]})
             comments = {"S": "風と心がひとつになった、見事な航海。", "A": "美しい航跡を残して、船着場へ。", "B": "雲を越えて、無事にたどり着いた。", "C": "次の風に乗れば、もっと遠くへ。"}
             st.session_state.evaluation = {"attempt_id": event["attempt_id"], "rank": rank, "score": score, "comment": comments[rank]}
         evaluation = st.session_state.evaluation

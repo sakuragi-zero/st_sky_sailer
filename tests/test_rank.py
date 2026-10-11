@@ -10,6 +10,16 @@ def test_fast_clean_clear_is_s_rank():
     assert calculate_rank({"elapsed_ms": 30000, "hit_count": 0, "crystals": 13, "total_crystals": 13}, CONFIG) == ("S", 100)
 
 
+def test_long_course_uses_its_server_defined_reference_time():
+    event = {"elapsed_ms": 105000, "hit_count": 0, "crystals": 53, "total_crystals": 53}
+    assert calculate_rank(event, CONFIG | {"par_seconds": 105}) == ("S", 100)
+
+
+@pytest.mark.parametrize("par_seconds", [float("nan"), 0, 301, "invalid"])
+def test_rank_rejects_invalid_reference_times(par_seconds):
+    assert calculate_rank({"elapsed_ms": 105000}, CONFIG | {"par_seconds": par_seconds}) == ("C", 0)
+
+
 def test_slow_clear_with_misses_lowers_rank():
     rank, score = calculate_rank({"elapsed_ms": 90000, "hit_count": 2, "crystals": 5, "total_crystals": 13}, CONFIG)
     assert rank in {"B", "C"}

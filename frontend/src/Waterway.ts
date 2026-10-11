@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 import { VIEW, getCourse, type Course } from "./stage";
+import { makeSceneryTextures } from "./SceneryTextures";
 
 type Wake = { x: number; y: number; age: number; splash: boolean };
 
@@ -14,11 +15,16 @@ export class Waterway {
   private lastWake = 0;
   private afloat = false;
   private cloudPuffs: Phaser.GameObjects.Image[] = [];
+  private waterPaint: Phaser.GameObjects.TileSprite[] = [];
 
   constructor(private readonly scene: Phaser.Scene, private readonly onSplash: () => void, private readonly course: Course = getCourse()) {
     this.clouds = scene.add.graphics().setDepth(2);
     this.water = scene.add.graphics().setDepth(3);
     this.foam = scene.add.graphics().setDepth(11);
+    if (course.theme !== "cloud") {
+      makeSceneryTextures(scene, course.theme);
+      this.waterPaint = Array.from({ length: 5 }, () => scene.add.tileSprite(0, 0, 512, 76, `water-paint-${course.theme}`).setOrigin(0, 0.5).setRotation(-Math.atan(0.13)).setDepth(3.2).setAlpha(0.6).setVisible(false));
+    }
     if (course.theme === "cloud") {
       if (!scene.textures.exists("cloud-bank")) {
         const texture=scene.textures.createCanvas("cloud-bank",192,112);
@@ -51,6 +57,8 @@ export class Waterway {
     const cameraY = this.scene.cameras.main.scrollY;
     const channels = this.course.channels, theme = this.course.theme;
     let puffIndex=0;
+    let waterIndex=0;
+    for(const surface of this.waterPaint) surface.setVisible(false);
     for(const puff of this.cloudPuffs) puff.setVisible(false);
     const fogColor = theme === "desert" ? 0xffefd5 : 0xe8f8ff;
     // The routes float above cloud depth, so their gaps cannot resemble open sea.
@@ -92,10 +100,16 @@ export class Waterway {
         { x: start, y: y(start, 32) }, { x: end, y: y(end, 32) },
         { x: end, y: y(end, 84) }, { x: start, y: y(start, 84) },
       ], true);
-      pen.fillStyle(theme === "desert" ? 0x19aca9 : theme === "ice" ? 0x60b3df : 0x1b9de7, 0.68).fillPoints([
+      pen.fillStyle(theme === "desert" ? 0x61bcb5 : theme === "ice" ? 0x86bdd3 : 0x68b6dc, 0.55).fillPoints([
         { x: start, y: y(start, -42) }, { x: end, y: y(end, -42) },
         { x: end, y: y(end, 33) }, { x: start, y: y(start, 33) },
       ], true);
+      const paint = this.waterPaint[waterIndex++];
+      if (paint) {
+        paint.setPosition(start, y(start, -4)).setSize((end-start)*Math.sqrt(1+0.13**2), 74).setVisible(true);
+        paint.tilePositionX = start - elapsed * 0.025;
+        paint.tileScaleY = 0.52;
+      }
       if (theme === "ice" || theme === "desert") {
         pen.lineStyle(theme === "ice" ? 7 : 10, theme === "ice" ? 0xf0fcff : 0xf2cb91, 0.9).lineBetween(start,y(start,-43),end,y(end,-43));
       }
@@ -109,13 +123,15 @@ export class Waterway {
           const left = Math.max(start, x), right = Math.min(end, x + 64 + row * 5);
           if (left >= right) continue;
           const offset = -32 + row * 15 + Math.sin(x / 80 + elapsed / 850) * 3;
-          pen.lineStyle(row % 2 ? 1.6 : 2.4, 0xe9fcff, 0.48);
+          pen.lineStyle(row % 2 ? 1 : 1.5, 0xe9fcff, 0.22);
           pen.beginPath().moveTo(left, y(left, offset));
-          pen.lineTo((left + right) / 2, y((left + right) / 2, offset - 3));
+          for (let x = left + 8; x < right; x += 8) pen.lineTo(x, y(x, offset + Math.sin((x-left)/(right-left)*Math.PI*2)*2));
           pen.lineTo(right, y(right, offset)).strokePath();
         }
       }
-      pen.lineStyle(3, 0xf0ffff, 0.6).lineBetween(start, y(start, 32), end, y(end, 32));
+      pen.lineStyle(1.5, 0xf0ffff, 0.4).beginPath().moveTo(start, y(start, 32));
+      for(let x=start+10;x<end;x+=10) pen.lineTo(x,y(x,32+Math.sin(x/41+elapsed/1700)*1.8));
+      pen.lineTo(end,y(end,32)).strokePath();
       // Small reflected highlights travel with the current, without a full-screen shader.
       for(let i=0;i<Math.ceil((end-start)/100)*detail;i++) {
         const x=start+((i*103+elapsed*.035)%(end-start));

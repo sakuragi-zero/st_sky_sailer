@@ -9,6 +9,7 @@ import { Mooring } from "./Mooring";
 import type { Cascade } from "./stage";
 import { VoyageWeather } from "./Weather";
 import { Atmosphere } from "./Atmosphere";
+import { StarRings, flightPoint, type StarFlight } from "./StarRings";
 
 type Hooks = { phase: (phase: Phase, result?: Result) => void; hud: (hud: Hud) => void; result: (result: Result) => void };
 const assetUrl = (file: string) => new URL((import.meta.env.DEV ? "/assets/" : "assets/") + file, import.meta.url).href;
@@ -30,6 +31,8 @@ export class VoyageScene extends Phaser.Scene {
   private liftSpeed = 300;
   private guideEnabled = false;
   private lift: Cascade | null = null;
+  private rings!: StarRings;
+  private flight: StarFlight | null = null;
   private readonly course: Course;
   private projected: { image: Phaser.GameObjects.Image | Phaser.GameObjects.Text; x: number; y: number; bob?: number }[] = [];
   private backdrop!: Phaser.GameObjects.Image;
@@ -79,6 +82,7 @@ export class VoyageScene extends Phaser.Scene {
     this.previousJump = this.previousBoost = false;
     this.boostQueued = false;
     this.lift = null;
+    this.flight = null;
     this.projected = [];
     this.message = this.course.intro; this.messageUntil = 5000;
     this.checkpoint = { x: 200, y: this.course.channels[0].y };
@@ -95,6 +99,7 @@ export class VoyageScene extends Phaser.Scene {
     this.guide = new SpiritGuide(this); this.guide.enabled = this.guideEnabled;
     this.mooring = new Mooring(this,this.course);
     this.weather = new VoyageWeather(this,this.course.theme);
+    this.rings = new StarRings(this, this.course);
     const waterSurfaces = this.physics.add.staticGroup();
     for (const channel of this.course.channels) {
       const surface = this.add.rectangle(channel.x + channel.width / 2, channel.y + 8, channel.width - 8, 16, 0xffffff, 0);
@@ -112,7 +117,7 @@ export class VoyageScene extends Phaser.Scene {
     const capMark = this.add.image(15, -157, "mark").setDisplaySize(26, 26 * 165 / 301);
     this.captain = this.add.container(-72, -51, [captainArt, capMark]);
     this.yacht = this.add.container(154, 398, [vessel, sailMark, this.captain]).setDepth(10);
-    this.physics.add.collider(this.player, waterSurfaces, undefined, () => !this.lift);
+    this.physics.add.collider(this.player, waterSurfaces, undefined, () => !this.lift && !this.flight);
     camera.startFollow(this.player, false, 0.09, 0.22, -140, 95);
 
     const gems = this.physics.add.staticGroup();
@@ -181,7 +186,23 @@ export class VoyageScene extends Phaser.Scene {
     if (this.phase !== "playing") return;
     this.elapsedMs += Math.min(delta, 100);
     const body = this.player.body as Phaser.Physics.Arcade.Body;
-    const afloat = body.blocked.down || body.touching.down;
+    let afloat = !this.flight && (body.blocked.down || body.touching.down);
+    if (!this.flight) {
+      const ring = this.rings.crossed(this.player.x, this.player.y);
+      if (ring) {
+        this.flight = { ring, startX: this.player.x, startY: this.player.y, began: this.elapsedMs, duration: Math.max(2200, (ring.targetX - this.player.x) / 820 * 1000) };
+        this.lift = null;
+        this.jumpBuffer = this.lastGrounded = -1000;
+        this.boostQueued = false;
+        body.setVelocity(0, 0).setAllowGravity(false);
+        this.sparkles.explode(35, this.player.x, this.player.y - 65);
+        this.audio.play("launch");
+        this.message = "スターリング！ 遠くの航路へ、ひとっ飛び！";
+        this.messageUntil = this.elapsedMs + this.flight.duration + 1400;
+        this.cameras.main.setLerp(0.28, 0.3);
+        afloat = false;
+      }
+    }
     const key = (name: string) => this.keys?.[name]?.isDown ?? false;
     const left = this.controls.left || key("left") || key("a");
     const right = this.controls.right || key("right") || key("d");
@@ -189,19 +210,19 @@ export class VoyageScene extends Phaser.Scene {
     const jump = this.controls.jump || key("space") || key("up") || key("w");
     const boost = this.controls.boost || key("shift");
     if (jump && !this.previousJump) this.jumpBuffer = this.elapsedMs + 150;
-    if (afloat) {
+    if (afloat && !this.flight) {
       this.lastGrounded = this.elapsedMs;
       const channel = this.course.channels.find(p => this.player.x > p.x + 30 && this.player.x < p.x + p.width - 45);
       if (channel) this.checkpoint = { x: Math.max(channel.x + 100, this.player.x - 65), y: channel.y };
     }
-    if (this.jumpBuffer >= this.elapsedMs && this.elapsedMs - this.lastGrounded < 115) {
+    if (!this.flight && this.jumpBuffer >= this.elapsedMs && this.elapsedMs - this.lastGrounded < 115) {
       body.setVelocityY(-510 * this.configData.jump_power);
       this.jumpBuffer = this.lastGrounded = -1000;
       this.sparkles.explode(8, this.player.x - 40, this.player.y + 10);
       this.audio.play("jump");
       this.waterway.splash(this.player.x, this.player.y + 14);
     }
-    if ((this.boostQueued || boost && !this.previousBoost) && this.elapsedMs >= this.boostReadyAt) {
+    if (!this.flight && (this.boostQueued || boost && !this.previousBoost) && this.elapsedMs >= this.boostReadyAt) {
       this.boostUntil = this.elapsedMs + 1150; this.boostReadyAt = this.elapsedMs + 3400; this.audio.play("boost");
       this.message = "風をつかまえて！"; this.messageUntil = this.elapsedMs + 1600;
     }
@@ -211,8 +232,8 @@ export class VoyageScene extends Phaser.Scene {
     const stopped = brake;
     const target = (right ? 170 : 132) - (left ? 103 : 0) + (boosted ? 122 : 0) + (windy ? 125 : 0);
     // Stopping takes priority over both kinds of boost; gravity and hazards keep moving.
-    body.setVelocityX(stopped ? 0 : Phaser.Math.Linear(body.velocity.x, Math.max(0, target), 1 - Math.exp(-delta / 180)));
-    if(!this.lift && !stopped) {
+    if (!this.flight) body.setVelocityX(stopped ? 0 : Phaser.Math.Linear(body.velocity.x, Math.max(0, target), 1 - Math.exp(-delta / 180)));
+    if(!this.flight && !this.lift && !stopped) {
       this.lift = this.course.cascades.find(c=>c.ascent && this.player.x>=c.x-48 && this.player.x<c.nextX+60 && this.player.y>c.toY-32 && this.player.y<c.fromY+55) ?? null;
       if(this.lift) this.liftSpeed=Math.max(300,body.velocity.x,target);
     }
@@ -234,9 +255,25 @@ export class VoyageScene extends Phaser.Scene {
       this.messageUntil=this.elapsedMs+400;
     }
     this.previousJump = jump; this.previousBoost = boost;
-    if (this.player.y > this.checkpoint.y + 250) this.damage(true);
+    let flightAngle: number | null = null;
+    if (this.flight) {
+      const point = flightPoint(this.flight, this.elapsedMs);
+      body.reset(point.x, point.y);
+      flightAngle = point.angle * 0.48;
+      if (point.done) {
+        this.checkpoint = { x: point.x, y: this.flight.ring.targetY + 18 };
+        this.flight = null;
+        body.setAllowGravity(true).setVelocity(170, 0);
+        this.immuneUntil = Math.max(this.immuneUntil, this.elapsedMs + 700);
+        this.cameras.main.setLerp(0.09, 0.22);
+        this.waterway.splash(point.x, point.y + 18);
+        this.sparkles.explode(16, point.x, point.y);
+        this.message = "着地！ 次の風に乗って進もう"; this.messageUntil = this.elapsedMs + 1800;
+      }
+    }
+    if (!this.flight && this.player.y > this.checkpoint.y + 250) this.damage(true);
     const bob = afloat ? Math.sin(this.elapsedMs / 270) * 2.4 : 0;
-    this.yacht.setPosition(this.player.x - 6, this.player.y + 15 + bob).setRotation(Phaser.Math.Clamp(body.velocity.y / 4800, -0.11, 0.10) + (afloat ? Math.sin(this.elapsedMs / 430) * 0.009 : 0));
+    this.yacht.setPosition(this.player.x - 6, this.player.y + 15 + bob).setRotation(flightAngle ?? Phaser.Math.Clamp(body.velocity.y / 4800, -0.11, 0.10) + (afloat ? Math.sin(this.elapsedMs / 430) * 0.009 : 0));
     this.captain.setRotation(-this.yacht.rotation * 0.6 + Math.sin(this.elapsedMs / 600) * 0.018);
     this.shadow.setPosition(this.player.x - 8, this.player.y + 29).setVisible(afloat);
     this.reflection.setPosition(this.player.x - 6, this.player.y + 33).setVisible(afloat && this.course.theme !== "cloud");
@@ -254,18 +291,19 @@ export class VoyageScene extends Phaser.Scene {
     this.atmosphere.update(this.player.x,this.elapsedMs,delta,this.weather.intensity);
     this.backdrop.setTint(this.weather.tint); this.backdropTwin.setTint(this.weather.tint);
     this.mooring.draw(this.player.x,this.elapsedMs);
+    this.rings.draw(this.player.x, this.elapsedMs, this.flight, this.atmosphere.reducedMotion);
     this.guide.draw(this.player.x,this.elapsedMs,body,this.hazards.guidePoints());
-    this.yacht.setAlpha(this.elapsedMs < this.immuneUntil ? (Math.floor(this.elapsedMs / 100) % 2 ? 0.55 : 1) : 1);
-    if (this.elapsedMs - this.lastTrail > (boosted || windy ? 45 : 140) / this.atmosphere.detail) {
-      this.sparkles.emitParticleAt(this.player.x - 88, this.player.y + 1, boosted || windy ? 3 : 1); this.lastTrail = this.elapsedMs;
+    this.yacht.setAlpha(!this.flight && this.elapsedMs < this.immuneUntil ? (Math.floor(this.elapsedMs / 100) % 2 ? 0.55 : 1) : 1);
+    if (this.elapsedMs - this.lastTrail > (this.flight || boosted || windy ? 45 : 140) / this.atmosphere.detail) {
+      this.sparkles.emitParticleAt(this.player.x - 88, this.player.y + 1, this.flight ? 5 : boosted || windy ? 3 : 1); this.lastTrail = this.elapsedMs;
     }
     if (this.player.x >= this.course.goalX) this.finish("cleared");
-    else if (this.elapsedMs > 180000) this.finish("failed");
+    else if (this.elapsedMs > this.course.timeLimitMs) this.finish("failed");
     if (this.elapsedMs - this.lastHud > 100) this.publishHud();
   }
 
   private damage(fell=false) {
-    if (this.phase !== "playing" || this.elapsedMs < this.immuneUntil) return;
+    if (this.phase !== "playing" || this.flight || this.elapsedMs < this.immuneUntil) return;
     this.hits++; this.audio.play("hit"); this.cameras.main.shake(150, 0.003);
     this.message = "だいじょうぶ、もう一度！"; this.messageUntil = this.elapsedMs + 2600;
     this.windUntil = this.boostUntil = 0;
@@ -307,7 +345,8 @@ export class VoyageScene extends Phaser.Scene {
     const afloat = (body.blocked.down || body.touching.down) && body.velocity.y >= 0;
     const obstacleCue = hazard?.kind === "cactus" ? "サボテン！ Aでジャンプ" : hazard?.kind === "iceberg" ? "氷山！ Aで越えよう" : "岩があるよ！ Aでジャンプ";
     const cascade=this.course.cascades.find(c=>c.x-this.player.x>-60 && c.x-this.player.x<320);
-    const cue = this.hazards.cue || (this.lift ? this.message : cascade ? cascade.ascent ? this.course.theme==="cloud" ? "金色の上昇気流に乗ろう" : "光る滝で、滝登り！" : "大きな落差！ 下の航路へ" : !afloat ? "" : next ? this.course.theme === "cloud" ? "雲の切れ目！ 次の段へジャンプ" : "滝の切れ目！ Aでひとっとび" : hazard ? obstacleCue : this.elapsedMs < this.messageUntil ? this.message : "");
+    const ring = this.rings.upcoming(this.player.x);
+    const cue = this.flight ? this.message : ring ? "金色のスターリングを通って、遠くへ！" : this.hazards.cue || (this.lift ? this.message : cascade ? cascade.ascent ? this.course.theme==="cloud" ? "金色の上昇気流に乗ろう" : "光る滝で、滝登り！" : "大きな落差！ 下の航路へ" : !afloat ? "" : next ? this.course.theme === "cloud" ? "雲の切れ目！ 次の段へジャンプ" : "滝の切れ目！ Aでひとっとび" : hazard ? obstacleCue : this.elapsedMs < this.messageUntil ? this.message : "");
     this.hooks.hud({ elapsedMs: this.elapsedMs, hits: this.hits, crystals: this.collected, progress: Math.min(1, this.player.x / this.course.goalX), boostReady: Phaser.Math.Clamp(1 - (this.boostReadyAt - this.elapsedMs) / 3400, 0, 1), windMs: Math.max(0,this.windUntil-this.elapsedMs), cue, weather:this.weather.label, storm:this.weather.intensity });
   }
 
