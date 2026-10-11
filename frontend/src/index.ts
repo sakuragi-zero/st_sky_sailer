@@ -74,7 +74,7 @@ const renderer: FrontendRenderer<GameState> = ({ parentElement, data: rawData, s
   const controls: Controls = { left: false, right: false, jump: false, boost: false, brake: false };
   const pointers = new Map<number, keyof Controls>();
   const audio = new VoyageAudio(assetUrl("sfx/thunder-v1.mp3"), {
-    clear: assetUrl("sfx/goal-v1.mp3"), launch: assetUrl("sfx/star-launch-v1.mp3"),
+    clear: [assetUrl("sfx/goal-v1.mp3"), assetUrl("sfx/goal-alt-v1.mp3")], launch: assetUrl("sfx/star-launch-v1.mp3"),
   });
   const musicRevision = course.id === "3-1" ? "?v=golden-light-v1" : "";
   const music = new VoyageMusic([assetUrl(`music/course-${course.id}-loop.ogg`)+musicRevision,assetUrl(`music/course-${course.id}-loop.mp3`)+musicRevision],true);

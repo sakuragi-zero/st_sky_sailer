@@ -9,30 +9,37 @@ export class VoyageAudio {
   private thunderLoading?: Promise<void>;
   private thunderSource?: AudioBufferSourceNode;
   private playing = true;
-  private readonly eventBuffers = new Map<RecordedCue, AudioBuffer>();
-  private readonly eventLoading = new Set<RecordedCue>();
+  private readonly eventBuffers = new Map<string, AudioBuffer>();
+  private readonly eventLoading = new Set<string>();
   private readonly eventSources = new Map<RecordedCue, AudioBufferSourceNode>();
 
-  constructor(private readonly thunderUrl?: string, private readonly eventUrls: Partial<Record<RecordedCue,string>> = {}) {}
+  constructor(private readonly thunderUrl?: string, private readonly eventUrls: Partial<Record<RecordedCue,string | string[]>> = {}) {}
+
+  private urlsFor(cue: RecordedCue): string[] {
+    const urls = this.eventUrls[cue];
+    return Array.isArray(urls) ? urls : urls ? [urls] : [];
+  }
 
   private loadEvents() {
     if (!this.context || this.disposed) return;
     const context = this.context;
     for (const cue of ["launch","clear"] as const) {
-      const url = this.eventUrls[cue];
-      if (!url || this.eventBuffers.has(cue) || this.eventLoading.has(cue)) continue;
-      this.eventLoading.add(cue);
-      void fetch(url).then(async response => {
-        if (!response.ok) throw new Error("Event audio unavailable");
-        const buffer = await context.decodeAudioData(await response.arrayBuffer());
-        if (!this.disposed) this.eventBuffers.set(cue,buffer);
-      }).catch(() => {}).finally(() => this.eventLoading.delete(cue));
+      for (const url of this.urlsFor(cue)) {
+        if (this.eventBuffers.has(url) || this.eventLoading.has(url)) continue;
+        this.eventLoading.add(url);
+        void fetch(url).then(async response => {
+          if (!response.ok) throw new Error("Event audio unavailable");
+          const buffer = await context.decodeAudioData(await response.arrayBuffer());
+          if (!this.disposed) this.eventBuffers.set(url,buffer);
+        }).catch(() => {}).finally(() => this.eventLoading.delete(url));
+      }
     }
   }
 
   private playEvent(cue: RecordedCue, context: AudioContext): boolean {
     this.loadEvents();
-    const buffer = this.eventBuffers.get(cue);
+    const buffers = this.urlsFor(cue).map(url => this.eventBuffers.get(url)).filter((buffer): buffer is AudioBuffer => !!buffer);
+    const buffer = buffers[Math.floor(Math.random()*buffers.length)];
     if (!buffer) return false;
     this.stopEvent(cue);
     const source = context.createBufferSource(), gain = context.createGain();

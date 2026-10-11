@@ -123,3 +123,5 @@ frontend/.visual-*
 !/frontend/public/assets/sfx/star-launch-v1.mp3
 /A_triumphant_10-seco_#2.mp3
 /A_massive,_thunderou_#1.mp3
+/A_triumphant_10-seco_#1.mp3
+!/frontend/public/assets/sfx/goal-alt-v1.mp3

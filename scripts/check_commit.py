@@ -17,6 +17,7 @@ REFERENCE_NAMES = {"空翔るヨットの幻想世界.png", "浮遊島を望むS
 APPROVED_PUBLIC = {
     "assets/sfx/thunder-v1.mp3",
     "assets/sfx/goal-v1.mp3", "assets/sfx/star-launch-v1.mp3",
+    "assets/sfx/goal-alt-v1.mp3",
     "assets/ruins-v1.webp", "assets/palms-v1.webp", "assets/rock-v2.webp",
     "assets/world-v2.webp", "assets/world-ice-v1.webp", "assets/world-desert-v1.webp", "assets/world-cloud-v1.webp", "assets/yacht-v2.webp", "assets/captain-v3.webp", "assets/streamlit-mark.svg", "licenses/Phaser-MIT.txt",
     *(f"assets/music/course-{course}-loop.{ext}" for course in ("1-1", "2-1", "3-1", "4-1") for ext in ("mp3", "ogg")),
@@ -43,7 +44,7 @@ def git(*args):
 def private_path(name):
     normalized = unicodedata.normalize("NFC", name)
     path = PurePosixPath(normalized)
-    if len(path.parts) == 1 and normalized in {"ElevenLabs_遠くの雷鳴。.mp3", "雷鳴.mp3", "A_triumphant_10-seco_#2.mp3", "A_massive,_thunderou_#1.mp3"}:
+    if len(path.parts) == 1 and normalized in {"ElevenLabs_遠くの雷鳴。.mp3", "雷鳴.mp3", "A_triumphant_10-seco_#2.mp3", "A_triumphant_10-seco_#1.mp3", "A_massive,_thunderou_#1.mp3"}:
         return True
     if any(part in PRIVATE_PARTS or "handoff" in part.lower() or part.endswith(".egg-info") for part in path.parts):
         return True
