@@ -1,14 +1,20 @@
 """Sky Sailer: a short, illustrated voyage through the clouds."""
 
 import base64
+import importlib
 import json
 from pathlib import Path
 from uuid import uuid4
 
 import streamlit as st
 
-from sky_sailer.component import game, home
+from sky_sailer import component
 from sky_sailer.rank import calculate_rank, validate_result
+
+# Streamlit reruns app.py after a deployment, but imported modules can still
+# contain the previous release's functions. Refresh before binding the wrappers.
+component = importlib.reload(component)
+game, home = component.game, component.home
 
 st.set_page_config(page_title="Sky Sailer", page_icon="⛵", layout="centered", initial_sidebar_state="collapsed")
 
