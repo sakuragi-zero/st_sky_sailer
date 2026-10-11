@@ -26518,7 +26518,7 @@ function Ut(at, H) {
   const j = { sea: [[504, 508], [529, 492], [545, 470], [564, 475], [574, 435], [586, 431], [594, 413], [608, 430], [621, 423], [632, 440], [643, 404], [654, 393], [665, 418], [680, 415], [694, 438], [708, 425], [724, 446], [753, 438], [769, 447], [779, 444], [798, 457], [816, 460], [842, 486], [832, 514], [807, 529], [792, 554], [775, 535], [745, 523], [727, 521], [710, 551], [694, 520], [666, 515], [637, 543], [619, 511], [586, 534], [562, 517], [535, 517]], ice: [[778, 405], [798, 390], [827, 375], [852, 372], [876, 354], [897, 342], [915, 339], [936, 311], [948, 304], [966, 325], [975, 337], [998, 334], [1006, 357], [1020, 362], [1030, 397], [1010, 416], [980, 421], [950, 418], [918, 421], [875, 413], [841, 424], [809, 418]], desert: [[969, 458], [984, 449], [998, 432], [1010, 432], [1015, 411], [1031, 405], [1043, 412], [1054, 406], [1073, 419], [1094, 419], [1114, 426], [1128, 450], [1146, 444], [1167, 454], [1194, 458], [1206, 469], [1181, 476], [1137, 477], [1102, 471], [1071, 479], [1033, 470], [1e3, 475]], cloud: [[921, 296], [936, 286], [947, 273], [960, 272], [970, 223], [978, 205], [988, 227], [991, 263], [1001, 250], [1015, 255], [1024, 220], [1036, 208], [1043, 222], [1048, 253], [1063, 244], [1074, 221], [1083, 209], [1094, 233], [1102, 249], [1120, 247], [1136, 268], [1152, 272], [1170, 290], [1160, 312], [1135, 318], [1106, 337], [1096, 313], [1061, 324], [1045, 317], [1024, 339], [1005, 312], [975, 323], [955, 310], [932, 311]] };
   K(`harbor-shore-${H}`, j[H]);
 }
-function Dt(at, H) {
+function Bt(at, H) {
   Ut(at, H);
   const b = (p, S, t, d) => {
     if (at.textures.exists(p)) return;
@@ -26574,7 +26574,7 @@ class Qt {
     __publicField(this, "afloat", false);
     __publicField(this, "cloudPuffs", []);
     __publicField(this, "waterPaint", []);
-    if (this.scene = H, this.onSplash = b, this.course = K, this.clouds = H.add.graphics().setDepth(2), this.water = H.add.graphics().setDepth(3), this.foam = H.add.graphics().setDepth(11), K.theme !== "cloud" && (Dt(H, K.theme), this.waterPaint = Array.from({ length: 24 }, () => H.add.tileSprite(0, 0, 64, 76, `water-paint-${K.theme}`).setOrigin(0, 0.5).setDepth(3.2).setAlpha(0.6).setVisible(false))), K.theme === "cloud") {
+    if (this.scene = H, this.onSplash = b, this.course = K, this.clouds = H.add.graphics().setDepth(2), this.water = H.add.graphics().setDepth(3), this.foam = H.add.graphics().setDepth(11), K.theme !== "cloud" && (Bt(H, K.theme), this.waterPaint = Array.from({ length: 24 }, () => H.add.tileSprite(0, 0, 64, 76, `water-paint-${K.theme}`).setOrigin(0, 0.5).setDepth(3.2).setAlpha(0.6).setVisible(false))), K.theme === "cloud") {
       if (!H.textures.exists("cloud-bank")) {
         const j = H.textures.createCanvas("cloud-bank", 192, 112);
         if (j) {
@@ -26704,7 +26704,7 @@ class $t {
     __publicField(this, "warnings");
     __publicField(this, "weather");
     __publicField(this, "cue", "");
-    this.scene = H, this.course = b, this.onHit = j, this.onSplash = Z, Dt(H, b.theme), this.warnings = H.add.graphics().setDepth(7), this.weather = H.add.graphics().setDepth(14).setScrollFactor(0);
+    this.scene = H, this.course = b, this.onHit = j, this.onSplash = Z, Bt(H, b.theme), this.warnings = H.add.graphics().setDepth(7), this.weather = H.add.graphics().setDepth(14).setScrollFactor(0);
     const p = H.physics.add.staticGroup();
     for (const S of b.hazards) {
       const t = S.kind === "iceberg", d = S.kind === "cactus", c = H.add.rectangle(S.x, S.y - (d ? 46 : t ? 44 : 24), d ? 30 : t ? 48 : 50, d ? 92 : t ? 88 : 48, 16777215, 0);
@@ -26989,7 +26989,7 @@ class te {
       }
     });
     const H = `shore-${this.course.theme}`;
-    this.scene.textures.exists(H) || this.course.theme !== "ice" || (Dt(this.scene, this.course.theme), this.canvas(H, 280, 170, (b) => {
+    this.scene.textures.exists(H) || this.course.theme !== "ice" || (Bt(this.scene, this.course.theme), this.canvas(H, 280, 170, (b) => {
       const K = this.scene.textures.get("harbor-shore-ice").getSourceImage();
       b.drawImage(K, 0, 0, 280, 170);
     }));
@@ -27458,20 +27458,20 @@ class Vt {
     this.disposed = true, clearTimeout(this.suspendTimer), (_a = this.source) == null ? void 0 : _a.stop(), (_b = this.source) == null ? void 0 : _b.disconnect(), (_c = this.filter) == null ? void 0 : _c.disconnect(), (_d = this.gain) == null ? void 0 : _d.disconnect(), (_e = this.context) == null ? void 0 : _e.close(), this.buffer = void 0;
   }
 }
-const Bt = (at) => new URL("assets/" + at, import.meta.url).href, re = ({ parentElement: at, data: H, setStateValue: b }) => {
+const Dt = (at) => new URL("assets/" + at, import.meta.url).href, re = ({ parentElement: at, data: H, setStateValue: b }) => {
   const K = at.querySelector(".sky-sailer-root");
   if (!K) return;
   const j = H.course_id;
   if (K.__home) return K.__home.update(j), K.__home.cleanup;
-  K.classList.add("ss-home"), K.innerHTML = `<section class="ss-course-picker" aria-label="コース選択">
+  K.classList.add("ss-home"), K.style.setProperty("--ss-panel-mural", `url("${Dt("temple-mural-v1.webp")}")`), K.innerHTML = `<section class="ss-course-picker" aria-label="コース選択">
     <div class="ss-picker-heading"><div><small>CHOOSE YOUR VOYAGE</small><h2>次は、どの世界へ？</h2></div><span>左右にスワイプ ↔</span></div>
     <div class="ss-carousel-controls"><button data-prev aria-label="前のコース">‹</button><div class="ss-course-carousel" role="region" aria-label="コースのカード" tabindex="0">
-    ${St.map((T) => `<button class="ss-course-card" data-course-card="${T.id}" aria-label="${T.id} ${T.title}" aria-pressed="false"><img src="${Bt(T.world)}" width="1536" height="1024" loading="${T.id === j ? "eager" : "lazy"}" decoding="async" alt=""><span class="ss-card-shade"></span><span class="ss-card-number">${T.id}</span><span class="ss-card-copy"><span class="ss-world-caption">${{ sea: "THE SUNLIT SEA", ice: "AURORA & ICE", desert: "THE GOLDEN OASIS", cloud: "ABOVE THE CLOUDS" }[T.theme]}</span><strong>${T.title}</strong><small>${T.description}</small></span><span class="ss-card-selected">✦ 選択中</span></button>`).join("")}
+    ${St.map((T) => `<button class="ss-course-card" data-course-card="${T.id}" aria-label="${T.id} ${T.title}" aria-pressed="false"><img src="${Dt(T.world)}" width="1536" height="1024" loading="${T.id === j ? "eager" : "lazy"}" decoding="async" alt=""><span class="ss-card-shade"></span><span class="ss-card-number">${T.id}</span><span class="ss-card-copy"><span class="ss-world-caption">${{ sea: "THE SUNLIT SEA", ice: "AURORA & ICE", desert: "THE GOLDEN OASIS", cloud: "ABOVE THE CLOUDS" }[T.theme]}</span><strong>${T.title}</strong><small>${T.description}</small></span><span class="ss-card-selected">✦ 選択中</span></button>`).join("")}
     </div><button data-next aria-label="次のコース">›</button></div>
     <div class="ss-course-dots">${St.map((T) => `<button data-course-dot="${T.id}" aria-label="${T.id}を選択">${T.id}</button>`).join("")}</div>
     <div class="ss-home-music"><button class="ss-system" data-home-music aria-pressed="false" aria-label="ホームBGMを有効にする">♫ BGM OFF</button><label>ホームBGM<input data-home-volume type="range" min="0" max="100" value="50" aria-label="ホームBGM音量"></label><small>Beyond the Far Horizon</small></div><p data-home-music-message role="status" hidden></p>
   </section>`;
-  const Z = K.querySelector(".ss-course-carousel"), p = Array.from(K.querySelectorAll("[data-course-card]")), S = K.querySelector("[data-prev]"), t = K.querySelector("[data-next]"), d = K.querySelector("[data-home-music]"), c = K.querySelector("[data-home-volume]"), o = K.querySelector("[data-home-music-message]"), r = new Vt([Bt("music/course-1-1-loop.ogg"), Bt("music/course-1-1-loop.mp3")]);
+  const Z = K.querySelector(".ss-course-carousel"), p = Array.from(K.querySelectorAll("[data-course-card]")), S = K.querySelector("[data-prev]"), t = K.querySelector("[data-next]"), d = K.querySelector("[data-home-music]"), c = K.querySelector("[data-home-volume]"), o = K.querySelector("[data-home-music-message]"), r = new Vt([Dt("music/course-1-1-loop.ogg"), Dt("music/course-1-1-loop.mp3")]);
   r.setPlaying(!document.hidden);
   let n = St.findIndex((T) => T.id === j);
   n < 0 && (n = 0);
@@ -27521,7 +27521,7 @@ const Bt = (at) => new URL("assets/" + at, import.meta.url).href, re = ({ parent
   const K = H, j = Lt(K.course_id), Z = at.querySelector(".sky-sailer-root");
   if (!Z) return;
   if (((_a = Z.__skySailer) == null ? void 0 : _a.runId) === K.run_id) return Z.__skySailer.evaluate(K.evaluation), Z.__skySailer.cleanup;
-  (_b = Z.__skySailer) == null ? void 0 : _b.cleanup(), Z.dataset.course = j.id, Z.innerHTML = `
+  (_b = Z.__skySailer) == null ? void 0 : _b.cleanup(), Z.dataset.course = j.id, Z.style.setProperty("--ss-panel-mural", `url("${Ct("temple-mural-v1.webp")}")`), Z.innerHTML = `
     <section class="ss-shell" aria-label="Sky Sailer ゲームコンソール">
       <div class="ss-brand"><img class="ss-brand-mark" src="${Ct("streamlit-mark.svg")}" alt="Streamlit"><span>SKY SAILER</span><span class="ss-brand-right">${j.id} · ${j.title}</span></div>
       <div class="ss-bezel"><div class="ss-game">

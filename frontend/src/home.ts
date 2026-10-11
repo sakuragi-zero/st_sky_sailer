@@ -12,6 +12,7 @@ export const renderHome:FrontendRenderer<HomeState>=({parentElement,data,setStat
   const id=(data as {course_id:string}).course_id;
   if(root.__home) {root.__home.update(id);return root.__home.cleanup;}
   root.classList.add("ss-home");
+  root.style.setProperty("--ss-panel-mural", `url("${asset("temple-mural-v1.webp")}")`);
   root.innerHTML=`<section class="ss-course-picker" aria-label="コース選択">
     <div class="ss-picker-heading"><div><small>CHOOSE YOUR VOYAGE</small><h2>次は、どの世界へ？</h2></div><span>左右にスワイプ ↔</span></div>
     <div class="ss-carousel-controls"><button data-prev aria-label="前のコース">‹</button><div class="ss-course-carousel" role="region" aria-label="コースのカード" tabindex="0">

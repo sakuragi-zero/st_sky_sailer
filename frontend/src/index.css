@@ -1,4 +1,10 @@
 * { box-sizing: border-box; }
+.ss-shell, .ss-course-picker {
+  background-image:linear-gradient(145deg,rgba(255,251,241,.9),rgba(255,253,247,.87)),var(--ss-panel-mural,none) !important;
+  background-position:center;
+  background-size:cover;
+  background-color:#fbf6e9;
+}
 .ss-shell { color:#183764; font-family:system-ui,-apple-system,sans-serif; padding:12px 14px 10px; border:2px solid #233f70; border-radius:32px; background:linear-gradient(145deg,#fffcf2 0%,#f5f4ed 42%,#e5ebf4 100%); box-shadow:0 0 0 4px #c6dcee,0 0 0 6px #ffffff,0 18px 42px #16457730,inset 0 0 0 2px #ffffff; user-select:none; -webkit-user-select:none; touch-action:none; }
 .ss-brand { display:flex; gap:8px; align-items:center; padding:0 5px 9px; font-size:11px; font-weight:800; letter-spacing:.17em; }
 .ss-emblem { color:#ff4b4b; font-size:22px; line-height:1; }

@@ -111,9 +111,9 @@ st.markdown(f"""
 .cover-sail-mark{{position:absolute;left:51.5%;top:36%;width:17.5%;height:auto}}
 .cover-captain{{position:absolute;left:12%;bottom:25%;width:35%;aspect-ratio:2/3;transform:rotate(-3deg)}}
 .cover-captain-art{{width:100%;height:auto}}.cover-cap-mark{{position:absolute;left:55%;top:13%;width:21%;height:auto}}
-.cover-copy{{right:4%;top:12%;background:#f4fbffdd;box-shadow:0 5px 20px #548db92b}}
+.cover-copy{{right:4%;top:12%;background:linear-gradient(145deg,#fffbf1ee,#fffdf7e6),url('{page_background}') center/cover;box-shadow:0 5px 20px #548db92b}}
 .cover-copy p{{color:#3f6d92}}.cover-note{{font-size:9px}}
-.st-key-voyage_settings{{background:#f8fcfff0;border-radius:22px;padding:15px 17px;box-shadow:0 9px 30px #285c7c26;backdrop-filter:blur(10px)}}
+.st-key-voyage_settings{{background:linear-gradient(145deg,#fffbf1ed,#fffdf7e0),url('{page_background}') center/cover;border-radius:22px;padding:15px 17px;box-shadow:0 9px 30px #285c7c26;backdrop-filter:blur(10px)}}
 .voyage-footer{{color:#466f91;text-shadow:0 1px 3px #fff;background:#eff9ffd9;border-radius:99px;padding:5px 12px;width:fit-content;margin:14px auto 0}}
 .stCaptionContainer{{background:#f5fbffe6;border-radius:8px;padding:3px 8px}}
 @media(max-width:500px){{.hero-logo{{width:36px}}.voyage-cover{{aspect-ratio:16/10}}.cover-ship{{width:83%;left:-6%;bottom:-3%}}.cover-copy{{padding:8px 10px;top:7%;right:3%}}.cover-copy h2{{font-size:18px}}.cover-copy p{{font-size:9px}}.cover-copy small{{font-size:7px}}.st-key-voyage_settings{{padding:12px 13px;border-radius:18px}}.hero.is-playing .hero-logo{{width:26px}}}}

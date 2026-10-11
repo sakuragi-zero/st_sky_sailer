@@ -26,6 +26,7 @@ const renderer: FrontendRenderer<GameState> = ({ parentElement, data: rawData, s
   }
   root.__skySailer?.cleanup();
   root.dataset.course = course.id;
+  root.style.setProperty("--ss-panel-mural", `url("${assetUrl("temple-mural-v1.webp")}")`);
   root.innerHTML = `
     <section class="ss-shell" aria-label="Sky Sailer ゲームコンソール">
       <div class="ss-brand"><img class="ss-brand-mark" src="${assetUrl("streamlit-mark.svg")}" alt="Streamlit"><span>SKY SAILER</span><span class="ss-brand-right">${course.id} · ${course.title}</span></div>
