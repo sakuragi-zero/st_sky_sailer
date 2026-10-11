@@ -22,9 +22,7 @@ export const WATERWAYS = [
   { x: 7830, y: 407, width: 610 },
   { x: 8560, y: 394, width: 960 },
 ];
-const ROCKS = [
-  { x: 2900, y: 407 }, { x: 5180, y: 379 }, { x: 8260, y: 407 },
-];
+const ROCK_LANES = [3, 6, 10];
 
 function cloudSteps(): Channel[] {
   let x = 0;
@@ -45,6 +43,18 @@ export function getCourse(id = "1-1"): Course {
     const levels = [0, 0, 0, 170, 170, 0, 0, -160, -160, 0, 0, 0];
     base.forEach((channel, i) => { channel.y += levels[i]; });
   }
+  // At six wind stacks plus B boost, the ship can travel 742 px/s.
+  // A normal jump spans about 840 px; leave room to land and react before
+  // the next obstacle or gap. Keep the gaps and vertical steps themselves.
+  let laneX = 0;
+  base.forEach((channel, i) => {
+    // Save the next original gap before changing this lane's position/width.
+    const next = base[i + 1];
+    const nextGap = next ? next.x - channel.x - channel.width : 0;
+    channel.x = laneX;
+    channel.width = Math.max(channel.width, theme === "cloud" ? 1100 : 1800);
+    laneX = channel.x + channel.width + nextGap;
+  });
   // A second voyage region lies beyond a broad sky gap, reached by a star flight.
   const regionEnd = base.at(-1)!.x + base.at(-1)!.width;
   const regionOffset = regionEnd + 2800;
@@ -67,12 +77,18 @@ export function getCourse(id = "1-1"): Course {
     { x: channel.x + (i === 0 ? 360 : Math.min(190, channel.width * 0.4)), y: channel.y - (i % 2 === 0 ? 27 : 72), red: i % 3 === 0 },
     { x: channel.x + channel.width - 110, y: channel.y - 98, red: i % 3 === 2 },
   ]);
-  const candidates: Obstacle[] = theme === "sea" ? [0, regionOffset].flatMap(offset => ROCKS.map(point => ({ x: point.x + offset, y: channels.find(channel=>point.x+offset>=channel.x && point.x+offset<channel.x+channel.width)!.y, kind: "rock" as const }))) : theme === "cloud" ? [] : channels.filter((_, i) => i > 0 && (theme === "desert" ? i % 3 === 1 : i % 2 === 1)).map(channel => ({ x: channel.x + Math.min(theme === "desert" ? 430 : 335, channel.width * 0.7), y: channel.y, kind: theme === "ice" ? "iceberg" : "cactus" }));
+  const candidates: Obstacle[] = theme === "sea" ? [0, base.length].flatMap(offset => ROCK_LANES.map(index => {
+    const lane = channels[offset + index];
+    return { x: lane.x + lane.width / 2, y: lane.y, kind: "rock" as const };
+  })) : theme === "cloud" ? [] : channels.filter((_, i) => i > 0 && (theme === "desert" ? i % 3 === 1 : i % 2 === 1)).map(channel => ({ x: channel.x + channel.width / 2, y: channel.y, kind: theme === "ice" ? "iceberg" : "cactus" }));
   const hazards = candidates.filter(hazard => {
     const lane = channels.find(channel => hazard.x >= channel.x && hazard.x < channel.x + channel.width)!;
     return !rings.some(ring => ring.x >= lane.x && ring.x < lane.x + lane.width);
+  }).map(hazard => {
+    const lane = channels.find(channel => hazard.x >= channel.x && hazard.x < channel.x + channel.width)!;
+    return { ...hazard, x: lane.x + lane.width / 2 };
   });
-  const icicles = theme === "ice" ? [{ x: 650, y: channels[0].y }, ...channels.filter((_, i) => i > 0 && i % 2 === 0).map(channel => ({ x: channel.x + 285, y: channel.y }))] : [];
+  const icicles = theme === "ice" ? channels.filter((lane,i) => i % 2 === 0 && !rings.some(ring => ring.x >= lane.x && ring.x < lane.x + lane.width) && !hazards.some(hazard => hazard.x >= lane.x && hazard.x < lane.x + lane.width)).map(channel => ({ x: channel.x + channel.width / 2, y: channel.y })) : [];
   // Move skipped pickups onto the flight arc, keeping every crystal reachable.
   for (const ring of rings) {
     const airborne = crystals.filter(point => point.x > ring.x + 80 && point.x < ring.targetX - 80);
