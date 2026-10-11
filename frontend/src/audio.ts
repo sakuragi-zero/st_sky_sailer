@@ -1,4 +1,5 @@
-/** Small synthesized effects; recorded BGM is managed separately by VoyageMusic. */
+type RecordedCue = "launch" | "clear";
+/** Recorded event sounds and small synthesized effects; BGM is managed separately. */
 export class VoyageAudio {
   enabled = true;
   private context?: AudioContext;
@@ -8,8 +9,51 @@ export class VoyageAudio {
   private thunderLoading?: Promise<void>;
   private thunderSource?: AudioBufferSourceNode;
   private playing = true;
+  private readonly eventBuffers = new Map<RecordedCue, AudioBuffer>();
+  private readonly eventLoading = new Set<RecordedCue>();
+  private readonly eventSources = new Map<RecordedCue, AudioBufferSourceNode>();
 
-  constructor(private readonly thunderUrl?: string) {}
+  constructor(private readonly thunderUrl?: string, private readonly eventUrls: Partial<Record<RecordedCue,string>> = {}) {}
+
+  private loadEvents() {
+    if (!this.context || this.disposed) return;
+    const context = this.context;
+    for (const cue of ["launch","clear"] as const) {
+      const url = this.eventUrls[cue];
+      if (!url || this.eventBuffers.has(cue) || this.eventLoading.has(cue)) continue;
+      this.eventLoading.add(cue);
+      void fetch(url).then(async response => {
+        if (!response.ok) throw new Error("Event audio unavailable");
+        const buffer = await context.decodeAudioData(await response.arrayBuffer());
+        if (!this.disposed) this.eventBuffers.set(cue,buffer);
+      }).catch(() => {}).finally(() => this.eventLoading.delete(cue));
+    }
+  }
+
+  private playEvent(cue: RecordedCue, context: AudioContext): boolean {
+    this.loadEvents();
+    const buffer = this.eventBuffers.get(cue);
+    if (!buffer) return false;
+    this.stopEvent(cue);
+    const source = context.createBufferSource(), gain = context.createGain();
+    source.buffer = buffer;
+    gain.gain.value = cue === "launch" ? 0.9 : 0.75;
+    source.connect(gain); gain.connect(context.destination);
+    this.eventSources.set(cue,source);
+    source.onended = () => {
+      source.disconnect(); gain.disconnect();
+      if (this.eventSources.get(cue) === source) this.eventSources.delete(cue);
+    };
+    source.start();
+    return true;
+  }
+
+  private stopEvent(cue: RecordedCue) {
+    this.eventSources.get(cue)?.stop();
+    this.eventSources.delete(cue);
+  }
+
+  stopEvents() { this.stopEvent("launch"); this.stopEvent("clear"); }
 
   private loadThunder() {
     if (!this.thunderUrl || !this.context || this.thunderLoading || this.thunderBuffer || this.disposed) return;
@@ -39,7 +83,8 @@ export class VoyageAudio {
 
   setPlaying(playing: boolean) {
     this.playing = playing;
-    if (!playing) this.stopThunder();
+    if (!playing) { this.stopThunder(); this.stopEvent("launch"); }
+    else this.stopEvent("clear");
   }
 
   private stopThunder() {
@@ -53,6 +98,7 @@ export class VoyageAudio {
     try {
       this.context ??= new AudioContext();
       this.loadThunder();
+      this.loadEvents();
       if (this.context.state !== "running") void this.context.resume().catch(() => {});
     } catch { /* A later gesture can retry if audio is temporarily unavailable. */ }
   }
@@ -60,11 +106,12 @@ export class VoyageAudio {
   async toggle(): Promise<boolean> {
     if (this.disposed) return false;
     this.enabled = !this.enabled;
-    if (!this.enabled) this.stopThunder();
+    if (!this.enabled) { this.stopThunder(); this.stopEvents(); }
     if (this.enabled) {
       try {
         this.context ??= new AudioContext();
         this.loadThunder();
+        this.loadEvents();
         await this.context.resume();
         if (this.enabled && !this.disposed) this.play("collect");
       } catch { this.enabled = false; }
@@ -75,6 +122,8 @@ export class VoyageAudio {
   play(cue: "jump" | "boost" | "collect" | "hit" | "clear" | "launch") {
     if (!this.enabled || this.disposed || !this.context || this.context.state !== "running") return;
     const context = this.context;
+    if (cue === "clear") { this.stopThunder(); this.stopEvent("launch"); }
+    if ((cue === "launch" || cue === "clear") && this.playEvent(cue,context)) return;
     if (cue === "launch") { this.cannon(context); return; }
     if (cue === "hit") { this.impact(context); return; }
     const frequencies = { jump: [330, 660], boost: [180, 480], collect: [880, 1320], clear: [523, 659, 784, 1047] }[cue];
@@ -155,5 +204,5 @@ export class VoyageAudio {
     source.onended = () => { source.disconnect(); filter.disconnect(); gain.disconnect(); };
   }
 
-  dispose() { this.disposed = true; this.enabled = false; this.stopThunder(); void this.context?.close(); }
+  dispose() { this.disposed = true; this.enabled = false; this.stopThunder(); this.stopEvents(); this.eventBuffers.clear(); void this.context?.close(); }
 }

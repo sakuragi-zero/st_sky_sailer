@@ -9,6 +9,7 @@ const shipped = [
   "assets/yacht-v2.webp", "assets/captain-v3.webp", "assets/streamlit-mark.svg",
   "assets/ruins-v1.webp", "assets/palms-v1.webp", "assets/rock-v2.webp",
   "assets/sfx/thunder-v1.mp3",
+  "assets/sfx/goal-v1.mp3", "assets/sfx/star-launch-v1.mp3",
   ...["1-1", "2-1", "3-1", "4-1"].flatMap(id => ["ogg", "mp3"].map(ext => `assets/music/course-${id}-loop.${ext}`)),
   "licenses/Phaser-MIT.txt",
 ];

@@ -6,11 +6,11 @@ function Xt(at) {
 }
 var Ft = { exports: {} }, Yt = Ft.exports, Gt;
 function bt() {
-  return Gt || (Gt = 1, (function(at, K) {
-    (function(H, j) {
+  return Gt || (Gt = 1, (function(at, H) {
+    (function(K, j) {
       at.exports = j();
     })(Yt, () => (() => {
-      var W = { 50792: ((p) => {
+      var b = { 50792: ((p) => {
         var S = Object.prototype.hasOwnProperty, t = "~";
         function d() {
         }
@@ -3571,7 +3571,7 @@ function bt() {
           if (e > 0) {
             O = r.split(`
 `);
-            var b = [];
+            var W = [];
             for (L = 0; L < O.length; L++) {
               var $ = O[L], Z = "", Q = "", k = "", tt = "";
               for (G = 0; G < $.length; G++) if (y = $.charCodeAt(G), Z += $[G], y === s || G === $.length - 1) {
@@ -3581,9 +3581,9 @@ function bt() {
 ` : "") + k, k = Z), Z = "";
               }
               Q = Q.slice(0, -1), Q += (Q ? `
-` : "") + k, b.push(Q);
+` : "") + k, W.push(Q);
             }
-            r = b.join(`
+            r = W.join(`
 `), o.wrappedText = r, n = r.length;
           }
           var st = 0;
@@ -3706,15 +3706,15 @@ function bt() {
               }
               if (T = u[y], !!T) {
                 if (C = U + T.x, E = N + T.y, A = T.width, M = T.height, P = T.xOffset + x - r.scrollX, R = T.yOffset + g - r.scrollY, F !== null) {
-                  var b = T.kerning[D];
-                  P += b !== void 0 ? b : 0;
+                  var W = T.kerning[D];
+                  P += W !== void 0 ? W : 0;
                 }
                 if (l) {
                   f.index = Y, f.charCode = y, f.x = P, f.y = R, f.scale = B, f.rotation = w, f.data = T.data;
                   var $ = l(f);
                   P = $.x, R = $.y, B = $.scale, w = $.rotation;
                 }
-                P *= B, R *= B, P += z, x += T.xAdvance + m + (b !== void 0 ? b : 0), F = T, D = y, !(A === 0 || M === 0 || y === 32) && (X && (P = Math.round(P), R = Math.round(R)), i.save(), i.translate(P, R), i.rotate(w), i.scale(B, B), i.drawImage(I, C, E, A, M, 0, 0, A, M), i.restore());
+                P *= B, R *= B, P += z, x += T.xAdvance + m + (W !== void 0 ? W : 0), F = T, D = y, !(A === 0 || M === 0 || y === 32) && (X && (P = Math.round(P), R = Math.round(R)), i.save(), i.translate(P, R), i.rotate(w), i.scale(B, B), i.drawImage(I, C, E, A, M, 0, 0, A, M), i.restore());
               }
             }
             i.restore();
@@ -3745,7 +3745,7 @@ function bt() {
             e.pipelines.preBatch(s);
             var v = u.sprite, m = u.calc, x = r, g = s.cropWidth > 0 || s.cropHeight > 0;
             g && (f.flush(), e.pushScissor(m.tx, m.ty, s.cropWidth * m.scaleX, s.cropHeight * m.scaleY));
-            var y = s.frame, T = y.glTexture, C = s.tintFill, E = o.getTintAppendFloatAlpha(s.tintTopLeft, h.alpha * s._alphaTL), A = o.getTintAppendFloatAlpha(s.tintTopRight, h.alpha * s._alphaTR), M = o.getTintAppendFloatAlpha(s.tintBottomLeft, h.alpha * s._alphaBL), P = o.getTintAppendFloatAlpha(s.tintBottomRight, h.alpha * s._alphaBR), R = f.setGameObject(s), F = 0, D = 0, I = 0, U = 0, N = s.letterSpacing, w, B = 0, L = 0, G, O = s.scrollX, z = s.scrollY, V = s.fontData, X = V.chars, Y = V.lineHeight, b = s.fontSize / V.size, $ = 0, Z = s._align, Q = 0, k = 0, tt = s.getTextBounds(false);
+            var y = s.frame, T = y.glTexture, C = s.tintFill, E = o.getTintAppendFloatAlpha(s.tintTopLeft, h.alpha * s._alphaTL), A = o.getTintAppendFloatAlpha(s.tintTopRight, h.alpha * s._alphaTR), M = o.getTintAppendFloatAlpha(s.tintBottomLeft, h.alpha * s._alphaBL), P = o.getTintAppendFloatAlpha(s.tintBottomRight, h.alpha * s._alphaBR), R = f.setGameObject(s), F = 0, D = 0, I = 0, U = 0, N = s.letterSpacing, w, B = 0, L = 0, G, O = s.scrollX, z = s.scrollY, V = s.fontData, X = V.chars, Y = V.lineHeight, W = s.fontSize / V.size, $ = 0, Z = s._align, Q = 0, k = 0, tt = s.getTextBounds(false);
             s.maxWidth > 0 && (a = tt.wrappedText, l = a.length);
             var q = s._bounds.lines;
             Z === 1 ? k = (q.longest - q.lengths[0]) / 2 : Z === 2 && (k = q.longest - q.lengths[0]);
@@ -3762,14 +3762,14 @@ function bt() {
                   et += ot, F += ot;
                 }
                 if (F += w.xAdvance + N, G = w, U = I, !(B === 0 || L === 0 || I === 32)) {
-                  if (b = s.fontSize / s.fontData.size, $ = 0, nt) {
-                    rt.color = 0, rt.tint.topLeft = E, rt.tint.topRight = A, rt.tint.bottomLeft = M, rt.tint.bottomRight = P, rt.index = _, rt.charCode = I, rt.x = et, rt.y = it, rt.scale = b, rt.rotation = $, rt.data = w.data;
+                  if (W = s.fontSize / s.fontData.size, $ = 0, nt) {
+                    rt.color = 0, rt.tint.topLeft = E, rt.tint.topRight = A, rt.tint.bottomLeft = M, rt.tint.bottomRight = P, rt.index = _, rt.charCode = I, rt.x = et, rt.y = it, rt.scale = W, rt.rotation = $, rt.data = w.data;
                     var ut = nt(rt);
-                    et = ut.x, it = ut.y, b = ut.scale, $ = ut.rotation, ut.color ? (E = ut.color, A = ut.color, M = ut.color, P = ut.color) : (E = ut.tint.topLeft, A = ut.tint.topRight, M = ut.tint.bottomLeft, P = ut.tint.bottomRight), E = o.getTintAppendFloatAlpha(E, h.alpha * s._alphaTL), A = o.getTintAppendFloatAlpha(A, h.alpha * s._alphaTR), M = o.getTintAppendFloatAlpha(M, h.alpha * s._alphaBL), P = o.getTintAppendFloatAlpha(P, h.alpha * s._alphaBR);
+                    et = ut.x, it = ut.y, W = ut.scale, $ = ut.rotation, ut.color ? (E = ut.color, A = ut.color, M = ut.color, P = ut.color) : (E = ut.tint.topLeft, A = ut.tint.topRight, M = ut.tint.bottomLeft, P = ut.tint.bottomRight), E = o.getTintAppendFloatAlpha(E, h.alpha * s._alphaTL), A = o.getTintAppendFloatAlpha(A, h.alpha * s._alphaTR), M = o.getTintAppendFloatAlpha(M, h.alpha * s._alphaBL), P = o.getTintAppendFloatAlpha(P, h.alpha * s._alphaBR);
                   }
-                  et *= b, it *= b, et -= s.displayOriginX, it -= s.displayOriginY, et += k, x.applyITRS(et, it, $, b, b), m.multiply(x, v);
-                  var vt = w.u0, ht = w.v0, lt = w.u1, ct = w.v1, xt = B, dt = L, pt = v.e, mt = v.f, Tt = dt * v.c + v.e, Ct = dt * v.d + v.f, Et = xt * v.a + dt * v.c + v.e, Mt = xt * v.b + dt * v.d + v.f, Pt = xt * v.a + v.e, At = xt * v.b + v.f;
-                  st && (pt = Math.round(pt), mt = Math.round(mt), Tt = Math.round(Tt), Ct = Math.round(Ct), Et = Math.round(Et), Mt = Math.round(Mt), Pt = Math.round(Pt), At = Math.round(At)), f.shouldFlush(6) && (f.flush(), R = f.setGameObject(s)), f.batchQuad(s, pt, mt, Tt, Ct, Et, Mt, Pt, At, vt, ht, lt, ct, E, A, M, P, C, T, R);
+                  et *= W, it *= W, et -= s.displayOriginX, it -= s.displayOriginY, et += k, x.applyITRS(et, it, $, W, W), m.multiply(x, v);
+                  var vt = w.u0, ht = w.v0, lt = w.u1, ct = w.v1, xt = B, dt = L, pt = v.e, mt = v.f, Tt = dt * v.c + v.e, Et = dt * v.d + v.f, Mt = xt * v.a + dt * v.c + v.e, Pt = xt * v.b + dt * v.d + v.f, At = xt * v.a + v.e, Rt = xt * v.b + v.f;
+                  st && (pt = Math.round(pt), mt = Math.round(mt), Tt = Math.round(Tt), Et = Math.round(Et), Mt = Math.round(Mt), Pt = Math.round(Pt), At = Math.round(At), Rt = Math.round(Rt)), f.shouldFlush(6) && (f.flush(), R = f.setGameObject(s)), f.batchQuad(s, pt, mt, Tt, Et, Mt, Pt, At, Rt, vt, ht, lt, ct, E, A, M, P, C, T, R);
                 }
               }
             }
@@ -3942,8 +3942,8 @@ function bt() {
               for (R = 0; R < I.length; R++) F = I[R], D = F.glyph, !(F.code === 32 || D.width === 0 || D.height === 0) && d(l, e, F, D, U, N, f, u, G, O, z, V, 1, A, M);
             }
             for (R = 0; R < I.length; R++) if (F = I[R], D = F.glyph, !(F.code === 32 || D.width === 0 || D.height === 0)) if (l.shouldFlush(6) && (l.flush(), M = l.setGameObject(e)), m[F.i]) {
-              var X = m[F.i], Y = X.tintEffect, b = g(X.tintTL, v * e._alphaTL), $ = g(X.tintTR, v * e._alphaTR), Z = g(X.tintBL, v * e._alphaBL), Q = g(X.tintBR, v * e._alphaBR);
-              d(l, e, F, D, 0, 0, f, u, b, $, Z, Q, Y, A, M);
+              var X = m[F.i], Y = X.tintEffect, W = g(X.tintTL, v * e._alphaTL), $ = g(X.tintTR, v * e._alphaTR), Z = g(X.tintBL, v * e._alphaBL), Q = g(X.tintBR, v * e._alphaBR);
+              d(l, e, F, D, 0, 0, f, u, W, $, Z, Q, Y, A, M);
             } else d(l, e, F, D, 0, 0, f, u, y, T, C, E, x, A, M);
             n.pipelines.postBatch(e);
           }
@@ -5376,8 +5376,8 @@ function bt() {
                 break;
               }
               case d.GRADIENT_FILL_STYLE: {
-                var b = g[++L] * y, $ = g[++L] * y, Z = g[++L] * y, Q = g[++L] * y;
-                C.TL = B(g[++L], b), C.TR = B(g[++L], $), C.BL = B(g[++L], Z), C.BR = B(g[++L], Q);
+                var W = g[++L] * y, $ = g[++L] * y, Z = g[++L] * y, Q = g[++L] * y;
+                C.TL = B(g[++L], W), C.TR = B(g[++L], $), C.BL = B(g[++L], Z), C.BR = B(g[++L], Q);
                 break;
               }
               case d.GRADIENT_LINE_STYLE: {
@@ -5483,8 +5483,8 @@ function bt() {
             d.SetScale(T, z, V, X, Y);
           }
           if (h(v, "setOrigin")) {
-            var b = s(v, "setOrigin.x", 0.5), $ = s(v, "setOrigin.y", b), Z = s(v, "setOrigin.stepX", 0), Q = s(v, "setOrigin.stepY", 0);
-            d.SetOrigin(T, b, $, Z, Q);
+            var W = s(v, "setOrigin.x", 0.5), $ = s(v, "setOrigin.y", W), Z = s(v, "setOrigin.stepX", 0), Q = s(v, "setOrigin.stepY", 0);
+            d.SetOrigin(T, W, $, Z, Q);
           }
           if (h(v, "setAlpha")) {
             var k = s(v, "setAlpha.value", 1), tt = s(v, "setAlpha.step", 0);
@@ -6395,8 +6395,8 @@ function bt() {
         } });
         p.exports = r;
       }), 31600: ((p, S, t) => {
-        var d = t(83419), c = t(31401), o = t(53774), r = t(43459), n = t(26388), e = t(19909), s = t(76472), h = t(44777), i = t(20696), a = t(95643), l = t(95540), f = t(26546), u = t(24502), v = t(69036), m = t(1985), x = t(97022), g = t(86091), y = t(73162), T = t(20074), C = t(269), E = t(56480), A = t(69601), M = t(68875), P = t(87841), R = t(59996), F = t(72905), D = t(90668), I = t(19186), U = t(61340), N = t(26099), w = t(15994), B = ["active", "advance", "blendMode", "colorEase", "deathCallback", "deathCallbackScope", "duration", "emitCallback", "emitCallbackScope", "follow", "frequency", "gravityX", "gravityY", "maxAliveParticles", "maxParticles", "name", "emitting", "particleBringToTop", "particleClass", "radial", "sortCallback", "sortOrderAsc", "sortProperty", "stopAfter", "tintFill", "timeScale", "trackVisible", "visible"], L = ["accelerationX", "accelerationY", "alpha", "angle", "bounce", "color", "delay", "hold", "lifespan", "maxVelocityX", "maxVelocityY", "moveToX", "moveToY", "quantity", "rotate", "scaleX", "scaleY", "speedX", "speedY", "tint", "x", "y"], G = new d({ Extends: a, Mixins: [c.AlphaSingle, c.BlendMode, c.Depth, c.Mask, c.Pipeline, c.PostPipeline, c.ScrollFactor, c.Texture, c.Transform, c.Visible, D], initialize: function(z, V, X, Y, b) {
-          a.call(this, z, "ParticleEmitter"), this.particleClass = E, this.config = null, this.ops = { accelerationX: new h("accelerationX", 0), accelerationY: new h("accelerationY", 0), alpha: new h("alpha", 1), angle: new h("angle", { min: 0, max: 360 }, true), bounce: new h("bounce", 0), color: new s("color"), delay: new h("delay", 0, true), hold: new h("hold", 0, true), lifespan: new h("lifespan", 1e3, true), maxVelocityX: new h("maxVelocityX", 1e4), maxVelocityY: new h("maxVelocityY", 1e4), moveToX: new h("moveToX", 0), moveToY: new h("moveToY", 0), quantity: new h("quantity", 1, true), rotate: new h("rotate", 0), scaleX: new h("scaleX", 1), scaleY: new h("scaleY", 1), speedX: new h("speedX", 0, true), speedY: new h("speedY", 0, true), tint: new h("tint", 16777215), x: new h("x", 0), y: new h("y", 0) }, this.radial = true, this.gravityX = 0, this.gravityY = 0, this.acceleration = false, this.moveTo = false, this.emitCallback = null, this.emitCallbackScope = null, this.deathCallback = null, this.deathCallbackScope = null, this.maxParticles = 0, this.maxAliveParticles = 0, this.stopAfter = 0, this.duration = 0, this.frequency = 0, this.emitting = true, this.particleBringToTop = true, this.timeScale = 1, this.emitZones = [], this.deathZones = [], this.viewBounds = null, this.follow = null, this.followOffset = new N(), this.trackVisible = false, this.frames = [], this.randomFrame = true, this.frameQuantity = 1, this.anims = [], this.randomAnim = true, this.animQuantity = 1, this.dead = [], this.alive = [], this.counters = new Float32Array(10), this.skipping = false, this.worldMatrix = new U(), this.sortProperty = "", this.sortOrderAsc = true, this.sortCallback = this.depthSortCallback, this.processors = new y(this), this.tintFill = false, this.initPipeline(), this.initPostPipeline(), this.setPosition(V, X), this.setTexture(Y), b && this.setConfig(b);
+        var d = t(83419), c = t(31401), o = t(53774), r = t(43459), n = t(26388), e = t(19909), s = t(76472), h = t(44777), i = t(20696), a = t(95643), l = t(95540), f = t(26546), u = t(24502), v = t(69036), m = t(1985), x = t(97022), g = t(86091), y = t(73162), T = t(20074), C = t(269), E = t(56480), A = t(69601), M = t(68875), P = t(87841), R = t(59996), F = t(72905), D = t(90668), I = t(19186), U = t(61340), N = t(26099), w = t(15994), B = ["active", "advance", "blendMode", "colorEase", "deathCallback", "deathCallbackScope", "duration", "emitCallback", "emitCallbackScope", "follow", "frequency", "gravityX", "gravityY", "maxAliveParticles", "maxParticles", "name", "emitting", "particleBringToTop", "particleClass", "radial", "sortCallback", "sortOrderAsc", "sortProperty", "stopAfter", "tintFill", "timeScale", "trackVisible", "visible"], L = ["accelerationX", "accelerationY", "alpha", "angle", "bounce", "color", "delay", "hold", "lifespan", "maxVelocityX", "maxVelocityY", "moveToX", "moveToY", "quantity", "rotate", "scaleX", "scaleY", "speedX", "speedY", "tint", "x", "y"], G = new d({ Extends: a, Mixins: [c.AlphaSingle, c.BlendMode, c.Depth, c.Mask, c.Pipeline, c.PostPipeline, c.ScrollFactor, c.Texture, c.Transform, c.Visible, D], initialize: function(z, V, X, Y, W) {
+          a.call(this, z, "ParticleEmitter"), this.particleClass = E, this.config = null, this.ops = { accelerationX: new h("accelerationX", 0), accelerationY: new h("accelerationY", 0), alpha: new h("alpha", 1), angle: new h("angle", { min: 0, max: 360 }, true), bounce: new h("bounce", 0), color: new s("color"), delay: new h("delay", 0, true), hold: new h("hold", 0, true), lifespan: new h("lifespan", 1e3, true), maxVelocityX: new h("maxVelocityX", 1e4), maxVelocityY: new h("maxVelocityY", 1e4), moveToX: new h("moveToX", 0), moveToY: new h("moveToY", 0), quantity: new h("quantity", 1, true), rotate: new h("rotate", 0), scaleX: new h("scaleX", 1), scaleY: new h("scaleY", 1), speedX: new h("speedX", 0, true), speedY: new h("speedY", 0, true), tint: new h("tint", 16777215), x: new h("x", 0), y: new h("y", 0) }, this.radial = true, this.gravityX = 0, this.gravityY = 0, this.acceleration = false, this.moveTo = false, this.emitCallback = null, this.emitCallbackScope = null, this.deathCallback = null, this.deathCallbackScope = null, this.maxParticles = 0, this.maxAliveParticles = 0, this.stopAfter = 0, this.duration = 0, this.frequency = 0, this.emitting = true, this.particleBringToTop = true, this.timeScale = 1, this.emitZones = [], this.deathZones = [], this.viewBounds = null, this.follow = null, this.followOffset = new N(), this.trackVisible = false, this.frames = [], this.randomFrame = true, this.frameQuantity = 1, this.anims = [], this.randomAnim = true, this.animQuantity = 1, this.dead = [], this.alive = [], this.counters = new Float32Array(10), this.skipping = false, this.worldMatrix = new U(), this.sortProperty = "", this.sortOrderAsc = true, this.sortCallback = this.depthSortCallback, this.processors = new y(this), this.tintFill = false, this.initPipeline(), this.initPostPipeline(), this.setPosition(V, X), this.setTexture(Y), W && this.setConfig(W);
         }, addedToScene: function() {
           this.scene.sys.updateList.add(this);
         }, removedFromScene: function() {
@@ -6412,8 +6412,8 @@ function bt() {
             this.emitCallbackScope = Y, this.deathCallbackScope = Y;
           }
           if (x(O, "emitZone") && this.addEmitZone(O.emitZone), x(O, "deathZone") && this.addDeathZone(O.deathZone), x(O, "bounds")) {
-            var b = this.addParticleBounds(O.bounds);
-            b.collideLeft = l(O, "collideLeft", true), b.collideRight = l(O, "collideRight", true), b.collideTop = l(O, "collideTop", true), b.collideBottom = l(O, "collideBottom", true);
+            var W = this.addParticleBounds(O.bounds);
+            W.collideLeft = l(O, "collideLeft", true), W.collideRight = l(O, "collideRight", true), W.collideTop = l(O, "collideTop", true), W.collideBottom = l(O, "collideBottom", true);
           }
           return x(O, "followOffset") && this.followOffset.setFromObject(l(O, "followOffset", 0)), x(O, "texture") && this.setTexture(O.texture), x(O, "frame") ? this.setEmitterFrame(O.frame) : x(O, "anim") && this.setAnim(O.anim), x(O, "reserve") && this.reserve(O.reserve), x(O, "advance") && this.fastForward(O.advance), this.resetCounters(this.frequency, this.emitting), this.emitting && this.emit(i.START, this), this;
         }, updateConfig: function(O) {
@@ -6442,8 +6442,8 @@ function bt() {
           else if (X === "object") {
             var Y = O;
             O = l(Y, "frames", null), O && (this.frames = this.frames.concat(O));
-            var b = l(Y, "cycle", false);
-            this.randomFrame = !b, this.frameQuantity = l(Y, "quantity", V);
+            var W = l(Y, "cycle", false);
+            this.randomFrame = !W, this.frameQuantity = l(Y, "quantity", V);
           }
           return this.frames.length === 1 && (this.frameQuantity = 1, this.randomFrame = false), this;
         }, getAnim: function() {
@@ -6461,18 +6461,18 @@ function bt() {
           else if (X === "object") {
             var Y = O;
             O = l(Y, "anims", null), O && (this.anims = this.anims.concat(O));
-            var b = l(Y, "cycle", false);
-            this.randomAnim = !b, this.animQuantity = l(Y, "quantity", V);
+            var W = l(Y, "cycle", false);
+            this.randomAnim = !W, this.animQuantity = l(Y, "quantity", V);
           }
           return this.anims.length === 1 && (this.animQuantity = 1, this.randomAnim = false), this;
         }, setRadial: function(O) {
           return O === void 0 && (O = true), this.radial = O, this;
-        }, addParticleBounds: function(O, z, V, X, Y, b, $, Z) {
+        }, addParticleBounds: function(O, z, V, X, Y, W, $, Z) {
           if (typeof O == "object") {
             var Q = O;
             O = Q.x, z = Q.y, V = x(Q, "w") ? Q.w : Q.width, X = x(Q, "h") ? Q.h : Q.height;
           }
-          return this.addParticleProcessor(new A(O, z, V, X, Y, b, $, Z));
+          return this.addParticleProcessor(new A(O, z, V, X, Y, W, $, Z));
         }, setParticleSpeed: function(O, z) {
           return z === void 0 && (z = O), this.ops.speedX.onChange(O), O === z ? this.ops.speedY.active = false : this.ops.speedY.onChange(z), this.radial = true, this;
         }, setParticleScale: function(O, z) {
@@ -6496,10 +6496,10 @@ function bt() {
           for (var z, V = [], X = 0; X < O.length; X++) if (z = O[X], z instanceof n) V.push(z);
           else if (typeof z.contains == "function") z = new n(z, true), V.push(z);
           else {
-            var Y = l(z, "type", "onEnter"), b = l(z, "source", null);
-            if (b && typeof b.contains == "function") {
+            var Y = l(z, "type", "onEnter"), W = l(z, "source", null);
+            if (W && typeof W.contains == "function") {
               var $ = Y === "onEnter";
-              z = new n(b, $), V.push(z);
+              z = new n(W, $), V.push(z);
             }
           }
           return this.deathZones = this.deathZones.concat(V), V;
@@ -6513,9 +6513,9 @@ function bt() {
           else {
             var Y = l(z, "source", null);
             if (Y) {
-              var b = l(z, "type", "random");
-              if (b === "random" && typeof Y.getRandomPoint == "function") z = new M(Y), V.push(z);
-              else if (b === "edge" && typeof Y.getPoints == "function") {
+              var W = l(z, "type", "random");
+              if (W === "random" && typeof Y.getRandomPoint == "function") z = new M(Y), V.push(z);
+              else if (W === "edge" && typeof Y.getPoints == "function") {
                 var $ = l(z, "quantity", 1), Z = l(z, "stepRate", 0), Q = l(z, "yoyo", false), k = l(z, "seamless", true), tt = l(z, "total", -1);
                 z = new e(Y, $, Z, Q, k, tt), V.push(z);
               }
@@ -6606,9 +6606,9 @@ function bt() {
         }, emitParticle: function(O, z, V) {
           if (!this.atLimit()) {
             O === void 0 && (O = this.ops.quantity.onEmit());
-            for (var X = this.dead, Y = this.stopAfter, b = this.follow ? this.follow.x + this.followOffset.x : z, $ = this.follow ? this.follow.y + this.followOffset.y : V, Z = 0; Z < O; Z++) {
+            for (var X = this.dead, Y = this.stopAfter, W = this.follow ? this.follow.x + this.followOffset.x : z, $ = this.follow ? this.follow.y + this.followOffset.y : V, Z = 0; Z < O; Z++) {
               var Q = X.pop();
-              if (Q || (Q = new this.particleClass(this)), Q.fire(b, $) ? (this.particleBringToTop ? this.alive.push(Q) : this.alive.unshift(Q), this.emitCallback && this.emitCallback.call(this.emitCallbackScope, Q, this)) : this.dead.push(Q), Y > 0 && (this.stopCounter++, this.stopCounter >= Y) || this.atLimit()) break;
+              if (Q || (Q = new this.particleClass(this)), Q.fire(W, $) ? (this.particleBringToTop ? this.alive.push(Q) : this.alive.unshift(Q), this.emitCallback && this.emitCallback.call(this.emitCallbackScope, Q, this)) : this.dead.push(Q), Y > 0 && (this.stopCounter++, this.stopCounter >= Y) || this.atLimit()) break;
             }
             return Q;
           }
@@ -6621,7 +6621,7 @@ function bt() {
           z *= this.timeScale;
           var V = z / 1e3;
           this.trackVisible && (this.visible = this.follow.visible), this.getWorldTransformMatrix(this.worldMatrix);
-          var X = this.getProcessors(), Y = this.alive, b = this.dead, $ = 0, Z = [], Q = Y.length;
+          var X = this.getProcessors(), Y = this.alive, W = this.dead, $ = 0, Z = [], Q = Y.length;
           for ($ = 0; $ < Q; $++) {
             var k = Y[$];
             k.update(z, V, X) && Z.push({ index: $, particle: k });
@@ -6630,7 +6630,7 @@ function bt() {
             var tt = this.deathCallback, q = this.deathCallbackScope;
             for ($ = Q - 1; $ >= 0; $--) {
               var st = Z[$];
-              Y.splice(st.index, 1), b.push(st.particle), tt && tt.call(q, st.particle), st.particle.setPosition();
+              Y.splice(st.index, 1), W.push(st.particle), tt && tt.call(q, st.particle), st.particle.setPosition();
             }
           }
           if (!this.emitting && !this.skipping) {
@@ -6641,22 +6641,22 @@ function bt() {
           else if (this.frequency > 0) for (this.flowCounter -= z; this.flowCounter <= 0; ) this.emitParticle(), this.flowCounter += this.frequency;
           this.skipping || (this.duration > 0 && (this.elapsed += z, this.elapsed >= this.duration && this.stop()), this.stopAfter > 0 && this.stopCounter >= this.stopAfter && this.stop());
         }, overlap: function(O) {
-          for (var z = this.getWorldTransformMatrix(), V = this.alive, X = V.length, Y = [], b = 0; b < X; b++) {
-            var $ = V[b];
+          for (var z = this.getWorldTransformMatrix(), V = this.alive, X = V.length, Y = [], W = 0; W < X; W++) {
+            var $ = V[W];
             R(O, $.getBounds(z)) && Y.push($);
           }
           return Y;
         }, getBounds: function(O, z, V, X) {
           O === void 0 && (O = 0), z === void 0 && (z = 0), V === void 0 && (V = 1e3 / 60), X === void 0 && (X = new P());
-          var Y = this.getWorldTransformMatrix(), b, $, Z = this.alive, Q = false;
+          var Y = this.getWorldTransformMatrix(), W, $, Z = this.alive, Q = false;
           if (X.setTo(0, 0, 0, 0), z > 0) {
             var k = 0;
             for (this.skipping = true; k < Math.abs(z); ) {
-              for (this.preUpdate(0, V), b = 0; b < Z.length; b++) $ = Z[b].getBounds(Y), Q ? T(X, $) : (Q = true, r($, X));
+              for (this.preUpdate(0, V), W = 0; W < Z.length; W++) $ = Z[W].getBounds(Y), Q ? T(X, $) : (Q = true, r($, X));
               k += V;
             }
             this.skipping = false;
-          } else for (b = 0; b < Z.length; b++) $ = Z[b].getBounds(Y), Q ? T(X, $) : (Q = true, r($, X));
+          } else for (W = 0; W < Z.length; W++) $ = Z[W].getBounds(Y), Q ? T(X, $) : (Q = true, r($, X));
           return O > 0 && g(X, O, O), X;
         }, createEmitter: function() {
           throw new Error("createEmitter removed. See ParticleEmitter docs for info");
@@ -9672,11 +9672,11 @@ function bt() {
           else if (l && typeof f == "string") f = l.scene.sys.textures.get(f);
           else if (!f) return w;
           B || (B = f.get(u)), !N && R && f && l && (v = B.width / l.height, m = B.height / l.height);
-          var L = v / 2, G = m / 2, O = Math.floor(x), z = Math.floor(g), V = O + 1, X = z + 1, Y = v / O, b = m / z, $ = [], Z = [], Q, k, tt = 0, q = 1, st = 0, nt = 1;
+          var L = v / 2, G = m / 2, O = Math.floor(x), z = Math.floor(g), V = O + 1, X = z + 1, Y = v / O, W = m / z, $ = [], Z = [], Q, k, tt = 0, q = 1, st = 0, nt = 1;
           B && (tt = B.u0, q = B.u1, U ? (st = B.v1, nt = B.v0) : (st = B.v0, nt = B.v1));
           var rt = q - tt, _ = nt - st;
           for (k = 0; k < X; k++) {
-            var et = k * b - G;
+            var et = k * W - G;
             for (Q = 0; Q < V; Q++) {
               var it = Q * Y - L;
               Z.push(it, -et);
@@ -9687,8 +9687,8 @@ function bt() {
           Array.isArray(F) || (F = [F]), Array.isArray(D) || (D = [D]);
           var vt = 0, ht = 0;
           for (k = 0; k < z; k++) for (Q = 0; Q < O; Q++) {
-            var lt = (Q + V * k) * 2, ct = (Q + V * (k + 1)) * 2, xt = (Q + 1 + V * (k + 1)) * 2, dt = (Q + 1 + V * k) * 2, pt = F[ht], mt = D[vt], Tt = new n(Z[lt], Z[lt + 1], 0, $[lt], $[lt + 1], pt, mt).transformMat4(h), Ct = new n(Z[ct], Z[ct + 1], 0, $[ct], $[ct + 1], pt, mt).transformMat4(h), Et = new n(Z[dt], Z[dt + 1], 0, $[dt], $[dt + 1], pt, mt).transformMat4(h), Mt = new n(Z[ct], Z[ct + 1], 0, $[ct], $[ct + 1], pt, mt).transformMat4(h), Pt = new n(Z[xt], Z[xt + 1], 0, $[xt], $[xt + 1], pt, mt).transformMat4(h), At = new n(Z[dt], Z[dt + 1], 0, $[dt], $[dt + 1], pt, mt).transformMat4(h);
-            I && (Tt.setUVs(tt, nt), Ct.setUVs(tt, st), Et.setUVs(q, nt), Mt.setUVs(tt, st), Pt.setUVs(q, st), At.setUVs(q, nt)), ht++, ht === F.length && (ht = 0), vt++, vt === D.length && (vt = 0), w.verts.push(Tt, Ct, Et, Mt, Pt, At), w.faces.push(new d(Tt, Ct, Et), new d(Mt, Pt, At));
+            var lt = (Q + V * k) * 2, ct = (Q + V * (k + 1)) * 2, xt = (Q + 1 + V * (k + 1)) * 2, dt = (Q + 1 + V * k) * 2, pt = F[ht], mt = D[vt], Tt = new n(Z[lt], Z[lt + 1], 0, $[lt], $[lt + 1], pt, mt).transformMat4(h), Et = new n(Z[ct], Z[ct + 1], 0, $[ct], $[ct + 1], pt, mt).transformMat4(h), Mt = new n(Z[dt], Z[dt + 1], 0, $[dt], $[dt + 1], pt, mt).transformMat4(h), Pt = new n(Z[ct], Z[ct + 1], 0, $[ct], $[ct + 1], pt, mt).transformMat4(h), At = new n(Z[xt], Z[xt + 1], 0, $[xt], $[xt + 1], pt, mt).transformMat4(h), Rt = new n(Z[dt], Z[dt + 1], 0, $[dt], $[dt + 1], pt, mt).transformMat4(h);
+            I && (Tt.setUVs(tt, nt), Et.setUVs(tt, st), Mt.setUVs(q, nt), Pt.setUVs(tt, st), At.setUVs(q, st), Rt.setUVs(q, nt)), ht++, ht === F.length && (ht = 0), vt++, vt === D.length && (vt = 0), w.verts.push(Tt, Et, Mt, Pt, At, Rt), w.faces.push(new d(Tt, Et, Mt), new d(Pt, At, Rt));
           }
           return l && (l.faces = l.faces.concat(w.faces), l.vertices = l.vertices.concat(w.verts)), w;
         };
@@ -9699,9 +9699,9 @@ function bt() {
           var T = { faces: [], verts: [] }, C = i.materials;
           n.set(f, u, v), e.set(m, x, g), s.fromRotationXYTranslation(e, n, y);
           for (var E = 0; E < i.models.length; E++) for (var A = i.models[E], M = A.vertices, P = A.textureCoords, R = A.faces, F = 0; F < R.length; F++) {
-            var D = R[F], I = D.vertices[0], U = D.vertices[1], N = D.vertices[2], w = M[I.vertexIndex], B = M[U.vertexIndex], L = M[N.vertexIndex], G = I.textureCoordsIndex, O = U.textureCoordsIndex, z = N.textureCoordsIndex, V = G === -1 ? { u: 0, v: 1 } : P[G], X = O === -1 ? { u: 0, v: 0 } : P[O], Y = z === -1 ? { u: 1, v: 1 } : P[z], b = 16777215;
-            D.material !== "" && C[D.material] && (b = C[D.material]);
-            var $ = new r(w.x * l, w.y * l, w.z * l, V.u, V.v, b).transformMat4(s), Z = new r(B.x * l, B.y * l, B.z * l, X.u, X.v, b).transformMat4(s), Q = new r(L.x * l, L.y * l, L.z * l, Y.u, Y.v, b).transformMat4(s);
+            var D = R[F], I = D.vertices[0], U = D.vertices[1], N = D.vertices[2], w = M[I.vertexIndex], B = M[U.vertexIndex], L = M[N.vertexIndex], G = I.textureCoordsIndex, O = U.textureCoordsIndex, z = N.textureCoordsIndex, V = G === -1 ? { u: 0, v: 1 } : P[G], X = O === -1 ? { u: 0, v: 0 } : P[O], Y = z === -1 ? { u: 1, v: 1 } : P[z], W = 16777215;
+            D.material !== "" && C[D.material] && (W = C[D.material]);
+            var $ = new r(w.x * l, w.y * l, w.z * l, V.u, V.v, W).transformMat4(s), Z = new r(B.x * l, B.y * l, B.z * l, X.u, X.v, W).transformMat4(s), Q = new r(L.x * l, L.y * l, L.z * l, Y.u, Y.v, W).transformMat4(s);
             T.verts.push($, Z, Q), T.faces.push(new d($, Z, Q));
           }
           return a && (a.faces = a.faces.concat(T.faces), a.vertices = a.vertices.concat(T.verts)), T;
@@ -10001,11 +10001,11 @@ function bt() {
           L = L || 2;
           var G = B && B.length, O = G ? B[0] * L : w.length, z = t(w, 0, O, L, true), V = [];
           if (!z || z.next === z.prev) return V;
-          var X, Y, b, $, Z, Q, k;
+          var X, Y, W, $, Z, Q, k;
           if (G && (z = s(w, B, z, L)), w.length > 80 * L) {
-            X = b = w[0], Y = $ = w[1];
-            for (var tt = L; tt < O; tt += L) Z = w[tt], Q = w[tt + 1], Z < X && (X = Z), Q < Y && (Y = Q), Z > b && (b = Z), Q > $ && ($ = Q);
-            k = Math.max(b - X, $ - Y), k = k !== 0 ? 32767 / k : 0;
+            X = W = w[0], Y = $ = w[1];
+            for (var tt = L; tt < O; tt += L) Z = w[tt], Q = w[tt + 1], Z < X && (X = Z), Q < Y && (Y = Q), Z > W && (W = Z), Q > $ && ($ = Q);
+            k = Math.max(W - X, $ - Y), k = k !== 0 ? 32767 / k : 0;
           }
           return c(z, V, L, X, Y, k, 0), V;
         }
@@ -10030,12 +10030,12 @@ function bt() {
         function c(w, B, L, G, O, z, V) {
           if (w) {
             !V && z && f(w, G, O, z);
-            for (var X = w, Y, b; w.prev !== w.next; ) {
-              if (Y = w.prev, b = w.next, z ? r(w, G, O, z) : o(w)) {
-                B.push(Y.i / L | 0), B.push(w.i / L | 0), B.push(b.i / L | 0), I(w), w = b.next, X = b.next;
+            for (var X = w, Y, W; w.prev !== w.next; ) {
+              if (Y = w.prev, W = w.next, z ? r(w, G, O, z) : o(w)) {
+                B.push(Y.i / L | 0), B.push(w.i / L | 0), B.push(W.i / L | 0), I(w), w = W.next, X = W.next;
                 continue;
               }
-              if (w = b, w === X) {
+              if (w = W, w === X) {
                 V ? V === 1 ? (w = n(d(w), B, L), c(w, B, L, G, O, z, 2)) : V === 2 && e(w, B, L, G, O, z) : c(d(w), B, L, G, O, z, 1);
                 break;
               }
@@ -10045,8 +10045,8 @@ function bt() {
         function o(w) {
           var B = w.prev, L = w, G = w.next;
           if (y(B, L, G) >= 0) return false;
-          for (var O = B.x, z = L.x, V = G.x, X = B.y, Y = L.y, b = G.y, $ = O < z ? O < V ? O : V : z < V ? z : V, Z = X < Y ? X < b ? X : b : Y < b ? Y : b, Q = O > z ? O > V ? O : V : z > V ? z : V, k = X > Y ? X > b ? X : b : Y > b ? Y : b, tt = G.next; tt !== B; ) {
-            if (tt.x >= $ && tt.x <= Q && tt.y >= Z && tt.y <= k && x(O, X, z, Y, V, b, tt.x, tt.y) && y(tt.prev, tt, tt.next) >= 0) return false;
+          for (var O = B.x, z = L.x, V = G.x, X = B.y, Y = L.y, W = G.y, $ = O < z ? O < V ? O : V : z < V ? z : V, Z = X < Y ? X < W ? X : W : Y < W ? Y : W, Q = O > z ? O > V ? O : V : z > V ? z : V, k = X > Y ? X > W ? X : W : Y > W ? Y : W, tt = G.next; tt !== B; ) {
+            if (tt.x >= $ && tt.x <= Q && tt.y >= Z && tt.y <= k && x(O, X, z, Y, V, W, tt.x, tt.y) && y(tt.prev, tt, tt.next) >= 0) return false;
             tt = tt.next;
           }
           return true;
@@ -10054,16 +10054,16 @@ function bt() {
         function r(w, B, L, G) {
           var O = w.prev, z = w, V = w.next;
           if (y(O, z, V) >= 0) return false;
-          for (var X = O.x, Y = z.x, b = V.x, $ = O.y, Z = z.y, Q = V.y, k = X < Y ? X < b ? X : b : Y < b ? Y : b, tt = $ < Z ? $ < Q ? $ : Q : Z < Q ? Z : Q, q = X > Y ? X > b ? X : b : Y > b ? Y : b, st = $ > Z ? $ > Q ? $ : Q : Z > Q ? Z : Q, nt = v(k, tt, B, L, G), rt = v(q, st, B, L, G), _ = w.prevZ, et = w.nextZ; _ && _.z >= nt && et && et.z <= rt; ) {
-            if (_.x >= k && _.x <= q && _.y >= tt && _.y <= st && _ !== O && _ !== V && x(X, $, Y, Z, b, Q, _.x, _.y) && y(_.prev, _, _.next) >= 0 || (_ = _.prevZ, et.x >= k && et.x <= q && et.y >= tt && et.y <= st && et !== O && et !== V && x(X, $, Y, Z, b, Q, et.x, et.y) && y(et.prev, et, et.next) >= 0)) return false;
+          for (var X = O.x, Y = z.x, W = V.x, $ = O.y, Z = z.y, Q = V.y, k = X < Y ? X < W ? X : W : Y < W ? Y : W, tt = $ < Z ? $ < Q ? $ : Q : Z < Q ? Z : Q, q = X > Y ? X > W ? X : W : Y > W ? Y : W, st = $ > Z ? $ > Q ? $ : Q : Z > Q ? Z : Q, nt = v(k, tt, B, L, G), rt = v(q, st, B, L, G), _ = w.prevZ, et = w.nextZ; _ && _.z >= nt && et && et.z <= rt; ) {
+            if (_.x >= k && _.x <= q && _.y >= tt && _.y <= st && _ !== O && _ !== V && x(X, $, Y, Z, W, Q, _.x, _.y) && y(_.prev, _, _.next) >= 0 || (_ = _.prevZ, et.x >= k && et.x <= q && et.y >= tt && et.y <= st && et !== O && et !== V && x(X, $, Y, Z, W, Q, et.x, et.y) && y(et.prev, et, et.next) >= 0)) return false;
             et = et.nextZ;
           }
           for (; _ && _.z >= nt; ) {
-            if (_.x >= k && _.x <= q && _.y >= tt && _.y <= st && _ !== O && _ !== V && x(X, $, Y, Z, b, Q, _.x, _.y) && y(_.prev, _, _.next) >= 0) return false;
+            if (_.x >= k && _.x <= q && _.y >= tt && _.y <= st && _ !== O && _ !== V && x(X, $, Y, Z, W, Q, _.x, _.y) && y(_.prev, _, _.next) >= 0) return false;
             _ = _.prevZ;
           }
           for (; et && et.z <= rt; ) {
-            if (et.x >= k && et.x <= q && et.y >= tt && et.y <= st && et !== O && et !== V && x(X, $, Y, Z, b, Q, et.x, et.y) && y(et.prev, et, et.next) >= 0) return false;
+            if (et.x >= k && et.x <= q && et.y >= tt && et.y <= st && et !== O && et !== V && x(X, $, Y, Z, W, Q, et.x, et.y) && y(et.prev, et, et.next) >= 0) return false;
             et = et.nextZ;
           }
           return true;
@@ -10091,8 +10091,8 @@ function bt() {
           } while (V !== w);
         }
         function s(w, B, L, G) {
-          var O = [], z, V, X, Y, b;
-          for (z = 0, V = B.length; z < V; z++) X = B[z] * G, Y = z < V - 1 ? B[z + 1] * G : w.length, b = t(w, X, Y, G, false), b === b.next && (b.steiner = true), O.push(m(b));
+          var O = [], z, V, X, Y, W;
+          for (z = 0, V = B.length; z < V; z++) X = B[z] * G, Y = z < V - 1 ? B[z + 1] * G : w.length, W = t(w, X, Y, G, false), W === W.next && (W.steiner = true), O.push(m(W));
           for (O.sort(h), z = 0; z < O.length; z++) L = i(O[z], L);
           return L;
         }
@@ -10115,10 +10115,10 @@ function bt() {
             L = L.next;
           } while (L !== B);
           if (!V) return null;
-          var Y = V, b = V.x, $ = V.y, Z = 1 / 0, Q;
+          var Y = V, W = V.x, $ = V.y, Z = 1 / 0, Q;
           L = V;
           do
-            G >= L.x && L.x >= b && G !== L.x && x(O < $ ? G : z, O, b, $, O < $ ? z : G, O, L.x, L.y) && (Q = Math.abs(O - L.y) / (G - L.x), P(L, w) && (Q < Z || Q === Z && (L.x > V.x || L.x === V.x && l(V, L))) && (V = L, Z = Q)), L = L.next;
+            G >= L.x && L.x >= W && G !== L.x && x(O < $ ? G : z, O, W, $, O < $ ? z : G, O, L.x, L.y) && (Q = Math.abs(O - L.y) / (G - L.x), P(L, w) && (Q < Z || Q === Z && (L.x > V.x || L.x === V.x && l(V, L))) && (V = L, Z = Q)), L = L.next;
           while (L !== Y);
           return V;
         }
@@ -10133,14 +10133,14 @@ function bt() {
           O.prevZ.nextZ = null, O.prevZ = null, u(O);
         }
         function u(w) {
-          var B, L, G, O, z, V, X, Y, b = 1;
+          var B, L, G, O, z, V, X, Y, W = 1;
           do {
             for (L = w, w = null, z = null, V = 0; L; ) {
-              for (V++, G = L, X = 0, B = 0; B < b && (X++, G = G.nextZ, !!G); B++) ;
-              for (Y = b; X > 0 || Y > 0 && G; ) X !== 0 && (Y === 0 || !G || L.z <= G.z) ? (O = L, L = L.nextZ, X--) : (O = G, G = G.nextZ, Y--), z ? z.nextZ = O : w = O, O.prevZ = z, z = O;
+              for (V++, G = L, X = 0, B = 0; B < W && (X++, G = G.nextZ, !!G); B++) ;
+              for (Y = W; X > 0 || Y > 0 && G; ) X !== 0 && (Y === 0 || !G || L.z <= G.z) ? (O = L, L = L.nextZ, X--) : (O = G, G = G.nextZ, Y--), z ? z.nextZ = O : w = O, O.prevZ = z, z = O;
               L = G;
             }
-            z.nextZ = null, b *= 2;
+            z.nextZ = null, W *= 2;
           } while (V > 1);
           return w;
         }
@@ -10211,8 +10211,8 @@ function bt() {
         S.deviation = function(w, B, L, G) {
           var O = B && B.length, z = O ? B[0] * L : w.length, V = Math.abs(N(w, 0, z, L));
           if (O) for (var X = 0, Y = B.length; X < Y; X++) {
-            var b = B[X] * L, $ = X < Y - 1 ? B[X + 1] * L : w.length;
-            V -= Math.abs(N(w, b, $, L));
+            var W = B[X] * L, $ = X < Y - 1 ? B[X + 1] * L : w.length;
+            V -= Math.abs(N(w, W, $, L));
           }
           var Z = 0;
           for (X = 0; X < G.length; X += 3) {
@@ -13640,8 +13640,8 @@ return new ` + this.key + `();
         }, premultiply: function(a) {
           return this.multiplyMatrices(a, this);
         }, multiplyMatrices: function(a, l) {
-          var f = a.val, u = l.val, v = f[0], m = f[4], x = f[8], g = f[12], y = f[1], T = f[5], C = f[9], E = f[13], A = f[2], M = f[6], P = f[10], R = f[14], F = f[3], D = f[7], I = f[11], U = f[15], N = u[0], w = u[4], B = u[8], L = u[12], G = u[1], O = u[5], z = u[9], V = u[13], X = u[2], Y = u[6], b = u[10], $ = u[14], Z = u[3], Q = u[7], k = u[11], tt = u[15];
-          return this.setValues(v * N + m * G + x * X + g * Z, y * N + T * G + C * X + E * Z, A * N + M * G + P * X + R * Z, F * N + D * G + I * X + U * Z, v * w + m * O + x * Y + g * Q, y * w + T * O + C * Y + E * Q, A * w + M * O + P * Y + R * Q, F * w + D * O + I * Y + U * Q, v * B + m * z + x * b + g * k, y * B + T * z + C * b + E * k, A * B + M * z + P * b + R * k, F * B + D * z + I * b + U * k, v * L + m * V + x * $ + g * tt, y * L + T * V + C * $ + E * tt, A * L + M * V + P * $ + R * tt, F * L + D * V + I * $ + U * tt);
+          var f = a.val, u = l.val, v = f[0], m = f[4], x = f[8], g = f[12], y = f[1], T = f[5], C = f[9], E = f[13], A = f[2], M = f[6], P = f[10], R = f[14], F = f[3], D = f[7], I = f[11], U = f[15], N = u[0], w = u[4], B = u[8], L = u[12], G = u[1], O = u[5], z = u[9], V = u[13], X = u[2], Y = u[6], W = u[10], $ = u[14], Z = u[3], Q = u[7], k = u[11], tt = u[15];
+          return this.setValues(v * N + m * G + x * X + g * Z, y * N + T * G + C * X + E * Z, A * N + M * G + P * X + R * Z, F * N + D * G + I * X + U * Z, v * w + m * O + x * Y + g * Q, y * w + T * O + C * Y + E * Q, A * w + M * O + P * Y + R * Q, F * w + D * O + I * Y + U * Q, v * B + m * z + x * W + g * k, y * B + T * z + C * W + E * k, A * B + M * z + P * W + R * k, F * B + D * z + I * W + U * k, v * L + m * V + x * $ + g * tt, y * L + T * V + C * $ + E * tt, A * L + M * V + P * $ + R * tt, F * L + D * V + I * $ + U * tt);
         }, translate: function(a) {
           return this.translateXYZ(a.x, a.y, a.z);
         }, translateXYZ: function(a, l, f) {
@@ -13659,8 +13659,8 @@ return new ` + this.key + `();
           var f = this.val, u = l.x, v = l.y, m = l.z, x = Math.sqrt(u * u + v * v + m * m);
           if (Math.abs(x) < o) return this;
           x = 1 / x, u *= x, v *= x, m *= x;
-          var g = Math.sin(a), y = Math.cos(a), T = 1 - y, C = f[0], E = f[1], A = f[2], M = f[3], P = f[4], R = f[5], F = f[6], D = f[7], I = f[8], U = f[9], N = f[10], w = f[11], B = f[12], L = f[13], G = f[14], O = f[15], z = u * u * T + y, V = v * u * T + m * g, X = m * u * T - v * g, Y = u * v * T - m * g, b = v * v * T + y, $ = m * v * T + u * g, Z = u * m * T + v * g, Q = v * m * T - u * g, k = m * m * T + y;
-          return this.setValues(C * z + P * V + I * X, E * z + R * V + U * X, A * z + F * V + N * X, M * z + D * V + w * X, C * Y + P * b + I * $, E * Y + R * b + U * $, A * Y + F * b + N * $, M * Y + D * b + w * $, C * Z + P * Q + I * k, E * Z + R * Q + U * k, A * Z + F * Q + N * k, M * Z + D * Q + w * k, B, L, G, O);
+          var g = Math.sin(a), y = Math.cos(a), T = 1 - y, C = f[0], E = f[1], A = f[2], M = f[3], P = f[4], R = f[5], F = f[6], D = f[7], I = f[8], U = f[9], N = f[10], w = f[11], B = f[12], L = f[13], G = f[14], O = f[15], z = u * u * T + y, V = v * u * T + m * g, X = m * u * T - v * g, Y = u * v * T - m * g, W = v * v * T + y, $ = m * v * T + u * g, Z = u * m * T + v * g, Q = v * m * T - u * g, k = m * m * T + y;
+          return this.setValues(C * z + P * V + I * X, E * z + R * V + U * X, A * z + F * V + N * X, M * z + D * V + w * X, C * Y + P * W + I * $, E * Y + R * W + U * $, A * Y + F * W + N * $, M * Y + D * W + w * $, C * Z + P * Q + I * k, E * Z + R * Q + U * k, A * Z + F * Q + N * k, M * Z + D * Q + w * k, B, L, G, O);
         }, rotateX: function(a) {
           var l = this.val, f = Math.sin(a), u = Math.cos(a), v = l[4], m = l[5], x = l[6], g = l[7], y = l[8], T = l[9], C = l[10], E = l[11];
           return l[4] = v * u + y * f, l[5] = m * u + T * f, l[6] = x * u + C * f, l[7] = g * u + E * f, l[8] = y * u - v * f, l[9] = T * u - m * f, l[10] = C * u - x * f, l[11] = E * u - g * f, this;
@@ -13706,8 +13706,8 @@ return new ` + this.key + `();
         }, setWorldMatrix: function(a, l, f, u, v) {
           return this.yawPitchRoll(a.y, a.x, a.z), n.scaling(f.x, f.y, f.z), e.xyz(l.x, l.y, l.z), this.multiplyLocal(n), this.multiplyLocal(e), u && this.multiplyLocal(u), v && this.multiplyLocal(v), this;
         }, multiplyToMat4: function(a, l) {
-          var f = this.val, u = a.val, v = f[0], m = f[1], x = f[2], g = f[3], y = f[4], T = f[5], C = f[6], E = f[7], A = f[8], M = f[9], P = f[10], R = f[11], F = f[12], D = f[13], I = f[14], U = f[15], N = u[0], w = u[1], B = u[2], L = u[3], G = u[4], O = u[5], z = u[6], V = u[7], X = u[8], Y = u[9], b = u[10], $ = u[11], Z = u[12], Q = u[13], k = u[14], tt = u[15];
-          return l.setValues(N * v + w * y + B * A + L * F, w * m + w * T + B * M + L * D, B * x + w * C + B * P + L * I, L * g + w * E + B * R + L * U, G * v + O * y + z * A + V * F, G * m + O * T + z * M + V * D, G * x + O * C + z * P + V * I, G * g + O * E + z * R + V * U, X * v + Y * y + b * A + $ * F, X * m + Y * T + b * M + $ * D, X * x + Y * C + b * P + $ * I, X * g + Y * E + b * R + $ * U, Z * v + Q * y + k * A + tt * F, Z * m + Q * T + k * M + tt * D, Z * x + Q * C + k * P + tt * I, Z * g + Q * E + k * R + tt * U);
+          var f = this.val, u = a.val, v = f[0], m = f[1], x = f[2], g = f[3], y = f[4], T = f[5], C = f[6], E = f[7], A = f[8], M = f[9], P = f[10], R = f[11], F = f[12], D = f[13], I = f[14], U = f[15], N = u[0], w = u[1], B = u[2], L = u[3], G = u[4], O = u[5], z = u[6], V = u[7], X = u[8], Y = u[9], W = u[10], $ = u[11], Z = u[12], Q = u[13], k = u[14], tt = u[15];
+          return l.setValues(N * v + w * y + B * A + L * F, w * m + w * T + B * M + L * D, B * x + w * C + B * P + L * I, L * g + w * E + B * R + L * U, G * v + O * y + z * A + V * F, G * m + O * T + z * M + V * D, G * x + O * C + z * P + V * I, G * g + O * E + z * R + V * U, X * v + Y * y + W * A + $ * F, X * m + Y * T + W * M + $ * D, X * x + Y * C + W * P + $ * I, X * g + Y * E + W * R + $ * U, Z * v + Q * y + k * A + tt * F, Z * m + Q * T + k * M + tt * D, Z * x + Q * C + k * P + tt * I, Z * g + Q * E + k * R + tt * U);
         }, fromRotationXYTranslation: function(a, l, f) {
           var u = l.x, v = l.y, m = l.z, x = Math.sin(a.x), g = Math.cos(a.x), y = Math.sin(a.y), T = Math.cos(a.y), C = u, E = v, A = m, M = -x, P = 0 - M * y, R = 0 - g * y, F = M * T, D = g * T;
           return f || (C = T * u + y * m, E = P * u + g * v + F * m, A = R * u + x * v + D * m), this.setValues(T, P, R, 0, 0, g, x, 0, y, F, D, 0, C, E, A, 1);
@@ -15365,8 +15365,8 @@ return new ` + this.key + `();
         }, createDebugGraphic: function() {
           var L = this.scene.sys.add.graphics({ x: 0, y: 0 });
           return L.setDepth(Number.MAX_VALUE), this.debugGraphic = L, this.drawDebug = true, L;
-        }, setBounds: function(L, G, O, z, V, X, Y, b) {
-          return this.bounds.setTo(L, G, O, z), V !== void 0 && this.setBoundsCollision(V, X, Y, b), this;
+        }, setBounds: function(L, G, O, z, V, X, Y, W) {
+          return this.bounds.setTo(L, G, O, z), V !== void 0 && this.setBoundsCollision(V, X, Y, W), this;
         }, setBoundsCollision: function(L, G, O, z) {
           return L === void 0 && (L = true), G === void 0 && (G = true), O === void 0 && (O = true), z === void 0 && (z = true), this.checkCollision.left = L, this.checkCollision.right = G, this.checkCollision.up = O, this.checkCollision.down = z, this;
         }, pause: function() {
@@ -15389,9 +15389,9 @@ return new ` + this.key + `();
           if (!(this.isPaused || this.bodies.size === 0)) {
             var O, z = this._frameTime, V = this._frameTimeMS * this.timeScale;
             this._elapsed += G;
-            var X, Y = this.bodies.entries, b = this._elapsed >= V;
-            for (this.fixedStep || (z = G * 1e-3, b = true, this._elapsed = 0), O = 0; O < Y.length; O++) X = Y[O], X.enable && X.preUpdate(b, z);
-            if (b) {
+            var X, Y = this.bodies.entries, W = this._elapsed >= V;
+            for (this.fixedStep || (z = G * 1e-3, W = true, this._elapsed = 0), O = 0; O < Y.length; O++) X = Y[O], X.enable && X.preUpdate(W, z);
+            if (W) {
               this._elapsed -= V, this.stepsLastFrame = 1, this.useTree && (this.tree.clear(), this.tree.load(Y));
               var $ = this.colliders.update();
               for (O = 0; O < $.length; O++) {
@@ -15422,11 +15422,11 @@ return new ` + this.key + `();
             for (Y.clear(), L = 0; L < z; L++) G = O[L], G.willDrawDebug() && G.drawDebug(Y);
             for (O = X.entries, z = O.length, L = 0; L < z; L++) G = O[L], G.willDrawDebug() && G.drawDebug(Y);
           }
-          var b = this.pendingDestroy;
-          if (b.size > 0) {
+          var W = this.pendingDestroy;
+          if (W.size > 0) {
             var $ = this.tree, Z = this.staticTree;
-            for (O = b.entries, z = O.length, L = 0; L < z; L++) G = O[L], G.physicsType === e.DYNAMIC_BODY ? ($.remove(G), V.delete(G)) : G.physicsType === e.STATIC_BODY && (Z.remove(G), X.delete(G)), G.world = void 0, G.gameObject = void 0;
-            b.clear();
+            for (O = W.entries, z = O.length, L = 0; L < z; L++) G = O[L], G.physicsType === e.DYNAMIC_BODY ? ($.remove(G), V.delete(G)) : G.physicsType === e.STATIC_BODY && (Z.remove(G), X.delete(G)), G.world = void 0, G.gameObject = void 0;
+            W.clear();
           }
         }, updateMotion: function(L, G) {
           L.allowRotation && this.computeAngularVelocity(L, G), this.computeVelocity(L, G);
@@ -15436,23 +15436,23 @@ return new ` + this.key + `();
           var Y = O - L.angularVelocity;
           L.angularVelocity += Y, L.rotation += L.angularVelocity * G;
         }, computeVelocity: function(L, G) {
-          var O = L.velocity.x, z = L.acceleration.x, V = L.drag.x, X = L.maxVelocity.x, Y = L.velocity.y, b = L.acceleration.y, $ = L.drag.y, Z = L.maxVelocity.y, Q = L.speed, k = L.maxSpeed, tt = L.allowDrag, q = L.useDamping;
-          L.allowGravity && (O += (this.gravity.x + L.gravity.x) * G, Y += (this.gravity.y + L.gravity.y) * G), z ? O += z * G : tt && V && (q ? (V = Math.pow(V, G), O *= V, Q = Math.sqrt(O * O + Y * Y), l(Q, 0, 1e-3) && (O = 0)) : (V *= G, f(O - V, 0, 0.01) ? O -= V : u(O + V, 0, 0.01) ? O += V : O = 0)), b ? Y += b * G : tt && $ && (q ? ($ = Math.pow($, G), Y *= $, Q = Math.sqrt(O * O + Y * Y), l(Q, 0, 1e-3) && (Y = 0)) : ($ *= G, f(Y - $, 0, 0.01) ? Y -= $ : u(Y + $, 0, 0.01) ? Y += $ : Y = 0)), O = o(O, -X, X), Y = o(Y, -Z, Z), L.velocity.set(O, Y), k > -1 && L.velocity.length() > k && (L.velocity.normalize().scale(k), Q = k), L.speed = Q;
+          var O = L.velocity.x, z = L.acceleration.x, V = L.drag.x, X = L.maxVelocity.x, Y = L.velocity.y, W = L.acceleration.y, $ = L.drag.y, Z = L.maxVelocity.y, Q = L.speed, k = L.maxSpeed, tt = L.allowDrag, q = L.useDamping;
+          L.allowGravity && (O += (this.gravity.x + L.gravity.x) * G, Y += (this.gravity.y + L.gravity.y) * G), z ? O += z * G : tt && V && (q ? (V = Math.pow(V, G), O *= V, Q = Math.sqrt(O * O + Y * Y), l(Q, 0, 1e-3) && (O = 0)) : (V *= G, f(O - V, 0, 0.01) ? O -= V : u(O + V, 0, 0.01) ? O += V : O = 0)), W ? Y += W * G : tt && $ && (q ? ($ = Math.pow($, G), Y *= $, Q = Math.sqrt(O * O + Y * Y), l(Q, 0, 1e-3) && (Y = 0)) : ($ *= G, f(Y - $, 0, 0.01) ? Y -= $ : u(Y + $, 0, 0.01) ? Y += $ : Y = 0)), O = o(O, -X, X), Y = o(Y, -Z, Z), L.velocity.set(O, Y), k > -1 && L.velocity.length() > k && (L.velocity.normalize().scale(k), Q = k), L.speed = Q;
         }, separate: function(L, G, O, z, V) {
-          var X, Y, b = false, $ = true;
-          if (!L.enable || !G.enable || L.checkCollision.none || G.checkCollision.none || !this.intersects(L, G) || (L.collisionMask & G.collisionCategory) === 0 || (G.collisionMask & L.collisionCategory) === 0 || O && O.call(z, L.gameObject || L, G.gameObject || G) === false) return b;
+          var X, Y, W = false, $ = true;
+          if (!L.enable || !G.enable || L.checkCollision.none || G.checkCollision.none || !this.intersects(L, G) || (L.collisionMask & G.collisionCategory) === 0 || (G.collisionMask & L.collisionCategory) === 0 || O && O.call(z, L.gameObject || L, G.gameObject || G) === false) return W;
           if (L.isCircle || G.isCircle) {
             var Z = this.separateCircle(L, G, V);
-            Z.result ? (b = true, $ = false) : (X = Z.x, Y = Z.y, $ = true);
+            Z.result ? (W = true, $ = false) : (X = Z.x, Y = Z.y, $ = true);
           }
           if ($) {
             var Q = false, k = false, tt = this.OVERLAP_BIAS;
-            V ? (Q = P(L, G, V, tt, X), k = R(L, G, V, tt, Y)) : this.forceX || Math.abs(this.gravity.y + L.gravity.y) < Math.abs(this.gravity.x + L.gravity.x) ? (Q = P(L, G, V, tt, X), this.intersects(L, G) && (k = R(L, G, V, tt, Y))) : (k = R(L, G, V, tt, Y), this.intersects(L, G) && (Q = P(L, G, V, tt, X))), b = Q || k;
+            V ? (Q = P(L, G, V, tt, X), k = R(L, G, V, tt, Y)) : this.forceX || Math.abs(this.gravity.y + L.gravity.y) < Math.abs(this.gravity.x + L.gravity.x) ? (Q = P(L, G, V, tt, X), this.intersects(L, G) && (k = R(L, G, V, tt, Y))) : (k = R(L, G, V, tt, Y), this.intersects(L, G) && (Q = P(L, G, V, tt, X))), W = Q || k;
           }
-          return b && (V ? (L.onOverlap || G.onOverlap) && this.emit(a.OVERLAP, L.gameObject, G.gameObject, L, G) : (L.onCollide || G.onCollide) && this.emit(a.COLLIDE, L.gameObject, G.gameObject, L, G)), b;
+          return W && (V ? (L.onOverlap || G.onOverlap) && this.emit(a.OVERLAP, L.gameObject, G.gameObject, L, G) : (L.onCollide || G.onCollide) && this.emit(a.COLLIDE, L.gameObject, G.gameObject, L, G)), W;
         }, separateCircle: function(L, G, O) {
           v(L, G, false, 0), m(L, G, false, 0);
-          var z = L.isCircle, V = G.isCircle, X = L.center, Y = G.center, b = L.immovable, $ = G.immovable, Z = L.velocity, Q = G.velocity, k = 0, tt = true;
+          var z = L.isCircle, V = G.isCircle, X = L.center, Y = G.center, W = L.immovable, $ = G.immovable, Z = L.velocity, Q = G.velocity, k = 0, tt = true;
           if (z !== V) {
             tt = false;
             var q = X.x, st = X.y, nt = L.halfWidth, rt = G.position.x, _ = G.position.y, et = G.right, it = G.bottom;
@@ -15461,12 +15461,12 @@ return new ` + this.key + `();
           L.overlapR = k, G.overlapR = k;
           var ot = d(X, Y), ut = (k + y.EPSILON) * Math.cos(ot), vt = (k + y.EPSILON) * Math.sin(ot), ht = { overlap: k, result: false, x: ut, y: vt };
           if (O && (!tt || tt && k !== 0)) return ht.result = true, ht;
-          if (!tt && k === 0 || b && $ || L.customSeparateX || G.customSeparateX) return ht.x = void 0, ht.y = void 0, ht;
+          if (!tt && k === 0 || W && $ || L.customSeparateX || G.customSeparateX) return ht.x = void 0, ht.y = void 0, ht;
           var lt = !L.pushable && !G.pushable;
           if (tt) {
             var ct = X.x - Y.x, xt = X.y - Y.y, dt = Math.sqrt(Math.pow(ct, 2) + Math.pow(xt, 2)), pt = (Y.x - X.x) / dt || 0, mt = (Y.y - X.y) / dt || 0, Tt = 2 * (Z.x * pt + Z.y * mt - Q.x * pt - Q.y * mt) / (L.mass + G.mass);
-            (b || $ || !L.pushable || !G.pushable) && (Tt *= 2), !b && L.pushable && (Z.x = Z.x - Tt / L.mass * pt, Z.y = Z.y - Tt / L.mass * mt, Z.multiply(L.bounce)), !$ && G.pushable && (Q.x = Q.x + Tt / G.mass * pt, Q.y = Q.y + Tt / G.mass * mt, Q.multiply(G.bounce)), !b && !$ && (ut *= 0.5, vt *= 0.5), (!b || L.pushable || lt) && (L.x -= ut, L.y -= vt, L.updateCenter()), (!$ || G.pushable || lt) && (G.x += ut, G.y += vt, G.updateCenter()), ht.result = true;
-          } else !b && (L.pushable || lt) && (L.x -= ut, L.y -= vt, L.updateCenter()), !$ && (G.pushable || lt) && (G.x += ut, G.y += vt, G.updateCenter()), ht.x = void 0, ht.y = void 0;
+            (W || $ || !L.pushable || !G.pushable) && (Tt *= 2), !W && L.pushable && (Z.x = Z.x - Tt / L.mass * pt, Z.y = Z.y - Tt / L.mass * mt, Z.multiply(L.bounce)), !$ && G.pushable && (Q.x = Q.x + Tt / G.mass * pt, Q.y = Q.y + Tt / G.mass * mt, Q.multiply(G.bounce)), !W && !$ && (ut *= 0.5, vt *= 0.5), (!W || L.pushable || lt) && (L.x -= ut, L.y -= vt, L.updateCenter()), (!$ || G.pushable || lt) && (G.x += ut, G.y += vt, G.updateCenter()), ht.result = true;
+          } else !W && (L.pushable || lt) && (L.x -= ut, L.y -= vt, L.updateCenter()), !$ && (G.pushable || lt) && (G.x += ut, G.y += vt, G.updateCenter()), ht.x = void 0, ht.y = void 0;
           return ht;
         }, intersects: function(L, G) {
           return L === G ? false : !L.isCircle && !G.isCircle ? !(L.right <= G.left || L.bottom <= G.top || L.left >= G.right || L.top >= G.bottom) : L.isCircle ? G.isCircle ? h(L.center, G.center) <= L.halfWidth + G.halfWidth : this.circleBodyIntersects(L, G) : this.circleBodyIntersects(G, L);
@@ -15478,7 +15478,7 @@ return new ` + this.key + `();
         }, collide: function(L, G, O, z, V) {
           return O === void 0 && (O = null), z === void 0 && (z = null), V === void 0 && (V = O), this.collideObjects(L, G, O, z, V, false);
         }, collideObjects: function(L, G, O, z, V, X) {
-          var Y, b;
+          var Y, W;
           L.isParent && (L.physicsType === void 0 || G === void 0 || L === G) && (L = L.children.entries), G && G.isParent && G.physicsType === void 0 && (G = G.children.entries);
           var $ = Array.isArray(L), Z = Array.isArray(G);
           if (this._total = 0, !$ && !Z) this.collideHandler(L, G, O, z, V, X);
@@ -15486,9 +15486,9 @@ return new ` + this.key + `();
           else if ($ && !Z) if (G) for (Y = 0; Y < L.length; Y++) this.collideHandler(L[Y], G, O, z, V, X);
           else for (Y = 0; Y < L.length; Y++) {
             var Q = L[Y];
-            for (b = Y + 1; b < L.length; b++) Y !== b && this.collideHandler(Q, L[b], O, z, V, X);
+            for (W = Y + 1; W < L.length; W++) Y !== W && this.collideHandler(Q, L[W], O, z, V, X);
           }
-          else for (Y = 0; Y < L.length; Y++) for (b = 0; b < G.length; b++) this.collideHandler(L[Y], G[b], O, z, V, X);
+          else for (Y = 0; Y < L.length; Y++) for (W = 0; W < G.length; W++) this.collideHandler(L[Y], G[W], O, z, V, X);
           return this._total > 0;
         }, collideHandler: function(L, G, O, z, V, X) {
           if (G === void 0 && L.isParent) return this.collideGroupVsGroup(L, L, O, z, V, X);
@@ -15508,28 +15508,28 @@ return new ` + this.key + `();
         }, canCollide: function(L, G) {
           return L && G && (L.collisionMask & G.collisionCategory) !== 0 && (G.collisionMask & L.collisionCategory) !== 0;
         }, collideSpriteVsSprite: function(L, G, O, z, V, X) {
-          var Y = L.isBody ? L : L.body, b = G.isBody ? G : G.body;
-          return this.canCollide(Y, b) ? (this.separate(Y, b, z, V, X) && (O && O.call(V, L, G), this._total++), true) : false;
+          var Y = L.isBody ? L : L.body, W = G.isBody ? G : G.body;
+          return this.canCollide(Y, W) ? (this.separate(Y, W, z, V, X) && (O && O.call(V, L, G), this._total++), true) : false;
         }, collideSpriteVsGroup: function(L, G, O, z, V, X) {
           var Y = L.isBody ? L : L.body;
           if (!(G.getLength() === 0 || !Y || !Y.enable || Y.checkCollision.none || !this.canCollide(Y, G))) {
-            var b, $, Z;
+            var W, $, Z;
             if (this.useTree || G.physicsType === e.STATIC_BODY) {
               var Q = this.treeMinMax;
               Q.minX = Y.left, Q.minY = Y.top, Q.maxX = Y.right, Q.maxY = Y.bottom;
               var k = G.physicsType === e.DYNAMIC_BODY ? this.tree.search(Q) : this.staticTree.search(Q);
-              for ($ = k.length, b = 0; b < $; b++) Z = k[b], !(Y === Z || !Z.enable || Z.checkCollision.none || !G.contains(Z.gameObject)) && this.separate(Y, Z, z, V, X) && (O && O.call(V, Y.gameObject, Z.gameObject), this._total++);
+              for ($ = k.length, W = 0; W < $; W++) Z = k[W], !(Y === Z || !Z.enable || Z.checkCollision.none || !G.contains(Z.gameObject)) && this.separate(Y, Z, z, V, X) && (O && O.call(V, Y.gameObject, Z.gameObject), this._total++);
             } else {
               var tt = G.getChildren(), q = G.children.entries.indexOf(L);
-              for ($ = tt.length, b = 0; b < $; b++) Z = tt[b].body, !(!Z || b === q || !Z.enable) && this.separate(Y, Z, z, V, X) && (O && O.call(V, Y.gameObject, Z.gameObject), this._total++);
+              for ($ = tt.length, W = 0; W < $; W++) Z = tt[W].body, !(!Z || W === q || !Z.enable) && this.separate(Y, Z, z, V, X) && (O && O.call(V, Y.gameObject, Z.gameObject), this._total++);
             }
           }
         }, collideGroupVsTilemapLayer: function(L, G, O, z, V, X) {
           if (!this.canCollide(L, G)) return false;
           var Y = L.getChildren();
           if (Y.length === 0) return false;
-          for (var b = false, $ = 0; $ < Y.length; $++) (Y[$].body || Y[$].isBody) && this.collideSpriteVsTilemapLayer(Y[$], G, O, z, V, X) && (b = true);
-          return b;
+          for (var W = false, $ = 0; $ < Y.length; $++) (Y[$].body || Y[$].isBody) && this.collideSpriteVsTilemapLayer(Y[$], G, O, z, V, X) && (W = true);
+          return W;
         }, collideTiles: function(L, G, O, z, V) {
           return G.length === 0 || L.body && !L.body.enable || L.isBody && !L.enable ? false : this.collideSpriteVsTilesHandler(L, G, O, z, V, false, false);
         }, overlapTiles: function(L, G, O, z, V) {
@@ -15537,17 +15537,17 @@ return new ` + this.key + `();
         }, collideSpriteVsTilemapLayer: function(L, G, O, z, V, X) {
           var Y = L.isBody ? L : L.body;
           if (!Y.enable || Y.checkCollision.none || !this.canCollide(Y, G)) return false;
-          var b = G.layer, $ = Y.x - b.tileWidth * G.scaleX, Z = Y.y - b.tileHeight * G.scaleY, Q = Y.width + b.tileWidth * G.scaleX, k = Y.height + b.tileHeight * G.scaleY, tt = X ? null : this.tileFilterOptions, q = x($, Z, Q, k, tt, G.scene.cameras.main, G.layer);
+          var W = G.layer, $ = Y.x - W.tileWidth * G.scaleX, Z = Y.y - W.tileHeight * G.scaleY, Q = Y.width + W.tileWidth * G.scaleX, k = Y.height + W.tileHeight * G.scaleY, tt = X ? null : this.tileFilterOptions, q = x($, Z, Q, k, tt, G.scene.cameras.main, G.layer);
           return q.length === 0 ? false : this.collideSpriteVsTilesHandler(L, q, O, z, V, X, true);
         }, collideSpriteVsTilesHandler: function(L, G, O, z, V, X, Y) {
-          for (var b = L.isBody ? L : L.body, $, Z = { left: 0, right: 0, top: 0, bottom: 0 }, Q, k = false, tt = 0; tt < G.length; tt++) {
+          for (var W = L.isBody ? L : L.body, $, Z = { left: 0, right: 0, top: 0, bottom: 0 }, Q, k = false, tt = 0; tt < G.length; tt++) {
             $ = G[tt], Q = $.tilemapLayer;
             var q = Q.tileToWorldXY($.x, $.y);
-            Z.left = q.x, Z.top = q.y, Z.right = Z.left + $.width * Q.scaleX, Z.bottom = Z.top + $.height * Q.scaleY, I(Z, b) && (!z || z.call(V, L, $)) && C($, L) && (X || M(tt, b, $, Z, Q, this.TILE_BIAS, Y)) && (this._total++, k = true, O && O.call(V, L, $), X && b.onOverlap ? this.emit(a.TILE_OVERLAP, L, $, b) : b.onCollide && this.emit(a.TILE_COLLIDE, L, $, b));
+            Z.left = q.x, Z.top = q.y, Z.right = Z.left + $.width * Q.scaleX, Z.bottom = Z.top + $.height * Q.scaleY, I(Z, W) && (!z || z.call(V, L, $)) && C($, L) && (X || M(tt, W, $, Z, Q, this.TILE_BIAS, Y)) && (this._total++, k = true, O && O.call(V, L, $), X && W.onOverlap ? this.emit(a.TILE_OVERLAP, L, $, W) : W.onCollide && this.emit(a.TILE_COLLIDE, L, $, W));
           }
           return k;
         }, collideGroupVsGroup: function(L, G, O, z, V, X) {
-          if (!(L.getLength() === 0 || G.getLength() === 0 || !this.canCollide(L, G))) for (var Y = L.getChildren(), b = 0; b < Y.length; b++) this.collideSpriteVsGroup(Y[b], G, O, z, V, X);
+          if (!(L.getLength() === 0 || G.getLength() === 0 || !this.canCollide(L, G))) for (var Y = L.getChildren(), W = 0; W < Y.length; W++) this.collideSpriteVsGroup(Y[W], G, O, z, V, X);
         }, wrap: function(L, G) {
           L.body ? this.wrapObject(L, G) : L.getChildren ? this.wrapArray(L.getChildren(), G) : Array.isArray(L) ? this.wrapArray(L, G) : this.wrapObject(L, G);
         }, wrapArray: function(L, G) {
@@ -16051,9 +16051,9 @@ return new ` + this.key + `();
         }, overlap: function(N, w, B, L, G) {
           B === void 0 && (B = null), L === void 0 && (L = null), G === void 0 && (G = B), Array.isArray(N) || (N = [N]), N = this.getMatterBodies(N), w = this.getMatterBodies(w);
           for (var O = false, z = 0; z < N.length; z++) for (var V = N[z], X = A.collides(V, w), Y = 0; Y < X.length; Y++) {
-            var b = X[Y], $ = b.bodyA.id === V.id ? b.bodyB : b.bodyA;
-            if (!L || L.call(G, V, $, b)) {
-              if (O = true, B) B.call(G, V, $, b);
+            var W = X[Y], $ = W.bodyA.id === V.id ? W.bodyB : W.bodyA;
+            if (!L || L.call(G, V, $, W)) {
+              if (O = true, B) B.call(G, V, $, W);
               else if (!L) return true;
             }
           }
@@ -16546,8 +16546,8 @@ return new ` + this.key + `();
                 for (var X = 1; X < V; X++) {
                   var Y = z[X];
                   if (!z[X - 1].isInternal || C ? T.lineTo(Y.x, Y.y) : T.moveTo(Y.x, Y.y), X < V && Y.isInternal && !C) {
-                    var b = (X + 1) % V;
-                    T.moveTo(z[b].x, z[b].y);
+                    var W = (X + 1) % V;
+                    T.moveTo(z[W].x, z[W].y);
                   }
                 }
                 T.closePath();
@@ -17424,11 +17424,11 @@ return new ` + this.key + `();
               if (!(!T.isActive || T.isSensor)) {
                 var C = T.collision, E = C.parentA, A = C.parentB, M = C.normal.x, P = C.normal.y, R = C.tangent.x, F = C.tangent.y, D = T.inverseMass, I = T.friction * T.frictionStatic * f, U = T.contacts, N = T.contactCount, w = 1 / N, B = E.position.x - E.positionPrev.x, L = E.position.y - E.positionPrev.y, G = E.angle - E.anglePrev, O = A.position.x - A.positionPrev.x, z = A.position.y - A.positionPrev.y, V = A.angle - A.anglePrev;
                 for (y = 0; y < N; y++) {
-                  var X = U[y], Y = X.vertex, b = Y.x - E.position.x, $ = Y.y - E.position.y, Z = Y.x - A.position.x, Q = Y.y - A.position.y, k = B - $ * G, tt = L + b * G, q = O - Q * V, st = z + Z * V, nt = k - q, rt = tt - st, _ = M * nt + P * rt, et = R * nt + F * rt, it = T.separation + _, ot = Math.min(it, 1);
+                  var X = U[y], Y = X.vertex, W = Y.x - E.position.x, $ = Y.y - E.position.y, Z = Y.x - A.position.x, Q = Y.y - A.position.y, k = B - $ * G, tt = L + W * G, q = O - Q * V, st = z + Z * V, nt = k - q, rt = tt - st, _ = M * nt + P * rt, et = R * nt + F * rt, it = T.separation + _, ot = Math.min(it, 1);
                   ot = it < 0 ? 0 : ot;
                   var ut = ot * I;
                   et < -ut || et > ut ? (x = et > 0 ? et : -et, m = T.friction * (et > 0 ? 1 : -1) * i, m < -x ? m = -x : m > x && (m = x)) : (m = et, x = u);
-                  var vt = b * P - $ * M, ht = Z * P - Q * M, lt = w / (D + E.inverseInertia * vt * vt + A.inverseInertia * ht * ht), ct = (1 + T.restitution) * _ * lt;
+                  var vt = W * P - $ * M, ht = Z * P - Q * M, lt = w / (D + E.inverseInertia * vt * vt + A.inverseInertia * ht * ht), ct = (1 + T.restitution) * _ * lt;
                   if (m *= lt, _ < a) X.normalImpulse = 0;
                   else {
                     var xt = X.normalImpulse;
@@ -17440,7 +17440,7 @@ return new ` + this.key + `();
                     X.tangentImpulse += m, X.tangentImpulse < -x && (X.tangentImpulse = -x), X.tangentImpulse > x && (X.tangentImpulse = x), m = X.tangentImpulse - dt;
                   }
                   var pt = M * ct + R * m, mt = P * ct + F * m;
-                  E.isStatic || E.isSleeping || (E.positionPrev.x += pt * E.inverseMass, E.positionPrev.y += mt * E.inverseMass, E.anglePrev += (b * mt - $ * pt) * E.inverseInertia), A.isStatic || A.isSleeping || (A.positionPrev.x -= pt * A.inverseMass, A.positionPrev.y -= mt * A.inverseMass, A.anglePrev -= (Z * mt - Q * pt) * A.inverseInertia);
+                  E.isStatic || E.isSleeping || (E.positionPrev.x += pt * E.inverseMass, E.positionPrev.y += mt * E.inverseMass, E.anglePrev += (W * mt - $ * pt) * E.inverseInertia), A.isStatic || A.isSleeping || (A.positionPrev.x -= pt * A.inverseMass, A.positionPrev.y -= mt * A.inverseMass, A.anglePrev -= (Z * mt - Q * pt) * A.inverseInertia);
                 }
               }
             }
@@ -18335,14 +18335,14 @@ return new ` + this.key + `();
         p.exports = { decomp: A, quickDecomp: F, isSimple: P, removeCollinearPoints: D, removeDuplicatePoints: I, makeCCW: u };
         function S(w, B, L) {
           L = L || 0;
-          var G = [0, 0], O, z, V, X, Y, b, $;
-          return O = w[1][1] - w[0][1], z = w[0][0] - w[1][0], V = O * w[0][0] + z * w[0][1], X = B[1][1] - B[0][1], Y = B[0][0] - B[1][0], b = X * B[0][0] + Y * B[0][1], $ = O * Y - X * z, U($, 0, L) || (G[0] = (Y * V - z * b) / $, G[1] = (O * b - X * V) / $), G;
+          var G = [0, 0], O, z, V, X, Y, W, $;
+          return O = w[1][1] - w[0][1], z = w[0][0] - w[1][0], V = O * w[0][0] + z * w[0][1], X = B[1][1] - B[0][1], Y = B[0][0] - B[1][0], W = X * B[0][0] + Y * B[0][1], $ = O * Y - X * z, U($, 0, L) || (G[0] = (Y * V - z * W) / $, G[1] = (O * W - X * V) / $), G;
         }
         function t(w, B, L, G) {
           var O = B[0] - w[0], z = B[1] - w[1], V = G[0] - L[0], X = G[1] - L[1];
           if (V * z - X * O === 0) return false;
-          var Y = (O * (L[1] - w[1]) + z * (w[0] - L[0])) / (V * z - X * O), b = (V * (w[1] - L[1]) + X * (L[0] - w[0])) / (X * O - V * z);
-          return Y >= 0 && Y <= 1 && b >= 0 && b <= 1;
+          var Y = (O * (L[1] - w[1]) + z * (w[0] - L[0])) / (V * z - X * O), W = (V * (w[1] - L[1]) + X * (L[0] - w[0])) / (X * O - V * z);
+          return Y >= 0 && Y <= 1 && W >= 0 && W <= 1;
         }
         function d(w, B, L) {
           return (B[0] - w[0]) * (L[1] - w[1]) - (L[0] - w[0]) * (B[1] - w[1]);
@@ -18364,8 +18364,8 @@ return new ` + this.key + `();
           if (G) {
             var O = e, z = s;
             O[0] = B[0] - w[0], O[1] = B[1] - w[1], z[0] = L[0] - B[0], z[1] = L[1] - B[1];
-            var V = O[0] * z[0] + O[1] * z[1], X = Math.sqrt(O[0] * O[0] + O[1] * O[1]), Y = Math.sqrt(z[0] * z[0] + z[1] * z[1]), b = Math.acos(V / (X * Y));
-            return b < G;
+            var V = O[0] * z[0] + O[1] * z[1], X = Math.sqrt(O[0] * O[0] + O[1] * O[1]), Y = Math.sqrt(z[0] * z[0] + z[1] * z[1]), W = Math.acos(V / (X * Y));
+            return W < G;
           } else return d(w, B, L) === 0;
         }
         function i(w, B) {
@@ -18452,18 +18452,18 @@ return new ` + this.key + `();
         }
         function R(w, B, L, G, O) {
           O = O || 0;
-          var z = B[1] - w[1], V = w[0] - B[0], X = z * w[0] + V * w[1], Y = G[1] - L[1], b = L[0] - G[0], $ = Y * L[0] + b * L[1], Z = z * b - Y * V;
-          return U(Z, 0, O) ? [0, 0] : [(b * X - V * $) / Z, (z * $ - Y * X) / Z];
+          var z = B[1] - w[1], V = w[0] - B[0], X = z * w[0] + V * w[1], Y = G[1] - L[1], W = L[0] - G[0], $ = Y * L[0] + W * L[1], Z = z * W - Y * V;
+          return U(Z, 0, O) ? [0, 0] : [(W * X - V * $) / Z, (z * $ - Y * X) / Z];
         }
         function F(w, B, L, G, O, z, V) {
           z = z || 100, V = V || 0, O = O || 25, B = typeof B < "u" ? B : [], L = L || [], G = G || [];
-          var X = [0, 0], Y = [0, 0], b = [0, 0], $ = 0, Z = 0, Q = 0, k = 0, tt = 0, q = 0, st = 0, nt = [], rt = [], _ = w, et = w;
+          var X = [0, 0], Y = [0, 0], W = [0, 0], $ = 0, Z = 0, Q = 0, k = 0, tt = 0, q = 0, st = 0, nt = [], rt = [], _ = w, et = w;
           if (et.length < 3) return B;
           if (V++, V > z) return console.warn("quickDecomp: max level (" + z + ") reached."), B;
           for (var it = 0; it < w.length; ++it) if (m(_, it)) {
             L.push(_[it]), $ = Z = Number.MAX_VALUE;
-            for (var ot = 0; ot < w.length; ++ot) c(a(_, it - 1), a(_, it), a(_, ot)) && n(a(_, it - 1), a(_, it), a(_, ot - 1)) && (b = R(a(_, it - 1), a(_, it), a(_, ot), a(_, ot - 1)), r(a(_, it + 1), a(_, it), b) && (Q = i(_[it], b), Q < Z && (Z = Q, Y = b, q = ot))), c(a(_, it + 1), a(_, it), a(_, ot + 1)) && n(a(_, it + 1), a(_, it), a(_, ot)) && (b = R(a(_, it + 1), a(_, it), a(_, ot), a(_, ot + 1)), c(a(_, it - 1), a(_, it), b) && (Q = i(_[it], b), Q < $ && ($ = Q, X = b, tt = ot)));
-            if (q === (tt + 1) % w.length) b[0] = (Y[0] + X[0]) / 2, b[1] = (Y[1] + X[1]) / 2, G.push(b), it < tt ? (f(nt, _, it, tt + 1), nt.push(b), rt.push(b), q !== 0 && f(rt, _, q, _.length), f(rt, _, 0, it + 1)) : (it !== 0 && f(nt, _, it, _.length), f(nt, _, 0, tt + 1), nt.push(b), rt.push(b), f(rt, _, q, it + 1));
+            for (var ot = 0; ot < w.length; ++ot) c(a(_, it - 1), a(_, it), a(_, ot)) && n(a(_, it - 1), a(_, it), a(_, ot - 1)) && (W = R(a(_, it - 1), a(_, it), a(_, ot), a(_, ot - 1)), r(a(_, it + 1), a(_, it), W) && (Q = i(_[it], W), Q < Z && (Z = Q, Y = W, q = ot))), c(a(_, it + 1), a(_, it), a(_, ot + 1)) && n(a(_, it + 1), a(_, it), a(_, ot)) && (W = R(a(_, it + 1), a(_, it), a(_, ot), a(_, ot + 1)), c(a(_, it - 1), a(_, it), W) && (Q = i(_[it], W), Q < $ && ($ = Q, X = W, tt = ot)));
+            if (q === (tt + 1) % w.length) W[0] = (Y[0] + X[0]) / 2, W[1] = (Y[1] + X[1]) / 2, G.push(W), it < tt ? (f(nt, _, it, tt + 1), nt.push(W), rt.push(W), q !== 0 && f(rt, _, q, _.length), f(rt, _, 0, it + 1)) : (it !== 0 && f(nt, _, it, _.length), f(nt, _, 0, tt + 1), nt.push(W), rt.push(W), f(rt, _, q, it + 1));
             else {
               if (q > tt && (tt += w.length), k = Number.MAX_VALUE, tt < q) return B;
               for (var ot = q; ot <= tt; ++ot) o(a(_, it - 1), a(_, it), a(_, ot)) && n(a(_, it + 1), a(_, it), a(_, ot)) && (Q = i(a(_, it), a(_, ot)), Q < k && T(_, it, ot) && (k = Q, st = ot % w.length));
@@ -18828,8 +18828,8 @@ return new ` + this.key + `();
             F.push(new e(R, D, I, 1, 0, true, true)), F.push(new e(R, D, I, 1, 0, true, true)), F.push(new e(R, D, I, 1, 0, true, true));
           }
           var O, z, V = this, X = this.game;
-          if (this.classes.each(function(b, $) {
-            O = V.add(b, new $({ game: X })), b === c.UTILITY_PIPELINE && (V.UTILITY_PIPELINE = O, V.fullFrame1 = O.fullFrame1, V.fullFrame2 = O.fullFrame2, V.halfFrame1 = O.halfFrame1, V.halfFrame2 = O.halfFrame2);
+          if (this.classes.each(function(W, $) {
+            O = V.add(W, new $({ game: X })), W === c.UTILITY_PIPELINE && (V.UTILITY_PIPELINE = O, V.fullFrame1 = O.fullFrame1, V.fullFrame2 = O.fullFrame2, V.halfFrame1 = O.halfFrame1, V.halfFrame2 = O.halfFrame2);
           }), this.MULTI_PIPELINE = this.get(c.MULTI_PIPELINE), this.BITMAPMASK_PIPELINE = this.get(c.BITMAPMASK_PIPELINE), this.MOBILE_PIPELINE = this.get(c.MOBILE_PIPELINE), U || (this.FX_PIPELINE = this.get(c.FX_PIPELINE)), A) for (z in A) {
             var Y = A[z];
             O = new Y(X), O.name = z, O.isPostFX ? this.postPipelineClasses.set(z, Y) : this.has(z) || (this.classes.set(z, Y), this.add(z, O));
@@ -19822,8 +19822,8 @@ return new ` + this.key + `();
           return a ? a.glTexture : this.renderer.normalTexture;
         }, batchSprite: function(i, a, l) {
           this.lightsActive && r.prototype.batchSprite.call(this, i, a, l);
-        }, batchTexture: function(i, a, l, f, u, v, m, x, g, y, T, C, E, A, M, P, R, F, D, I, U, N, w, B, L, G, O, z, V, X, Y, b) {
-          this.lightsActive && r.prototype.batchTexture.call(this, i, a, l, f, u, v, m, x, g, y, T, C, E, A, M, P, R, F, D, I, U, N, w, B, L, G, O, z, V, X, Y, b);
+        }, batchTexture: function(i, a, l, f, u, v, m, x, g, y, T, C, E, A, M, P, R, F, D, I, U, N, w, B, L, G, O, z, V, X, Y, W) {
+          this.lightsActive && r.prototype.batchTexture.call(this, i, a, l, f, u, v, m, x, g, y, T, C, E, A, M, P, R, F, D, I, U, N, w, B, L, G, O, z, V, X, Y, W);
         }, batchTextureFrame: function(i, a, l, f, u, v, m) {
           this.lightsActive && r.prototype.batchTextureFrame.call(this, i, a, l, f, u, v, m);
         } });
@@ -19856,11 +19856,11 @@ return new ` + this.key + `();
           l.flipX && (D || (N += -g.realWidth + I * 2), L = -1), l.flipY && (D || (w += -g.realHeight + U * 2), G = -1);
           var O = l.x, z = l.y;
           f.roundPixels && (O = Math.floor(O), z = Math.floor(z)), m.applyITRS(O, z, l.rotation, l.scaleX * L, l.scaleY * G), v.copyFrom(f.matrix), u ? (v.multiplyWithOffset(u, -f.scrollX * l.scrollFactorX, -f.scrollY * l.scrollFactorY), m.e = O, m.f = z) : (m.e -= f.scrollX * l.scrollFactorX, m.f -= f.scrollY * l.scrollFactorY), v.multiply(m, x);
-          var V = x.setQuad(N, w, N + R, w + F, f.renderRoundPixels), X = s.getTintAppendFloatAlpha, Y = f.alpha, b = X(l.tintTopLeft, Y * l._alphaTL), $ = X(l.tintTopRight, Y * l._alphaTR), Z = X(l.tintBottomLeft, Y * l._alphaBL), Q = X(l.tintBottomRight, Y * l._alphaBR);
+          var V = x.setQuad(N, w, N + R, w + F, f.renderRoundPixels), X = s.getTintAppendFloatAlpha, Y = f.alpha, W = X(l.tintTopLeft, Y * l._alphaTL), $ = X(l.tintTopRight, Y * l._alphaTR), Z = X(l.tintBottomLeft, Y * l._alphaBL), Q = X(l.tintBottomRight, Y * l._alphaBR);
           this.shouldFlush(6) && this.flush();
           var k = this.setGameObject(l, g);
-          this.manager.preBatch(l), this.batchQuad(l, V[0], V[1], V[2], V[3], V[4], V[5], V[6], V[7], T, C, E, A, b, $, Z, Q, l.tintFill, y, k), this.manager.postBatch(l);
-        }, batchTexture: function(l, f, u, v, m, x, g, y, T, C, E, A, M, P, R, F, D, I, U, N, w, B, L, G, O, z, V, X, Y, b, $, Z, Q) {
+          this.manager.preBatch(l), this.batchQuad(l, V[0], V[1], V[2], V[3], V[4], V[5], V[6], V[7], T, C, E, A, W, $, Z, Q, l.tintFill, y, k), this.manager.postBatch(l);
+        }, batchTexture: function(l, f, u, v, m, x, g, y, T, C, E, A, M, P, R, F, D, I, U, N, w, B, L, G, O, z, V, X, Y, W, $, Z, Q) {
           Q === void 0 && (Q = false), this.manager.set(this, l);
           var k = this._tempMatrix1, tt = this._tempMatrix2, q = this._tempMatrix3, st = I / u + V, nt = U / v + X, rt = (I + N) / u + V, _ = (U + w) / v + X, et = g, it = y, ot = -F, ut = -D;
           if (l.isCropped) {
@@ -19869,7 +19869,7 @@ return new ` + this.key + `();
             var ct = I, xt = U;
             A && (ct = N - vt.x - ht), M && (xt = w - vt.y - lt), st = ct / u + V, nt = xt / v + X, rt = (ct + ht) / u + V, _ = (xt + lt) / v + X, ot = -F + I, ut = -D + U;
           }
-          M = M ^ (!$ && f.isRenderTexture ? 1 : 0), A && (et *= -1, ot += g), M && (it *= -1, ut += y), Y.roundPixels && (m = Math.floor(m), x = Math.floor(x)), tt.applyITRS(m, x, E, T, C), k.copyFrom(Y.matrix), b ? (k.multiplyWithOffset(b, -Y.scrollX * P, -Y.scrollY * R), tt.e = m, tt.f = x) : (tt.e -= Y.scrollX * P, tt.f -= Y.scrollY * R), k.multiply(tt, q);
+          M = M ^ (!$ && f.isRenderTexture ? 1 : 0), A && (et *= -1, ot += g), M && (it *= -1, ut += y), Y.roundPixels && (m = Math.floor(m), x = Math.floor(x)), tt.applyITRS(m, x, E, T, C), k.copyFrom(Y.matrix), W ? (k.multiplyWithOffset(W, -Y.scrollX * P, -Y.scrollY * R), tt.e = m, tt.f = x) : (tt.e -= Y.scrollX * P, tt.f -= Y.scrollY * R), k.multiply(tt, q);
           var dt = q.setQuad(ot, ut, ot + et, ut + it, Y.renderRoundPixels);
           Z == null && (Z = this.setTexture2D(f)), l && !Q && this.manager.preBatch(l), this.batchQuad(l, dt[0], dt[1], dt[2], dt[3], dt[4], dt[5], dt[6], dt[7], st, nt, rt, _, B, L, G, O, z, f, Z), l && !Q && this.manager.postBatch(l);
         }, batchTextureFrame: function(l, f, u, v, m, x, g) {
@@ -19916,10 +19916,10 @@ return new ` + this.key + `();
           E && E.multiply(C, A);
           var M = u - l, P = v - f, R = Math.sqrt(M * M + P * P);
           if (R !== 0) {
-            var F = m * (v - f) / R, D = m * (l - u) / R, I = x * (v - f) / R, U = x * (l - u) / R, N = u - I, w = v - U, B = l - F, L = f - D, G = u + I, O = v + U, z = l + F, V = f + D, X = A.getX(N, w), Y = A.getY(N, w), b = A.getX(B, L), $ = A.getY(B, L), Z = A.getX(G, O), Q = A.getY(G, O), k = A.getX(z, V), tt = A.getY(z, V), q = this.strokeTint, st = q.TL, nt = q.TR, rt = q.BL, _ = q.BR;
-            if (this.batchQuad(null, k, tt, b, $, X, Y, Z, Q, 0, 0, 1, 1, st, nt, rt, _, 2), !(g <= 2)) {
+            var F = m * (v - f) / R, D = m * (l - u) / R, I = x * (v - f) / R, U = x * (l - u) / R, N = u - I, w = v - U, B = l - F, L = f - D, G = u + I, O = v + U, z = l + F, V = f + D, X = A.getX(N, w), Y = A.getY(N, w), W = A.getX(B, L), $ = A.getY(B, L), Z = A.getX(G, O), Q = A.getY(G, O), k = A.getX(z, V), tt = A.getY(z, V), q = this.strokeTint, st = q.TL, nt = q.TR, rt = q.BL, _ = q.BR;
+            if (this.batchQuad(null, k, tt, W, $, X, Y, Z, Q, 0, 0, 1, 1, st, nt, rt, _, 2), !(g <= 2)) {
               var et = this.prevQuad, it = this.firstQuad;
-              y > 0 && et[4] ? this.batchQuad(null, k, tt, b, $, et[0], et[1], et[2], et[3], 0, 0, 1, 1, st, nt, rt, _, 2) : (it[0] = k, it[1] = tt, it[2] = b, it[3] = $, it[4] = 1), T && it[4] ? this.batchQuad(null, X, Y, Z, Q, it[0], it[1], it[2], it[3], 0, 0, 1, 1, st, nt, rt, _, 2) : (et[0] = X, et[1] = Y, et[2] = Z, et[3] = Q, et[4] = 1);
+              y > 0 && et[4] ? this.batchQuad(null, k, tt, W, $, et[0], et[1], et[2], et[3], 0, 0, 1, 1, st, nt, rt, _, 2) : (it[0] = k, it[1] = tt, it[2] = W, it[3] = $, it[4] = 1), T && it[4] ? this.batchQuad(null, X, Y, Z, Q, it[0], it[1], it[2], it[3], 0, 0, 1, 1, st, nt, rt, _, 2) : (et[0] = X, et[1] = Y, et[2] = Z, et[3] = Q, et[4] = 1);
             }
           }
         }, destroy: function() {
@@ -19999,7 +19999,7 @@ return new ` + this.key + `();
           var x = this.quadVertexViewF32;
           x[1] = m, x[22] = m, x[14] = v, x[28] = v, x[35] = v, x[36] = m;
         }, batchQuad: function(v, m, x, g, y, T, C, E, A, M, P, R, F, D, I, U, N, w, B) {
-          var L = Math.min(m, g, T, E), G = Math.min(x, y, C, A), O = Math.max(m, g, T, E), z = Math.max(x, y, C, A), V = O - L, X = z - G, Y = this.spriteBounds.setTo(L, G, V, X), b = v ? v.preFX.padding : 0, $ = V + b * 2, Z = X + b * 2, Q = Math.abs(Math.max($, Z)), k = this.manager.getRenderTarget(Q), tt = this.targetBounds.setTo(0, 0, k.width, k.height);
+          var L = Math.min(m, g, T, E), G = Math.min(x, y, C, A), O = Math.max(m, g, T, E), z = Math.max(x, y, C, A), V = O - L, X = z - G, Y = this.spriteBounds.setTo(L, G, V, X), W = v ? v.preFX.padding : 0, $ = V + W * 2, Z = X + W * 2, Q = Math.abs(Math.max($, Z)), k = this.manager.getRenderTarget(Q), tt = this.targetBounds.setTo(0, 0, k.width, k.height);
           c(tt, Math.round(Y.centerX), Math.round(Y.centerY)), this.tempSprite = v;
           var q = this.gl, st = this.renderer;
           st.clearStencilMask(), this.setShader(this.drawSpriteShader), this.set1i("uMainSampler", 0), this.set2f("uResolution", st.width, st.height), this.flipProjectionMatrix(true), v && (this.onDrawSprite(v, k), v.preFX.onFX(this));
@@ -23132,8 +23132,8 @@ return new ` + this.key + `();
               if (R = o.add(I, U, l + F, f + D, e, s), G || w || O || B) {
                 var z = G ? T : 0, V = w ? A : 0, X = 0, Y = 0;
                 G && (X += e - C), O && (X += e - E), w && (Y += s - M), B && (Y += s - P);
-                var b = e - X, $ = s - Y;
-                R.cutWidth = b, R.cutHeight = $, R.setTrim(e, s, z, V, b, $);
+                var W = e - X, $ = s - Y;
+                R.cutWidth = W, R.cutHeight = $, R.setTrim(e, s, z, V, W, $);
               }
               F += a, G ? F += C : O ? F += E : F += e, I++;
             }
@@ -23413,7 +23413,7 @@ return new ` + this.key + `();
               N = w[X];
               var Y = new L(G);
               if (Y.setName(N.name), Y.setPosition(N.x, N.y), A.setTextureAndFrame(Y, z, V, N), N.width && (Y.displayWidth = N.width), N.height && (Y.displayHeight = N.height), this.orientation === h.ISOMETRIC) {
-                var b = this.tileWidth / this.tileHeight, $ = { x: Y.x - Y.y, y: (Y.x + Y.y) / b };
+                var W = this.tileWidth / this.tileHeight, $ = { x: Y.x - Y.y, y: (Y.x + Y.y) / W };
                 Y.x = $.x, Y.y = $.y;
               }
               var Z = { x: Y.originX * N.width, y: (Y.originY - (N.gid ? 1 : 0)) * N.height };
@@ -24688,7 +24688,7 @@ return new ` + this.key + `();
               }
             } else {
               T = new e({ name: m.name + x.name, id: x.id, x: m.x + n(x, "offsetx", 0) + x.x, y: m.y + n(x, "offsety", 0) + x.y, width: x.width, height: x.height, tileWidth: a.tilewidth, tileHeight: a.tileheight, alpha: m.opacity * x.opacity, visible: m.visible && x.visible, properties: n(x, "properties", []), orientation: r(a.orientation) }), T.orientation === c.HEXAGONAL && (T.hexSideLength = a.hexsidelength, T.staggerAxis = a.staggeraxis, T.staggerIndex = a.staggerindex, T.staggerAxis === "y" ? (M = (T.tileHeight - T.hexSideLength) / 2, T.widthInPixels = T.tileWidth * (T.width + 0.5), T.heightInPixels = T.height * (T.hexSideLength + M) + M) : (P = (T.tileWidth - T.hexSideLength) / 2, T.widthInPixels = T.width * (T.hexSideLength + P) + P, T.heightInPixels = T.tileHeight * (T.height + 0.5)));
-              for (var Y = [], b = 0, $ = x.data.length; b < $; b++) C = s(x.data[b]), C.gid > 0 ? (E = new h(T, C.gid, F, R.length, a.tilewidth, a.tileheight), E.rotation = C.rotation, E.flipX = C.flipped, Y.push(E)) : (A = l ? null : new h(T, -1, F, R.length, a.tilewidth, a.tileheight), Y.push(A)), F++, F === x.width && (R.push(Y), F = 0, Y = []);
+              for (var Y = [], W = 0, $ = x.data.length; W < $; W++) C = s(x.data[W]), C.gid > 0 ? (E = new h(T, C.gid, F, R.length, a.tilewidth, a.tileheight), E.rotation = C.rotation, E.flipX = C.flipped, Y.push(E)) : (A = l ? null : new h(T, -1, F, R.length, a.tilewidth, a.tileheight), Y.push(A)), F++, F === x.width && (R.push(Y), F = 0, Y = []);
             }
             T.data = R, u.push(T);
           }
@@ -25262,8 +25262,8 @@ return new ` + this.key + `();
             V >= 0 && V < C && X >= 0 && X < E && (z = F[X][V]);
             var Y;
             if (x) {
-              var b = y - g;
-              w ? Y = z / D * b * w(z / D) : Y = z / D * b;
+              var W = y - g;
+              w ? Y = z / D * W * w(z / D) : Y = z / D * W;
             } else w ? Y = z * g * w(z / D) : Y = z * g;
             return Y + h;
           } : s = function(B, L, G, O, z) {
@@ -25296,10 +25296,10 @@ return new ` + this.key + `();
           }, L = new v(x, T), G = 0; G < C.length; G++) for (var O = C[G].key, z = C[G].value, V = 0; V < T.length; V++) O === "scale" && !T[V].hasOwnProperty("scale") ? (B(L, V, "scaleX", z), B(L, V, "scaleY", z)) : B(L, V, O, z);
           L.completeDelay = o(g, "completeDelay", 0), L.loop = Math.round(o(g, "loop", 0)), L.loopDelay = Math.round(o(g, "loopDelay", 0)), L.paused = r(g, "paused", false), L.persist = r(g, "persist", false), L.callbackScope = e(g, "callbackScope", L);
           for (var X = d.TYPES, Y = 0; Y < X.length; Y++) {
-            var b = X[Y], $ = l(g, b, false);
+            var W = X[Y], $ = l(g, W, false);
             if ($) {
-              var Z = l(g, b + "Params", []);
-              L.setCallback(b, $, Z);
+              var Z = l(g, W + "Params", []);
+              L.setCallback(W, $, Z);
             }
           }
           return L;
@@ -26424,12 +26424,12 @@ return new ` + this.key + `();
         p.exports = S;
       }), 31749: ((p, S, t) => {
         p.exports = { Format: t(27902), Pad: t(41836), RemoveAt: t(33628), Reverse: t(27671), UppercaseFirst: t(35355), UUID: t(45650) };
-      }) }, H = {};
+      }) }, K = {};
       function j(p) {
-        var S = H[p];
+        var S = K[p];
         if (S !== void 0) return S.exports;
-        var t = H[p] = { exports: {} };
-        return W[p](t, t.exports, j), t.exports;
+        var t = K[p] = { exports: {} };
+        return b[p](t, t.exports, j), t.exports;
       }
       j.g = (function() {
         if (typeof globalThis == "object") return globalThis;
@@ -26448,41 +26448,41 @@ var Wt = bt();
 const yt = Xt(Wt), St = [{ id: "1-1", title: "雲海の航路", theme: "sea", world: "world-v2.webp", goal_label: "雲海の船着場", description: "流れる水路と光る滝。スターリングで空を飛び、遠くの雲海へ。", intro: "いっしょに、雲海へ！", par_seconds: 105 }, { id: "2-1", title: "氷晶の海", theme: "ice", world: "world-ice-v1.webp", goal_label: "氷晶の船着場", description: "氷山とツララの海。スターリングで氷の谷を越え、次の航路へ。", intro: "氷の海へ、出航！", par_seconds: 105 }, { id: "3-1", title: "砂漠のオアシス", theme: "desert", world: "world-desert-v1.webp", goal_label: "オアシスの船着場", description: "サボテンとオアシスの滝。スターリングで砂丘の向こうまでひとっ飛び。", intro: "砂漠の風に、乗ろう！", par_seconds: 105 }, { id: "4-1", title: "雲の階段", theme: "cloud", world: "world-cloud-v1.webp", goal_label: "天空の船着場", description: "雲の階段と上昇気流。スターリングで遠くの雲へ、空の大航海。", intro: "雲の航路へ、出航！", par_seconds: 120 }], ft = { width: 720, height: 480 }, Ht = [{ x: 0, y: 406, width: 860 }, { x: 950, y: 394, width: 600 }, { x: 1660, y: 381, width: 620 }, { x: 2400, y: 407, width: 700 }, { x: 3200, y: 387, width: 650 }, { x: 3960, y: 403, width: 700 }, { x: 4780, y: 379, width: 610 }, { x: 5500, y: 406, width: 720 }, { x: 6330, y: 391, width: 620 }, { x: 7060, y: 379, width: 650 }, { x: 7830, y: 407, width: 610 }, { x: 8560, y: 394, width: 960 }], Nt = [3, 6, 10];
 function Kt() {
   let at = 0;
-  return Array.from({ length: 22 }, (K, W) => {
-    const H = W === 0 || W === 21 ? 700 : 340 + W % 3 * 20, j = [0, -32, -64, 96, 64, 32, 0, -32, 128, 96, 64, 32, -128, -160, -192, -32, -64, -96, -128, -160, -192, -224], J = { x: at, y: 406 + j[W % j.length], width: H };
-    return at += H + 115 + W % 3 * 8, J;
+  return Array.from({ length: 22 }, (H, b) => {
+    const K = b === 0 || b === 21 ? 700 : 340 + b % 3 * 20, j = [0, -32, -64, 96, 64, 32, 0, -32, 128, 96, 64, 32, -128, -160, -192, -32, -64, -96, -128, -160, -192, -224], J = { x: at, y: 406 + j[b % j.length], width: K };
+    return at += K + 115 + b % 3 * 8, J;
   });
 }
 function Lt(at = "1-1") {
-  const K = St.find((i) => i.id === at) ?? St[0], W = K.theme, H = W === "cloud" ? Kt() : Ht.map((i, a) => ({ ...i, y: W === "ice" ? 402 - a % 3 * 12 : W === "desert" ? 403 - a % 4 * 7 : i.y }));
-  if (W !== "cloud") {
+  const H = St.find((i) => i.id === at) ?? St[0], b = H.theme, K = b === "cloud" ? Kt() : Ht.map((i, a) => ({ ...i, y: b === "ice" ? 402 - a % 3 * 12 : b === "desert" ? 403 - a % 4 * 7 : i.y }));
+  if (b !== "cloud") {
     const i = [0, 0, 0, 170, 170, 0, 0, -160, -160, 0, 0, 0];
-    H.forEach((a, l) => {
+    K.forEach((a, l) => {
       a.y += i[l];
     });
   }
   let j = 0;
-  H.forEach((i, a) => {
-    const l = H[a + 1], f = l ? l.x - i.x - i.width : 0;
+  K.forEach((i, a) => {
+    const l = K[a + 1], f = l ? l.x - i.x - i.width : 0;
     i.x = j;
-    const u = W === "sea" ? Nt.includes(a) : W === "ice" ? a % 2 === 1 : W === "desert" ? a % 3 === 1 : false;
-    i.width = Math.max(i.width, W === "cloud" ? 650 : u ? 1500 : 900), j = i.x + i.width + f;
+    const u = b === "sea" ? Nt.includes(a) : b === "ice" ? a % 2 === 1 : b === "desert" ? a % 3 === 1 : false;
+    i.width = Math.max(i.width, b === "cloud" ? 650 : u ? 1500 : 900), j = i.x + i.width + f;
   });
-  const p = H.at(-1).x + H.at(-1).width + 2800, S = [...H, ...H.map((i) => ({ ...i, x: i.x + p }))], t = (i, a, l = 540) => ({ x: i.x + i.width - 190, y: i.y - 24, targetX: a.x + 160, targetY: a.y - 18, height: l }), d = [t(H[2], H[5], 460), t(H.at(-1), S[H.length], 620), t(S[H.length + 5], S[H.length + 8], 500)], c = S.slice(0, -1).flatMap((i, a) => {
+  const p = K.at(-1).x + K.at(-1).width + 2800, S = [...K, ...K.map((i) => ({ ...i, x: i.x + p }))], t = (i, a, l = 540) => ({ x: i.x + i.width - 190, y: i.y - 24, targetX: a.x + 160, targetY: a.y - 18, height: l }), d = [t(K[2], K[5], 460), t(K.at(-1), S[K.length], 620), t(S[K.length + 5], S[K.length + 8], 500)], c = S.slice(0, -1).flatMap((i, a) => {
     const l = S[a + 1];
     return l.x - i.x - i.width < 300 && Math.abs(l.y - i.y) > 100 ? [{ x: i.x + i.width, nextX: l.x, fromY: i.y, toY: l.y, ascent: l.y < i.y }] : [];
-  }), o = S.at(-1), n = (W === "sea" ? [0, H.length].flatMap((i) => Nt.map((a) => {
+  }), o = S.at(-1), n = (b === "sea" ? [0, K.length].flatMap((i) => Nt.map((a) => {
     const l = S[i + a];
     return { x: l.x + l.width / 2, y: l.y, kind: "rock" };
-  })) : W === "cloud" ? [] : S.filter((i, a) => a > 0 && (W === "desert" ? a % 3 === 1 : a % 2 === 1)).map((i) => ({ x: i.x + i.width / 2, y: i.y, kind: W === "ice" ? "iceberg" : "cactus" }))).filter((i) => {
+  })) : b === "cloud" ? [] : S.filter((i, a) => a > 0 && (b === "desert" ? a % 3 === 1 : a % 2 === 1)).map((i) => ({ x: i.x + i.width / 2, y: i.y, kind: b === "ice" ? "iceberg" : "cactus" }))).filter((i) => {
     const a = S.find((l) => i.x >= l.x && i.x < l.x + l.width);
     return !d.some((l) => l.x >= a.x && l.x < a.x + a.width);
   }).map((i) => {
     const a = S.find((l) => i.x >= l.x && i.x < l.x + l.width);
     return { ...i, x: a.x + a.width / 2 };
-  }), e = W === "ice" ? S.filter((i, a) => a % 2 === 0 && !d.some((l) => l.x >= i.x && l.x < i.x + i.width) && !n.some((l) => l.x >= i.x && l.x < i.x + i.width)).map((i) => ({ x: i.x + i.width / 2, y: i.y })) : [], s = S.flatMap((i, a) => {
+  }), e = b === "ice" ? S.filter((i, a) => a % 2 === 0 && !d.some((l) => l.x >= i.x && l.x < i.x + i.width) && !n.some((l) => l.x >= i.x && l.x < i.x + i.width)).map((i) => ({ x: i.x + i.width / 2, y: i.y })) : [], s = S.flatMap((i, a) => {
     const l = n.some((u) => u.x >= i.x && u.x < i.x + i.width) || e.some((u) => u.x >= i.x && u.x < i.x + i.width), f = [a === 0 ? 360 : 190, i.width - 150];
-    return W !== "cloud" && f.splice(1, 0, i.width / 2 - (l ? 180 : 0)), f.map((u, v) => ({ x: i.x + u, y: i.y - 27, red: (a + v) % 3 === 0 }));
+    return b !== "cloud" && f.splice(1, 0, i.width / 2 - (l ? 180 : 0)), f.map((u, v) => ({ x: i.x + u, y: i.y - 27, red: (a + v) % 3 === 0 }));
   });
   for (const i of d) {
     const a = s.filter((l) => l.x > i.x + 80 && l.x < i.targetX - 80);
@@ -26496,36 +26496,36 @@ function Lt(at = "1-1") {
     const a = i / 6;
     s.push({ x: h.x + (h.targetX - h.x) * a, y: h.y + (h.targetY - h.y) * a - 4 * h.height * a * (1 - a), red: i === 3 });
   }
-  return { ...K, theme: W, channels: S, cascades: c, rings: d, crystals: s, hazards: n, icicles: e, goalX: o.x + o.width - 300, goalY: o.y, minY: Math.min(...S.map((i) => i.y)) - 850, timeLimitMs: 3e5 };
+  return { ...H, theme: b, channels: S, cascades: c, rings: d, crystals: s, hazards: n, icicles: e, goalX: o.x + o.width - 300, goalY: o.y, minY: Math.min(...S.map((i) => i.y)) - 850, timeLimitMs: 3e5 };
 }
 const Ot = Lt();
 Ot.goalX, Ot.channels, Ot.crystals, Ot.hazards;
-function Ut(at, K) {
-  const W = at.textures.get("world").getSourceImage(), H = (J, p) => {
+function Ut(at, H) {
+  const b = at.textures.get("world").getSourceImage(), K = (J, p) => {
     if (at.textures.exists(J)) return;
     const S = Math.min(...p.map((n) => n[0])) - 2, t = Math.min(...p.map((n) => n[1])) - 2, d = Math.max(...p.map((n) => n[0])) - S + 2, c = Math.max(...p.map((n) => n[1])) - t + 2, o = at.textures.createCanvas(J, d, c);
     if (!o) return;
     const r = o.context;
-    r.translate(-S, -t), r.beginPath(), p.forEach(([n, e], s) => s ? r.lineTo(n, e) : r.moveTo(n, e)), r.closePath(), r.clip(), r.drawImage(W, 0, 0, 1536, 1024), o.refresh();
+    r.translate(-S, -t), r.beginPath(), p.forEach(([n, e], s) => s ? r.lineTo(n, e) : r.moveTo(n, e)), r.closePath(), r.clip(), r.drawImage(b, 0, 0, 1536, 1024), o.refresh();
   };
-  K === "ice" && (H("iceberg", [[278, 469], [294, 444], [298, 388], [308, 412], [316, 340], [327, 365], [334, 307], [346, 293], [359, 311], [366, 375], [376, 356], [390, 416], [402, 427], [411, 455], [419, 469], [400, 480], [365, 479], [337, 476], [312, 483], [287, 479]]), H("icicle", [[1035, 282], [1056, 279], [1052, 300], [1047, 343], [1043, 355], [1039, 322]]));
+  H === "ice" && (K("iceberg", [[278, 469], [294, 444], [298, 388], [308, 412], [316, 340], [327, 365], [334, 307], [346, 293], [359, 311], [366, 375], [376, 356], [390, 416], [402, 427], [411, 455], [419, 469], [400, 480], [365, 479], [337, 476], [312, 483], [287, 479]]), K("icicle", [[1035, 282], [1056, 279], [1052, 300], [1047, 343], [1043, 355], [1039, 322]]));
   const j = { sea: [[504, 508], [529, 492], [545, 470], [564, 475], [574, 435], [586, 431], [594, 413], [608, 430], [621, 423], [632, 440], [643, 404], [654, 393], [665, 418], [680, 415], [694, 438], [708, 425], [724, 446], [753, 438], [769, 447], [779, 444], [798, 457], [816, 460], [842, 486], [832, 514], [807, 529], [792, 554], [775, 535], [745, 523], [727, 521], [710, 551], [694, 520], [666, 515], [637, 543], [619, 511], [586, 534], [562, 517], [535, 517]], ice: [[778, 405], [798, 390], [827, 375], [852, 372], [876, 354], [897, 342], [915, 339], [936, 311], [948, 304], [966, 325], [975, 337], [998, 334], [1006, 357], [1020, 362], [1030, 397], [1010, 416], [980, 421], [950, 418], [918, 421], [875, 413], [841, 424], [809, 418]], desert: [[969, 458], [984, 449], [998, 432], [1010, 432], [1015, 411], [1031, 405], [1043, 412], [1054, 406], [1073, 419], [1094, 419], [1114, 426], [1128, 450], [1146, 444], [1167, 454], [1194, 458], [1206, 469], [1181, 476], [1137, 477], [1102, 471], [1071, 479], [1033, 470], [1e3, 475]], cloud: [[921, 296], [936, 286], [947, 273], [960, 272], [970, 223], [978, 205], [988, 227], [991, 263], [1001, 250], [1015, 255], [1024, 220], [1036, 208], [1043, 222], [1048, 253], [1063, 244], [1074, 221], [1083, 209], [1094, 233], [1102, 249], [1120, 247], [1136, 268], [1152, 272], [1170, 290], [1160, 312], [1135, 318], [1106, 337], [1096, 313], [1061, 324], [1045, 317], [1024, 339], [1005, 312], [975, 323], [955, 310], [932, 311]] };
-  H(`harbor-shore-${K}`, j[K]);
+  K(`harbor-shore-${H}`, j[H]);
 }
-function wt(at, K) {
-  Ut(at, K);
-  const W = (p, S, t, d) => {
+function wt(at, H) {
+  Ut(at, H);
+  const b = (p, S, t, d) => {
     if (at.textures.exists(p)) return;
     const c = at.textures.createCanvas(p, S, t);
     c && (d(c.context), c.refresh());
   };
-  let H = 731;
-  const j = () => (H = H * 1664525 + 1013904223 >>> 0, H / 4294967296), J = (p, S, t, d, c) => {
+  let K = 731;
+  const j = () => (K = K * 1664525 + 1013904223 >>> 0, K / 4294967296), J = (p, S, t, d, c) => {
     p.fillStyle = d;
     for (let o = 0; o < c; o++) p.fillRect(j() * S, j() * t, 0.6 + j() * 2, 0.6 + j() * 3);
   };
-  W(`water-paint-${K}`, 512, 144, (p) => {
-    const S = K === "desert", t = K === "ice", d = p.createLinearGradient(0, 0, 0, 144);
+  b(`water-paint-${H}`, 512, 144, (p) => {
+    const S = H === "desert", t = H === "ice", d = p.createLinearGradient(0, 0, 0, 144);
     d.addColorStop(0, S ? "#9ddfd2" : t ? "#b8dfe9" : "#a1d7ed"), d.addColorStop(0.45, S ? "#43b6b4" : t ? "#65adcc" : "#4ca8d7"), d.addColorStop(1, S ? "#b9e8da" : "#c1e8f6"), p.fillStyle = d, p.fillRect(0, 0, 512, 144);
     for (let c = 0; c < 3; c++) {
       p.lineWidth = c === 0 ? 2.8 : 1, p.strokeStyle = c === 0 ? "rgba(244,252,247,.26)" : "rgba(248,254,255,.43)";
@@ -26543,7 +26543,7 @@ function wt(at, K) {
       p.strokeStyle = "rgba(247,255,250,.22)", p.lineWidth = 1.2, p.beginPath(), p.moveTo(r - 35, n), p.bezierCurveTo(r - 15, n - 12, r + 19, n - 6, r + 33, n), p.bezierCurveTo(r + 19, n + 11, r - 17, n + 8, r - 35, n), p.stroke();
     }
     J(p, 512, 144, "rgba(255,255,255,.09)", 1600);
-  }), W("cactus", 116, 184, (p) => {
+  }), b("cactus", 116, 184, (p) => {
     p.save(), p.beginPath(), p.moveTo(44, 170), p.lineTo(43, 111), p.lineTo(24, 111), p.quadraticCurveTo(12, 111, 12, 98), p.lineTo(12, 63), p.bezierCurveTo(12, 49, 30, 47, 31, 63), p.lineTo(31, 90), p.lineTo(44, 90), p.lineTo(44, 34), p.bezierCurveTo(44, 8, 77, 10, 77, 34), p.lineTo(77, 74), p.lineTo(90, 74), p.lineTo(90, 46), p.bezierCurveTo(90, 32, 108, 33, 108, 46), p.lineTo(108, 83), p.quadraticCurveTo(108, 94, 95, 94), p.lineTo(77, 94), p.lineTo(78, 170), p.closePath(), p.clip();
     const S = p.createLinearGradient(10, 10, 112, 145);
     S.addColorStop(0, "#bdd1a0"), S.addColorStop(0.27, "#87a77b"), S.addColorStop(0.52, "#567f68"), S.addColorStop(0.8, "#375f53"), S.addColorStop(1, "#24483f"), p.fillStyle = S, p.fillRect(0, 0, 116, 184), p.lineCap = "round";
@@ -26557,9 +26557,9 @@ function wt(at, K) {
     p.fillStyle = "#f2d9a3", p.beginPath(), p.arc(60, 20, 3, 0, Math.PI * 2), p.fill();
   });
 }
-const gt = (at, K, W) => K - (at - W) * 0.13;
+const gt = (at, H, b) => H - (at - b) * 0.13;
 class Zt {
-  constructor(K, W, H = Lt()) {
+  constructor(H, b, K = Lt()) {
     __publicField(this, "clouds");
     __publicField(this, "water");
     __publicField(this, "foam");
@@ -26568,9 +26568,9 @@ class Zt {
     __publicField(this, "afloat", false);
     __publicField(this, "cloudPuffs", []);
     __publicField(this, "waterPaint", []);
-    if (this.scene = K, this.onSplash = W, this.course = H, this.clouds = K.add.graphics().setDepth(2), this.water = K.add.graphics().setDepth(3), this.foam = K.add.graphics().setDepth(11), H.theme !== "cloud" && (wt(K, H.theme), this.waterPaint = Array.from({ length: 5 }, () => K.add.tileSprite(0, 0, 512, 76, `water-paint-${H.theme}`).setOrigin(0, 0.5).setRotation(-Math.atan(0.13)).setDepth(3.2).setAlpha(0.6).setVisible(false))), H.theme === "cloud") {
-      if (!K.textures.exists("cloud-bank")) {
-        const j = K.textures.createCanvas("cloud-bank", 192, 112);
+    if (this.scene = H, this.onSplash = b, this.course = K, this.clouds = H.add.graphics().setDepth(2), this.water = H.add.graphics().setDepth(3), this.foam = H.add.graphics().setDepth(11), K.theme !== "cloud" && (wt(H, K.theme), this.waterPaint = Array.from({ length: 5 }, () => H.add.tileSprite(0, 0, 512, 76, `water-paint-${K.theme}`).setOrigin(0, 0.5).setRotation(-Math.atan(0.13)).setDepth(3.2).setAlpha(0.6).setVisible(false))), K.theme === "cloud") {
+      if (!H.textures.exists("cloud-bank")) {
+        const j = H.textures.createCanvas("cloud-bank", 192, 112);
         if (j) {
           const J = j.context, p = (S, t, d, c, o, r) => {
             J.save(), J.translate(S, t), J.scale(d, c);
@@ -26580,13 +26580,13 @@ class Zt {
           p(96, 74, 96, 38, "#bbcce8", "rgba(174,195,230,.7)"), p(37, 57, 40, 33, "#edf4ff", "rgba(212,227,248,.8)"), p(81, 45, 47, 40, "#fffdf4", "rgba(218,232,251,.9)"), p(128, 51, 44, 36, "#fffef8", "rgba(208,225,248,.85)"), p(165, 62, 30, 28, "#f4f8ff", "rgba(214,229,249,.7)"), j.refresh();
         }
       }
-      for (let j = 0; j < 40; j++) this.cloudPuffs.push(K.add.image(0, 0, "cloud-bank").setOrigin(0.5, 0.4).setDisplaySize(144, 84).setDepth(3).setVisible(false));
+      for (let j = 0; j < 40; j++) this.cloudPuffs.push(H.add.image(0, 0, "cloud-bank").setOrigin(0.5, 0.4).setDisplaySize(144, 84).setDepth(3).setVisible(false));
     }
   }
-  splash(K, W) {
-    this.wakes.push({ x: K, y: W, age: 0, splash: true }), this.course.theme !== "cloud" && this.onSplash();
+  splash(H, b) {
+    this.wakes.push({ x: H, y: b, age: 0, splash: true }), this.course.theme !== "cloud" && this.onSplash();
   }
-  draw(K, W, H, j, J, p, S = 1) {
+  draw(H, b, K, j, J, p, S = 1) {
     const t = this.water.clear(), d = this.scene.cameras.main.scrollX, c = this.clouds.clear(), o = this.scene.cameras.main.scrollY, r = this.course.channels, n = this.course.theme;
     let e = 0, s = 0;
     for (const a of this.waterPaint) a.setVisible(false);
@@ -26594,16 +26594,16 @@ class Zt {
     const h = n === "desert" ? 16773077 : 15268095;
     for (let a = 0; a < (n === "cloud" ? 0 : 18); a++) c.fillStyle(h, a / 22), c.fillRect(d - 180, o + 325 + a * 9, ft.width + 360, 10);
     n !== "cloud" && c.fillStyle(h, 0.85).fillRect(d - 180, o + 485, ft.width + 360, 400);
-    for (let a = 0; a < (n === "cloud" ? 0 : 7); a++) c.fillStyle(16777215, 0.32), c.fillEllipse(d - 80 + a * 160, o + 470 + Math.sin(H / 1500 + a) * 12, 260, 70);
+    for (let a = 0; a < (n === "cloud" ? 0 : 7); a++) c.fillStyle(16777215, 0.32), c.fillEllipse(d - 80 + a * 160, o + 470 + Math.sin(K / 1500 + a) * 12, 260, 70);
     r.slice(0, n === "cloud" ? 0 : -1).forEach((a, l) => {
       const f = a.x + a.width, u = r[l + 1];
       if (f > d + ft.width + 120 || u.x < d - 120) return;
-      const v = gt(f, a.y - 43, K), m = gt(u.x, u.y - 43, K);
+      const v = gt(f, a.y - 43, H), m = gt(u.x, u.y - 43, H);
       c.fillStyle(n === "desert" ? 16773852 : 15202303, 0.95).fillPoints([{ x: f, y: v }, { x: u.x, y: m }, { x: u.x + 30, y: m + 270 }, { x: f - 30, y: v + 270 }], true), c.fillStyle(16777215, 0.85).fillEllipse((f + u.x) / 2, Math.max(v, m) + 160, u.x - f + 55, 60);
     });
     for (const a of r) {
       if (a.x > d + ft.width + 180 || a.x + a.width < d - 200) continue;
-      const l = Math.max(a.x, d - 160), f = Math.min(a.x + a.width, d + ft.width + 180), u = (g, y = 0) => gt(g, a.y + y, K);
+      const l = Math.max(a.x, d - 160), f = Math.min(a.x + a.width, d + ft.width + 180), u = (g, y = 0) => gt(g, a.y + y, H);
       if (n === "cloud") {
         const g = Math.max(0, Math.floor((l - a.x) / 70));
         for (let y = g; a.x + 28 + y * 70 < f; y++) {
@@ -26615,20 +26615,20 @@ class Zt {
       }
       t.fillStyle(n === "desert" ? 3389873 : 5025780, 0.35).fillPoints([{ x: l, y: u(l, 32) }, { x: f, y: u(f, 32) }, { x: f, y: u(f, 84) }, { x: l, y: u(l, 84) }], true), t.fillStyle(n === "desert" ? 6405301 : n === "ice" ? 8830419 : 6862556, 0.55).fillPoints([{ x: l, y: u(l, -42) }, { x: f, y: u(f, -42) }, { x: f, y: u(f, 33) }, { x: l, y: u(l, 33) }], true);
       const v = this.waterPaint[s++];
-      v && (v.setPosition(l, u(l, -4)).setSize((f - l) * Math.sqrt(1 + 0.13 ** 2), 74).setVisible(true), v.tilePositionX = l - H * 0.025, v.tileScaleY = 0.52), (n === "ice" || n === "desert") && t.lineStyle(n === "ice" ? 7 : 10, n === "ice" ? 15793407 : 15911825, 0.9).lineBetween(l, u(l, -43), f, u(f, -43)), t.fillStyle(10350335, 0.24).fillPoints([{ x: l, y: u(l, -40) }, { x: f, y: u(f, -40) }, { x: f, y: u(f, -8) }, { x: l, y: u(l, -8) }], true);
-      for (let g = 0; g < (S < 1 ? 3 : 5); g++) for (let y = l - 100 + (H * 0.1 + g * 47) % 140; y < f; y += 140) {
+      v && (v.setPosition(l, u(l, -4)).setSize((f - l) * Math.sqrt(1 + 0.13 ** 2), 74).setVisible(true), v.tilePositionX = l - K * 0.025, v.tileScaleY = 0.52), (n === "ice" || n === "desert") && t.lineStyle(n === "ice" ? 7 : 10, n === "ice" ? 15793407 : 15911825, 0.9).lineBetween(l, u(l, -43), f, u(f, -43)), t.fillStyle(10350335, 0.24).fillPoints([{ x: l, y: u(l, -40) }, { x: f, y: u(f, -40) }, { x: f, y: u(f, -8) }, { x: l, y: u(l, -8) }], true);
+      for (let g = 0; g < (S < 1 ? 3 : 5); g++) for (let y = l - 100 + (K * 0.1 + g * 47) % 140; y < f; y += 140) {
         const T = Math.max(l, y), C = Math.min(f, y + 64 + g * 5);
         if (T >= C) continue;
-        const E = -32 + g * 15 + Math.sin(y / 80 + H / 850) * 3;
+        const E = -32 + g * 15 + Math.sin(y / 80 + K / 850) * 3;
         t.lineStyle(g % 2 ? 1 : 1.5, 15334655, 0.22), t.beginPath().moveTo(T, u(T, E));
         for (let A = T + 8; A < C; A += 8) t.lineTo(A, u(A, E + Math.sin((A - T) / (C - T) * Math.PI * 2) * 2));
         t.lineTo(C, u(C, E)).strokePath();
       }
       t.lineStyle(1.5, 15794175, 0.4).beginPath().moveTo(l, u(l, 32));
-      for (let g = l + 10; g < f; g += 10) t.lineTo(g, u(g, 32 + Math.sin(g / 41 + H / 1700) * 1.8));
+      for (let g = l + 10; g < f; g += 10) t.lineTo(g, u(g, 32 + Math.sin(g / 41 + K / 1700) * 1.8));
       t.lineTo(f, u(f, 32)).strokePath();
       for (let g = 0; g < Math.ceil((f - l) / 100) * S; g++) {
-        const y = l + (g * 103 + H * 0.035) % (f - l), T = Math.max(0, Math.sin(H / 540 + g * 2.7)), C = u(y, 9 + Math.sin(g * 3) * 20);
+        const y = l + (g * 103 + K * 0.035) % (f - l), T = Math.max(0, Math.sin(K / 540 + g * 2.7)), C = u(y, 9 + Math.sin(g * 3) * 20);
         t.lineStyle(1.5, 16774353, T * 0.72).lineBetween(y - 7, C, y + 7, C), T > 0.75 && t.lineStyle(1, 16777215, T * 0.65).lineBetween(y, C - 4, y, C + 4);
       }
       const m = a.x + a.width;
@@ -26636,17 +26636,17 @@ class Zt {
       const x = u(m);
       t.fillStyle(11464447, 0.57).fillPoints([{ x: m - 9, y: x - 42 }, { x: m + 12, y: x + 33 }, { x: m + 34, y: x + 245 }, { x: m - 42, y: x + 215 }], true);
       for (let g = 0; g < 12; g++) {
-        const y = x - 39 + g * 6, T = m - 6 + g * 1.1, C = (H * 0.33 + g * 31) % 210;
+        const y = x - 39 + g * 6, T = m - 6 + g * 1.1, C = (K * 0.33 + g * 31) % 210;
         t.lineStyle(2 + g % 3, 16777215, 0.34), t.lineBetween(T, y + C, T + (g - 5) * 1.4, y + C + 46);
       }
       t.lineStyle(5, 16777215, 0.82).lineBetween(m - 9, x - 41, m + 12, x + 33), t.fillStyle(15596287, 0.21).fillEllipse(m - 5, x + 210, 120, 35);
     }
     for (const a of this.course.cascades) {
       if (a.nextX < d - 120 || a.x > d + ft.width + 100) continue;
-      const l = (a.x + a.nextX) / 2, f = Math.min(a.fromY, a.toY), u = Math.max(a.fromY, a.toY), v = gt(l, f - 30, K), m = gt(l, u + 45, K);
+      const l = (a.x + a.nextX) / 2, f = Math.min(a.fromY, a.toY), u = Math.max(a.fromY, a.toY), v = gt(l, f - 30, H), m = gt(l, u + 45, H);
       t.fillStyle(n === "cloud" ? 16770209 : 10414586, n === "cloud" ? 0.12 : 0.6).fillRoundedRect(l - 42, v, 84, m - v, 20);
       for (let x = 0; x < 10; x++) {
-        const y = ((H * (a.ascent ? -6e-4 : 7e-4) + x * 0.1) % 1 + 1) % 1, T = l - 37 + x * 8;
+        const y = ((K * (a.ascent ? -6e-4 : 7e-4) + x * 0.1) % 1 + 1) % 1, T = l - 37 + x * 8;
         t.lineStyle(2, a.ascent ? 16773043 : 16777215, 0.6), t.lineBetween(T, v + y * (m - v), T, Math.min(m, v + y * (m - v) + 33));
       }
       if (t.fillStyle(16777215, 0.55).fillEllipse(l, m, 110, 27), a.ascent) for (let x = 0; x < 3; x++) {
@@ -26654,12 +26654,12 @@ class Zt {
         t.lineStyle(3, 16770722, 0.85).beginPath().moveTo(l - 10, g + 9).lineTo(l, g).lineTo(l + 10, g + 9).strokePath();
       }
     }
-    J && !this.afloat && this.splash(K, W + 13), this.afloat = J, J && H - this.lastWake > (p ? 85 : 110) / S && (this.wakes.push({ x: K - 108, y: W + 13, age: 0, splash: false }), this.lastWake = H);
+    J && !this.afloat && this.splash(H, b + 13), this.afloat = J, J && K - this.lastWake > (p ? 85 : 110) / S && (this.wakes.push({ x: H - 108, y: b + 13, age: 0, splash: false }), this.lastWake = K);
     const i = this.foam.clear();
     this.wakes = this.wakes.filter((a) => a.age < (a.splash ? 750 : 1300));
     for (const a of this.wakes) {
       a.age += j;
-      const l = a.age / (a.splash ? 750 : 1300), f = (a.splash ? 160 : 100) + l * 150, u = gt(a.x, a.y, K);
+      const l = a.age / (a.splash ? 750 : 1300), f = (a.splash ? 160 : 100) + l * 150, u = gt(a.x, a.y, H);
       if (n === "cloud") {
         i.fillStyle(16777215, Math.max(0, (1 - l) * 0.65)).fillEllipse(a.x - l * 30, u, f * 0.65, 18 + l * 22);
         continue;
@@ -26673,39 +26673,39 @@ class Zt {
       }
     }
     if (J && n !== "cloud") {
-      const a = Math.sin(H / 170) * 2;
-      i.lineStyle(p ? 3.8 : 2.7, 16121855, 0.85), i.beginPath().moveTo(K - 120, W + 8 + a), i.lineTo(K - 54, W + 22 + a), i.lineTo(K + 40, W + 21 + a), i.lineTo(K + 124, W + 4 + a).strokePath();
+      const a = Math.sin(K / 170) * 2;
+      i.lineStyle(p ? 3.8 : 2.7, 16121855, 0.85), i.beginPath().moveTo(H - 120, b + 8 + a), i.lineTo(H - 54, b + 22 + a), i.lineTo(H + 40, b + 21 + a), i.lineTo(H + 124, b + 4 + a).strokePath();
       for (let l = 0; l < 7; l++) {
-        const f = (H / (p ? 280 : 420) + l / 7) % 1;
-        i.fillStyle(16777215, (1 - f) * 0.8), i.fillEllipse(K + 111 + f * 27, W + 5 - Math.sin(f * Math.PI) * 22, 3, 5);
+        const f = (K / (p ? 280 : 420) + l / 7) % 1;
+        i.fillStyle(16777215, (1 - f) * 0.8), i.fillEllipse(H + 111 + f * 27, b + 5 - Math.sin(f * Math.PI) * 22, 3, 5);
       }
     }
   }
 }
 class Jt {
-  constructor(K, W, H, j, J) {
+  constructor(H, b, K, j, J) {
     __publicField(this, "raised", []);
     __publicField(this, "icicles", []);
     __publicField(this, "warnings");
     __publicField(this, "weather");
     __publicField(this, "cue", "");
-    this.scene = K, this.course = W, this.onHit = j, this.onSplash = J, wt(K, W.theme), this.warnings = K.add.graphics().setDepth(7), this.weather = K.add.graphics().setDepth(14).setScrollFactor(0);
-    const p = K.physics.add.staticGroup();
-    for (const S of W.hazards) {
-      const t = S.kind === "iceberg", d = S.kind === "cactus", c = K.add.rectangle(S.x, S.y - (d ? 46 : t ? 44 : 24), d ? 30 : t ? 48 : 50, d ? 92 : t ? 88 : 48, 16777215, 0);
-      K.physics.add.existing(c, true), p.add(c);
+    this.scene = H, this.course = b, this.onHit = j, this.onSplash = J, wt(H, b.theme), this.warnings = H.add.graphics().setDepth(7), this.weather = H.add.graphics().setDepth(14).setScrollFactor(0);
+    const p = H.physics.add.staticGroup();
+    for (const S of b.hazards) {
+      const t = S.kind === "iceberg", d = S.kind === "cactus", c = H.add.rectangle(S.x, S.y - (d ? 46 : t ? 44 : 24), d ? 30 : t ? 48 : 50, d ? 92 : t ? 88 : 48, 16777215, 0);
+      H.physics.add.existing(c, true), p.add(c);
       const o = c.body;
       o.enable = !t;
-      const r = K.add.image(S.x, S.y, S.kind).setDepth(6);
+      const r = H.add.image(S.x, S.y, S.kind).setDepth(6);
       t && r.setOrigin(0.5, 0.91).setDisplaySize(142, 134).setVisible(false), d && r.setOrigin(0.5, 0.93).setDisplaySize(78, 124), S.kind === "rock" && r.setOrigin(0.5, 0.86).setDisplaySize(104, 208 / 3), this.raised.push({ spec: S, art: r, body: o, began: null, splashed: false });
     }
-    K.physics.add.overlap(H, p, () => this.onHit());
-    for (const S of W.icicles) this.icicles.push({ x: S.x, surfaceY: S.y, y: S.y - 500, velocity: 0, began: null, state: "waiting", art: K.add.image(S.x, S.y - 500, "icicle").setDisplaySize(28, 85).setDepth(12).setVisible(false), hit: false });
+    H.physics.add.overlap(K, p, () => this.onHit());
+    for (const S of b.icicles) this.icicles.push({ x: S.x, surfaceY: S.y, y: S.y - 500, velocity: 0, began: null, state: "waiting", art: H.add.image(S.x, S.y - 500, "icicle").setDisplaySize(28, 85).setDepth(12).setVisible(false), hit: false });
   }
   guidePoints() {
-    return this.icicles.filter((K) => K.state === "falling").map((K) => ({ x: K.x, y: K.y }));
+    return this.icicles.filter((H) => H.state === "falling").map((H) => ({ x: H.x, y: H.y }));
   }
-  update(K, W, H, j) {
+  update(H, b, K, j) {
     const J = this.warnings.clear();
     this.cue = "";
     for (const S of this.raised) {
@@ -26715,64 +26715,64 @@ class Jt {
         continue;
       }
       if (d.setVisible(true), t.kind === "iceberg") {
-        if (S.began === null && t.x - K < 360 && t.x - K > -100 && (S.began = H), S.began === null) {
+        if (S.began === null && t.x - H < 360 && t.x - H > -100 && (S.began = K), S.began === null) {
           d.setVisible(false);
           continue;
         }
-        const o = yt.Math.Clamp((H - S.began - 550) / 750, 0, 1);
-        d.setVisible(o > 0).setAlpha(Math.min(1, o * 1.5)).setY(gt(t.x, t.y + (1 - o) * 116, K)), S.body.enable = o > 0.6, o < 1 && (this.warning(J, t.x, gt(t.x, t.y, K), H, 7122930), this.cue = "氷山がせり上がるよ！"), o > 0.4 && !S.splashed && (S.splashed = true, this.onSplash(t.x, t.y));
+        const o = yt.Math.Clamp((K - S.began - 550) / 750, 0, 1);
+        d.setVisible(o > 0).setAlpha(Math.min(1, o * 1.5)).setY(gt(t.x, t.y + (1 - o) * 116, H)), S.body.enable = o > 0.6, o < 1 && (this.warning(J, t.x, gt(t.x, t.y, H), K, 7122930), this.cue = "氷山がせり上がるよ！"), o > 0.4 && !S.splashed && (S.splashed = true, this.onSplash(t.x, t.y));
       } else {
-        if (d.setY(gt(t.x, t.y, K)), t.kind === "rock") {
-          const o = gt(t.x, t.y, K);
-          J.lineStyle(1.3, 14744319, 0.45).strokeEllipse(t.x, o + 1, 96 + Math.sin(H / 380) * 5, 13), J.lineStyle(1, 16777215, 0.25).strokeEllipse(t.x, o + 3, 112, 18);
+        if (d.setY(gt(t.x, t.y, H)), t.kind === "rock") {
+          const o = gt(t.x, t.y, H);
+          J.lineStyle(1.3, 14744319, 0.45).strokeEllipse(t.x, o + 1, 96 + Math.sin(K / 380) * 5, 13), J.lineStyle(1, 16777215, 0.25).strokeEllipse(t.x, o + 3, 112, 18);
         }
-        if (t.kind === "cactus") for (let o = 3; o >= 0; o--) J.fillStyle(o % 2 ? 15057292 : 12820078, 0.17).fillEllipse(t.x, gt(t.x, t.y + 7, K), 72 + o * 9, 13 + o * 4);
+        if (t.kind === "cactus") for (let o = 3; o >= 0; o--) J.fillStyle(o % 2 ? 15057292 : 12820078, 0.17).fillEllipse(t.x, gt(t.x, t.y + 7, H), 72 + o * 9, 13 + o * 4);
       }
     }
-    for (const S of this.icicles) S.state === "waiting" && S.x - K < 320 && S.x - K > -35 && (S.state = "warning", S.began = H), S.state === "warning" && (this.warning(J, S.x, gt(S.x, S.surfaceY, K), H, 16740990), this.cue = "上からツララ！ 風で抜けよう", H - S.began > 1e3 && (S.state = "falling", S.art.setVisible(true))), S.state === "falling" && (S.velocity = Math.min(920, S.velocity + j * 1.05), S.y += S.velocity * j / 1e3, S.art.setPosition(S.x, gt(S.x, S.y, K)), !S.hit && Math.abs(S.x - K) < 47 && S.y + 39 > W - 145 && S.y - 39 < W + 13 && (S.hit = true, this.onHit()), S.y > S.surfaceY + 80 && (S.state = "spent", S.art.setVisible(false), this.onSplash(S.x, S.surfaceY)));
+    for (const S of this.icicles) S.state === "waiting" && S.x - H < 320 && S.x - H > -35 && (S.state = "warning", S.began = K), S.state === "warning" && (this.warning(J, S.x, gt(S.x, S.surfaceY, H), K, 16740990), this.cue = "上からツララ！ 風で抜けよう", K - S.began > 1e3 && (S.state = "falling", S.art.setVisible(true))), S.state === "falling" && (S.velocity = Math.min(920, S.velocity + j * 1.05), S.y += S.velocity * j / 1e3, S.art.setPosition(S.x, gt(S.x, S.y, H)), !S.hit && Math.abs(S.x - H) < 47 && S.y + 39 > b - 145 && S.y - 39 < b + 13 && (S.hit = true, this.onHit()), S.y > S.surfaceY + 80 && (S.state = "spent", S.art.setVisible(false), this.onSplash(S.x, S.surfaceY)));
     const p = this.weather.clear();
     if (this.course.theme === "ice") for (let S = 0; S < 14; S++) {
-      const t = (S * 139 + H * (0.012 + S % 3 * 4e-3)) % 740 - 10, d = (S * 77 + H * (0.025 + S % 4 * 8e-3)) % 510 - 20;
+      const t = (S * 139 + K * (0.012 + S % 3 * 4e-3)) % 740 - 10, d = (S * 77 + K * (0.025 + S % 4 * 8e-3)) % 510 - 20;
       p.fillStyle(16777215, 0.55).fillCircle(t, d, S % 3 + 1);
     }
   }
-  warning(K, W, H, j, J) {
+  warning(H, b, K, j, J) {
     const p = 0.4 + Math.sin(j / 105) * 0.15;
-    K.lineStyle(3, J, p + 0.3).strokeEllipse(W, H, 88, 26), K.fillStyle(J, p).fillTriangle(W - 13, H - 69, W + 13, H - 69, W, H - 46), K.lineStyle(2, 16777215, 1).lineBetween(W, H - 65, W, H - 56), K.fillStyle(16777215).fillCircle(W, H - 52, 1.5);
+    H.lineStyle(3, J, p + 0.3).strokeEllipse(b, K, 88, 26), H.fillStyle(J, p).fillTriangle(b - 13, K - 69, b + 13, K - 69, b, K - 46), H.lineStyle(2, 16777215, 1).lineBetween(b, K - 65, b, K - 56), H.fillStyle(16777215).fillCircle(b, K - 52, 1.5);
   }
 }
 class Qt {
-  constructor(K) {
+  constructor(H) {
     __publicField(this, "streaks");
-    if (!K.textures.exists("wind-streak")) {
-      const W = K.textures.createCanvas("wind-streak", 160, 24), H = W.context, j = H.createLinearGradient(0, 0, 160, 0);
-      j.addColorStop(0, "rgba(255,255,255,0)"), j.addColorStop(0.45, "rgba(255,255,255,.85)"), j.addColorStop(1, "rgba(255,255,255,0)"), H.strokeStyle = j, H.lineWidth = 2, H.lineCap = "round", H.beginPath(), H.moveTo(4, 16), H.bezierCurveTo(55, 7, 90, 18, 156, 8), H.stroke(), W.refresh();
+    if (!H.textures.exists("wind-streak")) {
+      const b = H.textures.createCanvas("wind-streak", 160, 24), K = b.context, j = K.createLinearGradient(0, 0, 160, 0);
+      j.addColorStop(0, "rgba(255,255,255,0)"), j.addColorStop(0.45, "rgba(255,255,255,.85)"), j.addColorStop(1, "rgba(255,255,255,0)"), K.strokeStyle = j, K.lineWidth = 2, K.lineCap = "round", K.beginPath(), K.moveTo(4, 16), K.bezierCurveTo(55, 7, 90, 18, 156, 8), K.stroke(), b.refresh();
     }
-    this.streaks = Array.from({ length: 8 }, (W, H) => K.add.image(0, 0, "wind-streak").setOrigin(0, 0.5).setDepth(13).setScrollFactor(0).setTint(H % 2 ? 15007735 : 16777215).setVisible(false));
+    this.streaks = Array.from({ length: 8 }, (b, K) => H.add.image(0, 0, "wind-streak").setOrigin(0, 0.5).setDepth(13).setScrollFactor(0).setTint(K % 2 ? 15007735 : 16777215).setVisible(false));
   }
-  draw(K, W, H = 1, j = 1) {
-    const J = Math.min(0.55, W / 600), p = W > 0 ? Math.ceil((5 + Math.min(H, 3)) * j) : 0;
+  draw(H, b, K = 1, j = 1) {
+    const J = Math.min(0.55, b / 600), p = b > 0 ? Math.ceil((5 + Math.min(K, 3)) * j) : 0;
     this.streaks.forEach((S, t) => {
       if (S.setVisible(t < p), t >= p) return;
-      const d = (K * (0.55 + H * 0.1) + t * 151) % (ft.width + 260) - 180, c = 75 + t * 46 + Math.sin(K / 350 + t) * 10;
+      const d = (H * (0.55 + K * 0.1) + t * 151) % (ft.width + 260) - 180, c = 75 + t * 46 + Math.sin(H / 350 + t) * 10;
       S.setPosition(d, c).setAlpha(J);
     });
   }
 }
 class $t {
-  constructor(K) {
+  constructor(H) {
     __publicField(this, "enabled", false);
     __publicField(this, "lights", []);
-    if (this.scene = K, !K.textures.exists("spirit-light")) {
-      const W = K.textures.createCanvas("spirit-light", 128, 128);
-      if (W) {
-        const H = W.context, j = H.createRadialGradient(64, 64, 0, 64, 64, 64);
-        j.addColorStop(0, "rgba(255,250,222,.96)"), j.addColorStop(0.08, "rgba(255,238,181,.78)"), j.addColorStop(0.23, "rgba(255,214,139,.32)"), j.addColorStop(0.56, "rgba(255,202,119,.13)"), j.addColorStop(1, "rgba(255,202,119,0)"), H.fillStyle = j, H.fillRect(0, 0, 128, 128), H.strokeStyle = "rgba(255,223,164,.4)", H.lineWidth = 1.3, H.beginPath(), H.arc(64, 64, 26, 0, Math.PI * 2), H.stroke(), H.fillStyle = "rgba(255,248,224,.8)", H.beginPath(), H.arc(83, 47, 2.3, 0, Math.PI * 2), H.fill(), W.refresh();
+    if (this.scene = H, !H.textures.exists("spirit-light")) {
+      const b = H.textures.createCanvas("spirit-light", 128, 128);
+      if (b) {
+        const K = b.context, j = K.createRadialGradient(64, 64, 0, 64, 64, 64);
+        j.addColorStop(0, "rgba(255,250,222,.96)"), j.addColorStop(0.08, "rgba(255,238,181,.78)"), j.addColorStop(0.23, "rgba(255,214,139,.32)"), j.addColorStop(0.56, "rgba(255,202,119,.13)"), j.addColorStop(1, "rgba(255,202,119,0)"), K.fillStyle = j, K.fillRect(0, 0, 128, 128), K.strokeStyle = "rgba(255,223,164,.4)", K.lineWidth = 1.3, K.beginPath(), K.arc(64, 64, 26, 0, Math.PI * 2), K.stroke(), K.fillStyle = "rgba(255,248,224,.8)", K.beginPath(), K.arc(83, 47, 2.3, 0, Math.PI * 2), K.fill(), b.refresh();
       }
     }
-    for (let W = 0; W < 32; W++) this.lights.push(K.add.image(0, 0, "spirit-light").setDepth(16).setVisible(false));
+    for (let b = 0; b < 32; b++) this.lights.push(H.add.image(0, 0, "spirit-light").setDepth(16).setVisible(false));
   }
-  draw(K, W, H, j) {
+  draw(H, b, K, j) {
     for (const t of this.lights) t.setVisible(false);
     if (!this.enabled) return;
     const J = this.scene.cameras.main;
@@ -26781,30 +26781,30 @@ class $t {
       if (t < J.scrollX - 40 || t > J.scrollX + 760 || d < J.scrollY - 40 || d > J.scrollY + 520) return;
       const o = this.lights[p++];
       if (!o) return;
-      const r = 1 + Math.sin(W / 430 + t * 0.03) * 0.1, n = (c + 27) * 2 * r;
+      const r = 1 + Math.sin(b / 430 + t * 0.03) * 0.1, n = (c + 27) * 2 * r;
       o.setPosition(t, d).setDisplaySize(n, n).setVisible(true);
     };
-    S(H.center.x, H.center.y, 22);
+    S(K.center.x, K.center.y, 22);
     for (const t of this.scene.physics.world.staticBodies.entries) if (!(!t.enable || t.right < J.scrollX - 60 || t.x > J.scrollX + 780)) if (t.width > 200) {
       const d = Math.max(0, Math.ceil((J.scrollX - 40 - t.x - 12) / 92));
-      for (let c = t.x + 12 + d * 92; c < Math.min(t.right, J.scrollX + 760); c += 92) S(c, gt(c, t.y, K), 13);
-      S(t.right, gt(t.right, t.y, K), 13);
-    } else S(t.center.x, gt(t.center.x, t.center.y, K), Math.max(17, Math.min(32, t.height / 2)));
-    j.forEach((t) => S(t.x, gt(t.x, t.y, K), 24));
+      for (let c = t.x + 12 + d * 92; c < Math.min(t.right, J.scrollX + 760); c += 92) S(c, gt(c, t.y, H), 13);
+      S(t.right, gt(t.right, t.y, H), 13);
+    } else S(t.center.x, gt(t.center.x, t.center.y, H), Math.max(17, Math.min(32, t.height / 2)));
+    j.forEach((t) => S(t.x, gt(t.x, t.y, H), 24));
   }
 }
 class jt {
-  constructor(K, W) {
+  constructor(H, b) {
     __publicField(this, "shore");
     __publicField(this, "pier");
     __publicField(this, "glow");
     __publicField(this, "label");
-    this.course = W, Ut(K, W.theme);
-    const H = `harbor-pier-${W.theme}`;
-    if (!K.textures.exists(H)) {
-      const j = K.textures.createCanvas(H, 340, 150), J = j.context, p = W.theme === "ice", S = W.theme === "desert", t = J.createLinearGradient(0, 38, 0, 140);
+    this.course = b, Ut(H, b.theme);
+    const K = `harbor-pier-${b.theme}`;
+    if (!H.textures.exists(K)) {
+      const j = H.textures.createCanvas(K, 340, 150), J = j.context, p = b.theme === "ice", S = b.theme === "desert", t = J.createLinearGradient(0, 38, 0, 140);
       t.addColorStop(0, p ? "#e6f6fc" : S ? "#f8d9a8" : "#eef0dc"), t.addColorStop(0.45, p ? "#a7d0e8" : S ? "#c2956a" : "#abb8bd"), t.addColorStop(1, p ? "#568fb9" : S ? "#795d55" : "#576f92"), J.fillStyle = t, J.beginPath(), J.moveTo(15, 69), J.lineTo(299, 35), J.lineTo(328, 59), J.lineTo(328, 102), J.lineTo(42, 137), J.lineTo(15, 112), J.closePath(), J.fill(), J.save(), J.beginPath(), J.moveTo(15, 69), J.lineTo(299, 35), J.lineTo(328, 59), J.lineTo(42, 97), J.closePath(), J.clip();
-      const d = K.textures.get("world").getSourceImage(), c = p ? [786, 377, 180, 35] : S ? [1020, 427, 180, 35] : W.theme === "cloud" ? [945, 281, 180, 35] : [588, 484, 180, 35];
+      const d = H.textures.get("world").getSourceImage(), c = p ? [786, 377, 180, 35] : S ? [1020, 427, 180, 35] : b.theme === "cloud" ? [945, 281, 180, 35] : [588, 484, 180, 35];
       J.drawImage(d, ...c, 0, 32, 340, 70), J.fillStyle = p ? "rgba(227,249,255,.3)" : "rgba(249,235,203,.25)", J.fillRect(0, 0, 340, 150), J.restore(), J.lineWidth = 1, J.strokeStyle = "rgba(246,251,255,.48)";
       for (let o = 0; o < 10; o++) {
         const r = 43 + o * 29;
@@ -26817,19 +26817,19 @@ class jt {
       }
       j.refresh();
     }
-    this.shore = K.add.image(W.goalX + 280, 0, `harbor-shore-${W.theme}`).setOrigin(0.5, 0.92).setDepth(3).setDisplaySize(410, W.theme === "desert" ? 140 : 230), this.pier = K.add.image(W.goalX + 165, 0, H).setOrigin(0.5, 0.57).setDepth(5).setDisplaySize(295, 130), this.glow = K.add.ellipse(W.goalX + 175, 0, 145, 20, 16772538, 0.14).setDepth(6), this.label = K.add.text(W.goalX + 195, 0, W.goal_label, { fontFamily: "serif", fontSize: "20px", color: "#fff9e8", stroke: "#405977", strokeThickness: 3 }).setOrigin(0.5, 1).setDepth(7);
+    this.shore = H.add.image(b.goalX + 280, 0, `harbor-shore-${b.theme}`).setOrigin(0.5, 0.92).setDepth(3).setDisplaySize(410, b.theme === "desert" ? 140 : 230), this.pier = H.add.image(b.goalX + 165, 0, K).setOrigin(0.5, 0.57).setDepth(5).setDisplaySize(295, 130), this.glow = H.add.ellipse(b.goalX + 175, 0, 145, 20, 16772538, 0.14).setDepth(6), this.label = H.add.text(b.goalX + 195, 0, b.goal_label, { fontFamily: "serif", fontSize: "20px", color: "#fff9e8", stroke: "#405977", strokeThickness: 3 }).setOrigin(0.5, 1).setDepth(7);
   }
-  draw(K, W) {
-    const H = gt(this.course.goalX + 165, this.course.goalY, K), j = Math.abs(K - this.course.goalX) < 1050;
-    this.shore.setVisible(j).setY(H + 15), this.pier.setVisible(j).setY(H + 12), this.glow.setVisible(j).setY(H - 8).setAlpha(0.12 + Math.sin(W / 700) * 0.035), this.label.setVisible(j).setY(H - 230);
+  draw(H, b) {
+    const K = gt(this.course.goalX + 165, this.course.goalY, H), j = Math.abs(H - this.course.goalX) < 1050;
+    this.shore.setVisible(j).setY(K + 15), this.pier.setVisible(j).setY(K + 12), this.glow.setVisible(j).setY(K - 8).setAlpha(0.12 + Math.sin(b / 700) * 0.035), this.label.setVisible(j).setY(K - 230);
   }
 }
-const Dt = (at, K, W) => {
-  const H = yt.Math.Clamp((W - at) / (K - at), 0, 1);
-  return H * H * (3 - 2 * H);
+const Dt = (at, H, b) => {
+  const K = yt.Math.Clamp((b - at) / (H - at), 0, 1);
+  return K * K * (3 - 2 * K);
 };
 class kt {
-  constructor(K, W, H = () => {
+  constructor(H, b, K = () => {
   }) {
     __publicField(this, "intensity", 0);
     __publicField(this, "label", "晴れ");
@@ -26838,43 +26838,43 @@ class kt {
     __publicField(this, "lastDraw", -1e3);
     __publicField(this, "thunderCycle", -1);
     __publicField(this, "thunderAt", null);
-    this.theme = W, this.onThunder = H, this.sky = K.add.graphics().setScrollFactor(0).setDepth(1), this.rain = K.add.graphics().setScrollFactor(0).setDepth(14);
+    this.theme = b, this.onThunder = K, this.sky = H.add.graphics().setScrollFactor(0).setDepth(1), this.rain = H.add.graphics().setScrollFactor(0).setDepth(14);
   }
-  draw(K, W, H, j = 1, J = false) {
-    const p = Dt(0.24, 0.38, K) * (1 - Dt(0.64, 0.83, K));
-    this.intensity = yt.Math.Linear(this.intensity, p, 1 - Math.exp(-H / 650));
-    const S = this.intensity, t = Math.floor(W / 9400);
-    if (S > 0.8 && t !== this.thunderCycle && this.thunderAt === null && (this.thunderCycle = t, this.thunderAt = W + 700), S <= 0.55 && (this.thunderAt = null), this.thunderAt !== null && W >= this.thunderAt && (this.thunderAt = null, this.onThunder(S)), this.label = S > 0.55 ? this.theme === "ice" ? "吹雪" : this.theme === "desert" ? "砂嵐" : "嵐" : S > 0.12 ? K > 0.64 ? "晴れ間へ" : "雲行きが変わる…" : "晴れ", W - this.lastDraw < 1e3 / 30) return;
-    this.lastDraw = W;
+  draw(H, b, K, j = 1, J = false) {
+    const p = Dt(0.24, 0.38, H) * (1 - Dt(0.64, 0.83, H));
+    this.intensity = yt.Math.Linear(this.intensity, p, 1 - Math.exp(-K / 650));
+    const S = this.intensity, t = Math.floor(b / 9400);
+    if (S > 0.8 && t !== this.thunderCycle && this.thunderAt === null && (this.thunderCycle = t, this.thunderAt = b + 700), S <= 0.55 && (this.thunderAt = null), this.thunderAt !== null && b >= this.thunderAt && (this.thunderAt = null, this.onThunder(S)), this.label = S > 0.55 ? this.theme === "ice" ? "吹雪" : this.theme === "desert" ? "砂嵐" : "嵐" : S > 0.12 ? H > 0.64 ? "晴れ間へ" : "雲行きが変わる…" : "晴れ", b - this.lastDraw < 1e3 / 30) return;
+    this.lastDraw = b;
     const d = this.sky.clear(), c = this.rain.clear();
     if (S > 0.015) {
       d.fillStyle(this.theme === "desert" ? 9068605 : 2701144, 0.42 * S).fillRect(0, 0, ft.width, ft.height);
       for (let r = 0; r < 8; r++) {
-        const n = (r * 173 + W * (0.018 + r % 3 * 4e-3)) % 1080 - 180;
+        const n = (r * 173 + b * (0.018 + r % 3 * 4e-3)) % 1080 - 180;
         d.fillStyle(this.theme === "desert" ? 12096358 : 4346218, 0.27 * S).fillEllipse(n, 30 + r % 3 * 36, 330, 105);
       }
       for (let r = 0; r < Math.round(64 * j); r++) {
-        const e = ((r * 137 - W * (this.theme === "desert" ? 0.65 : 0.19)) % 880 + 880) % 880 - 80, s = (r * 83 + W * (this.theme === "desert" ? 0.055 : 0.48 + r % 3 * 0.04)) % 540 - 30;
+        const e = ((r * 137 - b * (this.theme === "desert" ? 0.65 : 0.19)) % 880 + 880) % 880 - 80, s = (r * 83 + b * (this.theme === "desert" ? 0.055 : 0.48 + r % 3 * 0.04)) % 540 - 30;
         this.theme === "ice" ? c.fillStyle(15792639, S * 0.8).fillCircle(e, s, 1.5 + r % 3) : this.theme === "desert" ? c.lineStyle(1.5, 16766875, S * 0.52).lineBetween(e, s, e + 13 + r % 4 * 5, s - 3) : c.lineStyle(1.2, 14543615, S * 0.57).lineBetween(e, s, e - 9, s + 24);
       }
       if (!J && this.theme !== "desert" && S > 0.8) {
-        const r = W % 9400;
+        const r = b % 9400;
         (r < 95 || r > 180 && r < 230) && d.fillStyle(15857407, 0.21 * S).fillRect(0, 0, ft.width, ft.height);
       }
     }
     const o = 1 - S;
-    if (d.fillStyle(16774082, 0.07 * o).fillCircle(600, 75, 76), d.fillStyle(16774870, 0.12 * o).fillCircle(600, 75, 41), K > 0.7) {
-      const r = Dt(0.7, 0.88, K) * o;
+    if (d.fillStyle(16774082, 0.07 * o).fillCircle(600, 75, 76), d.fillStyle(16774870, 0.12 * o).fillCircle(600, 75, 41), H > 0.7) {
+      const r = Dt(0.7, 0.88, H) * o;
       d.fillStyle(16772533, 0.11 * r).fillTriangle(610, -20, 405, 480, 510, 480), d.fillStyle(16777215, 0.07 * r).fillTriangle(680, -20, 590, 480, 660, 480);
     }
   }
   get tint() {
-    const K = this.intensity;
-    return yt.Display.Color.GetColor(Math.round(255 - 66 * K), Math.round(255 - 78 * K), Math.round(255 - (this.theme === "desert" ? 106 : 45) * K));
+    const H = this.intensity;
+    return yt.Display.Color.GetColor(Math.round(255 - 66 * H), Math.round(255 - 78 * H), Math.round(255 - (this.theme === "desert" ? 106 : 45) * H));
   }
 }
 class qt {
-  constructor(K, W) {
+  constructor(H, b) {
     __publicField(this, "reducedMotion", window.matchMedia("(prefers-reduced-motion: reduce)").matches);
     __publicField(this, "detail", 1);
     __publicField(this, "slowMs", 0);
@@ -26884,26 +26884,26 @@ class qt {
     __publicField(this, "mist", []);
     __publicField(this, "motes", []);
     __publicField(this, "shores", []);
-    this.scene = K, this.course = W, this.detail = this.reducedMotion || navigator.hardwareConcurrency > 0 && navigator.hardwareConcurrency <= 4 ? 0.6 : 1, this.makeTextures(), this.light = K.add.image(0, 0, `light-${W.theme}`).setOrigin(0).setScrollFactor(0).setDepth(1), W.theme === "ice" && (this.aurora = K.add.image(360, 98, "aurora").setScrollFactor(0).setDepth(1)), (W.theme === "sea" || W.theme === "cloud") && (this.rainbow = K.add.image(485, 175, "sky-rainbow").setScrollFactor(0).setDepth(1).setAlpha(0));
-    for (let H = 0; H < 6; H++) this.mist.push(K.add.image(0, 0, "soft-mist").setScrollFactor(0).setDepth(H < 3 ? 2 : 12).setTint(W.theme === "desert" ? 16771276 : 15399679));
-    for (let H = 0; H < 14; H++) this.motes.push(K.add.image(0, 0, "soft-light").setScrollFactor(0).setDepth(12).setTint(W.theme === "ice" ? 14024703 : W.theme === "desert" ? 16768158 : 16774606));
-    W.theme !== "cloud" && W.channels.forEach((H, j) => {
-      const J = W.theme === "sea" || W.theme === "desert";
+    this.scene = H, this.course = b, this.detail = this.reducedMotion || navigator.hardwareConcurrency > 0 && navigator.hardwareConcurrency <= 4 ? 0.6 : 1, this.makeTextures(), this.light = H.add.image(0, 0, `light-${b.theme}`).setOrigin(0).setScrollFactor(0).setDepth(1), b.theme === "ice" && (this.aurora = H.add.image(360, 98, "aurora").setScrollFactor(0).setDepth(1)), (b.theme === "sea" || b.theme === "cloud") && (this.rainbow = H.add.image(485, 175, "sky-rainbow").setScrollFactor(0).setDepth(1).setAlpha(0));
+    for (let K = 0; K < 6; K++) this.mist.push(H.add.image(0, 0, "soft-mist").setScrollFactor(0).setDepth(K < 3 ? 2 : 12).setTint(b.theme === "desert" ? 16771276 : 15399679));
+    for (let K = 0; K < 14; K++) this.motes.push(H.add.image(0, 0, "soft-light").setScrollFactor(0).setDepth(12).setTint(b.theme === "ice" ? 14024703 : b.theme === "desert" ? 16768158 : 16774606));
+    b.theme !== "cloud" && b.channels.forEach((K, j) => {
+      const J = b.theme === "sea" || b.theme === "desert";
       if (J && j % 3 !== 0) return;
-      const p = H.x + H.width * (J ? j % 2 ? 0.48 : 0.62 : j % 2 ? 0.73 : 0.27), S = K.add.image(p, 0, `shore-${W.theme}`).setOrigin(0.5, J ? 0.97 : 1).setDepth(J ? 1.8 : 2.8);
+      const p = K.x + K.width * (J ? j % 2 ? 0.48 : 0.62 : j % 2 ? 0.73 : 0.27), S = H.add.image(p, 0, `shore-${b.theme}`).setOrigin(0.5, J ? 0.97 : 1).setDepth(J ? 1.8 : 2.8);
       if (J) {
-        const t = W.theme === "sea" ? 320 : 340;
-        S.setDisplaySize(t, t * 2 / 3).setTint(W.theme === "sea" ? 15004415 : 16773081).setAlpha(0.94);
+        const t = b.theme === "sea" ? 320 : 340;
+        S.setDisplaySize(t, t * 2 / 3).setTint(b.theme === "sea" ? 15004415 : 16773081).setAlpha(0.94);
       } else S.setScale(0.6).setFlipX(j % 2 === 1);
-      this.shores.push({ art: S, x: p, y: H.y - (J ? 52 : 46) });
+      this.shores.push({ art: S, x: p, y: K.y - (J ? 52 : 46) });
     });
   }
-  update(K, W, H, j) {
+  update(H, b, K, j) {
     var _a, _b;
-    const J = H > 22 || W > 2500 && this.scene.game.loop.actualFps < 50;
-    this.slowMs = J ? this.slowMs + Math.min(H, 100) : Math.max(0, this.slowMs - H * 0.4), this.slowMs > 1400 && (this.detail = 0.5);
-    const p = this.scene.cameras.main, S = this.reducedMotion ? 0 : W;
-    this.light.setAlpha(1 - j * 0.8), (_a = this.aurora) == null ? void 0 : _a.setAlpha(0.44 * (1 - j * 0.65)).setY(94 + Math.sin(S / 8e3) * 8), (_b = this.rainbow) == null ? void 0 : _b.setAlpha(yt.Math.Clamp((K / this.course.goalX - 0.68) / 0.2, 0, 1) * (1 - j) * 0.28);
+    const J = K > 22 || b > 2500 && this.scene.game.loop.actualFps < 50;
+    this.slowMs = J ? this.slowMs + Math.min(K, 100) : Math.max(0, this.slowMs - K * 0.4), this.slowMs > 1400 && (this.detail = 0.5);
+    const p = this.scene.cameras.main, S = this.reducedMotion ? 0 : b;
+    this.light.setAlpha(1 - j * 0.8), (_a = this.aurora) == null ? void 0 : _a.setAlpha(0.44 * (1 - j * 0.65)).setY(94 + Math.sin(S / 8e3) * 8), (_b = this.rainbow) == null ? void 0 : _b.setAlpha(yt.Math.Clamp((H / this.course.goalX - 0.68) / 0.2, 0, 1) * (1 - j) * 0.28);
     for (let t = 0; t < this.mist.length; t++) {
       const d = t >= 3, c = this.mist[t];
       c.setVisible(this.detail > 0.5 || t % 3 === 0);
@@ -26917,103 +26917,103 @@ class qt {
       d.setPosition(c, o).setScale(0.13 + t % 3 * 0.07).setAlpha((0.12 + Math.sin(S / 950 + t) * 0.09) * (1 - j * 0.6));
     }
     for (const t of this.shores) {
-      const d = gt(t.x, t.y, K), c = t.art.displayWidth / 2 + 30, o = t.x > p.scrollX - c && t.x < p.scrollX + ft.width + c && d > p.scrollY - 40 && d < p.scrollY + ft.height + t.art.displayHeight;
+      const d = gt(t.x, t.y, H), c = t.art.displayWidth / 2 + 30, o = t.x > p.scrollX - c && t.x < p.scrollX + ft.width + c && d > p.scrollY - 40 && d < p.scrollY + ft.height + t.art.displayHeight;
       if (t.art.setVisible(o), o && (t.art.setY(d), this.course.theme !== "ice")) {
         const r = this.course.theme === "sea";
         t.art.setTint(yt.Display.Color.GetColor(Math.round((r ? 228 : 255) - 45 * j), Math.round((r ? 242 : 239) - 53 * j), Math.round((r ? 255 : 217) - 30 * j)));
       }
     }
   }
-  canvas(K, W, H, j) {
-    if (this.scene.textures.exists(K)) return;
-    const J = this.scene.textures.createCanvas(K, W, H);
+  canvas(H, b, K, j) {
+    if (this.scene.textures.exists(H)) return;
+    const J = this.scene.textures.createCanvas(H, b, K);
     J && (j(J.context), J.refresh());
   }
   makeTextures() {
-    this.canvas("soft-mist", 256, 96, (W) => {
-      W.scale(1, 0.375);
-      const H = W.createRadialGradient(128, 128, 0, 128, 128, 128);
-      H.addColorStop(0, "rgba(255,255,255,.85)"), H.addColorStop(1, "rgba(255,255,255,0)"), W.fillStyle = H, W.fillRect(0, 0, 256, 256);
-    }), this.canvas("soft-light", 64, 64, (W) => {
-      const H = W.createRadialGradient(32, 32, 0, 32, 32, 32);
-      H.addColorStop(0, "rgba(255,255,255,1)"), H.addColorStop(0.16, "rgba(255,255,255,.8)"), H.addColorStop(1, "rgba(255,255,255,0)"), W.fillStyle = H, W.fillRect(0, 0, 64, 64);
-    }), (this.course.theme === "sea" || this.course.theme === "cloud") && this.canvas("sky-rainbow", 460, 260, (W) => {
-      ["#ffd1cf", "#ffe5b7", "#fff4cc", "#bfeede", "#c5e6ff", "#d9d0ff"].forEach((H, j) => {
-        W.strokeStyle = H, W.lineWidth = 5, W.beginPath(), W.arc(230, 235, 207 - j * 5, Math.PI, Math.PI * 2), W.stroke();
+    this.canvas("soft-mist", 256, 96, (b) => {
+      b.scale(1, 0.375);
+      const K = b.createRadialGradient(128, 128, 0, 128, 128, 128);
+      K.addColorStop(0, "rgba(255,255,255,.85)"), K.addColorStop(1, "rgba(255,255,255,0)"), b.fillStyle = K, b.fillRect(0, 0, 256, 256);
+    }), this.canvas("soft-light", 64, 64, (b) => {
+      const K = b.createRadialGradient(32, 32, 0, 32, 32, 32);
+      K.addColorStop(0, "rgba(255,255,255,1)"), K.addColorStop(0.16, "rgba(255,255,255,.8)"), K.addColorStop(1, "rgba(255,255,255,0)"), b.fillStyle = K, b.fillRect(0, 0, 64, 64);
+    }), (this.course.theme === "sea" || this.course.theme === "cloud") && this.canvas("sky-rainbow", 460, 260, (b) => {
+      ["#ffd1cf", "#ffe5b7", "#fff4cc", "#bfeede", "#c5e6ff", "#d9d0ff"].forEach((K, j) => {
+        b.strokeStyle = K, b.lineWidth = 5, b.beginPath(), b.arc(230, 235, 207 - j * 5, Math.PI, Math.PI * 2), b.stroke();
       });
-    }), this.canvas(`light-${this.course.theme}`, ft.width, ft.height, (W) => {
-      const H = this.course.theme === "desert", j = this.course.theme === "ice", J = W.createRadialGradient(570, 15, 4, 570, 15, 510);
-      J.addColorStop(0, H ? "rgba(255,213,138,.38)" : j ? "rgba(183,255,246,.2)" : "rgba(255,242,192,.3)"), J.addColorStop(1, "rgba(255,255,255,0)"), W.fillStyle = J, W.fillRect(0, 0, ft.width, ft.height);
-      const p = W.createLinearGradient(0, 0, 0, 460);
-      p.addColorStop(0, "rgba(255,249,220,.13)"), p.addColorStop(1, "rgba(255,255,255,0)"), W.fillStyle = p;
-      for (let S = 0; S < 3; S++) W.beginPath(), W.moveTo(480 + S * 76, 0), W.lineTo(120 + S * 175, 480), W.lineTo(175 + S * 180, 480), W.closePath(), W.fill();
-    }), this.course.theme === "ice" && this.canvas("aurora", 720, 200, (W) => {
-      for (let H = 0; H < 180; H++) {
-        const j = H * 4, J = 28 + Math.sin(H / 31) * 23 + Math.sin(H / 13) * 11, p = W.createLinearGradient(j, J, j, J + 112);
-        p.addColorStop(0, "rgba(145,255,225,0)"), p.addColorStop(0.35, "rgba(159,255,232,.5)"), p.addColorStop(0.7, "rgba(185,181,255,.22)"), p.addColorStop(1, "rgba(170,200,255,0)"), W.fillStyle = p, W.fillRect(j, J, 4, 112);
+    }), this.canvas(`light-${this.course.theme}`, ft.width, ft.height, (b) => {
+      const K = this.course.theme === "desert", j = this.course.theme === "ice", J = b.createRadialGradient(570, 15, 4, 570, 15, 510);
+      J.addColorStop(0, K ? "rgba(255,213,138,.38)" : j ? "rgba(183,255,246,.2)" : "rgba(255,242,192,.3)"), J.addColorStop(1, "rgba(255,255,255,0)"), b.fillStyle = J, b.fillRect(0, 0, ft.width, ft.height);
+      const p = b.createLinearGradient(0, 0, 0, 460);
+      p.addColorStop(0, "rgba(255,249,220,.13)"), p.addColorStop(1, "rgba(255,255,255,0)"), b.fillStyle = p;
+      for (let S = 0; S < 3; S++) b.beginPath(), b.moveTo(480 + S * 76, 0), b.lineTo(120 + S * 175, 480), b.lineTo(175 + S * 180, 480), b.closePath(), b.fill();
+    }), this.course.theme === "ice" && this.canvas("aurora", 720, 200, (b) => {
+      for (let K = 0; K < 180; K++) {
+        const j = K * 4, J = 28 + Math.sin(K / 31) * 23 + Math.sin(K / 13) * 11, p = b.createLinearGradient(j, J, j, J + 112);
+        p.addColorStop(0, "rgba(145,255,225,0)"), p.addColorStop(0.35, "rgba(159,255,232,.5)"), p.addColorStop(0.7, "rgba(185,181,255,.22)"), p.addColorStop(1, "rgba(170,200,255,0)"), b.fillStyle = p, b.fillRect(j, J, 4, 112);
       }
     });
-    const K = `shore-${this.course.theme}`;
-    this.scene.textures.exists(K) || this.course.theme !== "ice" || (wt(this.scene, this.course.theme), this.canvas(K, 280, 170, (W) => {
-      const H = this.scene.textures.get("harbor-shore-ice").getSourceImage();
-      W.drawImage(H, 0, 0, 280, 170);
+    const H = `shore-${this.course.theme}`;
+    this.scene.textures.exists(H) || this.course.theme !== "ice" || (wt(this.scene, this.course.theme), this.canvas(H, 280, 170, (b) => {
+      const K = this.scene.textures.get("harbor-shore-ice").getSourceImage();
+      b.drawImage(K, 0, 0, 280, 170);
     }));
   }
 }
-function zt(at, K) {
-  const W = yt.Math.Clamp((K - at.began) / at.duration, 0, 1), { ring: H, startX: j, startY: J } = at;
-  return { x: j + (H.targetX - j) * W, y: J + (H.targetY - J) * W - 4 * H.height * W * (1 - W), angle: Math.atan2(H.targetY - J - 4 * H.height * (1 - 2 * W), H.targetX - j), done: W >= 1 };
+function zt(at, H) {
+  const b = yt.Math.Clamp((H - at.began) / at.duration, 0, 1), { ring: K, startX: j, startY: J } = at;
+  return { x: j + (K.targetX - j) * b, y: J + (K.targetY - J) * b - 4 * K.height * b * (1 - b), angle: Math.atan2(K.targetY - J - 4 * K.height * (1 - 2 * b), K.targetX - j), done: b >= 1 };
 }
 class _t {
-  constructor(K, W) {
+  constructor(H, b) {
     __publicField(this, "pen");
     __publicField(this, "labels");
     __publicField(this, "used", /* @__PURE__ */ new Set());
     __publicField(this, "previousX", null);
     __publicField(this, "previousY", 0);
-    this.scene = K, this.course = W, this.pen = K.add.graphics().setDepth(8), this.labels = W.rings.map(() => K.add.text(0, 0, "STAR RING", { fontFamily: "Georgia, serif", fontSize: "11px", color: "#fff4cf", stroke: "#8e6b39", strokeThickness: 3 }).setOrigin(0.5).setDepth(8));
+    this.scene = H, this.course = b, this.pen = H.add.graphics().setDepth(8), this.labels = b.rings.map(() => H.add.text(0, 0, "STAR RING", { fontFamily: "Georgia, serif", fontSize: "11px", color: "#fff4cf", stroke: "#8e6b39", strokeThickness: 3 }).setOrigin(0.5).setDepth(8));
   }
-  crossed(K, W) {
-    const H = this.previousX ?? K, j = this.previousY;
-    this.previousX = K, this.previousY = W;
+  crossed(H, b) {
+    const K = this.previousX ?? H, j = this.previousY;
+    this.previousX = H, this.previousY = b;
     for (const J of this.course.rings) {
-      if (this.used.has(J) || K < H) continue;
-      const p = K === H ? 1 : yt.Math.Clamp((J.x - H) / (K - H), 0, 1), S = j + (W - j) * p;
-      if (H <= J.x + 40 && K >= J.x - 40 && Math.abs(S - J.y) < 164) return this.used.add(J), J;
+      if (this.used.has(J) || H < K) continue;
+      const p = H === K ? 1 : yt.Math.Clamp((J.x - K) / (H - K), 0, 1), S = j + (b - j) * p;
+      if (K <= J.x + 40 && H >= J.x - 40 && Math.abs(S - J.y) < 164) return this.used.add(J), J;
     }
   }
-  upcoming(K) {
-    return this.course.rings.find((W) => !this.used.has(W) && W.x - K > -40 && W.x - K < 650);
+  upcoming(H) {
+    return this.course.rings.find((b) => !this.used.has(b) && b.x - H > -40 && b.x - H < 650);
   }
-  draw(K, W, H, j) {
+  draw(H, b, K, j) {
     const J = this.pen.clear(), p = this.scene.cameras.main;
     if (this.course.rings.forEach((S, t) => {
-      const d = gt(S.x, S.y - 65, K), c = S.x > p.scrollX - 160 && S.x < p.scrollX + p.width + 160 && d > p.scrollY - 160 && d < p.scrollY + p.height + 160;
+      const d = gt(S.x, S.y - 65, H), c = S.x > p.scrollX - 160 && S.x < p.scrollX + p.width + 160 && d > p.scrollY - 160 && d < p.scrollY + p.height + 160;
       if (this.labels[t].setVisible(c).setPosition(S.x, d - 151).setAlpha(this.used.has(S) ? 0.35 : 1), !c) return;
-      const o = j ? 1 : 1 + Math.sin(W / 420) * 0.035, r = this.used.has(S) ? 0.25 : 1;
+      const o = j ? 1 : 1 + Math.sin(b / 420) * 0.035, r = this.used.has(S) ? 0.25 : 1;
       J.lineStyle(20, 16766340, 0.06 * r).strokeEllipse(S.x, d, 117 * o, 259 * o), J.lineStyle(11, 16770980, 0.16 * r).strokeEllipse(S.x, d, 106 * o, 244 * o), J.lineStyle(5, 12094531, r).strokeEllipse(S.x, d, 96 * o, 234 * o), J.lineStyle(3, 16770464, r).strokeEllipse(S.x - 1, d - 1, 96 * o, 234 * o), J.lineStyle(1, 16776168, 0.9 * r).strokeEllipse(S.x - 3, d - 1, 90 * o, 229 * o);
       for (let n = 0; n < 7; n++) {
         const e = n * Math.PI * 2 / 7 - Math.PI / 2;
         this.star(S.x + Math.cos(e) * 50 * o, d + Math.sin(e) * 119 * o, n === 0 ? 13 : 7, r);
       }
       if (!this.used.has(S)) for (let n = 1; n < 6; n++) J.fillStyle(16773050, (0.5 - n * 0.06) * r).fillCircle(S.x + n * 23, d - n * 13, 2);
-    }), H) {
-      const S = zt(H, W);
+    }), K) {
+      const S = zt(K, b);
       J.lineStyle(14, 16768392, 0.08).lineBetween(S.x - 110, S.y + 14, S.x - 35, S.y + 5);
-      for (let t = 0; t < 6; t++) this.star(S.x - 55 - t * 22, S.y + 7 + Math.sin(W / 120 + t) * 10, 6 - t * 0.6, 0.7 - t * 0.1);
+      for (let t = 0; t < 6; t++) this.star(S.x - 55 - t * 22, S.y + 7 + Math.sin(b / 120 + t) * 10, 6 - t * 0.6, 0.7 - t * 0.1);
     }
   }
-  star(K, W, H, j) {
+  star(H, b, K, j) {
     const J = Array.from({ length: 10 }, (p, S) => {
-      const t = S * Math.PI / 5 - Math.PI / 2, d = S % 2 ? H * 0.44 : H;
-      return { x: K + Math.cos(t) * d, y: W + Math.sin(t) * d };
+      const t = S * Math.PI / 5 - Math.PI / 2, d = S % 2 ? K * 0.44 : K;
+      return { x: H + Math.cos(t) * d, y: b + Math.sin(t) * d };
     });
     this.pen.fillStyle(16772529, j).fillPoints(J, true), this.pen.lineStyle(1, 16775647, j).strokePoints(J, true);
   }
 }
 const te = (at) => new URL("assets/" + at, import.meta.url).href;
 class ee extends yt.Scene {
-  constructor(K, W, H, j) {
+  constructor(H, b, K, j) {
     super({ key: "voyage" });
     __publicField(this, "phase", "loading");
     __publicField(this, "player");
@@ -27058,12 +27058,12 @@ class ee extends yt.Scene {
     __publicField(this, "lastTrail", -1e3);
     __publicField(this, "message", "いっしょに、雲海へ！");
     __publicField(this, "messageUntil", 5e3);
-    this.configData = K, this.controls = W, this.audio = H, this.hooks = j, this.course = Lt(K.course_id);
+    this.configData = H, this.controls = b, this.audio = K, this.hooks = j, this.course = Lt(H.course_id);
   }
   preload() {
-    const K = { world: this.course.world, yacht: "yacht-v2.webp", captain: "captain-v3.webp", mark: "streamlit-mark.svg" };
-    this.course.theme === "sea" && (K["shore-sea"] = "ruins-v1.webp", K.rock = "rock-v2.webp"), this.course.theme === "desert" && (K["shore-desert"] = "palms-v1.webp");
-    for (const [W, H] of Object.entries(K)) this.textures.exists(W) || this.load.image(W, te(H));
+    const H = { world: this.course.world, yacht: "yacht-v2.webp", captain: "captain-v3.webp", mark: "streamlit-mark.svg" };
+    this.course.theme === "sea" && (H["shore-sea"] = "ruins-v1.webp", H.rock = "rock-v2.webp"), this.course.theme === "desert" && (H["shore-desert"] = "palms-v1.webp");
+    for (const [b, K] of Object.entries(H)) this.textures.exists(b) || this.load.image(b, te(K));
   }
   create() {
     if (!["world", "yacht", "captain", "mark", ...this.course.theme === "sea" ? ["shore-sea", "rock"] : this.course.theme === "desert" ? ["shore-desert"] : []].every((d) => this.textures.exists(d))) {
@@ -27071,16 +27071,16 @@ class ee extends yt.Scene {
       return;
     }
     this.attempt++, this.elapsedMs = this.hits = this.collected = 0, this.lastGrounded = this.jumpBuffer = this.lastHud = this.lastTrail = -1e3, this.boostUntil = this.boostReadyAt = this.immuneUntil = this.windUntil = 0, this.windStacks = 0, this.previousJump = this.previousBoost = false, this.boostQueued = false, this.lift = null, this.flight = null, this.projected = [], this.message = this.course.intro, this.messageUntil = 5e3, this.checkpoint = { x: 200, y: this.course.channels[0].y }, this.physics.world.setBounds(0, this.course.minY - 400, this.course.goalX + 750, 1900 - this.course.minY);
-    const W = this.cameras.main;
-    W.setBounds(0, this.course.minY, this.course.goalX + 600, ft.height - this.course.minY + Math.max(0, ...this.course.channels.map((d) => d.y - 406))), this.backdrop = this.add.image(0, 0, "world").setOrigin(0).setDisplaySize(ft.width, ft.height).setScrollFactor(0), this.backdropTwin = this.add.image(ft.width, 0, "world").setOrigin(0).setDisplaySize(ft.width, ft.height).setFlipX(true).setScrollFactor(0), this.atmosphere = new qt(this, this.course), this.waterway = new Zt(this, () => this.audio.splash(), this.course), this.windEffect = new Qt(this), this.guide = new $t(this), this.guide.enabled = this.guideEnabled, this.mooring = new jt(this, this.course), this.weather = new kt(this, this.course.theme, (d) => this.audio.thunder(d)), this.rings = new _t(this, this.course);
-    const H = this.physics.add.staticGroup();
+    const b = this.cameras.main;
+    b.setBounds(0, this.course.minY, this.course.goalX + 600, ft.height - this.course.minY + Math.max(0, ...this.course.channels.map((d) => d.y - 406))), this.backdrop = this.add.image(0, 0, "world").setOrigin(0).setDisplaySize(ft.width, ft.height).setScrollFactor(0), this.backdropTwin = this.add.image(ft.width, 0, "world").setOrigin(0).setDisplaySize(ft.width, ft.height).setFlipX(true).setScrollFactor(0), this.atmosphere = new qt(this, this.course), this.waterway = new Zt(this, () => this.audio.splash(), this.course), this.windEffect = new Qt(this), this.guide = new $t(this), this.guide.enabled = this.guideEnabled, this.mooring = new jt(this, this.course), this.weather = new kt(this, this.course.theme, (d) => this.audio.thunder(d)), this.rings = new _t(this, this.course);
+    const K = this.physics.add.staticGroup();
     for (const d of this.course.channels) {
       const c = this.add.rectangle(d.x + d.width / 2, d.y + 8, d.width - 8, 16, 16777215, 0);
-      this.physics.add.existing(c, true), H.add(c);
+      this.physics.add.existing(c, true), K.add(c);
     }
     this.makeTextures(), this.player = this.physics.add.sprite(200, this.course.channels[0].y - 28, "hull").setVisible(false), this.player.setSize(92, 24), this.shadow = this.add.ellipse(0, 0, 265, 21, 1461107, 0.13).setDepth(4), this.reflection = this.add.image(0, 0, "yacht").setOrigin(0.5, 0).setFlipY(true).setDisplaySize(350, 58).setAlpha(0.13).setTint(10804973).setDepth(4);
     const j = this.add.image(0, 0, "yacht").setOrigin(0.5, 0.97).setDisplaySize(355, 236.67), J = this.add.image(37, -135, "mark").setDisplaySize(62, 10230 / 301), p = this.add.image(0, 0, "captain").setOrigin(0.5, 1).setDisplaySize(124, 186), S = this.add.image(15, -157, "mark").setDisplaySize(26, 4290 / 301);
-    this.captain = this.add.container(-72, -51, [p, S]), this.yacht = this.add.container(154, 398, [j, J, this.captain]).setDepth(10), this.physics.add.collider(this.player, H, void 0, () => !this.lift && !this.flight), W.startFollow(this.player, false, 0.09, 0.22, -140, 95);
+    this.captain = this.add.container(-72, -51, [p, S]), this.yacht = this.add.container(154, 398, [j, J, this.captain]).setDepth(10), this.physics.add.collider(this.player, K, void 0, () => !this.lift && !this.flight), b.startFollow(this.player, false, 0.09, 0.22, -140, 95);
     const t = this.physics.add.staticGroup();
     if (this.course.crystals.forEach((d, c) => {
       const o = this.add.image(d.x, d.y, d.red ? "ruby" : "crystal").setDepth(6);
@@ -27102,16 +27102,16 @@ class ee extends yt.Scene {
   }
   makeTextures() {
     if (this.textures.exists("hull")) return;
-    const K = this.add.graphics();
-    K.fillStyle(16777215).fillRect(0, 0, 96, 24), K.generateTexture("hull", 96, 24), K.clear();
-    for (const [W, H] of [["ruby", 16730955], ["crystal", 4380149]]) K.lineStyle(1.6, 16777215, 1).fillStyle(H), K.fillPoints([{ x: 17, y: 1 }, { x: 30, y: 23 }, { x: 17, y: 44 }, { x: 4, y: 23 }], true), K.strokePoints([{ x: 17, y: 1 }, { x: 30, y: 23 }, { x: 17, y: 44 }, { x: 4, y: 23 }], true), K.fillStyle(16777215, 0.58).fillTriangle(17, 2, 17, 23, 5, 23), K.lineStyle(1, 16777215, 0.8).lineBetween(17, 2, 17, 42).lineBetween(5, 23, 29, 23), K.generateTexture(W, 34, 46), K.clear();
-    K.fillStyle(16777215).fillTriangle(8, 0, 10, 8, 8, 16).fillTriangle(0, 8, 8, 6, 16, 8).fillTriangle(0, 8, 8, 10, 16, 8), K.generateTexture("spark", 16, 16), K.destroy();
+    const H = this.add.graphics();
+    H.fillStyle(16777215).fillRect(0, 0, 96, 24), H.generateTexture("hull", 96, 24), H.clear();
+    for (const [b, K] of [["ruby", 16730955], ["crystal", 4380149]]) H.lineStyle(1.6, 16777215, 1).fillStyle(K), H.fillPoints([{ x: 17, y: 1 }, { x: 30, y: 23 }, { x: 17, y: 44 }, { x: 4, y: 23 }], true), H.strokePoints([{ x: 17, y: 1 }, { x: 30, y: 23 }, { x: 17, y: 44 }, { x: 4, y: 23 }], true), H.fillStyle(16777215, 0.58).fillTriangle(17, 2, 17, 23, 5, 23), H.lineStyle(1, 16777215, 0.8).lineBetween(17, 2, 17, 42).lineBetween(5, 23, 29, 23), H.generateTexture(b, 34, 46), H.clear();
+    H.fillStyle(16777215).fillTriangle(8, 0, 10, 8, 8, 16).fillTriangle(0, 8, 8, 6, 16, 8).fillTriangle(0, 8, 8, 10, 16, 8), H.generateTexture("spark", 16, 16), H.destroy();
   }
-  update(K, W) {
+  update(H, b) {
     if (!this.backdrop) return;
-    const H = this.cameras.main.scrollX * 0.18 % (ft.width * 2);
-    if (this.backdrop.setX(-H + (H > ft.width ? ft.width * 2 : 0)), this.backdropTwin.setX(ft.width - H), this.phase !== "playing") return;
-    this.elapsedMs += Math.min(W, 100);
+    const K = this.cameras.main.scrollX * 0.18 % (ft.width * 2);
+    if (this.backdrop.setX(-K + (K > ft.width ? ft.width * 2 : 0)), this.backdropTwin.setX(ft.width - K), this.phase !== "playing") return;
+    this.elapsedMs += Math.min(b, 100);
     const j = this.player.body;
     let J = !this.flight && (j.blocked.down || j.touching.down);
     if (!this.flight) {
@@ -27131,7 +27131,7 @@ class ee extends yt.Scene {
     const r = this.elapsedMs < this.boostUntil, n = this.elapsedMs < this.windUntil;
     n || (this.windStacks = 0);
     const e = d, s = (t ? 170 : 132) - (S ? 103 : 0) + (r ? 122 : 0) + (n ? 125 + (this.windStacks - 1) * 45 : 0);
-    if (this.flight || j.setVelocityX(e ? 0 : yt.Math.Linear(j.velocity.x, Math.max(0, s), 1 - Math.exp(-W / 180))), !this.flight && !this.lift && !e && (this.lift = this.course.cascades.find((a) => a.ascent && this.player.x >= a.x - 48 && this.player.x < a.nextX + 60 && this.player.y > a.toY - 32 && this.player.y < a.fromY + 55) ?? null, this.lift && (this.liftSpeed = Math.max(300, j.velocity.x, s))), this.lift) {
+    if (this.flight || j.setVelocityX(e ? 0 : yt.Math.Linear(j.velocity.x, Math.max(0, s), 1 - Math.exp(-b / 180))), !this.flight && !this.lift && !e && (this.lift = this.course.cascades.find((a) => a.ascent && this.player.x >= a.x - 48 && this.player.x < a.nextX + 60 && this.player.y > a.toY - 32 && this.player.y < a.fromY + 55) ?? null, this.lift && (this.liftSpeed = Math.max(300, j.velocity.x, s))), this.lift) {
       const a = this.lift;
       if (j.setAllowGravity(false), this.player.y <= a.toY - 32) this.player.x >= a.nextX + 60 ? (this.lift = null, j.setVelocityY(0).setAllowGravity(true)) : j.setVelocityY(e ? 0 : -18);
       else {
@@ -27154,33 +27154,33 @@ class ee extends yt.Scene {
       const l = a.bob === void 0 ? 0 : Math.sin(this.elapsedMs / 330 + a.bob) * 5, f = a.x > this.cameras.main.scrollX - 60 && a.x < this.cameras.main.scrollX + ft.width + 60;
       a.image.setVisible(f), f && a.image.setY(gt(a.x, a.y, this.player.x) + l);
     }
-    this.waterway.draw(this.player.x, this.player.y, this.elapsedMs, Math.min(W, 100), J && j.velocity.y >= 0, r || n, this.atmosphere.detail), this.hazards.update(this.player.x, this.player.y, this.elapsedMs, Math.min(W, 100)), this.windEffect.draw(this.elapsedMs, Math.max(0, this.windUntil - this.elapsedMs), this.windStacks, this.atmosphere.detail), this.weather.draw(this.player.x / this.course.goalX, this.elapsedMs, Math.min(W, 100), this.atmosphere.detail, this.atmosphere.reducedMotion), this.atmosphere.update(this.player.x, this.elapsedMs, W, this.weather.intensity), this.backdrop.setTint(this.weather.tint), this.backdropTwin.setTint(this.weather.tint), this.mooring.draw(this.player.x, this.elapsedMs), this.rings.draw(this.player.x, this.elapsedMs, this.flight, this.atmosphere.reducedMotion), this.guide.draw(this.player.x, this.elapsedMs, j, this.hazards.guidePoints()), this.yacht.setAlpha(!this.flight && this.elapsedMs < this.immuneUntil && Math.floor(this.elapsedMs / 100) % 2 ? 0.55 : 1), this.elapsedMs - this.lastTrail > (this.flight || r || n ? 65 : 140) / this.atmosphere.detail && (this.sparkles.emitParticleAt(this.player.x - 88, this.player.y + 1, this.flight ? 3 : r || n ? 2 : 1), this.lastTrail = this.elapsedMs), this.player.x >= this.course.goalX ? this.finish("cleared") : this.elapsedMs > this.course.timeLimitMs && this.finish("failed"), this.elapsedMs - this.lastHud > 100 && this.publishHud();
+    this.waterway.draw(this.player.x, this.player.y, this.elapsedMs, Math.min(b, 100), J && j.velocity.y >= 0, r || n, this.atmosphere.detail), this.hazards.update(this.player.x, this.player.y, this.elapsedMs, Math.min(b, 100)), this.windEffect.draw(this.elapsedMs, Math.max(0, this.windUntil - this.elapsedMs), this.windStacks, this.atmosphere.detail), this.weather.draw(this.player.x / this.course.goalX, this.elapsedMs, Math.min(b, 100), this.atmosphere.detail, this.atmosphere.reducedMotion), this.atmosphere.update(this.player.x, this.elapsedMs, b, this.weather.intensity), this.backdrop.setTint(this.weather.tint), this.backdropTwin.setTint(this.weather.tint), this.mooring.draw(this.player.x, this.elapsedMs), this.rings.draw(this.player.x, this.elapsedMs, this.flight, this.atmosphere.reducedMotion), this.guide.draw(this.player.x, this.elapsedMs, j, this.hazards.guidePoints()), this.yacht.setAlpha(!this.flight && this.elapsedMs < this.immuneUntil && Math.floor(this.elapsedMs / 100) % 2 ? 0.55 : 1), this.elapsedMs - this.lastTrail > (this.flight || r || n ? 65 : 140) / this.atmosphere.detail && (this.sparkles.emitParticleAt(this.player.x - 88, this.player.y + 1, this.flight ? 3 : r || n ? 2 : 1), this.lastTrail = this.elapsedMs), this.player.x >= this.course.goalX ? this.finish("cleared") : this.elapsedMs > this.course.timeLimitMs && this.finish("failed"), this.elapsedMs - this.lastHud > 100 && this.publishHud();
   }
-  damage(K = false) {
+  damage(H = false) {
     if (!(this.phase !== "playing" || this.flight || this.elapsedMs < this.immuneUntil)) {
       if (this.hits++, this.audio.play("hit"), this.cameras.main.shake(150, 3e-3), this.message = "だいじょうぶ、もう一度！", this.messageUntil = this.elapsedMs + 2600, this.windUntil = this.boostUntil = 0, this.windStacks = 0, this.hits >= 3) {
         this.finish("failed");
         return;
       }
-      if (this.immuneUntil = this.elapsedMs + 1300, K) {
+      if (this.immuneUntil = this.elapsedMs + 1300, H) {
         this.lift = null;
-        const W = this.player.x, H = this.course.channels.find((p) => p.x + p.width - 52 >= W) ?? this.course.channels.at(-1), j = Math.max(W, H.x + 60);
-        this.player.body.setAllowGravity(true).reset(j, H.y - 36), this.checkpoint = { x: j, y: H.y }, this.previousJump = false;
+        const b = this.player.x, K = this.course.channels.find((p) => p.x + p.width - 52 >= b) ?? this.course.channels.at(-1), j = Math.max(b, K.x + 60);
+        this.player.body.setAllowGravity(true).reset(j, K.y - 36), this.checkpoint = { x: j, y: K.y }, this.previousJump = false;
       }
       this.publishHud();
     }
   }
-  finish(K) {
+  finish(H) {
     if (this.phase !== "playing") return;
-    this.phase = K, this.player.body.setVelocity(0, 0).setAllowGravity(false);
-    const H = { run_id: this.configData.run_id, attempt_id: `${this.configData.run_id}:${this.attempt}`, course_id: this.course.id, status: K, elapsed_ms: Math.round(this.elapsedMs), hit_count: this.hits, crystals: this.collected, total_crystals: this.course.crystals.length };
-    this.publishHud(), K === "cleared" && (this.audio.play("clear"), this.sparkles.explode(65, this.player.x, this.player.y - 65), this.tweens.add({ targets: this.yacht, y: this.yacht.y - 12, duration: 1e3, yoyo: true, repeat: -1, ease: "Sine.easeInOut" })), this.time.delayedCall(K === "cleared" ? 900 : 300, () => {
-      this.hooks.phase(K, H), this.hooks.result(H);
+    this.phase = H, this.player.body.setVelocity(0, 0).setAllowGravity(false);
+    const K = { run_id: this.configData.run_id, attempt_id: `${this.configData.run_id}:${this.attempt}`, course_id: this.course.id, status: H, elapsed_ms: Math.round(this.elapsedMs), hit_count: this.hits, crystals: this.collected, total_crystals: this.course.crystals.length };
+    this.publishHud(), H === "cleared" && (this.audio.play("clear"), this.sparkles.explode(65, this.player.x, this.player.y - 65), this.tweens.add({ targets: this.yacht, y: this.yacht.y - 12, duration: 1e3, yoyo: true, repeat: -1, ease: "Sine.easeInOut" })), this.time.delayedCall(H === "cleared" ? 900 : 300, () => {
+      this.hooks.phase(H, K), this.hooks.result(K);
     });
   }
   publishHud() {
     this.lastHud = this.elapsedMs;
-    const K = this.course.channels.find((d) => d.x + d.width > this.player.x && d.x + d.width - this.player.x < 320 && d !== this.course.channels.at(-1)), W = this.course.hazards.find((d) => d.x - this.player.x > 60 && d.x - this.player.x < 290), H = this.player.body, j = (H.blocked.down || H.touching.down) && H.velocity.y >= 0, J = (W == null ? void 0 : W.kind) === "cactus" ? "サボテン！ Aでジャンプ" : (W == null ? void 0 : W.kind) === "iceberg" ? "氷山！ Aで越えよう" : "岩があるよ！ Aでジャンプ", p = this.course.cascades.find((d) => d.x - this.player.x > -60 && d.x - this.player.x < 320), S = this.rings.upcoming(this.player.x), t = this.flight ? this.message : S ? "金色のスターリングを通って、遠くへ！" : this.hazards.cue || (this.lift ? this.message : p ? p.ascent ? this.course.theme === "cloud" ? "金色の上昇気流に乗ろう" : "光る滝で、滝登り！" : "大きな落差！ 下の航路へ" : j ? K ? this.course.theme === "cloud" ? "雲の切れ目！ 次の段へジャンプ" : "滝の切れ目！ Aでひとっとび" : W ? J : this.elapsedMs < this.messageUntil ? this.message : "" : "");
+    const H = this.course.channels.find((d) => d.x + d.width > this.player.x && d.x + d.width - this.player.x < 320 && d !== this.course.channels.at(-1)), b = this.course.hazards.find((d) => d.x - this.player.x > 60 && d.x - this.player.x < 290), K = this.player.body, j = (K.blocked.down || K.touching.down) && K.velocity.y >= 0, J = (b == null ? void 0 : b.kind) === "cactus" ? "サボテン！ Aでジャンプ" : (b == null ? void 0 : b.kind) === "iceberg" ? "氷山！ Aで越えよう" : "岩があるよ！ Aでジャンプ", p = this.course.cascades.find((d) => d.x - this.player.x > -60 && d.x - this.player.x < 320), S = this.rings.upcoming(this.player.x), t = this.flight ? this.message : S ? "金色のスターリングを通って、遠くへ！" : this.hazards.cue || (this.lift ? this.message : p ? p.ascent ? this.course.theme === "cloud" ? "金色の上昇気流に乗ろう" : "光る滝で、滝登り！" : "大きな落差！ 下の航路へ" : j ? H ? this.course.theme === "cloud" ? "雲の切れ目！ 次の段へジャンプ" : "滝の切れ目！ Aでひとっとび" : b ? J : this.elapsedMs < this.messageUntil ? this.message : "" : "");
     this.hooks.hud({ elapsedMs: this.elapsedMs, hits: this.hits, crystals: this.collected, progress: Math.min(1, this.player.x / this.course.goalX), boostReady: yt.Math.Clamp(1 - (this.boostReadyAt - this.elapsedMs) / 3400, 0, 1), windMs: Math.max(0, this.windUntil - this.elapsedMs), windStacks: this.elapsedMs < this.windUntil ? this.windStacks : 0, cue: t, weather: this.weather.label, storm: this.weather.intensity });
   }
   pauseVoyage() {
@@ -27196,15 +27196,15 @@ class ee extends yt.Scene {
   requestJump() {
     this.phase === "playing" && (this.jumpBuffer = this.elapsedMs + 150);
   }
-  setGuide(K) {
-    this.guideEnabled = K, this.guide && (this.guide.enabled = K);
+  setGuide(H) {
+    this.guideEnabled = H, this.guide && (this.guide.enabled = H);
   }
   requestBoost() {
     this.phase === "playing" && (this.boostQueued = true);
   }
 }
 class ie {
-  constructor(K) {
+  constructor(H, b = {}) {
     __publicField(this, "enabled", true);
     __publicField(this, "context");
     __publicField(this, "cannonNoise");
@@ -27213,29 +27213,62 @@ class ie {
     __publicField(this, "thunderLoading");
     __publicField(this, "thunderSource");
     __publicField(this, "playing", true);
-    this.thunderUrl = K;
+    __publicField(this, "eventBuffers", /* @__PURE__ */ new Map());
+    __publicField(this, "eventLoading", /* @__PURE__ */ new Set());
+    __publicField(this, "eventSources", /* @__PURE__ */ new Map());
+    this.thunderUrl = H, this.eventUrls = b;
+  }
+  loadEvents() {
+    if (!this.context || this.disposed) return;
+    const H = this.context;
+    for (const b of ["launch", "clear"]) {
+      const K = this.eventUrls[b];
+      !K || this.eventBuffers.has(b) || this.eventLoading.has(b) || (this.eventLoading.add(b), fetch(K).then(async (j) => {
+        if (!j.ok) throw new Error("Event audio unavailable");
+        const J = await H.decodeAudioData(await j.arrayBuffer());
+        this.disposed || this.eventBuffers.set(b, J);
+      }).catch(() => {
+      }).finally(() => this.eventLoading.delete(b)));
+    }
+  }
+  playEvent(H, b) {
+    this.loadEvents();
+    const K = this.eventBuffers.get(H);
+    if (!K) return false;
+    this.stopEvent(H);
+    const j = b.createBufferSource(), J = b.createGain();
+    return j.buffer = K, J.gain.value = H === "launch" ? 0.9 : 0.75, j.connect(J), J.connect(b.destination), this.eventSources.set(H, j), j.onended = () => {
+      j.disconnect(), J.disconnect(), this.eventSources.get(H) === j && this.eventSources.delete(H);
+    }, j.start(), true;
+  }
+  stopEvent(H) {
+    var _a;
+    (_a = this.eventSources.get(H)) == null ? void 0 : _a.stop(), this.eventSources.delete(H);
+  }
+  stopEvents() {
+    this.stopEvent("launch"), this.stopEvent("clear");
   }
   loadThunder() {
     if (!this.thunderUrl || !this.context || this.thunderLoading || this.thunderBuffer || this.disposed) return;
-    const K = this.context;
-    this.thunderLoading = fetch(this.thunderUrl).then(async (W) => {
-      if (!W.ok) throw new Error("Thunder unavailable");
-      const H = await K.decodeAudioData(await W.arrayBuffer());
-      this.disposed || (this.thunderBuffer = H);
+    const H = this.context;
+    this.thunderLoading = fetch(this.thunderUrl).then(async (b) => {
+      if (!b.ok) throw new Error("Thunder unavailable");
+      const K = await H.decodeAudioData(await b.arrayBuffer());
+      this.disposed || (this.thunderBuffer = K);
     }).catch(() => {
     }).finally(() => {
       this.thunderLoading = void 0;
     });
   }
-  thunder(K) {
+  thunder(H) {
     if (!this.enabled || !this.playing || this.disposed || !this.context || this.context.state !== "running" || this.thunderSource || (this.loadThunder(), !this.thunderBuffer)) return;
-    const W = this.context.createBufferSource(), H = this.context.createGain();
-    W.buffer = this.thunderBuffer, H.gain.value = 0.55 + Math.max(0, Math.min(1, K)) * 0.2, W.connect(H), H.connect(this.context.destination), this.thunderSource = W, W.onended = () => {
-      W.disconnect(), H.disconnect(), this.thunderSource === W && (this.thunderSource = void 0);
-    }, W.start();
+    const b = this.context.createBufferSource(), K = this.context.createGain();
+    b.buffer = this.thunderBuffer, K.gain.value = 0.55 + Math.max(0, Math.min(1, H)) * 0.2, b.connect(K), K.connect(this.context.destination), this.thunderSource = b, b.onended = () => {
+      b.disconnect(), K.disconnect(), this.thunderSource === b && (this.thunderSource = void 0);
+    }, b.start();
   }
-  setPlaying(K) {
-    this.playing = K, K || this.stopThunder();
+  setPlaying(H) {
+    this.playing = H, H ? this.stopEvent("clear") : (this.stopThunder(), this.stopEvent("launch"));
   }
   stopThunder() {
     var _a;
@@ -27243,76 +27276,77 @@ class ie {
   }
   unlock() {
     if (!(!this.enabled || this.disposed)) try {
-      this.context ?? (this.context = new AudioContext()), this.loadThunder(), this.context.state !== "running" && this.context.resume().catch(() => {
+      this.context ?? (this.context = new AudioContext()), this.loadThunder(), this.loadEvents(), this.context.state !== "running" && this.context.resume().catch(() => {
       });
     } catch {
     }
   }
   async toggle() {
     if (this.disposed) return false;
-    if (this.enabled = !this.enabled, this.enabled || this.stopThunder(), this.enabled) try {
-      this.context ?? (this.context = new AudioContext()), this.loadThunder(), await this.context.resume(), this.enabled && !this.disposed && this.play("collect");
+    if (this.enabled = !this.enabled, this.enabled || (this.stopThunder(), this.stopEvents()), this.enabled) try {
+      this.context ?? (this.context = new AudioContext()), this.loadThunder(), this.loadEvents(), await this.context.resume(), this.enabled && !this.disposed && this.play("collect");
     } catch {
       this.enabled = false;
     }
     return this.enabled;
   }
-  play(K) {
+  play(H) {
     if (!this.enabled || this.disposed || !this.context || this.context.state !== "running") return;
-    const W = this.context;
-    if (K === "launch") {
-      this.cannon(W);
+    const b = this.context;
+    if (H === "clear" && (this.stopThunder(), this.stopEvent("launch")), (H === "launch" || H === "clear") && this.playEvent(H, b)) return;
+    if (H === "launch") {
+      this.cannon(b);
       return;
     }
-    if (K === "hit") {
-      this.impact(W);
+    if (H === "hit") {
+      this.impact(b);
       return;
     }
-    ({ jump: [330, 660], boost: [180, 480], collect: [880, 1320], clear: [523, 659, 784, 1047] })[K].forEach((j, J) => {
-      const p = W.createOscillator(), S = W.createGain(), t = W.currentTime + J * 0.075;
-      p.type = "sine", p.frequency.setValueAtTime(j, t), S.gain.setValueAtTime(0, t), S.gain.linearRampToValueAtTime(0.045, t + 0.012), S.gain.exponentialRampToValueAtTime(1e-3, t + 0.18), p.connect(S), S.connect(W.destination), p.start(t), p.stop(t + 0.2), p.onended = () => {
+    ({ jump: [330, 660], boost: [180, 480], collect: [880, 1320], clear: [523, 659, 784, 1047] })[H].forEach((j, J) => {
+      const p = b.createOscillator(), S = b.createGain(), t = b.currentTime + J * 0.075;
+      p.type = "sine", p.frequency.setValueAtTime(j, t), S.gain.setValueAtTime(0, t), S.gain.linearRampToValueAtTime(0.045, t + 0.012), S.gain.exponentialRampToValueAtTime(1e-3, t + 0.18), p.connect(S), S.connect(b.destination), p.start(t), p.stop(t + 0.2), p.onended = () => {
         p.disconnect(), S.disconnect();
       };
     });
   }
-  cannon(K) {
-    const W = K.currentTime;
+  cannon(H) {
+    const b = H.currentTime;
     if (!this.cannonNoise) {
-      this.cannonNoise = K.createBuffer(1, Math.floor(K.sampleRate * 0.6), K.sampleRate);
+      this.cannonNoise = H.createBuffer(1, Math.floor(H.sampleRate * 0.6), H.sampleRate);
       const t = this.cannonNoise.getChannelData(0);
       for (let d = 0; d < t.length; d++) t[d] = Math.random() * 2 - 1;
     }
-    const H = K.createBufferSource(), j = K.createBiquadFilter(), J = K.createGain();
-    H.buffer = this.cannonNoise, j.type = "lowpass", j.Q.value = 0.7, j.frequency.setValueAtTime(3200, W), j.frequency.exponentialRampToValueAtTime(180, W + 0.5), J.gain.setValueAtTime(0, W), J.gain.linearRampToValueAtTime(0.32, W + 4e-3), J.gain.exponentialRampToValueAtTime(1e-3, W + 0.55), H.connect(j), j.connect(J), J.connect(K.destination), H.start(W), H.stop(W + 0.6), H.onended = () => {
-      H.disconnect(), j.disconnect(), J.disconnect();
+    const K = H.createBufferSource(), j = H.createBiquadFilter(), J = H.createGain();
+    K.buffer = this.cannonNoise, j.type = "lowpass", j.Q.value = 0.7, j.frequency.setValueAtTime(3200, b), j.frequency.exponentialRampToValueAtTime(180, b + 0.5), J.gain.setValueAtTime(0, b), J.gain.linearRampToValueAtTime(0.32, b + 4e-3), J.gain.exponentialRampToValueAtTime(1e-3, b + 0.55), K.connect(j), j.connect(J), J.connect(H.destination), K.start(b), K.stop(b + 0.6), K.onended = () => {
+      K.disconnect(), j.disconnect(), J.disconnect();
     };
-    const p = K.createOscillator(), S = K.createGain();
-    p.type = "triangle", p.frequency.setValueAtTime(240, W), p.frequency.exponentialRampToValueAtTime(65, W + 0.45), S.gain.setValueAtTime(0, W), S.gain.linearRampToValueAtTime(0.22, W + 8e-3), S.gain.exponentialRampToValueAtTime(1e-3, W + 0.6), p.connect(S), S.connect(K.destination), p.start(W), p.stop(W + 0.65), p.onended = () => {
+    const p = H.createOscillator(), S = H.createGain();
+    p.type = "triangle", p.frequency.setValueAtTime(240, b), p.frequency.exponentialRampToValueAtTime(65, b + 0.45), S.gain.setValueAtTime(0, b), S.gain.linearRampToValueAtTime(0.22, b + 8e-3), S.gain.exponentialRampToValueAtTime(1e-3, b + 0.6), p.connect(S), S.connect(H.destination), p.start(b), p.stop(b + 0.65), p.onended = () => {
       p.disconnect(), S.disconnect();
     };
   }
-  impact(K) {
-    const W = K.currentTime, H = K.createOscillator(), j = K.createBiquadFilter(), J = K.createGain();
-    H.type = "sawtooth", H.frequency.setValueAtTime(420, W), H.frequency.exponentialRampToValueAtTime(85, W + 0.23), j.type = "lowpass", j.frequency.value = 1600, j.Q.value = 0.7, J.gain.setValueAtTime(0, W), J.gain.linearRampToValueAtTime(0.16, W + 6e-3), J.gain.exponentialRampToValueAtTime(1e-3, W + 0.28), H.connect(j), j.connect(J), J.connect(K.destination), H.start(W), H.stop(W + 0.3), H.onended = () => {
-      H.disconnect(), j.disconnect(), J.disconnect();
+  impact(H) {
+    const b = H.currentTime, K = H.createOscillator(), j = H.createBiquadFilter(), J = H.createGain();
+    K.type = "sawtooth", K.frequency.setValueAtTime(420, b), K.frequency.exponentialRampToValueAtTime(85, b + 0.23), j.type = "lowpass", j.frequency.value = 1600, j.Q.value = 0.7, J.gain.setValueAtTime(0, b), J.gain.linearRampToValueAtTime(0.16, b + 6e-3), J.gain.exponentialRampToValueAtTime(1e-3, b + 0.28), K.connect(j), j.connect(J), J.connect(H.destination), K.start(b), K.stop(b + 0.3), K.onended = () => {
+      K.disconnect(), j.disconnect(), J.disconnect();
     };
   }
   splash() {
     if (!this.enabled || !this.context || this.context.state !== "running") return;
-    const K = this.context, W = K.currentTime, H = K.createBuffer(1, Math.floor(K.sampleRate * 0.22), K.sampleRate), j = H.getChannelData(0);
+    const H = this.context, b = H.currentTime, K = H.createBuffer(1, Math.floor(H.sampleRate * 0.22), H.sampleRate), j = K.getChannelData(0);
     for (let t = 0; t < j.length; t++) j[t] = (Math.random() * 2 - 1) * (1 - t / j.length);
-    const J = K.createBufferSource(), p = K.createBiquadFilter(), S = K.createGain();
-    J.buffer = H, p.type = "lowpass", p.frequency.value = 1700, S.gain.setValueAtTime(0.045, W), S.gain.exponentialRampToValueAtTime(1e-3, W + 0.22), J.connect(p), p.connect(S), S.connect(K.destination), J.start(W), J.onended = () => {
+    const J = H.createBufferSource(), p = H.createBiquadFilter(), S = H.createGain();
+    J.buffer = K, p.type = "lowpass", p.frequency.value = 1700, S.gain.setValueAtTime(0.045, b), S.gain.exponentialRampToValueAtTime(1e-3, b + 0.22), J.connect(p), p.connect(S), S.connect(H.destination), J.start(b), J.onended = () => {
       J.disconnect(), p.disconnect(), S.disconnect();
     };
   }
   dispose() {
     var _a;
-    this.disposed = true, this.enabled = false, this.stopThunder(), (_a = this.context) == null ? void 0 : _a.close();
+    this.disposed = true, this.enabled = false, this.stopThunder(), this.stopEvents(), this.eventBuffers.clear(), (_a = this.context) == null ? void 0 : _a.close();
   }
 }
 class Vt {
-  constructor(K, W = false) {
+  constructor(H, b = false) {
     __publicField(this, "enabled", false);
     __publicField(this, "volume", 0.5);
     __publicField(this, "context");
@@ -27324,7 +27358,7 @@ class Vt {
     __publicField(this, "playing", false);
     __publicField(this, "disposed", false);
     __publicField(this, "suspendTimer");
-    this.urls = K, this.enabled = this.available && W;
+    this.urls = H, this.enabled = this.available && b;
   }
   get available() {
     return this.urls.length > 0;
@@ -27348,11 +27382,11 @@ class Vt {
     });
   }
   async load() {
-    for (const K of this.urls) try {
-      const W = await fetch(K);
-      if (!W.ok) throw new Error("Music unavailable");
-      const H = await this.context.decodeAudioData(await W.arrayBuffer());
-      this.disposed || (this.buffer = H);
+    for (const H of this.urls) try {
+      const b = await fetch(H);
+      if (!b.ok) throw new Error("Music unavailable");
+      const K = await this.context.decodeAudioData(await b.arrayBuffer());
+      this.disposed || (this.buffer = K);
       return;
     } catch {
     }
@@ -27361,37 +27395,37 @@ class Vt {
   start() {
     !this.buffer || !this.context || !this.filter || (this.source = this.context.createBufferSource(), this.source.buffer = this.buffer, this.source.loop = true, this.source.connect(this.filter), this.source.start());
   }
-  setPlaying(K, W = false) {
-    this.playing = K, W && this.source && (this.source.stop(), this.source.disconnect(), this.source = void 0, this.start()), !(!this.enabled || !this.context) && (K ? (clearTimeout(this.suspendTimer), this.context.resume().then(() => {
+  setPlaying(H, b = false) {
+    this.playing = H, b && this.source && (this.source.stop(), this.source.disconnect(), this.source = void 0, this.start()), !(!this.enabled || !this.context) && (H ? (clearTimeout(this.suspendTimer), this.context.resume().then(() => {
       !this.disposed && this.enabled && this.playing && this.fade(this.volume, 0.55);
     }).catch(() => {
     })) : this.fade(0, 0.45, true));
   }
-  setVolume(K) {
-    this.volume = Math.max(0, Math.min(1, K)), this.enabled && this.playing && this.fade(this.volume, 0.08);
+  setVolume(H) {
+    this.volume = Math.max(0, Math.min(1, H)), this.enabled && this.playing && this.fade(this.volume, 0.08);
   }
-  setWeather(K) {
-    this.context && this.filter && this.filter.frequency.setTargetAtTime(18e3 - K * 8500, this.context.currentTime, 0.3);
+  setWeather(H) {
+    this.context && this.filter && this.filter.frequency.setTargetAtTime(18e3 - H * 8500, this.context.currentTime, 0.3);
   }
-  fade(K, W, H = false) {
+  fade(H, b, K = false) {
     if (clearTimeout(this.suspendTimer), !this.context || !this.gain) return;
     const j = this.gain.gain, J = this.context.currentTime;
-    j.cancelScheduledValues(J), j.setValueAtTime(j.value, J), j.linearRampToValueAtTime(K, J + W), H && (this.suspendTimer = setTimeout(() => {
+    j.cancelScheduledValues(J), j.setValueAtTime(j.value, J), j.linearRampToValueAtTime(H, J + b), K && (this.suspendTimer = setTimeout(() => {
       var _a;
       !this.disposed && (!this.enabled || !this.playing) && ((_a = this.context) == null ? void 0 : _a.suspend());
-    }, W * 1e3 + 30));
+    }, b * 1e3 + 30));
   }
   dispose() {
     var _a, _b, _c, _d, _e;
     this.disposed = true, clearTimeout(this.suspendTimer), (_a = this.source) == null ? void 0 : _a.stop(), (_b = this.source) == null ? void 0 : _b.disconnect(), (_c = this.filter) == null ? void 0 : _c.disconnect(), (_d = this.gain) == null ? void 0 : _d.disconnect(), (_e = this.context) == null ? void 0 : _e.close(), this.buffer = void 0;
   }
 }
-const Bt = (at) => new URL("assets/" + at, import.meta.url).href, se = ({ parentElement: at, data: K, setStateValue: W }) => {
-  const H = at.querySelector(".sky-sailer-root");
-  if (!H) return;
-  const j = K.course_id;
-  if (H.__home) return H.__home.update(j), H.__home.cleanup;
-  H.classList.add("ss-home"), H.innerHTML = `<section class="ss-course-picker" aria-label="コース選択">
+const Bt = (at) => new URL("assets/" + at, import.meta.url).href, se = ({ parentElement: at, data: H, setStateValue: b }) => {
+  const K = at.querySelector(".sky-sailer-root");
+  if (!K) return;
+  const j = H.course_id;
+  if (K.__home) return K.__home.update(j), K.__home.cleanup;
+  K.classList.add("ss-home"), K.innerHTML = `<section class="ss-course-picker" aria-label="コース選択">
     <div class="ss-picker-heading"><div><small>CHOOSE YOUR VOYAGE</small><h2>次は、どの世界へ？</h2></div><span>左右にスワイプ ↔</span></div>
     <div class="ss-carousel-controls"><button data-prev aria-label="前のコース">‹</button><div class="ss-course-carousel" role="region" aria-label="コースのカード" tabindex="0">
     ${St.map((T) => `<button class="ss-course-card" data-course-card="${T.id}" aria-label="${T.id} ${T.title}" aria-pressed="false"><img src="${Bt(T.world)}" width="1536" height="1024" loading="${T.id === j ? "eager" : "lazy"}" decoding="async" alt=""><span class="ss-card-shade"></span><span class="ss-card-number">${T.id}</span><span class="ss-card-copy"><span class="ss-world-caption">${{ sea: "THE SUNLIT SEA", ice: "AURORA & ICE", desert: "THE GOLDEN OASIS", cloud: "ABOVE THE CLOUDS" }[T.theme]}</span><strong>${T.title}</strong><small>${T.description}</small></span><span class="ss-card-selected">✦ 選択中</span></button>`).join("")}
@@ -27399,17 +27433,17 @@ const Bt = (at) => new URL("assets/" + at, import.meta.url).href, se = ({ parent
     <div class="ss-course-dots">${St.map((T) => `<button data-course-dot="${T.id}" aria-label="${T.id}を選択">${T.id}</button>`).join("")}</div>
     <div class="ss-home-music"><button class="ss-system" data-home-music aria-pressed="false" aria-label="ホームBGMを有効にする">♫ BGM OFF</button><label>ホームBGM<input data-home-volume type="range" min="0" max="100" value="50" aria-label="ホームBGM音量"></label><small>Beyond the Far Horizon</small></div><p data-home-music-message role="status" hidden></p>
   </section>`;
-  const J = H.querySelector(".ss-course-carousel"), p = Array.from(H.querySelectorAll("[data-course-card]")), S = H.querySelector("[data-prev]"), t = H.querySelector("[data-next]"), d = H.querySelector("[data-home-music]"), c = H.querySelector("[data-home-volume]"), o = H.querySelector("[data-home-music-message]"), r = new Vt([Bt("music/course-1-1-loop.ogg"), Bt("music/course-1-1-loop.mp3")]);
+  const J = K.querySelector(".ss-course-carousel"), p = Array.from(K.querySelectorAll("[data-course-card]")), S = K.querySelector("[data-prev]"), t = K.querySelector("[data-next]"), d = K.querySelector("[data-home-music]"), c = K.querySelector("[data-home-volume]"), o = K.querySelector("[data-home-music-message]"), r = new Vt([Bt("music/course-1-1-loop.ogg"), Bt("music/course-1-1-loop.mp3")]);
   r.setPlaying(!document.hidden);
   let n = St.findIndex((T) => T.id === j);
   n < 0 && (n = 0);
   let e = false, s;
   const h = window.matchMedia("(prefers-reduced-motion: reduce)").matches, i = () => {
-    H.dataset.selectedCourse = St[n].id, p.forEach((T, C) => T.setAttribute("aria-pressed", String(C === n))), H.querySelectorAll("[data-course-dot]").forEach((T) => T.setAttribute("aria-pressed", String(T.dataset.courseDot === St[n].id))), S.disabled = n === 0, t.disabled = n === p.length - 1;
+    K.dataset.selectedCourse = St[n].id, p.forEach((T, C) => T.setAttribute("aria-pressed", String(C === n))), K.querySelectorAll("[data-course-dot]").forEach((T) => T.setAttribute("aria-pressed", String(T.dataset.courseDot === St[n].id))), S.disabled = n === 0, t.disabled = n === p.length - 1;
   }, a = (T = "auto") => J.scrollTo({ left: p[n].offsetLeft - (J.clientWidth - p[n].clientWidth) / 2, behavior: T }), l = (T, C = true) => {
     T = Math.max(0, Math.min(p.length - 1, T));
     const E = n !== T;
-    n = T, i(), C && a(h ? "auto" : "smooth"), E && W("selected_course", St[n].id);
+    n = T, i(), C && a(h ? "auto" : "smooth"), E && b("selected_course", St[n].id);
   }, f = (T) => {
     const C = T.target, E = C.closest("[data-course-card],[data-course-dot]");
     E && l(St.findIndex((A) => A.id === (E.dataset.courseCard ?? E.dataset.courseDot))), C.closest("[data-prev]") && l(n - 1), C.closest("[data-next]") && l(n + 1), C.closest("[data-home-music]") && (d.disabled = true, o.hidden = true, r.toggle().then((A) => {
@@ -27431,31 +27465,31 @@ const Bt = (at) => new URL("assets/" + at, import.meta.url).href, se = ({ parent
   }, v = (T) => {
     (T.key === "ArrowRight" || T.key === "ArrowLeft") && (T.preventDefault(), l(n + (T.key === "ArrowRight" ? 1 : -1)));
   }, m = () => r.setVolume(Number(c.value) / 100), x = () => r.setPlaying(!document.hidden);
-  H.addEventListener("click", f), J.addEventListener("scroll", u, { passive: true }), J.addEventListener("keydown", v), c.addEventListener("input", m), document.addEventListener("visibilitychange", x);
+  K.addEventListener("click", f), J.addEventListener("scroll", u, { passive: true }), J.addEventListener("keydown", v), c.addEventListener("input", m), document.addEventListener("visibilitychange", x);
   const g = new ResizeObserver(() => a());
   g.observe(J), i(), requestAnimationFrame(() => {
     e || a();
   });
   const y = () => {
-    e || (e = true, clearTimeout(s), g.disconnect(), r.dispose(), H.removeEventListener("click", f), J.removeEventListener("scroll", u), J.removeEventListener("keydown", v), c.removeEventListener("input", m), document.removeEventListener("visibilitychange", x), H.replaceChildren(), H.classList.remove("ss-home"), delete H.__home);
+    e || (e = true, clearTimeout(s), g.disconnect(), r.dispose(), K.removeEventListener("click", f), J.removeEventListener("scroll", u), J.removeEventListener("keydown", v), c.removeEventListener("input", m), document.removeEventListener("visibilitychange", x), K.replaceChildren(), K.classList.remove("ss-home"), delete K.__home);
   };
-  return H.__home = { cleanup: y, update: (T) => {
+  return K.__home = { cleanup: y, update: (T) => {
     const C = St.findIndex((E) => E.id === T);
     C >= 0 && C !== n && (n = C, i(), a());
   } }, y;
-}, It = (at) => `${Math.floor(at / 6e4).toString().padStart(2, "0")}:${Math.floor(at / 1e3 % 60).toString().padStart(2, "0")}`, Rt = (at) => new URL("assets/" + at, import.meta.url).href, ne = ({ parentElement: at, data: K, setStateValue: W }) => {
+}, It = (at) => `${Math.floor(at / 6e4).toString().padStart(2, "0")}:${Math.floor(at / 1e3 % 60).toString().padStart(2, "0")}`, Ct = (at) => new URL("assets/" + at, import.meta.url).href, ne = ({ parentElement: at, data: H, setStateValue: b }) => {
   var _a, _b;
-  if (K.mode === "home") return se({ parentElement: at, data: K, setStateValue: W });
-  const H = K, j = Lt(H.course_id), J = at.querySelector(".sky-sailer-root");
+  if (H.mode === "home") return se({ parentElement: at, data: H, setStateValue: b });
+  const K = H, j = Lt(K.course_id), J = at.querySelector(".sky-sailer-root");
   if (!J) return;
-  if (((_a = J.__skySailer) == null ? void 0 : _a.runId) === H.run_id) return J.__skySailer.evaluate(H.evaluation), J.__skySailer.cleanup;
+  if (((_a = J.__skySailer) == null ? void 0 : _a.runId) === K.run_id) return J.__skySailer.evaluate(K.evaluation), J.__skySailer.cleanup;
   (_b = J.__skySailer) == null ? void 0 : _b.cleanup(), J.dataset.course = j.id, J.innerHTML = `
     <section class="ss-shell" aria-label="Sky Sailer ゲームコンソール">
-      <div class="ss-brand"><img class="ss-brand-mark" src="${Rt("streamlit-mark.svg")}" alt="Streamlit"><span>SKY SAILER</span><span class="ss-brand-right">${j.id} · ${j.title}</span></div>
+      <div class="ss-brand"><img class="ss-brand-mark" src="${Ct("streamlit-mark.svg")}" alt="Streamlit"><span>SKY SAILER</span><span class="ss-brand-right">${j.id} · ${j.title}</span></div>
       <div class="ss-bezel"><div class="ss-game">
         <div class="ss-mount"></div>
         <div class="ss-hud" aria-label="航海状況">
-          <div class="ss-hud-left"><span class="ss-captain-avatar"><img src="${Rt("captain-v3.webp")}" alt="船長"><img class="ss-avatar-mark" src="${Rt("streamlit-mark.svg")}" alt=""></span><span class="ss-lives" aria-label="残りライフ">♥ ♥ ♥</span><span class="ss-clock">00:00</span></div>
+          <div class="ss-hud-left"><span class="ss-captain-avatar"><img src="${Ct("captain-v3.webp")}" alt="船長"><img class="ss-avatar-mark" src="${Ct("streamlit-mark.svg")}" alt=""></span><span class="ss-lives" aria-label="残りライフ">♥ ♥ ♥</span><span class="ss-clock">00:00</span></div>
           <span class="ss-gems"><b>◆</b> <span data-crystals>0</span><small> / ${j.crystals.length}</small></span>
         </div>
         <div class="ss-captain-chat" data-cue hidden></div>
@@ -27477,9 +27511,9 @@ const Bt = (at) => new URL("assets/" + at, import.meta.url).href, se = ({ parent
     </section>`;
   const p = J.querySelector(".ss-mount"), S = J.querySelector(".ss-overlay"), t = J.querySelector(".ss-lives"), d = J.querySelector(".ss-clock"), c = J.querySelector("[data-crystals]"), o = J.querySelector("[data-progress]"), r = J.querySelector(".ss-boost-meter i"), n = J.querySelector("[data-pause]"), e = J.querySelector("[data-sound]"), s = J.querySelector("[data-guide]"), h = J.querySelector("[data-music]"), i = J.querySelector("[data-music-volume]"), a = J.querySelector("[data-music-message]"), l = J.querySelector("[data-weather]");
   let f = false;
-  const u = J.querySelector("[data-cue]"), v = J.querySelector("[data-wind]"), m = J.querySelector("[data-wind-time]"), x = v.querySelector("i"), g = { left: false, right: false, jump: false, boost: false, brake: false }, y = /* @__PURE__ */ new Map(), T = new ie(Rt("sfx/thunder-v1.mp3")), C = j.id === "3-1" ? "?v=golden-light-v1" : "", E = new Vt([Rt(`music/course-${j.id}-loop.ogg`) + C, Rt(`music/course-${j.id}-loop.mp3`) + C], true);
+  const u = J.querySelector("[data-cue]"), v = J.querySelector("[data-wind]"), m = J.querySelector("[data-wind-time]"), x = v.querySelector("i"), g = { left: false, right: false, jump: false, boost: false, brake: false }, y = /* @__PURE__ */ new Map(), T = new ie(Ct("sfx/thunder-v1.mp3"), { clear: Ct("sfx/goal-v1.mp3"), launch: Ct("sfx/star-launch-v1.mp3") }), C = j.id === "3-1" ? "?v=golden-light-v1" : "", E = new Vt([Ct(`music/course-${j.id}-loop.ogg`) + C, Ct(`music/course-${j.id}-loop.mp3`) + C], true);
   i.disabled = !E.available;
-  let A = "loading", M, P = H.evaluation, R = false;
+  let A = "loading", M, P = K.evaluation, R = false;
   const F = (Z) => {
     if (P = Z, !Z || Z.attempt_id !== (M == null ? void 0 : M.attempt_id) || !["S", "A", "B", "C"].includes(Z.rank)) return;
     const Q = J.querySelector(".ss-result-rank"), k = J.querySelector(".ss-result-comment");
@@ -27490,12 +27524,12 @@ const Bt = (at) => new URL("assets/" + at, import.meta.url).href, se = ({ parent
   }, I = () => {
     y.clear(), D();
   }, U = (Z) => {
-    d.textContent = It(Z.elapsedMs), c.textContent = String(Z.crystals), t.innerHTML = Array.from({ length: 3 }, (Q, k) => `<span class="${k < 3 - Z.hits ? "" : "is-lost"}">♥</span>`).join(" "), t.setAttribute("aria-label", `残りライフ ${Math.max(0, 3 - Z.hits)}`), o.style.width = `${Z.progress * 100}%`, r.style.width = `${Z.boostReady * 100}%`, r.parentElement.classList.toggle("is-ready", Z.boostReady === 1), u.textContent = Z.cue, u.hidden = !Z.cue, v.hidden = Z.windMs <= 0, m.textContent = `追い風 ×${Z.windStacks} · ${(Z.windMs / 1e3).toFixed(1)}s`, x.style.width = `${Math.min(100, Z.windMs / 4500 * 100)}%`, J.dataset.wind = Z.windMs > 0 ? "active" : "idle", l.textContent = `${Z.storm > 0.55 ? "☁" : "☀"} ${Z.weather}`, J.dataset.weather = Z.storm > 0.55 ? "storm" : "sunny", E.setWeather(Z.storm);
+    d.textContent = It(Z.elapsedMs), c.textContent = String(Z.crystals), t.innerHTML = Array.from({ length: 3 }, (Q, k) => `<span class="${k < 3 - Z.hits ? "" : "is-lost"}">♥</span>`).join(" "), t.setAttribute("aria-label", `残りライフ ${Math.max(0, 3 - Z.hits)}`), o.style.width = `${Z.progress * 100}%`, r.style.width = `${Z.boostReady * 100}%`, r.parentElement.classList.toggle("is-ready", Z.boostReady === 1), u.textContent = Z.cue, u.hidden = !Z.cue, v.hidden = Z.windMs <= 0, m.textContent = `追い風 ×${Z.windStacks} · ${(Z.windMs / 1e3).toFixed(1)}s`, x.style.width = `${Math.min(100, Z.windMs / 4500 * 100)}%`, J.dataset.wind = Z.windMs > 0 ? "active" : "idle", l.textContent = `${Z.storm > 0.55 ? "☁" : "☀"} ${Z.weather}`, J.dataset.weather = Z.storm > 0.55 ? "storm" : "sunny", E.setWeather(Z.storm), Z.progress >= 1 && E.setPlaying(false);
   }, N = (Z, Q) => {
-    R || (J.dataset.phase = Z, T.setPlaying(Z === "playing"), E.setPlaying(Z === "playing", Z === "playing" && A === "loading"), A = Z, S.hidden = Z === "playing", n.disabled = Z !== "playing" && Z !== "paused", n.textContent = Z === "paused" ? "▶ RESUME" : "Ⅱ PAUSE", Z === "paused" ? (I(), S.innerHTML = '<span class="ss-overline">TAKE A BREATH</span><h2>風待ちのひととき</h2><p>準備ができたら、航海を続けよう。</p><div class="ss-overlay-actions"><button class="ss-button" data-resume>航海を再開</button><button class="ss-button ss-button-secondary" data-home>ホームに戻る</button></div>') : Z === "loading" ? S.innerHTML = `<span class="ss-overline">COURSE ${j.id}</span><h2>${j.title}へ</h2><p>帆に風を集めています…</p><span class="ss-loading">✦</span>` : Z === "error" ? S.innerHTML = '<span class="ss-overline">WAITING FOR THE WIND</span><h2>航路を読み込めませんでした。</h2><p>通信を確認して、もう一度出航しよう。</p><button class="ss-button" data-reload>再読み込み</button>' : Q && (I(), M = Q, S.innerHTML = Q.status === "cleared" ? `<span class="ss-overline">${j.id} · VOYAGE COMPLETE</span><div class="ss-result-rank">✦</div><h2>${j.goal_label}へ、到着。</h2><p class="ss-result-comment">航海を評価しています…</p><div class="ss-result-stats">${It(Q.elapsed_ms)}<span>◆ ${Q.crystals} / ${Q.total_crystals}</span><span>ミス ${Q.hit_count}</span></div><div class="ss-overlay-actions">${H.next_course_id ? '<button class="ss-button" data-next-stage>次のステージへ</button>' : ""}<button class="ss-button ss-button-secondary" data-home>ホームに戻る</button><button class="ss-text-button" data-retry>もう一度出航する</button></div>` : `<span class="ss-overline">${j.id} · THE SKY IS WAITING</span><h2>次の風に、乗ろう。</h2><p>${j.description}</p><div class="ss-result-stats">${It(Q.elapsed_ms)}<span>◆ ${Q.crystals} / ${Q.total_crystals}</span></div><div class="ss-overlay-actions"><button class="ss-button" data-retry>もう一度出航する</button><button class="ss-button ss-button-secondary" data-home>ホームに戻る</button></div>`, F(P)));
-  }, w = new ee(H, g, T, { phase: N, hud: U, result: (Z) => {
-    R || W("result", Z);
-  } }), B = new yt.Game({ type: yt.AUTO, width: ft.width, height: ft.height, parent: p, banner: false, physics: { default: "arcade", arcade: { gravity: { x: 0, y: 900 * H.gravity }, debug: false } }, scale: { mode: yt.Scale.FIT, autoCenter: yt.Scale.CENTER_BOTH }, scene: [w], render: { antialias: true, roundPixels: false }, fps: { target: 60 } }), L = (Z) => {
+    R || (J.dataset.phase = Z, T.setPlaying(Z === "playing"), E.setPlaying(Z === "playing", Z === "playing" && A === "loading"), A = Z, S.hidden = Z === "playing", n.disabled = Z !== "playing" && Z !== "paused", n.textContent = Z === "paused" ? "▶ RESUME" : "Ⅱ PAUSE", Z === "paused" ? (I(), S.innerHTML = '<span class="ss-overline">TAKE A BREATH</span><h2>風待ちのひととき</h2><p>準備ができたら、航海を続けよう。</p><div class="ss-overlay-actions"><button class="ss-button" data-resume>航海を再開</button><button class="ss-button ss-button-secondary" data-home>ホームに戻る</button></div>') : Z === "loading" ? S.innerHTML = `<span class="ss-overline">COURSE ${j.id}</span><h2>${j.title}へ</h2><p>帆に風を集めています…</p><span class="ss-loading">✦</span>` : Z === "error" ? S.innerHTML = '<span class="ss-overline">WAITING FOR THE WIND</span><h2>航路を読み込めませんでした。</h2><p>通信を確認して、もう一度出航しよう。</p><button class="ss-button" data-reload>再読み込み</button>' : Q && (I(), M = Q, S.innerHTML = Q.status === "cleared" ? `<span class="ss-overline">${j.id} · VOYAGE COMPLETE</span><div class="ss-result-rank">✦</div><h2>${j.goal_label}へ、到着。</h2><p class="ss-result-comment">航海を評価しています…</p><div class="ss-result-stats">${It(Q.elapsed_ms)}<span>◆ ${Q.crystals} / ${Q.total_crystals}</span><span>ミス ${Q.hit_count}</span></div><div class="ss-overlay-actions">${K.next_course_id ? '<button class="ss-button" data-next-stage>次のステージへ</button>' : ""}<button class="ss-button ss-button-secondary" data-home>ホームに戻る</button><button class="ss-text-button" data-retry>もう一度出航する</button></div>` : `<span class="ss-overline">${j.id} · THE SKY IS WAITING</span><h2>次の風に、乗ろう。</h2><p>${j.description}</p><div class="ss-result-stats">${It(Q.elapsed_ms)}<span>◆ ${Q.crystals} / ${Q.total_crystals}</span></div><div class="ss-overlay-actions"><button class="ss-button" data-retry>もう一度出航する</button><button class="ss-button ss-button-secondary" data-home>ホームに戻る</button></div>`, F(P)));
+  }, w = new ee(K, g, T, { phase: N, hud: U, result: (Z) => {
+    R || b("result", Z);
+  } }), B = new yt.Game({ type: yt.AUTO, width: ft.width, height: ft.height, parent: p, banner: false, physics: { default: "arcade", arcade: { gravity: { x: 0, y: 900 * K.gravity }, debug: false } }, scale: { mode: yt.Scale.FIT, autoCenter: yt.Scale.CENTER_BOTH }, scene: [w], render: { antialias: true, roundPixels: false }, fps: { target: 60 } }), L = (Z) => {
     T.unlock(), E.unlock();
     const Q = Z.target.closest("[data-act]");
     !Q || w.phase !== "playing" || (y.set(Z.pointerId, Q.dataset.act), Q.dataset.act === "jump" && w.requestJump(), Q.dataset.act === "boost" && w.requestBoost(), Q.setPointerCapture(Z.pointerId), D(), Z.preventDefault());
@@ -27511,10 +27545,10 @@ const Bt = (at) => new URL("assets/" + at, import.meta.url).href, se = ({ parent
       R || (h.disabled = false);
     })), Q.closest("[data-pause]") && (I(), w.phase === "paused" ? w.resumeVoyage() : w.pauseVoyage()), Q.closest("[data-resume]") && w.resumeVoyage(), Q.closest("[data-home]") || Q.closest("[data-next-stage]")) {
       const k = Q.closest("[data-home]") ? "home" : "next";
-      if (k === "next" && (w.phase !== "cleared" || !H.next_course_id)) return;
-      I(), w.pauseVoyage(), E.setPlaying(false), S.querySelectorAll("button").forEach((tt) => tt.disabled = true), W("navigation", { action: k, run_id: H.run_id });
+      if (k === "next" && (w.phase !== "cleared" || !K.next_course_id)) return;
+      I(), w.pauseVoyage(), E.setPlaying(false), T.stopEvents(), S.querySelectorAll("button").forEach((tt) => tt.disabled = true), b("navigation", { action: k, run_id: K.run_id });
     }
-    Q.closest("[data-reload]") && window.location.reload(), Q.closest("[data-retry]") && (M = void 0, I(), W("result", null), w.restartVoyage()), Q.closest("[data-sound]") && T.toggle().then((k) => {
+    Q.closest("[data-reload]") && window.location.reload(), Q.closest("[data-retry]") && (M = void 0, I(), T.stopEvents(), b("result", null), w.restartVoyage()), Q.closest("[data-sound]") && T.toggle().then((k) => {
       R || (e.textContent = k ? "♪ SOUND ON" : "♪ SOUND OFF", e.setAttribute("aria-pressed", String(k)), e.setAttribute("aria-label", k ? "効果音を無効にする" : "効果音を有効にする"));
     });
   }, z = () => {
@@ -27525,14 +27559,14 @@ const Bt = (at) => new URL("assets/" + at, import.meta.url).href, se = ({ parent
     T.unlock(), E.unlock(), Z.code === "Escape" && (w.phase === "paused" ? w.resumeVoyage() : w.pauseVoyage());
   };
   J.addEventListener("pointerdown", L), J.addEventListener("pointerup", G), J.addEventListener("pointercancel", G), J.addEventListener("lostpointercapture", G), J.addEventListener("click", O), i.addEventListener("input", V), document.addEventListener("visibilitychange", z), window.addEventListener("blur", X), window.addEventListener("keydown", Y);
-  const b = new ResizeObserver(() => {
+  const W = new ResizeObserver(() => {
     !R && B.isBooted && B.scale.refresh();
   });
-  b.observe(p);
+  W.observe(p);
   const $ = () => {
-    R || (R = true, b.disconnect(), T.dispose(), E.dispose(), B.destroy(true), J.removeEventListener("pointerdown", L), J.removeEventListener("pointerup", G), J.removeEventListener("pointercancel", G), J.removeEventListener("lostpointercapture", G), J.removeEventListener("click", O), i.removeEventListener("input", V), document.removeEventListener("visibilitychange", z), window.removeEventListener("blur", X), window.removeEventListener("keydown", Y), J.replaceChildren(), delete J.__skySailer);
+    R || (R = true, W.disconnect(), T.dispose(), E.dispose(), B.destroy(true), J.removeEventListener("pointerdown", L), J.removeEventListener("pointerup", G), J.removeEventListener("pointercancel", G), J.removeEventListener("lostpointercapture", G), J.removeEventListener("click", O), i.removeEventListener("input", V), document.removeEventListener("visibilitychange", z), window.removeEventListener("blur", X), window.removeEventListener("keydown", Y), J.replaceChildren(), delete J.__skySailer);
   };
-  return J.__skySailer = { runId: H.run_id, cleanup: $, evaluate: F }, E.available && E.enable().catch((Z) => {
+  return J.__skySailer = { runId: K.run_id, cleanup: $, evaluate: F }, E.available && E.enable().catch((Z) => {
     R || (h.textContent = "♫ BGM OFF", h.setAttribute("aria-pressed", "false"), h.setAttribute("aria-label", "BGMを有効にする"), a.textContent = Z.message, a.hidden = false);
   }), $;
 };

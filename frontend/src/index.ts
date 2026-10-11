@@ -73,7 +73,9 @@ const renderer: FrontendRenderer<GameState> = ({ parentElement, data: rawData, s
   const windMeter = windBadge.querySelector<HTMLElement>("i")!;
   const controls: Controls = { left: false, right: false, jump: false, boost: false, brake: false };
   const pointers = new Map<number, keyof Controls>();
-  const audio = new VoyageAudio(assetUrl("sfx/thunder-v1.mp3"));
+  const audio = new VoyageAudio(assetUrl("sfx/thunder-v1.mp3"), {
+    clear: assetUrl("sfx/goal-v1.mp3"), launch: assetUrl("sfx/star-launch-v1.mp3"),
+  });
   const musicRevision = course.id === "3-1" ? "?v=golden-light-v1" : "";
   const music = new VoyageMusic([assetUrl(`music/course-${course.id}-loop.ogg`)+musicRevision,assetUrl(`music/course-${course.id}-loop.mp3`)+musicRevision],true);
   musicVolume.disabled=!music.available;
@@ -112,6 +114,7 @@ const renderer: FrontendRenderer<GameState> = ({ parentElement, data: rawData, s
     weatherBadge.textContent=`${hud.storm>.55 ? "☁" : "☀"} ${hud.weather}`;
     root.dataset.weather=hud.storm>.55 ? "storm" : "sunny";
     music.setWeather(hud.storm);
+    if (hud.progress >= 1) music.setPlaying(false);
   };
   const onPhase = (phase: Phase, result?: Result) => {
     if (disposed) return;
@@ -181,13 +184,13 @@ const renderer: FrontendRenderer<GameState> = ({ parentElement, data: rawData, s
     if (target.closest("[data-home]") || target.closest("[data-next-stage]")) {
       const action = target.closest("[data-home]") ? "home" : "next";
       if (action === "next" && (scene.phase !== "cleared" || !data.next_course_id)) return;
-      releaseAll(); scene.pauseVoyage(); music.setPlaying(false);
+      releaseAll(); scene.pauseVoyage(); music.setPlaying(false); audio.stopEvents();
       overlay.querySelectorAll<HTMLButtonElement>("button").forEach(button => button.disabled = true);
       setStateValue("navigation", { action, run_id: data.run_id });
     }
     if (target.closest("[data-reload]")) window.location.reload();
     if (target.closest("[data-retry]")) {
-      currentResult = undefined; releaseAll(); setStateValue("result", null); scene.restartVoyage();
+      currentResult = undefined; releaseAll(); audio.stopEvents(); setStateValue("result", null); scene.restartVoyage();
     }
     if (target.closest("[data-sound]")) void audio.toggle().then(enabled => {
       if (disposed) return;
