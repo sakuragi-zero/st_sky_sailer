@@ -1,8 +1,10 @@
 import type Phaser from "phaser";
 import type { Theme } from "./stage";
+import { makeBackgroundObjects } from "./BackgroundObjects";
 
 /** Paint once into reusable textures; shading stays soft like the world artwork. */
 export function makeSceneryTextures(scene: Phaser.Scene, theme: Theme) {
+  makeBackgroundObjects(scene, theme);
   const canvas = (key: string, width: number, height: number, paint: (ctx: CanvasRenderingContext2D) => void) => {
     if (scene.textures.exists(key)) return;
     const texture = scene.textures.createCanvas(key, width, height);
@@ -49,35 +51,6 @@ export function makeSceneryTextures(scene: Phaser.Scene, theme: Theme) {
     grain(ctx, 512, 144, "rgba(255,255,255,.09)", 1600);
   });
 
-  canvas("iceberg", 190, 180, ctx => {
-    ctx.save();
-    polygon(ctx, [[12,151],[30,111],[53,125],[79,27],[102,68],[120,46],[166,137],[178,154],[133,164],[46,166]]);
-    ctx.clip();
-    const wash = ctx.createLinearGradient(28, 35, 161, 170);
-    wash.addColorStop(0, "#f3fcff"); wash.addColorStop(0.3, "#bfdfeb"); wash.addColorStop(0.64, "#80bed8"); wash.addColorStop(1, "#528cb1");
-    ctx.fillStyle = wash; ctx.fillRect(0, 0, 190, 180);
-    ctx.fillStyle = "rgba(242,251,255,.8)";
-    polygon(ctx, [[79,27],[50,137],[94,99],[102,68]]); ctx.fill();
-    polygon(ctx, [[120,46],[105,140],[142,111]]); ctx.fill();
-    ctx.fillStyle = "rgba(77,130,174,.32)";
-    polygon(ctx, [[79,27],[89,150],[115,142],[94,99]]); ctx.fill();
-    polygon(ctx, [[120,46],[137,153],[178,154],[147,117]]); ctx.fill();
-    ctx.strokeStyle = "rgba(248,253,255,.8)"; ctx.lineWidth = 1.5;
-    for (const [x,y,endX,endY] of [[79,28,49,136],[120,47,105,139],[94,98,68,146],[143,109,155,150]]) {
-      ctx.beginPath(); ctx.moveTo(x,y); ctx.lineTo(endX,endY); ctx.stroke();
-    }
-    for (let i = 0; i < 28; i++) {
-      ctx.strokeStyle = `rgba(244,253,255,${0.08 + random() * 0.2})`;
-      const x = random() * 190, y = 60 + random() * 108;
-      ctx.beginPath(); ctx.moveTo(x,y); ctx.lineTo(x + 9 + random() * 19,y - 3); ctx.stroke();
-    }
-    grain(ctx, 190, 180, "rgba(255,255,255,.16)", 1500);
-    ctx.restore();
-    const base = ctx.createRadialGradient(95,158,7,95,158,88);
-    base.addColorStop(0, "rgba(230,248,254,.8)"); base.addColorStop(1, "rgba(180,227,244,0)");
-    ctx.fillStyle = base; ctx.beginPath(); ctx.ellipse(95,158,88,14,0,0,Math.PI*2); ctx.fill();
-  });
-
   canvas("cactus", 116, 184, ctx => {
     ctx.save();
     ctx.beginPath();
@@ -112,12 +85,4 @@ export function makeSceneryTextures(scene: Phaser.Scene, theme: Theme) {
     ctx.fillStyle="#f2d9a3";ctx.beginPath();ctx.arc(60,20,3,0,Math.PI*2);ctx.fill();
   });
 
-  canvas("icicle", 50, 140, ctx => {
-    polygon(ctx,[[5,4],[42,4],[32,26],[24,132],[13,54]]);
-    const gradient=ctx.createLinearGradient(5,0,42,0);
-    gradient.addColorStop(0,"#f3fcff");gradient.addColorStop(.4,"#d5ecf7");gradient.addColorStop(.6,"#8bbad5");gradient.addColorStop(1,"#5e93bb");
-    ctx.fillStyle=gradient;ctx.fill();
-    ctx.strokeStyle="rgba(252,255,255,.85)";ctx.lineWidth=1.2;
-    ctx.beginPath();ctx.moveTo(8,5);ctx.lineTo(24,132);ctx.moveTo(22,6);ctx.lineTo(25,91);ctx.stroke();
-  });
 }

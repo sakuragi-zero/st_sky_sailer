@@ -49,6 +49,7 @@ export class VoyageScene extends Phaser.Scene {
   private boostUntil = 0;
   private boostReadyAt = 0;
   private windUntil = 0;
+  private windStacks = 0;
   private immuneUntil = 0;
   private previousJump = false;
   private previousBoost = false;
@@ -79,6 +80,7 @@ export class VoyageScene extends Phaser.Scene {
     this.elapsedMs = this.hits = this.collected = 0;
     this.lastGrounded = this.jumpBuffer = this.lastHud = this.lastTrail = -1000;
     this.boostUntil = this.boostReadyAt = this.immuneUntil = this.windUntil = 0;
+    this.windStacks = 0;
     this.previousJump = this.previousBoost = false;
     this.boostQueued = false;
     this.lift = null;
@@ -133,9 +135,11 @@ export class VoyageScene extends Phaser.Scene {
       this.sparkles.explode(12, gem.x, gem.y);
       this.tweens.killTweensOf(gem); gem.destroy();
       this.collected++; this.audio.play("collect");
-      // Chain pickups extend the breeze, with a cap rather than unbounded speed.
+      // Each pickup increases speed as well as renewing the chain's duration.
+      if (this.elapsedMs >= this.windUntil) this.windStacks = 0;
+      this.windStacks = Math.min(6, this.windStacks + 1);
       this.windUntil = Math.min(this.elapsedMs + 4500, Math.max(this.windUntil, this.elapsedMs) + 2800);
-      this.message = "クリスタルの風！ スピードアップ♪"; this.messageUntil = this.elapsedMs + 2200;
+      this.message = `クリスタルの風 ×${this.windStacks}！ スピードアップ♪`; this.messageUntil = this.elapsedMs + 2200;
       if (this.collected % 4 === 0 || this.collected === 1) {
         this.tweens.add({ targets: this.captain, y: -59, duration: 180, yoyo: true, ease: "Sine.easeOut" });
       }
@@ -229,8 +233,9 @@ export class VoyageScene extends Phaser.Scene {
     this.boostQueued = false;
     const boosted = this.elapsedMs < this.boostUntil;
     const windy = this.elapsedMs < this.windUntil;
+    if (!windy) this.windStacks = 0;
     const stopped = brake;
-    const target = (right ? 170 : 132) - (left ? 103 : 0) + (boosted ? 122 : 0) + (windy ? 125 : 0);
+    const target = (right ? 170 : 132) - (left ? 103 : 0) + (boosted ? 122 : 0) + (windy ? 125 + (this.windStacks - 1) * 65 : 0);
     // Stopping takes priority over both kinds of boost; gravity and hazards keep moving.
     if (!this.flight) body.setVelocityX(stopped ? 0 : Phaser.Math.Linear(body.velocity.x, Math.max(0, target), 1 - Math.exp(-delta / 180)));
     if(!this.flight && !this.lift && !stopped) {
@@ -286,7 +291,7 @@ export class VoyageScene extends Phaser.Scene {
     }
     this.waterway.draw(this.player.x, this.player.y, this.elapsedMs, Math.min(delta, 100), afloat && body.velocity.y >= 0, boosted || windy, this.atmosphere.detail);
     this.hazards.update(this.player.x, this.player.y, this.elapsedMs, Math.min(delta,100));
-    this.windEffect.draw(this.elapsedMs, Math.max(0,this.windUntil-this.elapsedMs));
+    this.windEffect.draw(this.elapsedMs, Math.max(0,this.windUntil-this.elapsedMs), this.windStacks);
     this.weather.draw(this.player.x/this.course.goalX,this.elapsedMs,Math.min(delta,100),this.atmosphere.detail,this.atmosphere.reducedMotion);
     this.atmosphere.update(this.player.x,this.elapsedMs,delta,this.weather.intensity);
     this.backdrop.setTint(this.weather.tint); this.backdropTwin.setTint(this.weather.tint);
@@ -307,6 +312,7 @@ export class VoyageScene extends Phaser.Scene {
     this.hits++; this.audio.play("hit"); this.cameras.main.shake(150, 0.003);
     this.message = "だいじょうぶ、もう一度！"; this.messageUntil = this.elapsedMs + 2600;
     this.windUntil = this.boostUntil = 0;
+    this.windStacks = 0;
     if (this.hits >= 3) { this.finish("failed"); return; }
     this.immuneUntil = this.elapsedMs + 1300;
     if(fell) {
@@ -347,7 +353,7 @@ export class VoyageScene extends Phaser.Scene {
     const cascade=this.course.cascades.find(c=>c.x-this.player.x>-60 && c.x-this.player.x<320);
     const ring = this.rings.upcoming(this.player.x);
     const cue = this.flight ? this.message : ring ? "金色のスターリングを通って、遠くへ！" : this.hazards.cue || (this.lift ? this.message : cascade ? cascade.ascent ? this.course.theme==="cloud" ? "金色の上昇気流に乗ろう" : "光る滝で、滝登り！" : "大きな落差！ 下の航路へ" : !afloat ? "" : next ? this.course.theme === "cloud" ? "雲の切れ目！ 次の段へジャンプ" : "滝の切れ目！ Aでひとっとび" : hazard ? obstacleCue : this.elapsedMs < this.messageUntil ? this.message : "");
-    this.hooks.hud({ elapsedMs: this.elapsedMs, hits: this.hits, crystals: this.collected, progress: Math.min(1, this.player.x / this.course.goalX), boostReady: Phaser.Math.Clamp(1 - (this.boostReadyAt - this.elapsedMs) / 3400, 0, 1), windMs: Math.max(0,this.windUntil-this.elapsedMs), cue, weather:this.weather.label, storm:this.weather.intensity });
+    this.hooks.hud({ elapsedMs: this.elapsedMs, hits: this.hits, crystals: this.collected, progress: Math.min(1, this.player.x / this.course.goalX), boostReady: Phaser.Math.Clamp(1 - (this.boostReadyAt - this.elapsedMs) / 3400, 0, 1), windMs: Math.max(0,this.windUntil-this.elapsedMs), windStacks: this.elapsedMs < this.windUntil ? this.windStacks : 0, cue, weather:this.weather.label, storm:this.weather.intensity });
   }
 
   pauseVoyage() {

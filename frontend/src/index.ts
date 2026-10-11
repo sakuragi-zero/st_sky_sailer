@@ -105,7 +105,7 @@ const renderer: FrontendRenderer<GameState> = ({ parentElement, data: rawData, s
     captainCue.textContent = hud.cue;
     captainCue.hidden = !hud.cue;
     windBadge.hidden = hud.windMs <= 0;
-    windTime.textContent = `追い風 ${(hud.windMs / 1000).toFixed(1)}s`;
+    windTime.textContent = `追い風 ×${hud.windStacks} · ${(hud.windMs / 1000).toFixed(1)}s`;
     windMeter.style.width = `${Math.min(100,hud.windMs/4500*100)}%`;
     root.dataset.wind = hud.windMs > 0 ? "active" : "idle";
     weatherBadge.textContent=`${hud.storm>.55 ? "☁" : "☀"} ${hud.weather}`;

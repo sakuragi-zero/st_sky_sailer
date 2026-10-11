@@ -110,4 +110,4 @@ export type Result = {
 };
 export type Controls = { left: boolean; right: boolean; jump: boolean; boost: boolean; brake: boolean };
 export type Phase = "loading" | "playing" | "paused" | "cleared" | "failed" | "error";
-export type Hud = { elapsedMs: number; hits: number; crystals: number; progress: number; boostReady: number; windMs: number; cue: string; weather: string; storm: number };
+export type Hud = { elapsedMs: number; hits: number; crystals: number; progress: number; boostReady: number; windMs: number; windStacks: number; cue: string; weather: string; storm: number };

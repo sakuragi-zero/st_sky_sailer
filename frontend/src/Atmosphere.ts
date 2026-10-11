@@ -126,17 +126,9 @@ export class Atmosphere {
     const key = `shore-${this.course.theme}`;
     if (this.scene.textures.exists(key) || this.course.theme !== "ice") return;
     makeSceneryTextures(this.scene, this.course.theme);
-    this.canvas(key, 240, 170, ctx => {
-      const ice = this.scene.textures.get("iceberg").getSourceImage() as HTMLCanvasElement;
-      ctx.globalAlpha = 0.8;
-      for (let i = 0; i < 4; i++) {
-        const height = 78 + i * 17 % 44;
-        ctx.drawImage(ice, i * 49, 154-height, 100, height);
-      }
-      ctx.globalAlpha = 1;
-      const snow = ctx.createRadialGradient(120,149,4,120,149,110);
-      snow.addColorStop(0,"rgba(237,250,253,.9)");snow.addColorStop(1,"rgba(185,219,235,0)");
-      ctx.fillStyle=snow;ctx.beginPath();ctx.ellipse(120,149,115,13,0,0,Math.PI*2);ctx.fill();
+    this.canvas(key, 280, 170, ctx => {
+      const shore = this.scene.textures.get("harbor-shore-ice").getSourceImage() as HTMLCanvasElement;
+      ctx.drawImage(shore, 0, 0, 280, 170);
     });
   }
 }
