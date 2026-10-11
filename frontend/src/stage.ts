@@ -55,10 +55,13 @@ export function getCourse(id = "1-1"): Course {
     channel.width = Math.max(channel.width, theme === "cloud" ? 650 : obstacleLane ? 1500 : 900);
     laneX = channel.x + channel.width + nextGap;
   });
+  if (theme === "cloud") base.forEach((channel,i) => { if (i >= 5) channel.y += 1600; });
   // A second voyage region lies beyond a broad sky gap, reached by a star flight.
   const regionEnd = base.at(-1)!.x + base.at(-1)!.width;
   const regionOffset = regionEnd + 2800;
-  const channels = [...base, ...base.map(channel => ({ ...channel, x: channel.x + regionOffset }))];
+  // Each cloud drop begins at its ring's destination; do not repeat the first
+  // region's drop on an ordinary gap in the second region.
+  const channels = [...base, ...base.map((channel,i) => ({ ...channel, x: channel.x + regionOffset, y: theme === "cloud" ? channel.y + 3400 - (i >= 5 ? 1600 : 0) + (i >= 8 ? 1800 : 0) : channel.y }))];
   const ringAt = (source: Channel, target: Channel, height = 540): StarRing => ({
     x: source.x + source.width - 190, y: source.y - 24,
     targetX: target.x + 160, targetY: target.y - 18, height,
@@ -68,6 +71,7 @@ export function getCourse(id = "1-1"): Course {
     ringAt(base.at(-1)!, channels[base.length], 620),
     ringAt(channels[base.length + 5], channels[base.length + 8], 500),
   ];
+  if (theme === "cloud") rings.forEach(ring => { ring.height = 1400; });
   const cascades = channels.slice(0,-1).flatMap((channel,i) => {
     const next = channels[i+1];
     return next.x - channel.x - channel.width < 300 && Math.abs(next.y-channel.y) > 100 ? [{x:channel.x+channel.width,nextX:next.x,fromY:channel.y,toY:next.y,ascent:next.y<channel.y}] : [];

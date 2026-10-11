@@ -9,17 +9,49 @@ export class VoyageWeather {
   label="晴れ";
   private readonly sky:Phaser.GameObjects.Graphics;
   private readonly rain:Phaser.GameObjects.Graphics;
+  private readonly veil: Phaser.GameObjects.Image[] = [];
   private lastDraw = -1000;
   private thunderCycle = -1;
   private thunderAt: number | null = null;
   constructor(scene:Phaser.Scene,private readonly theme:Theme,private readonly onThunder:(strength:number)=>void = () => {}) {
     this.sky=scene.add.graphics().setScrollFactor(0).setDepth(1);
     this.rain=scene.add.graphics().setScrollFactor(0).setDepth(14);
+    if (theme === "ice" || theme === "desert") {
+      const key = `storm-veil-${theme}`;
+      if (!scene.textures.exists(key)) {
+        // One soft, irregular wash is reused by a fixed pool. Transparent
+        // valleys between the banks reveal fragments of the voyage below.
+        const texture = scene.textures.createCanvas(key,512,256)!;
+        const ctx = texture.context;
+        const color = theme === "ice" ? "228,241,248" : "206,167,113";
+        for (let i=0;i<7;i++) {
+          const x=70+i*62, y=110+Math.sin(i*1.8)*37;
+          ctx.save();ctx.translate(x,y);ctx.scale(1,.68);
+          const wash = ctx.createRadialGradient(0,0,12,0,0,113);
+          wash.addColorStop(0,`rgba(${color},.95)`);wash.addColorStop(.52,`rgba(${color},.72)`);wash.addColorStop(1,`rgba(${color},0)`);
+          ctx.fillStyle=wash;ctx.fillRect(-113,-113,226,226);ctx.restore();
+        }
+        texture.refresh();
+      }
+      for (let i=0;i<8;i++) this.veil.push(scene.add.image(0,0,key).setScrollFactor(0).setDepth(15).setFlipX(i%2===1).setVisible(false));
+    }
   }
   draw(progress:number,time:number,delta:number,detail=1,reducedMotion=false) {
     const target=smooth(.24,.38,progress)*(1-smooth(.64,.83,progress));
     this.intensity=Phaser.Math.Linear(this.intensity,target,1-Math.exp(-delta/650));
     const strength=this.intensity;
+    const opacity = smooth(.25,.8,strength);
+    const drift = reducedMotion ? 0 : time;
+    this.veil.forEach((bank,i) => {
+      bank.setVisible(opacity > .01);
+      if (opacity <= .01) return;
+      const layer = Math.floor(i/4), column = i%4;
+      const x=((column*340+drift*(layer ? -.055 : .075)+layer*170)%1360+1360)%1360-300;
+      const y=110+layer*235+Math.sin(drift/2100+i*1.7)*48;
+      // Opposing banks drift apart periodically, leaving moving windows.
+      const gust=.68+Math.sin(drift/2900+i*2.3)*.22;
+      bank.setPosition(x,y).setDisplaySize(660,330).setAlpha(opacity*gust);
+    });
     // Schedule one distant rumble per lightning cycle, including the storm's
     // arrival. Simulation time freezes this delay while the voyage is paused.
     const cycle = Math.floor(time/9400);

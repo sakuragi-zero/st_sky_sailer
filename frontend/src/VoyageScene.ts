@@ -88,7 +88,8 @@ export class VoyageScene extends Phaser.Scene {
     this.projected = [];
     this.message = this.course.intro; this.messageUntil = 5000;
     this.checkpoint = { x: 200, y: this.course.channels[0].y };
-    this.physics.world.setBounds(0, this.course.minY - 400, this.course.goalX + 750, 1900 - this.course.minY);
+    const bottomY = Math.max(1900, ...this.course.channels.map(channel => channel.y + 900));
+    this.physics.world.setBounds(0, this.course.minY - 400, this.course.goalX + 750, bottomY - this.course.minY + 400);
     const camera = this.cameras.main;
     camera.setBounds(0, this.course.minY, this.course.goalX + 600, VIEW.height - this.course.minY + Math.max(0,...this.course.channels.map(channel=>channel.y-406)));
     // Alternating mirrored panels meet at matching pixels, avoiding a hard seam.
@@ -194,7 +195,7 @@ export class VoyageScene extends Phaser.Scene {
     if (!this.flight) {
       const ring = this.rings.crossed(this.player.x, this.player.y);
       if (ring) {
-        this.flight = { ring, startX: this.player.x, startY: this.player.y, began: this.elapsedMs, duration: Math.max(2200, (ring.targetX - this.player.x) / 820 * 1000) };
+        this.flight = { ring, startX: this.player.x, startY: this.player.y, began: this.elapsedMs, duration: this.course.theme === "cloud" ? Math.max(6500, (ring.targetX - this.player.x) / 620 * 1000) : Math.max(2200, (ring.targetX - this.player.x) / 820 * 1000) };
         this.lift = null;
         this.jumpBuffer = this.lastGrounded = -1000;
         this.boostQueued = false;
@@ -265,6 +266,9 @@ export class VoyageScene extends Phaser.Scene {
       const point = flightPoint(this.flight, this.elapsedMs);
       body.reset(point.x, point.y);
       flightAngle = point.angle * 0.48;
+      if (this.course.theme === "cloud" && point.angle > .5 && !point.done) {
+        this.message = "雲の底は、まだ見えない…！"; this.messageUntil = this.elapsedMs + 500;
+      }
       if (point.done) {
         this.checkpoint = { x: point.x, y: this.flight.ring.targetY + 18 };
         this.flight = null;
