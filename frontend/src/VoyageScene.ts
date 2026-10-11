@@ -146,7 +146,7 @@ export class VoyageScene extends Phaser.Scene {
     });
 
     this.hazards = new CourseHazards(this, this.course, this.player, () => this.damage(), (x,y) => this.waterway.splash(x,y));
-    this.sparkles = this.add.particles(0, 0, "spark", { emitting: false, maxParticles: 100, lifespan: 650, speed: { min: 30, max: 105 }, angle: { min: 0, max: 360 }, scale: { start: 0.9, end: 0 }, alpha: { start: 0.9, end: 0 }, blendMode: Phaser.BlendModes.ADD }).setDepth(12);
+    this.sparkles = this.add.particles(0, 0, "spark", { emitting: false, maxParticles: 64, lifespan: 650, speed: { min: 30, max: 105 }, angle: { min: 0, max: 360 }, scale: { start: 0.9, end: 0 }, alpha: { start: 0.9, end: 0 }, blendMode: Phaser.BlendModes.ADD }).setDepth(12);
 
     if (this.input.keyboard) {
       this.keys = this.input.keyboard.addKeys({ left: "LEFT", right: "RIGHT", a: "A", d: "D", space: "SPACE", up: "UP", w: "W", shift: "SHIFT", down: "DOWN" }) as typeof this.keys;
@@ -235,7 +235,7 @@ export class VoyageScene extends Phaser.Scene {
     const windy = this.elapsedMs < this.windUntil;
     if (!windy) this.windStacks = 0;
     const stopped = brake;
-    const target = (right ? 170 : 132) - (left ? 103 : 0) + (boosted ? 122 : 0) + (windy ? 125 + (this.windStacks - 1) * 65 : 0);
+    const target = (right ? 170 : 132) - (left ? 103 : 0) + (boosted ? 122 : 0) + (windy ? 125 + (this.windStacks - 1) * 45 : 0);
     // Stopping takes priority over both kinds of boost; gravity and hazards keep moving.
     if (!this.flight) body.setVelocityX(stopped ? 0 : Phaser.Math.Linear(body.velocity.x, Math.max(0, target), 1 - Math.exp(-delta / 180)));
     if(!this.flight && !this.lift && !stopped) {
@@ -291,7 +291,7 @@ export class VoyageScene extends Phaser.Scene {
     }
     this.waterway.draw(this.player.x, this.player.y, this.elapsedMs, Math.min(delta, 100), afloat && body.velocity.y >= 0, boosted || windy, this.atmosphere.detail);
     this.hazards.update(this.player.x, this.player.y, this.elapsedMs, Math.min(delta,100));
-    this.windEffect.draw(this.elapsedMs, Math.max(0,this.windUntil-this.elapsedMs), this.windStacks);
+    this.windEffect.draw(this.elapsedMs, Math.max(0,this.windUntil-this.elapsedMs), this.windStacks, this.atmosphere.detail);
     this.weather.draw(this.player.x/this.course.goalX,this.elapsedMs,Math.min(delta,100),this.atmosphere.detail,this.atmosphere.reducedMotion);
     this.atmosphere.update(this.player.x,this.elapsedMs,delta,this.weather.intensity);
     this.backdrop.setTint(this.weather.tint); this.backdropTwin.setTint(this.weather.tint);
@@ -299,8 +299,8 @@ export class VoyageScene extends Phaser.Scene {
     this.rings.draw(this.player.x, this.elapsedMs, this.flight, this.atmosphere.reducedMotion);
     this.guide.draw(this.player.x,this.elapsedMs,body,this.hazards.guidePoints());
     this.yacht.setAlpha(!this.flight && this.elapsedMs < this.immuneUntil ? (Math.floor(this.elapsedMs / 100) % 2 ? 0.55 : 1) : 1);
-    if (this.elapsedMs - this.lastTrail > (this.flight || boosted || windy ? 45 : 140) / this.atmosphere.detail) {
-      this.sparkles.emitParticleAt(this.player.x - 88, this.player.y + 1, this.flight ? 5 : boosted || windy ? 3 : 1); this.lastTrail = this.elapsedMs;
+    if (this.elapsedMs - this.lastTrail > (this.flight || boosted || windy ? 65 : 140) / this.atmosphere.detail) {
+      this.sparkles.emitParticleAt(this.player.x - 88, this.player.y + 1, this.flight ? 3 : boosted || windy ? 2 : 1); this.lastTrail = this.elapsedMs;
     }
     if (this.player.x >= this.course.goalX) this.finish("cleared");
     else if (this.elapsedMs > this.course.timeLimitMs) this.finish("failed");

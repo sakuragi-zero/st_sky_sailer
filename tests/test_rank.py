@@ -22,8 +22,8 @@ def test_rank_rejects_invalid_reference_times(par_seconds):
 
 def test_slow_clear_with_misses_lowers_rank():
     rank, score = calculate_rank({"elapsed_ms": 90000, "hit_count": 2, "crystals": 5, "total_crystals": 13}, CONFIG)
-    assert rank in {"B", "C"}
-    assert score < 55
+    assert rank == "B"
+    assert score == 60
 
 
 def test_invalid_browser_data_gets_zero():
@@ -33,7 +33,7 @@ def test_invalid_browser_data_gets_zero():
 
 @pytest.mark.parametrize("score,rank", [(90, "S"), (89, "A"), (75, "A"), (74, "B"), (55, "B"), (54, "C"), (0, "C")])
 def test_rank_boundaries(score, rank):
-    elapsed_ms = round((45 + (100 - score) / 0.55) * 1000)
+    elapsed_ms = round((45 + (100 - score) / 0.25) * 1000)
     assert calculate_rank({"elapsed_ms": elapsed_ms, "hit_count": 0, "crystals": 24, "total_crystals": 24}, CONFIG) == (rank, score)
 
 

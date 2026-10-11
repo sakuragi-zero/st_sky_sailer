@@ -44,6 +44,9 @@ def calculate_rank(result: dict, config: dict) -> tuple[str, int]:
         return "C", 0
     if not 30 <= par_seconds <= 300:
         return "C", 0
-    score = max(0, min(100, round(100 - max(0, elapsed - par_seconds) * 0.55 - hits * 14 - max(0, total - crystals) * 3)))
+    # Missing pickups should have the same weight on short and long courses.
+    # Half the crystals with a clean, on-time finish still earns S rank.
+    missing_ratio = (total - crystals) / total if total else 0
+    score = max(0, min(100, round(100 - max(0, elapsed - par_seconds) * 0.25 - hits * 8 - missing_ratio * 20)))
     rank = "S" if score >= 90 else "A" if score >= 75 else "B" if score >= 55 else "C"
     return rank, score

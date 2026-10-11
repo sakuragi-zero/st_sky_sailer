@@ -26654,7 +26654,7 @@ class Zt {
         t.lineStyle(3, 16770722, 0.85).beginPath().moveTo(l - 10, g + 9).lineTo(l, g).lineTo(l + 10, g + 9).strokePath();
       }
     }
-    J && !this.afloat && this.splash(Z, H + 13), this.afloat = J, J && K - this.lastWake > (p ? 55 : 95) && (this.wakes.push({ x: Z - 108, y: H + 13, age: 0, splash: false }), this.lastWake = K);
+    J && !this.afloat && this.splash(Z, H + 13), this.afloat = J, J && K - this.lastWake > (p ? 85 : 110) / S && (this.wakes.push({ x: Z - 108, y: H + 13, age: 0, splash: false }), this.lastWake = K);
     const i = this.foam.clear();
     this.wakes = this.wakes.filter((a) => a.age < (a.splash ? 750 : 1300));
     for (const a of this.wakes) {
@@ -26664,9 +26664,12 @@ class Zt {
         i.fillStyle(16777215, Math.max(0, (1 - l) * 0.65)).fillEllipse(a.x - l * 30, u, f * 0.65, 18 + l * 22);
         continue;
       }
-      if (i.lineStyle(2.5 * (1 - l) + 0.5, 16777215, Math.max(0, (1 - l) * 0.65)), i.strokeEllipse(a.x - l * 25, u, f, 14 + l * 30), a.splash) for (let v = 0; v < 9; v++) {
-        const m = (v - 4) * (12 + l * 22);
-        i.fillStyle(16121855, Math.max(0, 1 - l)), i.fillEllipse(a.x + m, u - Math.sin(l * Math.PI) * (24 + v % 3 * 17), 3, 7);
+      if (i.lineStyle(2.5 * (1 - l) + 0.5, 16777215, Math.max(0, (1 - l) * 0.65)), i.strokeEllipse(a.x - l * 25, u, f, 14 + l * 30), a.splash) {
+        const v = S > 0.5 ? 7 : 4;
+        for (let m = 0; m < v; m++) {
+          const x = (m - (v - 1) / 2) * (12 + l * 22);
+          i.fillStyle(16121855, Math.max(0, 1 - l)), i.fillEllipse(a.x + x, u - Math.sin(l * Math.PI) * (24 + m % 3 * 17), 3, 7);
+        }
       }
     }
     if (J && n !== "cloud") {
@@ -26740,17 +26743,20 @@ class Jt {
 }
 class Qt {
   constructor(Z) {
-    __publicField(this, "pen");
-    this.pen = Z.add.graphics().setDepth(13).setScrollFactor(0);
-  }
-  draw(Z, H, K = 1) {
-    const j = this.pen.clear();
-    if (H <= 0) return;
-    const J = Math.min(0.55, H / 600);
-    for (let p = 0; p < 6 + K; p++) {
-      const S = (Z * (0.55 + K * 0.1) + p * 151) % (ft.width + 260) - 180, t = 65 + p * 33 + Math.sin(Z / 350 + p) * 10;
-      j.lineStyle(p % 2 ? 2.5 : 1.5, p % 2 ? 15007735 : 16777215, J), j.beginPath().moveTo(S, t + 4).lineTo(S + 45, t - 2).lineTo(S + 115, t).lineTo(S + 146, t - 5).strokePath();
+    __publicField(this, "streaks");
+    if (!Z.textures.exists("wind-streak")) {
+      const H = Z.textures.createCanvas("wind-streak", 160, 24), K = H.context, j = K.createLinearGradient(0, 0, 160, 0);
+      j.addColorStop(0, "rgba(255,255,255,0)"), j.addColorStop(0.45, "rgba(255,255,255,.85)"), j.addColorStop(1, "rgba(255,255,255,0)"), K.strokeStyle = j, K.lineWidth = 2, K.lineCap = "round", K.beginPath(), K.moveTo(4, 16), K.bezierCurveTo(55, 7, 90, 18, 156, 8), K.stroke(), H.refresh();
     }
+    this.streaks = Array.from({ length: 8 }, (H, K) => Z.add.image(0, 0, "wind-streak").setOrigin(0, 0.5).setDepth(13).setScrollFactor(0).setTint(K % 2 ? 15007735 : 16777215).setVisible(false));
+  }
+  draw(Z, H, K = 1, j = 1) {
+    const J = Math.min(0.55, H / 600), p = H > 0 ? Math.ceil((5 + Math.min(K, 3)) * j) : 0;
+    this.streaks.forEach((S, t) => {
+      if (S.setVisible(t < p), t >= p) return;
+      const d = (Z * (0.55 + K * 0.1) + t * 151) % (ft.width + 260) - 180, c = 75 + t * 46 + Math.sin(Z / 350 + t) * 10;
+      S.setPosition(d, c).setAlpha(J);
+    });
   }
 }
 class $t {
@@ -27079,7 +27085,7 @@ class ee extends yt.Scene {
     }), this.physics.add.overlap(this.player, t, (d, c) => {
       const o = c;
       this.phase !== "playing" || !o.active || (this.sparkles.explode(12, o.x, o.y), this.tweens.killTweensOf(o), o.destroy(), this.collected++, this.audio.play("collect"), this.elapsedMs >= this.windUntil && (this.windStacks = 0), this.windStacks = Math.min(6, this.windStacks + 1), this.windUntil = Math.min(this.elapsedMs + 4500, Math.max(this.windUntil, this.elapsedMs) + 2800), this.message = `クリスタルの風 ×${this.windStacks}！ スピードアップ♪`, this.messageUntil = this.elapsedMs + 2200, (this.collected % 4 === 0 || this.collected === 1) && this.tweens.add({ targets: this.captain, y: -59, duration: 180, yoyo: true, ease: "Sine.easeOut" }));
-    }), this.hazards = new Jt(this, this.course, this.player, () => this.damage(), (d, c) => this.waterway.splash(d, c)), this.sparkles = this.add.particles(0, 0, "spark", { emitting: false, maxParticles: 100, lifespan: 650, speed: { min: 30, max: 105 }, angle: { min: 0, max: 360 }, scale: { start: 0.9, end: 0 }, alpha: { start: 0.9, end: 0 }, blendMode: yt.BlendModes.ADD }).setDepth(12), this.input.keyboard) {
+    }), this.hazards = new Jt(this, this.course, this.player, () => this.damage(), (d, c) => this.waterway.splash(d, c)), this.sparkles = this.add.particles(0, 0, "spark", { emitting: false, maxParticles: 64, lifespan: 650, speed: { min: 30, max: 105 }, angle: { min: 0, max: 360 }, scale: { start: 0.9, end: 0 }, alpha: { start: 0.9, end: 0 }, blendMode: yt.BlendModes.ADD }).setDepth(12), this.input.keyboard) {
       this.keys = this.input.keyboard.addKeys({ left: "LEFT", right: "RIGHT", a: "A", d: "D", space: "SPACE", up: "UP", w: "W", shift: "SHIFT", down: "DOWN" });
       const d = (c) => {
         c.repeat || (["Space", "ArrowUp", "KeyW"].includes(c.code) && this.requestJump(), ["ShiftLeft", "ShiftRight"].includes(c.code) && this.requestBoost());
@@ -27121,7 +27127,7 @@ class ee extends yt.Scene {
     !this.flight && this.jumpBuffer >= this.elapsedMs && this.elapsedMs - this.lastGrounded < 115 && (j.setVelocityY(-510 * this.configData.jump_power), this.jumpBuffer = this.lastGrounded = -1e3, this.sparkles.explode(8, this.player.x - 40, this.player.y + 10), this.audio.play("jump"), this.waterway.splash(this.player.x, this.player.y + 14)), !this.flight && (this.boostQueued || o && !this.previousBoost) && this.elapsedMs >= this.boostReadyAt && (this.boostUntil = this.elapsedMs + 1150, this.boostReadyAt = this.elapsedMs + 3400, this.audio.play("boost"), this.message = "風をつかまえて！", this.messageUntil = this.elapsedMs + 1600), this.boostQueued = false;
     const r = this.elapsedMs < this.boostUntil, n = this.elapsedMs < this.windUntil;
     n || (this.windStacks = 0);
-    const e = d, s = (t ? 170 : 132) - (S ? 103 : 0) + (r ? 122 : 0) + (n ? 125 + (this.windStacks - 1) * 65 : 0);
+    const e = d, s = (t ? 170 : 132) - (S ? 103 : 0) + (r ? 122 : 0) + (n ? 125 + (this.windStacks - 1) * 45 : 0);
     if (this.flight || j.setVelocityX(e ? 0 : yt.Math.Linear(j.velocity.x, Math.max(0, s), 1 - Math.exp(-H / 180))), !this.flight && !this.lift && !e && (this.lift = this.course.cascades.find((a) => a.ascent && this.player.x >= a.x - 48 && this.player.x < a.nextX + 60 && this.player.y > a.toY - 32 && this.player.y < a.fromY + 55) ?? null, this.lift && (this.liftSpeed = Math.max(300, j.velocity.x, s))), this.lift) {
       const a = this.lift;
       if (j.setAllowGravity(false), this.player.y <= a.toY - 32) this.player.x >= a.nextX + 60 ? (this.lift = null, j.setVelocityY(0).setAllowGravity(true)) : j.setVelocityY(e ? 0 : -18);
@@ -27145,7 +27151,7 @@ class ee extends yt.Scene {
       const l = a.bob === void 0 ? 0 : Math.sin(this.elapsedMs / 330 + a.bob) * 5, f = a.x > this.cameras.main.scrollX - 60 && a.x < this.cameras.main.scrollX + ft.width + 60;
       a.image.setVisible(f), f && a.image.setY(gt(a.x, a.y, this.player.x) + l);
     }
-    this.waterway.draw(this.player.x, this.player.y, this.elapsedMs, Math.min(H, 100), J && j.velocity.y >= 0, r || n, this.atmosphere.detail), this.hazards.update(this.player.x, this.player.y, this.elapsedMs, Math.min(H, 100)), this.windEffect.draw(this.elapsedMs, Math.max(0, this.windUntil - this.elapsedMs), this.windStacks), this.weather.draw(this.player.x / this.course.goalX, this.elapsedMs, Math.min(H, 100), this.atmosphere.detail, this.atmosphere.reducedMotion), this.atmosphere.update(this.player.x, this.elapsedMs, H, this.weather.intensity), this.backdrop.setTint(this.weather.tint), this.backdropTwin.setTint(this.weather.tint), this.mooring.draw(this.player.x, this.elapsedMs), this.rings.draw(this.player.x, this.elapsedMs, this.flight, this.atmosphere.reducedMotion), this.guide.draw(this.player.x, this.elapsedMs, j, this.hazards.guidePoints()), this.yacht.setAlpha(!this.flight && this.elapsedMs < this.immuneUntil && Math.floor(this.elapsedMs / 100) % 2 ? 0.55 : 1), this.elapsedMs - this.lastTrail > (this.flight || r || n ? 45 : 140) / this.atmosphere.detail && (this.sparkles.emitParticleAt(this.player.x - 88, this.player.y + 1, this.flight ? 5 : r || n ? 3 : 1), this.lastTrail = this.elapsedMs), this.player.x >= this.course.goalX ? this.finish("cleared") : this.elapsedMs > this.course.timeLimitMs && this.finish("failed"), this.elapsedMs - this.lastHud > 100 && this.publishHud();
+    this.waterway.draw(this.player.x, this.player.y, this.elapsedMs, Math.min(H, 100), J && j.velocity.y >= 0, r || n, this.atmosphere.detail), this.hazards.update(this.player.x, this.player.y, this.elapsedMs, Math.min(H, 100)), this.windEffect.draw(this.elapsedMs, Math.max(0, this.windUntil - this.elapsedMs), this.windStacks, this.atmosphere.detail), this.weather.draw(this.player.x / this.course.goalX, this.elapsedMs, Math.min(H, 100), this.atmosphere.detail, this.atmosphere.reducedMotion), this.atmosphere.update(this.player.x, this.elapsedMs, H, this.weather.intensity), this.backdrop.setTint(this.weather.tint), this.backdropTwin.setTint(this.weather.tint), this.mooring.draw(this.player.x, this.elapsedMs), this.rings.draw(this.player.x, this.elapsedMs, this.flight, this.atmosphere.reducedMotion), this.guide.draw(this.player.x, this.elapsedMs, j, this.hazards.guidePoints()), this.yacht.setAlpha(!this.flight && this.elapsedMs < this.immuneUntil && Math.floor(this.elapsedMs / 100) % 2 ? 0.55 : 1), this.elapsedMs - this.lastTrail > (this.flight || r || n ? 65 : 140) / this.atmosphere.detail && (this.sparkles.emitParticleAt(this.player.x - 88, this.player.y + 1, this.flight ? 3 : r || n ? 2 : 1), this.lastTrail = this.elapsedMs), this.player.x >= this.course.goalX ? this.finish("cleared") : this.elapsedMs > this.course.timeLimitMs && this.finish("failed"), this.elapsedMs - this.lastHud > 100 && this.publishHud();
   }
   damage(Z = false) {
     if (!(this.phase !== "playing" || this.flight || this.elapsedMs < this.immuneUntil)) {
@@ -27198,6 +27204,7 @@ class ie {
   constructor() {
     __publicField(this, "enabled", false);
     __publicField(this, "context");
+    __publicField(this, "cannonNoise");
   }
   async toggle() {
     if (this.enabled = !this.enabled, this.enabled) try {
@@ -27210,12 +27217,32 @@ class ie {
   play(Z) {
     if (!this.enabled || !this.context || this.context.state !== "running") return;
     const H = this.context;
-    ({ jump: [330, 660], boost: [180, 480], collect: [880, 1320], hit: [180, 80], clear: [523, 659, 784, 1047], launch: [196, 392, 784, 1568] })[Z].forEach((j, J) => {
+    if (Z === "launch") {
+      this.cannon(H);
+      return;
+    }
+    ({ jump: [330, 660], boost: [180, 480], collect: [880, 1320], hit: [180, 80], clear: [523, 659, 784, 1047] })[Z].forEach((j, J) => {
       const p = H.createOscillator(), S = H.createGain(), t = H.currentTime + J * 0.075;
       p.type = "sine", p.frequency.setValueAtTime(j, t), S.gain.setValueAtTime(0, t), S.gain.linearRampToValueAtTime(0.045, t + 0.012), S.gain.exponentialRampToValueAtTime(1e-3, t + 0.18), p.connect(S), S.connect(H.destination), p.start(t), p.stop(t + 0.2), p.onended = () => {
         p.disconnect(), S.disconnect();
       };
     });
+  }
+  cannon(Z) {
+    const H = Z.currentTime;
+    if (!this.cannonNoise) {
+      this.cannonNoise = Z.createBuffer(1, Math.floor(Z.sampleRate * 0.6), Z.sampleRate);
+      const t = this.cannonNoise.getChannelData(0);
+      for (let d = 0; d < t.length; d++) t[d] = Math.random() * 2 - 1;
+    }
+    const K = Z.createBufferSource(), j = Z.createBiquadFilter(), J = Z.createGain();
+    K.buffer = this.cannonNoise, j.type = "lowpass", j.Q.value = 0.7, j.frequency.setValueAtTime(3200, H), j.frequency.exponentialRampToValueAtTime(180, H + 0.5), J.gain.setValueAtTime(0, H), J.gain.linearRampToValueAtTime(0.2, H + 4e-3), J.gain.exponentialRampToValueAtTime(1e-3, H + 0.55), K.connect(j), j.connect(J), J.connect(Z.destination), K.start(H), K.stop(H + 0.6), K.onended = () => {
+      K.disconnect(), j.disconnect(), J.disconnect();
+    };
+    const p = Z.createOscillator(), S = Z.createGain();
+    p.type = "triangle", p.frequency.setValueAtTime(140, H), p.frequency.exponentialRampToValueAtTime(38, H + 0.45), S.gain.setValueAtTime(0, H), S.gain.linearRampToValueAtTime(0.14, H + 8e-3), S.gain.exponentialRampToValueAtTime(1e-3, H + 0.6), p.connect(S), S.connect(Z.destination), p.start(H), p.stop(H + 0.65), p.onended = () => {
+      p.disconnect(), S.disconnect();
+    };
   }
   splash() {
     if (!this.enabled || !this.context || this.context.state !== "running") return;

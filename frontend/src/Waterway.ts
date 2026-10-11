@@ -183,7 +183,7 @@ export class Waterway {
 
     if (afloat && !this.afloat) this.splash(anchorX, shipY + 13);
     this.afloat = afloat;
-    if (afloat && elapsed - this.lastWake > (boosted ? 55 : 95)) {
+    if (afloat && elapsed - this.lastWake > (boosted ? 85 : 110) / detail) {
       this.wakes.push({ x: anchorX - 108, y: shipY + 13, age: 0, splash: false });
       this.lastWake = elapsed;
     }
@@ -201,8 +201,9 @@ export class Waterway {
       foam.lineStyle(2.5 * (1 - p) + 0.5, 0xffffff, Math.max(0, (1 - p) * 0.65));
       foam.strokeEllipse(wake.x - p * 25, y, width, 14 + p * 30);
       if (wake.splash) {
-        for (let i = 0; i < 9; i++) {
-          const spread = (i - 4) * (12 + p * 22);
+        const drops = detail > 0.5 ? 7 : 4;
+        for (let i = 0; i < drops; i++) {
+          const spread = (i - (drops-1)/2) * (12 + p * 22);
           foam.fillStyle(0xf5ffff, Math.max(0, 1 - p));
           foam.fillEllipse(wake.x + spread, y - Math.sin(p * Math.PI) * (24 + i % 3 * 17), 3, 7);
         }
