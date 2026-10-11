@@ -1,16 +1,16 @@
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-function Xt(at) {
+function Vt(at) {
   return at && at.__esModule && Object.prototype.hasOwnProperty.call(at, "default") ? at.default : at;
 }
-var Ft = { exports: {} }, Vt = Ft.exports, Gt;
-function Yt() {
+var Ft = { exports: {} }, Yt = Ft.exports, Gt;
+function bt() {
   return Gt || (Gt = 1, (function(at, Z) {
-    (function(H, j) {
+    (function(K, j) {
       at.exports = j();
-    })(Vt, () => (() => {
-      var K = { 50792: ((p) => {
+    })(Yt, () => (() => {
+      var H = { 50792: ((p) => {
         var S = Object.prototype.hasOwnProperty, t = "~";
         function d() {
         }
@@ -26424,12 +26424,12 @@ return new ` + this.key + `();
         p.exports = S;
       }), 31749: ((p, S, t) => {
         p.exports = { Format: t(27902), Pad: t(41836), RemoveAt: t(33628), Reverse: t(27671), UppercaseFirst: t(35355), UUID: t(45650) };
-      }) }, H = {};
+      }) }, K = {};
       function j(p) {
-        var S = H[p];
+        var S = K[p];
         if (S !== void 0) return S.exports;
-        var t = H[p] = { exports: {} };
-        return K[p](t, t.exports, j), t.exports;
+        var t = K[p] = { exports: {} };
+        return H[p](t, t.exports, j), t.exports;
       }
       j.g = (function() {
         if (typeof globalThis == "object") return globalThis;
@@ -26444,43 +26444,48 @@ return new ` + this.key + `();
     })());
   })(Ft)), Ft.exports;
 }
-var bt = Yt();
-const yt = Xt(bt), St = [{ id: "1-1", title: "雲海の航路", theme: "sea", world: "world-v2.webp", goal_label: "雲海の船着場", description: "流れる水路と光る滝。スターリングで空を飛び、遠くの雲海へ。", intro: "いっしょに、雲海へ！", par_seconds: 105 }, { id: "2-1", title: "氷晶の海", theme: "ice", world: "world-ice-v1.webp", goal_label: "氷晶の船着場", description: "氷山とツララの海。スターリングで氷の谷を越え、次の航路へ。", intro: "氷の海へ、出航！", par_seconds: 105 }, { id: "3-1", title: "砂漠のオアシス", theme: "desert", world: "world-desert-v1.webp", goal_label: "オアシスの船着場", description: "サボテンとオアシスの滝。スターリングで砂丘の向こうまでひとっ飛び。", intro: "砂漠の風に、乗ろう！", par_seconds: 105 }, { id: "4-1", title: "雲の階段", theme: "cloud", world: "world-cloud-v1.webp", goal_label: "天空の船着場", description: "雲の階段と上昇気流。スターリングで遠くの雲へ、空の大航海。", intro: "雲の航路へ、出航！", par_seconds: 120 }], ft = { width: 720, height: 480 }, Wt = [{ x: 0, y: 406, width: 860 }, { x: 950, y: 394, width: 600 }, { x: 1660, y: 381, width: 620 }, { x: 2400, y: 407, width: 700 }, { x: 3200, y: 387, width: 650 }, { x: 3960, y: 403, width: 700 }, { x: 4780, y: 379, width: 610 }, { x: 5500, y: 406, width: 720 }, { x: 6330, y: 391, width: 620 }, { x: 7060, y: 379, width: 650 }, { x: 7830, y: 407, width: 610 }, { x: 8560, y: 394, width: 960 }], Ht = [3, 6, 10];
+var Wt = bt();
+const yt = Vt(Wt), St = [{ id: "1-1", title: "雲海の航路", theme: "sea", world: "world-v2.webp", goal_label: "雲海の船着場", description: "流れる水路と光る滝。スターリングで空を飛び、遠くの雲海へ。", intro: "いっしょに、雲海へ！", par_seconds: 105 }, { id: "2-1", title: "氷晶の海", theme: "ice", world: "world-ice-v1.webp", goal_label: "氷晶の船着場", description: "氷山とツララの海。スターリングで氷の谷を越え、次の航路へ。", intro: "氷の海へ、出航！", par_seconds: 105 }, { id: "3-1", title: "砂漠のオアシス", theme: "desert", world: "world-desert-v1.webp", goal_label: "オアシスの船着場", description: "サボテンとオアシスの滝。スターリングで砂丘の向こうまでひとっ飛び。", intro: "砂漠の風に、乗ろう！", par_seconds: 105 }, { id: "4-1", title: "雲の階段", theme: "cloud", world: "world-cloud-v1.webp", goal_label: "天空の船着場", description: "雲の階段と上昇気流。スターリングで遠くの雲へ、空の大航海。", intro: "雲の航路へ、出航！", par_seconds: 120 }], ft = { width: 720, height: 480 }, Ht = [{ x: 0, y: 406, width: 860 }, { x: 950, y: 394, width: 600 }, { x: 1660, y: 381, width: 620 }, { x: 2400, y: 407, width: 700 }, { x: 3200, y: 387, width: 650 }, { x: 3960, y: 403, width: 700 }, { x: 4780, y: 379, width: 610 }, { x: 5500, y: 406, width: 720 }, { x: 6330, y: 391, width: 620 }, { x: 7060, y: 379, width: 650 }, { x: 7830, y: 407, width: 610 }, { x: 8560, y: 394, width: 960 }], Nt = [3, 6, 10];
 function Kt() {
   let at = 0;
-  return Array.from({ length: 22 }, (Z, K) => {
-    const H = K === 0 || K === 21 ? 700 : 340 + K % 3 * 20, j = [0, -32, -64, 96, 64, 32, 0, -32, 128, 96, 64, 32, -128, -160, -192, -32, -64, -96, -128, -160, -192, -224], J = { x: at, y: 406 + j[K % j.length], width: H };
-    return at += H + 115 + K % 3 * 8, J;
+  return Array.from({ length: 22 }, (Z, H) => {
+    const K = H === 0 || H === 21 ? 700 : 340 + H % 3 * 20, j = [0, -32, -64, 96, 64, 32, 0, -32, 128, 96, 64, 32, -128, -160, -192, -32, -64, -96, -128, -160, -192, -224], J = { x: at, y: 406 + j[H % j.length], width: K };
+    return at += K + 115 + H % 3 * 8, J;
   });
 }
 function Lt(at = "1-1") {
-  const Z = St.find((i) => i.id === at) ?? St[0], K = Z.theme, H = K === "cloud" ? Kt() : Wt.map((i, a) => ({ ...i, y: K === "ice" ? 402 - a % 3 * 12 : K === "desert" ? 403 - a % 4 * 7 : i.y }));
-  if (K !== "cloud") {
+  const Z = St.find((i) => i.id === at) ?? St[0], H = Z.theme, K = H === "cloud" ? Kt() : Ht.map((i, a) => ({ ...i, y: H === "ice" ? 402 - a % 3 * 12 : H === "desert" ? 403 - a % 4 * 7 : i.y }));
+  if (H !== "cloud") {
     const i = [0, 0, 0, 170, 170, 0, 0, -160, -160, 0, 0, 0];
-    H.forEach((a, l) => {
+    K.forEach((a, l) => {
       a.y += i[l];
     });
   }
   let j = 0;
-  H.forEach((i, a) => {
-    const l = H[a + 1], f = l ? l.x - i.x - i.width : 0;
-    i.x = j, i.width = Math.max(i.width, K === "cloud" ? 1100 : 1800), j = i.x + i.width + f;
+  K.forEach((i, a) => {
+    const l = K[a + 1], f = l ? l.x - i.x - i.width : 0;
+    i.x = j;
+    const u = H === "sea" ? Nt.includes(a) : H === "ice" ? a % 2 === 1 : H === "desert" ? a % 3 === 1 : false;
+    i.width = Math.max(i.width, H === "cloud" ? 650 : u ? 1500 : 900), j = i.x + i.width + f;
   });
-  const p = H.at(-1).x + H.at(-1).width + 2800, S = [...H, ...H.map((i) => ({ ...i, x: i.x + p }))], t = (i, a, l = 540) => ({ x: i.x + i.width - 190, y: i.y - 24, targetX: a.x + 160, targetY: a.y - 18, height: l }), d = [t(H[2], H[5], 460), t(H.at(-1), S[H.length], 620), t(S[H.length + 5], S[H.length + 8], 500)], c = S.slice(0, -1).flatMap((i, a) => {
+  const p = K.at(-1).x + K.at(-1).width + 2800, S = [...K, ...K.map((i) => ({ ...i, x: i.x + p }))], t = (i, a, l = 540) => ({ x: i.x + i.width - 190, y: i.y - 24, targetX: a.x + 160, targetY: a.y - 18, height: l }), d = [t(K[2], K[5], 460), t(K.at(-1), S[K.length], 620), t(S[K.length + 5], S[K.length + 8], 500)], c = S.slice(0, -1).flatMap((i, a) => {
     const l = S[a + 1];
     return l.x - i.x - i.width < 300 && Math.abs(l.y - i.y) > 100 ? [{ x: i.x + i.width, nextX: l.x, fromY: i.y, toY: l.y, ascent: l.y < i.y }] : [];
-  }), o = S.at(-1), r = S.flatMap((i, a) => [{ x: i.x + (a === 0 ? 360 : Math.min(190, i.width * 0.4)), y: i.y - (a % 2 === 0 ? 27 : 72), red: a % 3 === 0 }, { x: i.x + i.width - 110, y: i.y - 98, red: a % 3 === 2 }]), e = (K === "sea" ? [0, H.length].flatMap((i) => Ht.map((a) => {
+  }), o = S.at(-1), n = (H === "sea" ? [0, K.length].flatMap((i) => Nt.map((a) => {
     const l = S[i + a];
     return { x: l.x + l.width / 2, y: l.y, kind: "rock" };
-  })) : K === "cloud" ? [] : S.filter((i, a) => a > 0 && (K === "desert" ? a % 3 === 1 : a % 2 === 1)).map((i) => ({ x: i.x + i.width / 2, y: i.y, kind: K === "ice" ? "iceberg" : "cactus" }))).filter((i) => {
+  })) : H === "cloud" ? [] : S.filter((i, a) => a > 0 && (H === "desert" ? a % 3 === 1 : a % 2 === 1)).map((i) => ({ x: i.x + i.width / 2, y: i.y, kind: H === "ice" ? "iceberg" : "cactus" }))).filter((i) => {
     const a = S.find((l) => i.x >= l.x && i.x < l.x + l.width);
     return !d.some((l) => l.x >= a.x && l.x < a.x + a.width);
   }).map((i) => {
     const a = S.find((l) => i.x >= l.x && i.x < l.x + l.width);
     return { ...i, x: a.x + a.width / 2 };
-  }), s = K === "ice" ? S.filter((i, a) => a % 2 === 0 && !d.some((l) => l.x >= i.x && l.x < i.x + i.width) && !e.some((l) => l.x >= i.x && l.x < i.x + i.width)).map((i) => ({ x: i.x + i.width / 2, y: i.y })) : [];
+  }), e = H === "ice" ? S.filter((i, a) => a % 2 === 0 && !d.some((l) => l.x >= i.x && l.x < i.x + i.width) && !n.some((l) => l.x >= i.x && l.x < i.x + i.width)).map((i) => ({ x: i.x + i.width / 2, y: i.y })) : [], s = S.flatMap((i, a) => {
+    const l = n.some((u) => u.x >= i.x && u.x < i.x + i.width) || e.some((u) => u.x >= i.x && u.x < i.x + i.width), f = [a === 0 ? 360 : 190, i.width - 150];
+    return H !== "cloud" && f.splice(1, 0, i.width / 2 - (l ? 180 : 0)), f.map((u, v) => ({ x: i.x + u, y: i.y - 27, red: (a + v) % 3 === 0 }));
+  });
   for (const i of d) {
-    const a = r.filter((l) => l.x > i.x + 80 && l.x < i.targetX - 80);
+    const a = s.filter((l) => l.x > i.x + 80 && l.x < i.targetX - 80);
     a.forEach((l, f) => {
       const u = (f + 1) / (a.length + 1);
       l.x = i.x + (i.targetX - i.x) * u, l.y = i.y + (i.targetY - i.y) * u - 4 * i.height * u * (1 - u);
@@ -26489,37 +26494,37 @@ function Lt(at = "1-1") {
   const h = d[1];
   for (let i = 1; i <= 5; i++) {
     const a = i / 6;
-    r.push({ x: h.x + (h.targetX - h.x) * a, y: h.y + (h.targetY - h.y) * a - 4 * h.height * a * (1 - a), red: i === 3 });
+    s.push({ x: h.x + (h.targetX - h.x) * a, y: h.y + (h.targetY - h.y) * a - 4 * h.height * a * (1 - a), red: i === 3 });
   }
-  return { ...Z, theme: K, channels: S, cascades: c, rings: d, crystals: r, hazards: e, icicles: s, goalX: o.x + o.width - 300, goalY: o.y, minY: Math.min(...S.map((i) => i.y)) - 850, timeLimitMs: 3e5 };
+  return { ...Z, theme: H, channels: S, cascades: c, rings: d, crystals: s, hazards: n, icicles: e, goalX: o.x + o.width - 300, goalY: o.y, minY: Math.min(...S.map((i) => i.y)) - 850, timeLimitMs: 3e5 };
 }
 const Ot = Lt();
 Ot.goalX, Ot.channels, Ot.crystals, Ot.hazards;
-function Nt(at, Z) {
-  const K = at.textures.get("world").getSourceImage(), H = (J, p) => {
+function Ut(at, Z) {
+  const H = at.textures.get("world").getSourceImage(), K = (J, p) => {
     if (at.textures.exists(J)) return;
     const S = Math.min(...p.map((n) => n[0])) - 2, t = Math.min(...p.map((n) => n[1])) - 2, d = Math.max(...p.map((n) => n[0])) - S + 2, c = Math.max(...p.map((n) => n[1])) - t + 2, o = at.textures.createCanvas(J, d, c);
     if (!o) return;
     const r = o.context;
-    r.translate(-S, -t), r.beginPath(), p.forEach(([n, e], s) => s ? r.lineTo(n, e) : r.moveTo(n, e)), r.closePath(), r.clip(), r.drawImage(K, 0, 0, 1536, 1024), o.refresh();
+    r.translate(-S, -t), r.beginPath(), p.forEach(([n, e], s) => s ? r.lineTo(n, e) : r.moveTo(n, e)), r.closePath(), r.clip(), r.drawImage(H, 0, 0, 1536, 1024), o.refresh();
   };
-  Z === "ice" && (H("iceberg", [[278, 469], [294, 444], [298, 388], [308, 412], [316, 340], [327, 365], [334, 307], [346, 293], [359, 311], [366, 375], [376, 356], [390, 416], [402, 427], [411, 455], [419, 469], [400, 480], [365, 479], [337, 476], [312, 483], [287, 479]]), H("icicle", [[1035, 282], [1056, 279], [1052, 300], [1047, 343], [1043, 355], [1039, 322]]));
+  Z === "ice" && (K("iceberg", [[278, 469], [294, 444], [298, 388], [308, 412], [316, 340], [327, 365], [334, 307], [346, 293], [359, 311], [366, 375], [376, 356], [390, 416], [402, 427], [411, 455], [419, 469], [400, 480], [365, 479], [337, 476], [312, 483], [287, 479]]), K("icicle", [[1035, 282], [1056, 279], [1052, 300], [1047, 343], [1043, 355], [1039, 322]]));
   const j = { sea: [[504, 508], [529, 492], [545, 470], [564, 475], [574, 435], [586, 431], [594, 413], [608, 430], [621, 423], [632, 440], [643, 404], [654, 393], [665, 418], [680, 415], [694, 438], [708, 425], [724, 446], [753, 438], [769, 447], [779, 444], [798, 457], [816, 460], [842, 486], [832, 514], [807, 529], [792, 554], [775, 535], [745, 523], [727, 521], [710, 551], [694, 520], [666, 515], [637, 543], [619, 511], [586, 534], [562, 517], [535, 517]], ice: [[778, 405], [798, 390], [827, 375], [852, 372], [876, 354], [897, 342], [915, 339], [936, 311], [948, 304], [966, 325], [975, 337], [998, 334], [1006, 357], [1020, 362], [1030, 397], [1010, 416], [980, 421], [950, 418], [918, 421], [875, 413], [841, 424], [809, 418]], desert: [[969, 458], [984, 449], [998, 432], [1010, 432], [1015, 411], [1031, 405], [1043, 412], [1054, 406], [1073, 419], [1094, 419], [1114, 426], [1128, 450], [1146, 444], [1167, 454], [1194, 458], [1206, 469], [1181, 476], [1137, 477], [1102, 471], [1071, 479], [1033, 470], [1e3, 475]], cloud: [[921, 296], [936, 286], [947, 273], [960, 272], [970, 223], [978, 205], [988, 227], [991, 263], [1001, 250], [1015, 255], [1024, 220], [1036, 208], [1043, 222], [1048, 253], [1063, 244], [1074, 221], [1083, 209], [1094, 233], [1102, 249], [1120, 247], [1136, 268], [1152, 272], [1170, 290], [1160, 312], [1135, 318], [1106, 337], [1096, 313], [1061, 324], [1045, 317], [1024, 339], [1005, 312], [975, 323], [955, 310], [932, 311]] };
-  H(`harbor-shore-${Z}`, j[Z]);
+  K(`harbor-shore-${Z}`, j[Z]);
 }
 function wt(at, Z) {
-  Nt(at, Z);
-  const K = (p, S, t, d) => {
+  Ut(at, Z);
+  const H = (p, S, t, d) => {
     if (at.textures.exists(p)) return;
     const c = at.textures.createCanvas(p, S, t);
     c && (d(c.context), c.refresh());
   };
-  let H = 731;
-  const j = () => (H = H * 1664525 + 1013904223 >>> 0, H / 4294967296), J = (p, S, t, d, c) => {
+  let K = 731;
+  const j = () => (K = K * 1664525 + 1013904223 >>> 0, K / 4294967296), J = (p, S, t, d, c) => {
     p.fillStyle = d;
     for (let o = 0; o < c; o++) p.fillRect(j() * S, j() * t, 0.6 + j() * 2, 0.6 + j() * 3);
   };
-  K(`water-paint-${Z}`, 512, 144, (p) => {
+  H(`water-paint-${Z}`, 512, 144, (p) => {
     const S = Z === "desert", t = Z === "ice", d = p.createLinearGradient(0, 0, 0, 144);
     d.addColorStop(0, S ? "#9ddfd2" : t ? "#b8dfe9" : "#a1d7ed"), d.addColorStop(0.45, S ? "#43b6b4" : t ? "#65adcc" : "#4ca8d7"), d.addColorStop(1, S ? "#b9e8da" : "#c1e8f6"), p.fillStyle = d, p.fillRect(0, 0, 512, 144);
     for (let c = 0; c < 3; c++) {
@@ -26538,7 +26543,7 @@ function wt(at, Z) {
       p.strokeStyle = "rgba(247,255,250,.22)", p.lineWidth = 1.2, p.beginPath(), p.moveTo(r - 35, n), p.bezierCurveTo(r - 15, n - 12, r + 19, n - 6, r + 33, n), p.bezierCurveTo(r + 19, n + 11, r - 17, n + 8, r - 35, n), p.stroke();
     }
     J(p, 512, 144, "rgba(255,255,255,.09)", 1600);
-  }), K("cactus", 116, 184, (p) => {
+  }), H("cactus", 116, 184, (p) => {
     p.save(), p.beginPath(), p.moveTo(44, 170), p.lineTo(43, 111), p.lineTo(24, 111), p.quadraticCurveTo(12, 111, 12, 98), p.lineTo(12, 63), p.bezierCurveTo(12, 49, 30, 47, 31, 63), p.lineTo(31, 90), p.lineTo(44, 90), p.lineTo(44, 34), p.bezierCurveTo(44, 8, 77, 10, 77, 34), p.lineTo(77, 74), p.lineTo(90, 74), p.lineTo(90, 46), p.bezierCurveTo(90, 32, 108, 33, 108, 46), p.lineTo(108, 83), p.quadraticCurveTo(108, 94, 95, 94), p.lineTo(77, 94), p.lineTo(78, 170), p.closePath(), p.clip();
     const S = p.createLinearGradient(10, 10, 112, 145);
     S.addColorStop(0, "#bdd1a0"), S.addColorStop(0.27, "#87a77b"), S.addColorStop(0.52, "#567f68"), S.addColorStop(0.8, "#375f53"), S.addColorStop(1, "#24483f"), p.fillStyle = S, p.fillRect(0, 0, 116, 184), p.lineCap = "round";
@@ -26552,9 +26557,9 @@ function wt(at, Z) {
     p.fillStyle = "#f2d9a3", p.beginPath(), p.arc(60, 20, 3, 0, Math.PI * 2), p.fill();
   });
 }
-const gt = (at, Z, K) => Z - (at - K) * 0.13;
+const gt = (at, Z, H) => Z - (at - H) * 0.13;
 class Zt {
-  constructor(Z, K, H = Lt()) {
+  constructor(Z, H, K = Lt()) {
     __publicField(this, "clouds");
     __publicField(this, "water");
     __publicField(this, "foam");
@@ -26563,7 +26568,7 @@ class Zt {
     __publicField(this, "afloat", false);
     __publicField(this, "cloudPuffs", []);
     __publicField(this, "waterPaint", []);
-    if (this.scene = Z, this.onSplash = K, this.course = H, this.clouds = Z.add.graphics().setDepth(2), this.water = Z.add.graphics().setDepth(3), this.foam = Z.add.graphics().setDepth(11), H.theme !== "cloud" && (wt(Z, H.theme), this.waterPaint = Array.from({ length: 5 }, () => Z.add.tileSprite(0, 0, 512, 76, `water-paint-${H.theme}`).setOrigin(0, 0.5).setRotation(-Math.atan(0.13)).setDepth(3.2).setAlpha(0.6).setVisible(false))), H.theme === "cloud") {
+    if (this.scene = Z, this.onSplash = H, this.course = K, this.clouds = Z.add.graphics().setDepth(2), this.water = Z.add.graphics().setDepth(3), this.foam = Z.add.graphics().setDepth(11), K.theme !== "cloud" && (wt(Z, K.theme), this.waterPaint = Array.from({ length: 5 }, () => Z.add.tileSprite(0, 0, 512, 76, `water-paint-${K.theme}`).setOrigin(0, 0.5).setRotation(-Math.atan(0.13)).setDepth(3.2).setAlpha(0.6).setVisible(false))), K.theme === "cloud") {
       if (!Z.textures.exists("cloud-bank")) {
         const j = Z.textures.createCanvas("cloud-bank", 192, 112);
         if (j) {
@@ -26578,10 +26583,10 @@ class Zt {
       for (let j = 0; j < 40; j++) this.cloudPuffs.push(Z.add.image(0, 0, "cloud-bank").setOrigin(0.5, 0.4).setDisplaySize(144, 84).setDepth(3).setVisible(false));
     }
   }
-  splash(Z, K) {
-    this.wakes.push({ x: Z, y: K, age: 0, splash: true }), this.course.theme !== "cloud" && this.onSplash();
+  splash(Z, H) {
+    this.wakes.push({ x: Z, y: H, age: 0, splash: true }), this.course.theme !== "cloud" && this.onSplash();
   }
-  draw(Z, K, H, j, J, p, S = 1) {
+  draw(Z, H, K, j, J, p, S = 1) {
     const t = this.water.clear(), d = this.scene.cameras.main.scrollX, c = this.clouds.clear(), o = this.scene.cameras.main.scrollY, r = this.course.channels, n = this.course.theme;
     let e = 0, s = 0;
     for (const a of this.waterPaint) a.setVisible(false);
@@ -26589,7 +26594,7 @@ class Zt {
     const h = n === "desert" ? 16773077 : 15268095;
     for (let a = 0; a < (n === "cloud" ? 0 : 18); a++) c.fillStyle(h, a / 22), c.fillRect(d - 180, o + 325 + a * 9, ft.width + 360, 10);
     n !== "cloud" && c.fillStyle(h, 0.85).fillRect(d - 180, o + 485, ft.width + 360, 400);
-    for (let a = 0; a < (n === "cloud" ? 0 : 7); a++) c.fillStyle(16777215, 0.32), c.fillEllipse(d - 80 + a * 160, o + 470 + Math.sin(H / 1500 + a) * 12, 260, 70);
+    for (let a = 0; a < (n === "cloud" ? 0 : 7); a++) c.fillStyle(16777215, 0.32), c.fillEllipse(d - 80 + a * 160, o + 470 + Math.sin(K / 1500 + a) * 12, 260, 70);
     r.slice(0, n === "cloud" ? 0 : -1).forEach((a, l) => {
       const f = a.x + a.width, u = r[l + 1];
       if (f > d + ft.width + 120 || u.x < d - 120) return;
@@ -26610,20 +26615,20 @@ class Zt {
       }
       t.fillStyle(n === "desert" ? 3389873 : 5025780, 0.35).fillPoints([{ x: l, y: u(l, 32) }, { x: f, y: u(f, 32) }, { x: f, y: u(f, 84) }, { x: l, y: u(l, 84) }], true), t.fillStyle(n === "desert" ? 6405301 : n === "ice" ? 8830419 : 6862556, 0.55).fillPoints([{ x: l, y: u(l, -42) }, { x: f, y: u(f, -42) }, { x: f, y: u(f, 33) }, { x: l, y: u(l, 33) }], true);
       const v = this.waterPaint[s++];
-      v && (v.setPosition(l, u(l, -4)).setSize((f - l) * Math.sqrt(1 + 0.13 ** 2), 74).setVisible(true), v.tilePositionX = l - H * 0.025, v.tileScaleY = 0.52), (n === "ice" || n === "desert") && t.lineStyle(n === "ice" ? 7 : 10, n === "ice" ? 15793407 : 15911825, 0.9).lineBetween(l, u(l, -43), f, u(f, -43)), t.fillStyle(10350335, 0.24).fillPoints([{ x: l, y: u(l, -40) }, { x: f, y: u(f, -40) }, { x: f, y: u(f, -8) }, { x: l, y: u(l, -8) }], true);
-      for (let g = 0; g < (S < 1 ? 3 : 5); g++) for (let y = l - 100 + (H * 0.1 + g * 47) % 140; y < f; y += 140) {
+      v && (v.setPosition(l, u(l, -4)).setSize((f - l) * Math.sqrt(1 + 0.13 ** 2), 74).setVisible(true), v.tilePositionX = l - K * 0.025, v.tileScaleY = 0.52), (n === "ice" || n === "desert") && t.lineStyle(n === "ice" ? 7 : 10, n === "ice" ? 15793407 : 15911825, 0.9).lineBetween(l, u(l, -43), f, u(f, -43)), t.fillStyle(10350335, 0.24).fillPoints([{ x: l, y: u(l, -40) }, { x: f, y: u(f, -40) }, { x: f, y: u(f, -8) }, { x: l, y: u(l, -8) }], true);
+      for (let g = 0; g < (S < 1 ? 3 : 5); g++) for (let y = l - 100 + (K * 0.1 + g * 47) % 140; y < f; y += 140) {
         const T = Math.max(l, y), C = Math.min(f, y + 64 + g * 5);
         if (T >= C) continue;
-        const E = -32 + g * 15 + Math.sin(y / 80 + H / 850) * 3;
+        const E = -32 + g * 15 + Math.sin(y / 80 + K / 850) * 3;
         t.lineStyle(g % 2 ? 1 : 1.5, 15334655, 0.22), t.beginPath().moveTo(T, u(T, E));
         for (let A = T + 8; A < C; A += 8) t.lineTo(A, u(A, E + Math.sin((A - T) / (C - T) * Math.PI * 2) * 2));
         t.lineTo(C, u(C, E)).strokePath();
       }
       t.lineStyle(1.5, 15794175, 0.4).beginPath().moveTo(l, u(l, 32));
-      for (let g = l + 10; g < f; g += 10) t.lineTo(g, u(g, 32 + Math.sin(g / 41 + H / 1700) * 1.8));
+      for (let g = l + 10; g < f; g += 10) t.lineTo(g, u(g, 32 + Math.sin(g / 41 + K / 1700) * 1.8));
       t.lineTo(f, u(f, 32)).strokePath();
       for (let g = 0; g < Math.ceil((f - l) / 100) * S; g++) {
-        const y = l + (g * 103 + H * 0.035) % (f - l), T = Math.max(0, Math.sin(H / 540 + g * 2.7)), C = u(y, 9 + Math.sin(g * 3) * 20);
+        const y = l + (g * 103 + K * 0.035) % (f - l), T = Math.max(0, Math.sin(K / 540 + g * 2.7)), C = u(y, 9 + Math.sin(g * 3) * 20);
         t.lineStyle(1.5, 16774353, T * 0.72).lineBetween(y - 7, C, y + 7, C), T > 0.75 && t.lineStyle(1, 16777215, T * 0.65).lineBetween(y, C - 4, y, C + 4);
       }
       const m = a.x + a.width;
@@ -26631,7 +26636,7 @@ class Zt {
       const x = u(m);
       t.fillStyle(11464447, 0.57).fillPoints([{ x: m - 9, y: x - 42 }, { x: m + 12, y: x + 33 }, { x: m + 34, y: x + 245 }, { x: m - 42, y: x + 215 }], true);
       for (let g = 0; g < 12; g++) {
-        const y = x - 39 + g * 6, T = m - 6 + g * 1.1, C = (H * 0.33 + g * 31) % 210;
+        const y = x - 39 + g * 6, T = m - 6 + g * 1.1, C = (K * 0.33 + g * 31) % 210;
         t.lineStyle(2 + g % 3, 16777215, 0.34), t.lineBetween(T, y + C, T + (g - 5) * 1.4, y + C + 46);
       }
       t.lineStyle(5, 16777215, 0.82).lineBetween(m - 9, x - 41, m + 12, x + 33), t.fillStyle(15596287, 0.21).fillEllipse(m - 5, x + 210, 120, 35);
@@ -26641,7 +26646,7 @@ class Zt {
       const l = (a.x + a.nextX) / 2, f = Math.min(a.fromY, a.toY), u = Math.max(a.fromY, a.toY), v = gt(l, f - 30, Z), m = gt(l, u + 45, Z);
       t.fillStyle(n === "cloud" ? 16770209 : 10414586, n === "cloud" ? 0.12 : 0.6).fillRoundedRect(l - 42, v, 84, m - v, 20);
       for (let x = 0; x < 10; x++) {
-        const y = ((H * (a.ascent ? -6e-4 : 7e-4) + x * 0.1) % 1 + 1) % 1, T = l - 37 + x * 8;
+        const y = ((K * (a.ascent ? -6e-4 : 7e-4) + x * 0.1) % 1 + 1) % 1, T = l - 37 + x * 8;
         t.lineStyle(2, a.ascent ? 16773043 : 16777215, 0.6), t.lineBetween(T, v + y * (m - v), T, Math.min(m, v + y * (m - v) + 33));
       }
       if (t.fillStyle(16777215, 0.55).fillEllipse(l, m, 110, 27), a.ascent) for (let x = 0; x < 3; x++) {
@@ -26649,7 +26654,7 @@ class Zt {
         t.lineStyle(3, 16770722, 0.85).beginPath().moveTo(l - 10, g + 9).lineTo(l, g).lineTo(l + 10, g + 9).strokePath();
       }
     }
-    J && !this.afloat && this.splash(Z, K + 13), this.afloat = J, J && H - this.lastWake > (p ? 55 : 95) && (this.wakes.push({ x: Z - 108, y: K + 13, age: 0, splash: false }), this.lastWake = H);
+    J && !this.afloat && this.splash(Z, H + 13), this.afloat = J, J && K - this.lastWake > (p ? 55 : 95) && (this.wakes.push({ x: Z - 108, y: H + 13, age: 0, splash: false }), this.lastWake = K);
     const i = this.foam.clear();
     this.wakes = this.wakes.filter((a) => a.age < (a.splash ? 750 : 1300));
     for (const a of this.wakes) {
@@ -26665,25 +26670,25 @@ class Zt {
       }
     }
     if (J && n !== "cloud") {
-      const a = Math.sin(H / 170) * 2;
-      i.lineStyle(p ? 3.8 : 2.7, 16121855, 0.85), i.beginPath().moveTo(Z - 120, K + 8 + a), i.lineTo(Z - 54, K + 22 + a), i.lineTo(Z + 40, K + 21 + a), i.lineTo(Z + 124, K + 4 + a).strokePath();
+      const a = Math.sin(K / 170) * 2;
+      i.lineStyle(p ? 3.8 : 2.7, 16121855, 0.85), i.beginPath().moveTo(Z - 120, H + 8 + a), i.lineTo(Z - 54, H + 22 + a), i.lineTo(Z + 40, H + 21 + a), i.lineTo(Z + 124, H + 4 + a).strokePath();
       for (let l = 0; l < 7; l++) {
-        const f = (H / (p ? 280 : 420) + l / 7) % 1;
-        i.fillStyle(16777215, (1 - f) * 0.8), i.fillEllipse(Z + 111 + f * 27, K + 5 - Math.sin(f * Math.PI) * 22, 3, 5);
+        const f = (K / (p ? 280 : 420) + l / 7) % 1;
+        i.fillStyle(16777215, (1 - f) * 0.8), i.fillEllipse(Z + 111 + f * 27, H + 5 - Math.sin(f * Math.PI) * 22, 3, 5);
       }
     }
   }
 }
 class Jt {
-  constructor(Z, K, H, j, J) {
+  constructor(Z, H, K, j, J) {
     __publicField(this, "raised", []);
     __publicField(this, "icicles", []);
     __publicField(this, "warnings");
     __publicField(this, "weather");
     __publicField(this, "cue", "");
-    this.scene = Z, this.course = K, this.onHit = j, this.onSplash = J, wt(Z, K.theme), this.warnings = Z.add.graphics().setDepth(7), this.weather = Z.add.graphics().setDepth(14).setScrollFactor(0);
+    this.scene = Z, this.course = H, this.onHit = j, this.onSplash = J, wt(Z, H.theme), this.warnings = Z.add.graphics().setDepth(7), this.weather = Z.add.graphics().setDepth(14).setScrollFactor(0);
     const p = Z.physics.add.staticGroup();
-    for (const S of K.hazards) {
+    for (const S of H.hazards) {
       const t = S.kind === "iceberg", d = S.kind === "cactus", c = Z.add.rectangle(S.x, S.y - (d ? 46 : t ? 44 : 24), d ? 30 : t ? 48 : 50, d ? 92 : t ? 88 : 48, 16777215, 0);
       Z.physics.add.existing(c, true), p.add(c);
       const o = c.body;
@@ -26691,13 +26696,13 @@ class Jt {
       const r = Z.add.image(S.x, S.y, S.kind).setDepth(6);
       t && r.setOrigin(0.5, 0.91).setDisplaySize(142, 134).setVisible(false), d && r.setOrigin(0.5, 0.93).setDisplaySize(78, 124), S.kind === "rock" && r.setOrigin(0.5, 0.86).setDisplaySize(104, 208 / 3), this.raised.push({ spec: S, art: r, body: o, began: null, splashed: false });
     }
-    Z.physics.add.overlap(H, p, () => this.onHit());
-    for (const S of K.icicles) this.icicles.push({ x: S.x, surfaceY: S.y, y: S.y - 500, velocity: 0, began: null, state: "waiting", art: Z.add.image(S.x, S.y - 500, "icicle").setDisplaySize(28, 85).setDepth(12).setVisible(false), hit: false });
+    Z.physics.add.overlap(K, p, () => this.onHit());
+    for (const S of H.icicles) this.icicles.push({ x: S.x, surfaceY: S.y, y: S.y - 500, velocity: 0, began: null, state: "waiting", art: Z.add.image(S.x, S.y - 500, "icicle").setDisplaySize(28, 85).setDepth(12).setVisible(false), hit: false });
   }
   guidePoints() {
     return this.icicles.filter((Z) => Z.state === "falling").map((Z) => ({ x: Z.x, y: Z.y }));
   }
-  update(Z, K, H, j) {
+  update(Z, H, K, j) {
     const J = this.warnings.clear();
     this.cue = "";
     for (const S of this.raised) {
@@ -26707,30 +26712,30 @@ class Jt {
         continue;
       }
       if (d.setVisible(true), t.kind === "iceberg") {
-        if (S.began === null && t.x - Z < 360 && t.x - Z > -100 && (S.began = H), S.began === null) {
+        if (S.began === null && t.x - Z < 360 && t.x - Z > -100 && (S.began = K), S.began === null) {
           d.setVisible(false);
           continue;
         }
-        const o = yt.Math.Clamp((H - S.began - 550) / 750, 0, 1);
-        d.setVisible(o > 0).setAlpha(Math.min(1, o * 1.5)).setY(gt(t.x, t.y + (1 - o) * 116, Z)), S.body.enable = o > 0.6, o < 1 && (this.warning(J, t.x, gt(t.x, t.y, Z), H, 7122930), this.cue = "氷山がせり上がるよ！"), o > 0.4 && !S.splashed && (S.splashed = true, this.onSplash(t.x, t.y));
+        const o = yt.Math.Clamp((K - S.began - 550) / 750, 0, 1);
+        d.setVisible(o > 0).setAlpha(Math.min(1, o * 1.5)).setY(gt(t.x, t.y + (1 - o) * 116, Z)), S.body.enable = o > 0.6, o < 1 && (this.warning(J, t.x, gt(t.x, t.y, Z), K, 7122930), this.cue = "氷山がせり上がるよ！"), o > 0.4 && !S.splashed && (S.splashed = true, this.onSplash(t.x, t.y));
       } else {
         if (d.setY(gt(t.x, t.y, Z)), t.kind === "rock") {
           const o = gt(t.x, t.y, Z);
-          J.lineStyle(1.3, 14744319, 0.45).strokeEllipse(t.x, o + 1, 96 + Math.sin(H / 380) * 5, 13), J.lineStyle(1, 16777215, 0.25).strokeEllipse(t.x, o + 3, 112, 18);
+          J.lineStyle(1.3, 14744319, 0.45).strokeEllipse(t.x, o + 1, 96 + Math.sin(K / 380) * 5, 13), J.lineStyle(1, 16777215, 0.25).strokeEllipse(t.x, o + 3, 112, 18);
         }
         if (t.kind === "cactus") for (let o = 3; o >= 0; o--) J.fillStyle(o % 2 ? 15057292 : 12820078, 0.17).fillEllipse(t.x, gt(t.x, t.y + 7, Z), 72 + o * 9, 13 + o * 4);
       }
     }
-    for (const S of this.icicles) S.state === "waiting" && S.x - Z < 320 && S.x - Z > -35 && (S.state = "warning", S.began = H), S.state === "warning" && (this.warning(J, S.x, gt(S.x, S.surfaceY, Z), H, 16740990), this.cue = "上からツララ！ 風で抜けよう", H - S.began > 1e3 && (S.state = "falling", S.art.setVisible(true))), S.state === "falling" && (S.velocity = Math.min(920, S.velocity + j * 1.05), S.y += S.velocity * j / 1e3, S.art.setPosition(S.x, gt(S.x, S.y, Z)), !S.hit && Math.abs(S.x - Z) < 47 && S.y + 39 > K - 145 && S.y - 39 < K + 13 && (S.hit = true, this.onHit()), S.y > S.surfaceY + 80 && (S.state = "spent", S.art.setVisible(false), this.onSplash(S.x, S.surfaceY)));
+    for (const S of this.icicles) S.state === "waiting" && S.x - Z < 320 && S.x - Z > -35 && (S.state = "warning", S.began = K), S.state === "warning" && (this.warning(J, S.x, gt(S.x, S.surfaceY, Z), K, 16740990), this.cue = "上からツララ！ 風で抜けよう", K - S.began > 1e3 && (S.state = "falling", S.art.setVisible(true))), S.state === "falling" && (S.velocity = Math.min(920, S.velocity + j * 1.05), S.y += S.velocity * j / 1e3, S.art.setPosition(S.x, gt(S.x, S.y, Z)), !S.hit && Math.abs(S.x - Z) < 47 && S.y + 39 > H - 145 && S.y - 39 < H + 13 && (S.hit = true, this.onHit()), S.y > S.surfaceY + 80 && (S.state = "spent", S.art.setVisible(false), this.onSplash(S.x, S.surfaceY)));
     const p = this.weather.clear();
     if (this.course.theme === "ice") for (let S = 0; S < 14; S++) {
-      const t = (S * 139 + H * (0.012 + S % 3 * 4e-3)) % 740 - 10, d = (S * 77 + H * (0.025 + S % 4 * 8e-3)) % 510 - 20;
+      const t = (S * 139 + K * (0.012 + S % 3 * 4e-3)) % 740 - 10, d = (S * 77 + K * (0.025 + S % 4 * 8e-3)) % 510 - 20;
       p.fillStyle(16777215, 0.55).fillCircle(t, d, S % 3 + 1);
     }
   }
-  warning(Z, K, H, j, J) {
+  warning(Z, H, K, j, J) {
     const p = 0.4 + Math.sin(j / 105) * 0.15;
-    Z.lineStyle(3, J, p + 0.3).strokeEllipse(K, H, 88, 26), Z.fillStyle(J, p).fillTriangle(K - 13, H - 69, K + 13, H - 69, K, H - 46), Z.lineStyle(2, 16777215, 1).lineBetween(K, H - 65, K, H - 56), Z.fillStyle(16777215).fillCircle(K, H - 52, 1.5);
+    Z.lineStyle(3, J, p + 0.3).strokeEllipse(H, K, 88, 26), Z.fillStyle(J, p).fillTriangle(H - 13, K - 69, H + 13, K - 69, H, K - 46), Z.lineStyle(2, 16777215, 1).lineBetween(H, K - 65, H, K - 56), Z.fillStyle(16777215).fillCircle(H, K - 52, 1.5);
   }
 }
 class Qt {
@@ -26738,12 +26743,12 @@ class Qt {
     __publicField(this, "pen");
     this.pen = Z.add.graphics().setDepth(13).setScrollFactor(0);
   }
-  draw(Z, K, H = 1) {
+  draw(Z, H, K = 1) {
     const j = this.pen.clear();
-    if (K <= 0) return;
-    const J = Math.min(0.55, K / 600);
-    for (let p = 0; p < 6 + H; p++) {
-      const S = (Z * (0.55 + H * 0.1) + p * 151) % (ft.width + 260) - 180, t = 65 + p * 33 + Math.sin(Z / 350 + p) * 10;
+    if (H <= 0) return;
+    const J = Math.min(0.55, H / 600);
+    for (let p = 0; p < 6 + K; p++) {
+      const S = (Z * (0.55 + K * 0.1) + p * 151) % (ft.width + 260) - 180, t = 65 + p * 33 + Math.sin(Z / 350 + p) * 10;
       j.lineStyle(p % 2 ? 2.5 : 1.5, p % 2 ? 15007735 : 16777215, J), j.beginPath().moveTo(S, t + 4).lineTo(S + 45, t - 2).lineTo(S + 115, t).lineTo(S + 146, t - 5).strokePath();
     }
   }
@@ -26753,15 +26758,15 @@ class $t {
     __publicField(this, "enabled", false);
     __publicField(this, "lights", []);
     if (this.scene = Z, !Z.textures.exists("spirit-light")) {
-      const K = Z.textures.createCanvas("spirit-light", 128, 128);
-      if (K) {
-        const H = K.context, j = H.createRadialGradient(64, 64, 0, 64, 64, 64);
-        j.addColorStop(0, "rgba(255,250,222,.96)"), j.addColorStop(0.08, "rgba(255,238,181,.78)"), j.addColorStop(0.23, "rgba(255,214,139,.32)"), j.addColorStop(0.56, "rgba(255,202,119,.13)"), j.addColorStop(1, "rgba(255,202,119,0)"), H.fillStyle = j, H.fillRect(0, 0, 128, 128), H.strokeStyle = "rgba(255,223,164,.4)", H.lineWidth = 1.3, H.beginPath(), H.arc(64, 64, 26, 0, Math.PI * 2), H.stroke(), H.fillStyle = "rgba(255,248,224,.8)", H.beginPath(), H.arc(83, 47, 2.3, 0, Math.PI * 2), H.fill(), K.refresh();
+      const H = Z.textures.createCanvas("spirit-light", 128, 128);
+      if (H) {
+        const K = H.context, j = K.createRadialGradient(64, 64, 0, 64, 64, 64);
+        j.addColorStop(0, "rgba(255,250,222,.96)"), j.addColorStop(0.08, "rgba(255,238,181,.78)"), j.addColorStop(0.23, "rgba(255,214,139,.32)"), j.addColorStop(0.56, "rgba(255,202,119,.13)"), j.addColorStop(1, "rgba(255,202,119,0)"), K.fillStyle = j, K.fillRect(0, 0, 128, 128), K.strokeStyle = "rgba(255,223,164,.4)", K.lineWidth = 1.3, K.beginPath(), K.arc(64, 64, 26, 0, Math.PI * 2), K.stroke(), K.fillStyle = "rgba(255,248,224,.8)", K.beginPath(), K.arc(83, 47, 2.3, 0, Math.PI * 2), K.fill(), H.refresh();
       }
     }
-    for (let K = 0; K < 32; K++) this.lights.push(Z.add.image(0, 0, "spirit-light").setDepth(16).setVisible(false));
+    for (let H = 0; H < 32; H++) this.lights.push(Z.add.image(0, 0, "spirit-light").setDepth(16).setVisible(false));
   }
-  draw(Z, K, H, j) {
+  draw(Z, H, K, j) {
     for (const t of this.lights) t.setVisible(false);
     if (!this.enabled) return;
     const J = this.scene.cameras.main;
@@ -26770,10 +26775,10 @@ class $t {
       if (t < J.scrollX - 40 || t > J.scrollX + 760 || d < J.scrollY - 40 || d > J.scrollY + 520) return;
       const o = this.lights[p++];
       if (!o) return;
-      const r = 1 + Math.sin(K / 430 + t * 0.03) * 0.1, n = (c + 27) * 2 * r;
+      const r = 1 + Math.sin(H / 430 + t * 0.03) * 0.1, n = (c + 27) * 2 * r;
       o.setPosition(t, d).setDisplaySize(n, n).setVisible(true);
     };
-    S(H.center.x, H.center.y, 22);
+    S(K.center.x, K.center.y, 22);
     for (const t of this.scene.physics.world.staticBodies.entries) if (!(!t.enable || t.right < J.scrollX - 60 || t.x > J.scrollX + 780)) if (t.width > 200) {
       const d = Math.max(0, Math.ceil((J.scrollX - 40 - t.x - 12) / 92));
       for (let c = t.x + 12 + d * 92; c < Math.min(t.right, J.scrollX + 760); c += 92) S(c, gt(c, t.y, Z), 13);
@@ -26783,17 +26788,17 @@ class $t {
   }
 }
 class jt {
-  constructor(Z, K) {
+  constructor(Z, H) {
     __publicField(this, "shore");
     __publicField(this, "pier");
     __publicField(this, "glow");
     __publicField(this, "label");
-    this.course = K, Nt(Z, K.theme);
-    const H = `harbor-pier-${K.theme}`;
-    if (!Z.textures.exists(H)) {
-      const j = Z.textures.createCanvas(H, 340, 150), J = j.context, p = K.theme === "ice", S = K.theme === "desert", t = J.createLinearGradient(0, 38, 0, 140);
+    this.course = H, Ut(Z, H.theme);
+    const K = `harbor-pier-${H.theme}`;
+    if (!Z.textures.exists(K)) {
+      const j = Z.textures.createCanvas(K, 340, 150), J = j.context, p = H.theme === "ice", S = H.theme === "desert", t = J.createLinearGradient(0, 38, 0, 140);
       t.addColorStop(0, p ? "#e6f6fc" : S ? "#f8d9a8" : "#eef0dc"), t.addColorStop(0.45, p ? "#a7d0e8" : S ? "#c2956a" : "#abb8bd"), t.addColorStop(1, p ? "#568fb9" : S ? "#795d55" : "#576f92"), J.fillStyle = t, J.beginPath(), J.moveTo(15, 69), J.lineTo(299, 35), J.lineTo(328, 59), J.lineTo(328, 102), J.lineTo(42, 137), J.lineTo(15, 112), J.closePath(), J.fill(), J.save(), J.beginPath(), J.moveTo(15, 69), J.lineTo(299, 35), J.lineTo(328, 59), J.lineTo(42, 97), J.closePath(), J.clip();
-      const d = Z.textures.get("world").getSourceImage(), c = p ? [786, 377, 180, 35] : S ? [1020, 427, 180, 35] : K.theme === "cloud" ? [945, 281, 180, 35] : [588, 484, 180, 35];
+      const d = Z.textures.get("world").getSourceImage(), c = p ? [786, 377, 180, 35] : S ? [1020, 427, 180, 35] : H.theme === "cloud" ? [945, 281, 180, 35] : [588, 484, 180, 35];
       J.drawImage(d, ...c, 0, 32, 340, 70), J.fillStyle = p ? "rgba(227,249,255,.3)" : "rgba(249,235,203,.25)", J.fillRect(0, 0, 340, 150), J.restore(), J.lineWidth = 1, J.strokeStyle = "rgba(246,251,255,.48)";
       for (let o = 0; o < 10; o++) {
         const r = 43 + o * 29;
@@ -26806,45 +26811,45 @@ class jt {
       }
       j.refresh();
     }
-    this.shore = Z.add.image(K.goalX + 280, 0, `harbor-shore-${K.theme}`).setOrigin(0.5, 0.92).setDepth(3).setDisplaySize(410, K.theme === "desert" ? 140 : 230), this.pier = Z.add.image(K.goalX + 165, 0, H).setOrigin(0.5, 0.57).setDepth(5).setDisplaySize(295, 130), this.glow = Z.add.ellipse(K.goalX + 175, 0, 145, 20, 16772538, 0.14).setDepth(6), this.label = Z.add.text(K.goalX + 195, 0, K.goal_label, { fontFamily: "serif", fontSize: "20px", color: "#fff9e8", stroke: "#405977", strokeThickness: 3 }).setOrigin(0.5, 1).setDepth(7);
+    this.shore = Z.add.image(H.goalX + 280, 0, `harbor-shore-${H.theme}`).setOrigin(0.5, 0.92).setDepth(3).setDisplaySize(410, H.theme === "desert" ? 140 : 230), this.pier = Z.add.image(H.goalX + 165, 0, K).setOrigin(0.5, 0.57).setDepth(5).setDisplaySize(295, 130), this.glow = Z.add.ellipse(H.goalX + 175, 0, 145, 20, 16772538, 0.14).setDepth(6), this.label = Z.add.text(H.goalX + 195, 0, H.goal_label, { fontFamily: "serif", fontSize: "20px", color: "#fff9e8", stroke: "#405977", strokeThickness: 3 }).setOrigin(0.5, 1).setDepth(7);
   }
-  draw(Z, K) {
-    const H = gt(this.course.goalX + 165, this.course.goalY, Z), j = Math.abs(Z - this.course.goalX) < 1050;
-    this.shore.setVisible(j).setY(H + 15), this.pier.setVisible(j).setY(H + 12), this.glow.setVisible(j).setY(H - 8).setAlpha(0.12 + Math.sin(K / 700) * 0.035), this.label.setVisible(j).setY(H - 230);
+  draw(Z, H) {
+    const K = gt(this.course.goalX + 165, this.course.goalY, Z), j = Math.abs(Z - this.course.goalX) < 1050;
+    this.shore.setVisible(j).setY(K + 15), this.pier.setVisible(j).setY(K + 12), this.glow.setVisible(j).setY(K - 8).setAlpha(0.12 + Math.sin(H / 700) * 0.035), this.label.setVisible(j).setY(K - 230);
   }
 }
-const Dt = (at, Z, K) => {
-  const H = yt.Math.Clamp((K - at) / (Z - at), 0, 1);
-  return H * H * (3 - 2 * H);
+const Dt = (at, Z, H) => {
+  const K = yt.Math.Clamp((H - at) / (Z - at), 0, 1);
+  return K * K * (3 - 2 * K);
 };
 class kt {
-  constructor(Z, K) {
+  constructor(Z, H) {
     __publicField(this, "intensity", 0);
     __publicField(this, "label", "晴れ");
     __publicField(this, "sky");
     __publicField(this, "rain");
     __publicField(this, "lastDraw", -1e3);
-    this.theme = K, this.sky = Z.add.graphics().setScrollFactor(0).setDepth(1), this.rain = Z.add.graphics().setScrollFactor(0).setDepth(14);
+    this.theme = H, this.sky = Z.add.graphics().setScrollFactor(0).setDepth(1), this.rain = Z.add.graphics().setScrollFactor(0).setDepth(14);
   }
-  draw(Z, K, H, j = 1, J = false) {
+  draw(Z, H, K, j = 1, J = false) {
     const p = Dt(0.24, 0.38, Z) * (1 - Dt(0.64, 0.83, Z));
-    this.intensity = yt.Math.Linear(this.intensity, p, 1 - Math.exp(-H / 650));
+    this.intensity = yt.Math.Linear(this.intensity, p, 1 - Math.exp(-K / 650));
     const S = this.intensity;
-    if (this.label = S > 0.55 ? this.theme === "ice" ? "吹雪" : this.theme === "desert" ? "砂嵐" : "嵐" : S > 0.12 ? Z > 0.64 ? "晴れ間へ" : "雲行きが変わる…" : "晴れ", K - this.lastDraw < 1e3 / 30) return;
-    this.lastDraw = K;
+    if (this.label = S > 0.55 ? this.theme === "ice" ? "吹雪" : this.theme === "desert" ? "砂嵐" : "嵐" : S > 0.12 ? Z > 0.64 ? "晴れ間へ" : "雲行きが変わる…" : "晴れ", H - this.lastDraw < 1e3 / 30) return;
+    this.lastDraw = H;
     const t = this.sky.clear(), d = this.rain.clear();
     if (S > 0.015) {
       t.fillStyle(this.theme === "desert" ? 9068605 : 2701144, 0.42 * S).fillRect(0, 0, ft.width, ft.height);
       for (let o = 0; o < 8; o++) {
-        const r = (o * 173 + K * (0.018 + o % 3 * 4e-3)) % 1080 - 180;
+        const r = (o * 173 + H * (0.018 + o % 3 * 4e-3)) % 1080 - 180;
         t.fillStyle(this.theme === "desert" ? 12096358 : 4346218, 0.27 * S).fillEllipse(r, 30 + o % 3 * 36, 330, 105);
       }
       for (let o = 0; o < Math.round(64 * j); o++) {
-        const n = ((o * 137 - K * (this.theme === "desert" ? 0.65 : 0.19)) % 880 + 880) % 880 - 80, e = (o * 83 + K * (this.theme === "desert" ? 0.055 : 0.48 + o % 3 * 0.04)) % 540 - 30;
+        const n = ((o * 137 - H * (this.theme === "desert" ? 0.65 : 0.19)) % 880 + 880) % 880 - 80, e = (o * 83 + H * (this.theme === "desert" ? 0.055 : 0.48 + o % 3 * 0.04)) % 540 - 30;
         this.theme === "ice" ? d.fillStyle(15792639, S * 0.8).fillCircle(n, e, 1.5 + o % 3) : this.theme === "desert" ? d.lineStyle(1.5, 16766875, S * 0.52).lineBetween(n, e, n + 13 + o % 4 * 5, e - 3) : d.lineStyle(1.2, 14543615, S * 0.57).lineBetween(n, e, n - 9, e + 24);
       }
       if (!J && this.theme !== "desert" && S > 0.8) {
-        const o = K % 9400;
+        const o = H % 9400;
         (o < 95 || o > 180 && o < 230) && t.fillStyle(15857407, 0.21 * S).fillRect(0, 0, ft.width, ft.height);
       }
     }
@@ -26860,7 +26865,7 @@ class kt {
   }
 }
 class qt {
-  constructor(Z, K) {
+  constructor(Z, H) {
     __publicField(this, "reducedMotion", window.matchMedia("(prefers-reduced-motion: reduce)").matches);
     __publicField(this, "detail", 1);
     __publicField(this, "slowMs", 0);
@@ -26870,25 +26875,25 @@ class qt {
     __publicField(this, "mist", []);
     __publicField(this, "motes", []);
     __publicField(this, "shores", []);
-    this.scene = Z, this.course = K, this.detail = this.reducedMotion || navigator.hardwareConcurrency > 0 && navigator.hardwareConcurrency <= 4 ? 0.6 : 1, this.makeTextures(), this.light = Z.add.image(0, 0, `light-${K.theme}`).setOrigin(0).setScrollFactor(0).setDepth(1), K.theme === "ice" && (this.aurora = Z.add.image(360, 98, "aurora").setScrollFactor(0).setDepth(1)), (K.theme === "sea" || K.theme === "cloud") && (this.rainbow = Z.add.image(485, 175, "sky-rainbow").setScrollFactor(0).setDepth(1).setAlpha(0));
-    for (let H = 0; H < 6; H++) this.mist.push(Z.add.image(0, 0, "soft-mist").setScrollFactor(0).setDepth(H < 3 ? 2 : 12).setTint(K.theme === "desert" ? 16771276 : 15399679));
-    for (let H = 0; H < 14; H++) this.motes.push(Z.add.image(0, 0, "soft-light").setScrollFactor(0).setDepth(12).setTint(K.theme === "ice" ? 14024703 : K.theme === "desert" ? 16768158 : 16774606));
-    K.theme !== "cloud" && K.channels.forEach((H, j) => {
-      const J = K.theme === "sea" || K.theme === "desert";
+    this.scene = Z, this.course = H, this.detail = this.reducedMotion || navigator.hardwareConcurrency > 0 && navigator.hardwareConcurrency <= 4 ? 0.6 : 1, this.makeTextures(), this.light = Z.add.image(0, 0, `light-${H.theme}`).setOrigin(0).setScrollFactor(0).setDepth(1), H.theme === "ice" && (this.aurora = Z.add.image(360, 98, "aurora").setScrollFactor(0).setDepth(1)), (H.theme === "sea" || H.theme === "cloud") && (this.rainbow = Z.add.image(485, 175, "sky-rainbow").setScrollFactor(0).setDepth(1).setAlpha(0));
+    for (let K = 0; K < 6; K++) this.mist.push(Z.add.image(0, 0, "soft-mist").setScrollFactor(0).setDepth(K < 3 ? 2 : 12).setTint(H.theme === "desert" ? 16771276 : 15399679));
+    for (let K = 0; K < 14; K++) this.motes.push(Z.add.image(0, 0, "soft-light").setScrollFactor(0).setDepth(12).setTint(H.theme === "ice" ? 14024703 : H.theme === "desert" ? 16768158 : 16774606));
+    H.theme !== "cloud" && H.channels.forEach((K, j) => {
+      const J = H.theme === "sea" || H.theme === "desert";
       if (J && j % 3 !== 0) return;
-      const p = H.x + H.width * (J ? j % 2 ? 0.48 : 0.62 : j % 2 ? 0.73 : 0.27), S = Z.add.image(p, 0, `shore-${K.theme}`).setOrigin(0.5, J ? 0.97 : 1).setDepth(J ? 1.8 : 2.8);
+      const p = K.x + K.width * (J ? j % 2 ? 0.48 : 0.62 : j % 2 ? 0.73 : 0.27), S = Z.add.image(p, 0, `shore-${H.theme}`).setOrigin(0.5, J ? 0.97 : 1).setDepth(J ? 1.8 : 2.8);
       if (J) {
-        const t = K.theme === "sea" ? 320 : 340;
-        S.setDisplaySize(t, t * 2 / 3).setTint(K.theme === "sea" ? 15004415 : 16773081).setAlpha(0.94);
+        const t = H.theme === "sea" ? 320 : 340;
+        S.setDisplaySize(t, t * 2 / 3).setTint(H.theme === "sea" ? 15004415 : 16773081).setAlpha(0.94);
       } else S.setScale(0.6).setFlipX(j % 2 === 1);
-      this.shores.push({ art: S, x: p, y: H.y - (J ? 52 : 46) });
+      this.shores.push({ art: S, x: p, y: K.y - (J ? 52 : 46) });
     });
   }
-  update(Z, K, H, j) {
+  update(Z, H, K, j) {
     var _a, _b;
-    const J = H > 22 || K > 2500 && this.scene.game.loop.actualFps < 50;
-    this.slowMs = J ? this.slowMs + Math.min(H, 100) : Math.max(0, this.slowMs - H * 0.4), this.slowMs > 1400 && (this.detail = 0.5);
-    const p = this.scene.cameras.main, S = this.reducedMotion ? 0 : K;
+    const J = K > 22 || H > 2500 && this.scene.game.loop.actualFps < 50;
+    this.slowMs = J ? this.slowMs + Math.min(K, 100) : Math.max(0, this.slowMs - K * 0.4), this.slowMs > 1400 && (this.detail = 0.5);
+    const p = this.scene.cameras.main, S = this.reducedMotion ? 0 : H;
     this.light.setAlpha(1 - j * 0.8), (_a = this.aurora) == null ? void 0 : _a.setAlpha(0.44 * (1 - j * 0.65)).setY(94 + Math.sin(S / 8e3) * 8), (_b = this.rainbow) == null ? void 0 : _b.setAlpha(yt.Math.Clamp((Z / this.course.goalX - 0.68) / 0.2, 0, 1) * (1 - j) * 0.28);
     for (let t = 0; t < this.mist.length; t++) {
       const d = t >= 3, c = this.mist[t];
@@ -26910,96 +26915,96 @@ class qt {
       }
     }
   }
-  canvas(Z, K, H, j) {
+  canvas(Z, H, K, j) {
     if (this.scene.textures.exists(Z)) return;
-    const J = this.scene.textures.createCanvas(Z, K, H);
+    const J = this.scene.textures.createCanvas(Z, H, K);
     J && (j(J.context), J.refresh());
   }
   makeTextures() {
-    this.canvas("soft-mist", 256, 96, (K) => {
-      K.scale(1, 0.375);
-      const H = K.createRadialGradient(128, 128, 0, 128, 128, 128);
-      H.addColorStop(0, "rgba(255,255,255,.85)"), H.addColorStop(1, "rgba(255,255,255,0)"), K.fillStyle = H, K.fillRect(0, 0, 256, 256);
-    }), this.canvas("soft-light", 64, 64, (K) => {
-      const H = K.createRadialGradient(32, 32, 0, 32, 32, 32);
-      H.addColorStop(0, "rgba(255,255,255,1)"), H.addColorStop(0.16, "rgba(255,255,255,.8)"), H.addColorStop(1, "rgba(255,255,255,0)"), K.fillStyle = H, K.fillRect(0, 0, 64, 64);
-    }), (this.course.theme === "sea" || this.course.theme === "cloud") && this.canvas("sky-rainbow", 460, 260, (K) => {
-      ["#ffd1cf", "#ffe5b7", "#fff4cc", "#bfeede", "#c5e6ff", "#d9d0ff"].forEach((H, j) => {
-        K.strokeStyle = H, K.lineWidth = 5, K.beginPath(), K.arc(230, 235, 207 - j * 5, Math.PI, Math.PI * 2), K.stroke();
+    this.canvas("soft-mist", 256, 96, (H) => {
+      H.scale(1, 0.375);
+      const K = H.createRadialGradient(128, 128, 0, 128, 128, 128);
+      K.addColorStop(0, "rgba(255,255,255,.85)"), K.addColorStop(1, "rgba(255,255,255,0)"), H.fillStyle = K, H.fillRect(0, 0, 256, 256);
+    }), this.canvas("soft-light", 64, 64, (H) => {
+      const K = H.createRadialGradient(32, 32, 0, 32, 32, 32);
+      K.addColorStop(0, "rgba(255,255,255,1)"), K.addColorStop(0.16, "rgba(255,255,255,.8)"), K.addColorStop(1, "rgba(255,255,255,0)"), H.fillStyle = K, H.fillRect(0, 0, 64, 64);
+    }), (this.course.theme === "sea" || this.course.theme === "cloud") && this.canvas("sky-rainbow", 460, 260, (H) => {
+      ["#ffd1cf", "#ffe5b7", "#fff4cc", "#bfeede", "#c5e6ff", "#d9d0ff"].forEach((K, j) => {
+        H.strokeStyle = K, H.lineWidth = 5, H.beginPath(), H.arc(230, 235, 207 - j * 5, Math.PI, Math.PI * 2), H.stroke();
       });
-    }), this.canvas(`light-${this.course.theme}`, ft.width, ft.height, (K) => {
-      const H = this.course.theme === "desert", j = this.course.theme === "ice", J = K.createRadialGradient(570, 15, 4, 570, 15, 510);
-      J.addColorStop(0, H ? "rgba(255,213,138,.38)" : j ? "rgba(183,255,246,.2)" : "rgba(255,242,192,.3)"), J.addColorStop(1, "rgba(255,255,255,0)"), K.fillStyle = J, K.fillRect(0, 0, ft.width, ft.height);
-      const p = K.createLinearGradient(0, 0, 0, 460);
-      p.addColorStop(0, "rgba(255,249,220,.13)"), p.addColorStop(1, "rgba(255,255,255,0)"), K.fillStyle = p;
-      for (let S = 0; S < 3; S++) K.beginPath(), K.moveTo(480 + S * 76, 0), K.lineTo(120 + S * 175, 480), K.lineTo(175 + S * 180, 480), K.closePath(), K.fill();
-    }), this.course.theme === "ice" && this.canvas("aurora", 720, 200, (K) => {
-      for (let H = 0; H < 180; H++) {
-        const j = H * 4, J = 28 + Math.sin(H / 31) * 23 + Math.sin(H / 13) * 11, p = K.createLinearGradient(j, J, j, J + 112);
-        p.addColorStop(0, "rgba(145,255,225,0)"), p.addColorStop(0.35, "rgba(159,255,232,.5)"), p.addColorStop(0.7, "rgba(185,181,255,.22)"), p.addColorStop(1, "rgba(170,200,255,0)"), K.fillStyle = p, K.fillRect(j, J, 4, 112);
+    }), this.canvas(`light-${this.course.theme}`, ft.width, ft.height, (H) => {
+      const K = this.course.theme === "desert", j = this.course.theme === "ice", J = H.createRadialGradient(570, 15, 4, 570, 15, 510);
+      J.addColorStop(0, K ? "rgba(255,213,138,.38)" : j ? "rgba(183,255,246,.2)" : "rgba(255,242,192,.3)"), J.addColorStop(1, "rgba(255,255,255,0)"), H.fillStyle = J, H.fillRect(0, 0, ft.width, ft.height);
+      const p = H.createLinearGradient(0, 0, 0, 460);
+      p.addColorStop(0, "rgba(255,249,220,.13)"), p.addColorStop(1, "rgba(255,255,255,0)"), H.fillStyle = p;
+      for (let S = 0; S < 3; S++) H.beginPath(), H.moveTo(480 + S * 76, 0), H.lineTo(120 + S * 175, 480), H.lineTo(175 + S * 180, 480), H.closePath(), H.fill();
+    }), this.course.theme === "ice" && this.canvas("aurora", 720, 200, (H) => {
+      for (let K = 0; K < 180; K++) {
+        const j = K * 4, J = 28 + Math.sin(K / 31) * 23 + Math.sin(K / 13) * 11, p = H.createLinearGradient(j, J, j, J + 112);
+        p.addColorStop(0, "rgba(145,255,225,0)"), p.addColorStop(0.35, "rgba(159,255,232,.5)"), p.addColorStop(0.7, "rgba(185,181,255,.22)"), p.addColorStop(1, "rgba(170,200,255,0)"), H.fillStyle = p, H.fillRect(j, J, 4, 112);
       }
     });
     const Z = `shore-${this.course.theme}`;
-    this.scene.textures.exists(Z) || this.course.theme !== "ice" || (wt(this.scene, this.course.theme), this.canvas(Z, 280, 170, (K) => {
-      const H = this.scene.textures.get("harbor-shore-ice").getSourceImage();
-      K.drawImage(H, 0, 0, 280, 170);
+    this.scene.textures.exists(Z) || this.course.theme !== "ice" || (wt(this.scene, this.course.theme), this.canvas(Z, 280, 170, (H) => {
+      const K = this.scene.textures.get("harbor-shore-ice").getSourceImage();
+      H.drawImage(K, 0, 0, 280, 170);
     }));
   }
 }
-function Ut(at, Z) {
-  const K = yt.Math.Clamp((Z - at.began) / at.duration, 0, 1), { ring: H, startX: j, startY: J } = at;
-  return { x: j + (H.targetX - j) * K, y: J + (H.targetY - J) * K - 4 * H.height * K * (1 - K), angle: Math.atan2(H.targetY - J - 4 * H.height * (1 - 2 * K), H.targetX - j), done: K >= 1 };
+function zt(at, Z) {
+  const H = yt.Math.Clamp((Z - at.began) / at.duration, 0, 1), { ring: K, startX: j, startY: J } = at;
+  return { x: j + (K.targetX - j) * H, y: J + (K.targetY - J) * H - 4 * K.height * H * (1 - H), angle: Math.atan2(K.targetY - J - 4 * K.height * (1 - 2 * H), K.targetX - j), done: H >= 1 };
 }
 class _t {
-  constructor(Z, K) {
+  constructor(Z, H) {
     __publicField(this, "pen");
     __publicField(this, "labels");
     __publicField(this, "used", /* @__PURE__ */ new Set());
     __publicField(this, "previousX", null);
     __publicField(this, "previousY", 0);
-    this.scene = Z, this.course = K, this.pen = Z.add.graphics().setDepth(8), this.labels = K.rings.map(() => Z.add.text(0, 0, "STAR RING", { fontFamily: "Georgia, serif", fontSize: "11px", color: "#fff4cf", stroke: "#8e6b39", strokeThickness: 3 }).setOrigin(0.5).setDepth(8));
+    this.scene = Z, this.course = H, this.pen = Z.add.graphics().setDepth(8), this.labels = H.rings.map(() => Z.add.text(0, 0, "STAR RING", { fontFamily: "Georgia, serif", fontSize: "11px", color: "#fff4cf", stroke: "#8e6b39", strokeThickness: 3 }).setOrigin(0.5).setDepth(8));
   }
-  crossed(Z, K) {
-    const H = this.previousX ?? Z, j = this.previousY;
-    this.previousX = Z, this.previousY = K;
+  crossed(Z, H) {
+    const K = this.previousX ?? Z, j = this.previousY;
+    this.previousX = Z, this.previousY = H;
     for (const J of this.course.rings) {
-      if (this.used.has(J) || Z < H) continue;
-      const p = Z === H ? 1 : yt.Math.Clamp((J.x - H) / (Z - H), 0, 1), S = j + (K - j) * p;
-      if (H <= J.x + 40 && Z >= J.x - 40 && Math.abs(S - J.y) < 164) return this.used.add(J), J;
+      if (this.used.has(J) || Z < K) continue;
+      const p = Z === K ? 1 : yt.Math.Clamp((J.x - K) / (Z - K), 0, 1), S = j + (H - j) * p;
+      if (K <= J.x + 40 && Z >= J.x - 40 && Math.abs(S - J.y) < 164) return this.used.add(J), J;
     }
   }
   upcoming(Z) {
-    return this.course.rings.find((K) => !this.used.has(K) && K.x - Z > -40 && K.x - Z < 650);
+    return this.course.rings.find((H) => !this.used.has(H) && H.x - Z > -40 && H.x - Z < 650);
   }
-  draw(Z, K, H, j) {
+  draw(Z, H, K, j) {
     const J = this.pen.clear(), p = this.scene.cameras.main;
     if (this.course.rings.forEach((S, t) => {
       const d = gt(S.x, S.y - 65, Z), c = S.x > p.scrollX - 160 && S.x < p.scrollX + p.width + 160 && d > p.scrollY - 160 && d < p.scrollY + p.height + 160;
       if (this.labels[t].setVisible(c).setPosition(S.x, d - 151).setAlpha(this.used.has(S) ? 0.35 : 1), !c) return;
-      const o = j ? 1 : 1 + Math.sin(K / 420) * 0.035, r = this.used.has(S) ? 0.25 : 1;
+      const o = j ? 1 : 1 + Math.sin(H / 420) * 0.035, r = this.used.has(S) ? 0.25 : 1;
       J.lineStyle(20, 16766340, 0.06 * r).strokeEllipse(S.x, d, 117 * o, 259 * o), J.lineStyle(11, 16770980, 0.16 * r).strokeEllipse(S.x, d, 106 * o, 244 * o), J.lineStyle(5, 12094531, r).strokeEllipse(S.x, d, 96 * o, 234 * o), J.lineStyle(3, 16770464, r).strokeEllipse(S.x - 1, d - 1, 96 * o, 234 * o), J.lineStyle(1, 16776168, 0.9 * r).strokeEllipse(S.x - 3, d - 1, 90 * o, 229 * o);
       for (let n = 0; n < 7; n++) {
         const e = n * Math.PI * 2 / 7 - Math.PI / 2;
         this.star(S.x + Math.cos(e) * 50 * o, d + Math.sin(e) * 119 * o, n === 0 ? 13 : 7, r);
       }
       if (!this.used.has(S)) for (let n = 1; n < 6; n++) J.fillStyle(16773050, (0.5 - n * 0.06) * r).fillCircle(S.x + n * 23, d - n * 13, 2);
-    }), H) {
-      const S = Ut(H, K);
+    }), K) {
+      const S = zt(K, H);
       J.lineStyle(14, 16768392, 0.08).lineBetween(S.x - 110, S.y + 14, S.x - 35, S.y + 5);
-      for (let t = 0; t < 6; t++) this.star(S.x - 55 - t * 22, S.y + 7 + Math.sin(K / 120 + t) * 10, 6 - t * 0.6, 0.7 - t * 0.1);
+      for (let t = 0; t < 6; t++) this.star(S.x - 55 - t * 22, S.y + 7 + Math.sin(H / 120 + t) * 10, 6 - t * 0.6, 0.7 - t * 0.1);
     }
   }
-  star(Z, K, H, j) {
+  star(Z, H, K, j) {
     const J = Array.from({ length: 10 }, (p, S) => {
-      const t = S * Math.PI / 5 - Math.PI / 2, d = S % 2 ? H * 0.44 : H;
-      return { x: Z + Math.cos(t) * d, y: K + Math.sin(t) * d };
+      const t = S * Math.PI / 5 - Math.PI / 2, d = S % 2 ? K * 0.44 : K;
+      return { x: Z + Math.cos(t) * d, y: H + Math.sin(t) * d };
     });
     this.pen.fillStyle(16772529, j).fillPoints(J, true), this.pen.lineStyle(1, 16775647, j).strokePoints(J, true);
   }
 }
 const te = (at) => new URL("assets/" + at, import.meta.url).href;
 class ee extends yt.Scene {
-  constructor(Z, K, H, j) {
+  constructor(Z, H, K, j) {
     super({ key: "voyage" });
     __publicField(this, "phase", "loading");
     __publicField(this, "player");
@@ -27044,12 +27049,12 @@ class ee extends yt.Scene {
     __publicField(this, "lastTrail", -1e3);
     __publicField(this, "message", "いっしょに、雲海へ！");
     __publicField(this, "messageUntil", 5e3);
-    this.configData = Z, this.controls = K, this.audio = H, this.hooks = j, this.course = Lt(Z.course_id);
+    this.configData = Z, this.controls = H, this.audio = K, this.hooks = j, this.course = Lt(Z.course_id);
   }
   preload() {
     const Z = { world: this.course.world, yacht: "yacht-v2.webp", captain: "captain-v3.webp", mark: "streamlit-mark.svg" };
     this.course.theme === "sea" && (Z["shore-sea"] = "ruins-v1.webp", Z.rock = "rock-v2.webp"), this.course.theme === "desert" && (Z["shore-desert"] = "palms-v1.webp");
-    for (const [K, H] of Object.entries(Z)) this.textures.exists(K) || this.load.image(K, te(H));
+    for (const [H, K] of Object.entries(Z)) this.textures.exists(H) || this.load.image(H, te(K));
   }
   create() {
     if (!["world", "yacht", "captain", "mark", ...this.course.theme === "sea" ? ["shore-sea", "rock"] : this.course.theme === "desert" ? ["shore-desert"] : []].every((d) => this.textures.exists(d))) {
@@ -27057,16 +27062,16 @@ class ee extends yt.Scene {
       return;
     }
     this.attempt++, this.elapsedMs = this.hits = this.collected = 0, this.lastGrounded = this.jumpBuffer = this.lastHud = this.lastTrail = -1e3, this.boostUntil = this.boostReadyAt = this.immuneUntil = this.windUntil = 0, this.windStacks = 0, this.previousJump = this.previousBoost = false, this.boostQueued = false, this.lift = null, this.flight = null, this.projected = [], this.message = this.course.intro, this.messageUntil = 5e3, this.checkpoint = { x: 200, y: this.course.channels[0].y }, this.physics.world.setBounds(0, this.course.minY - 400, this.course.goalX + 750, 1900 - this.course.minY);
-    const K = this.cameras.main;
-    K.setBounds(0, this.course.minY, this.course.goalX + 600, ft.height - this.course.minY + Math.max(0, ...this.course.channels.map((d) => d.y - 406))), this.backdrop = this.add.image(0, 0, "world").setOrigin(0).setDisplaySize(ft.width, ft.height).setScrollFactor(0), this.backdropTwin = this.add.image(ft.width, 0, "world").setOrigin(0).setDisplaySize(ft.width, ft.height).setFlipX(true).setScrollFactor(0), this.atmosphere = new qt(this, this.course), this.waterway = new Zt(this, () => this.audio.splash(), this.course), this.windEffect = new Qt(this), this.guide = new $t(this), this.guide.enabled = this.guideEnabled, this.mooring = new jt(this, this.course), this.weather = new kt(this, this.course.theme), this.rings = new _t(this, this.course);
-    const H = this.physics.add.staticGroup();
+    const H = this.cameras.main;
+    H.setBounds(0, this.course.minY, this.course.goalX + 600, ft.height - this.course.minY + Math.max(0, ...this.course.channels.map((d) => d.y - 406))), this.backdrop = this.add.image(0, 0, "world").setOrigin(0).setDisplaySize(ft.width, ft.height).setScrollFactor(0), this.backdropTwin = this.add.image(ft.width, 0, "world").setOrigin(0).setDisplaySize(ft.width, ft.height).setFlipX(true).setScrollFactor(0), this.atmosphere = new qt(this, this.course), this.waterway = new Zt(this, () => this.audio.splash(), this.course), this.windEffect = new Qt(this), this.guide = new $t(this), this.guide.enabled = this.guideEnabled, this.mooring = new jt(this, this.course), this.weather = new kt(this, this.course.theme), this.rings = new _t(this, this.course);
+    const K = this.physics.add.staticGroup();
     for (const d of this.course.channels) {
       const c = this.add.rectangle(d.x + d.width / 2, d.y + 8, d.width - 8, 16, 16777215, 0);
-      this.physics.add.existing(c, true), H.add(c);
+      this.physics.add.existing(c, true), K.add(c);
     }
     this.makeTextures(), this.player = this.physics.add.sprite(200, this.course.channels[0].y - 28, "hull").setVisible(false), this.player.setSize(92, 24), this.shadow = this.add.ellipse(0, 0, 265, 21, 1461107, 0.13).setDepth(4), this.reflection = this.add.image(0, 0, "yacht").setOrigin(0.5, 0).setFlipY(true).setDisplaySize(350, 58).setAlpha(0.13).setTint(10804973).setDepth(4);
     const j = this.add.image(0, 0, "yacht").setOrigin(0.5, 0.97).setDisplaySize(355, 236.67), J = this.add.image(37, -135, "mark").setDisplaySize(62, 10230 / 301), p = this.add.image(0, 0, "captain").setOrigin(0.5, 1).setDisplaySize(124, 186), S = this.add.image(15, -157, "mark").setDisplaySize(26, 4290 / 301);
-    this.captain = this.add.container(-72, -51, [p, S]), this.yacht = this.add.container(154, 398, [j, J, this.captain]).setDepth(10), this.physics.add.collider(this.player, H, void 0, () => !this.lift && !this.flight), K.startFollow(this.player, false, 0.09, 0.22, -140, 95);
+    this.captain = this.add.container(-72, -51, [p, S]), this.yacht = this.add.container(154, 398, [j, J, this.captain]).setDepth(10), this.physics.add.collider(this.player, K, void 0, () => !this.lift && !this.flight), H.startFollow(this.player, false, 0.09, 0.22, -140, 95);
     const t = this.physics.add.staticGroup();
     if (this.course.crystals.forEach((d, c) => {
       const o = this.add.image(d.x, d.y, d.red ? "ruby" : "crystal").setDepth(6);
@@ -27090,14 +27095,14 @@ class ee extends yt.Scene {
     if (this.textures.exists("hull")) return;
     const Z = this.add.graphics();
     Z.fillStyle(16777215).fillRect(0, 0, 96, 24), Z.generateTexture("hull", 96, 24), Z.clear();
-    for (const [K, H] of [["ruby", 16730955], ["crystal", 4380149]]) Z.lineStyle(1.6, 16777215, 1).fillStyle(H), Z.fillPoints([{ x: 17, y: 1 }, { x: 30, y: 23 }, { x: 17, y: 44 }, { x: 4, y: 23 }], true), Z.strokePoints([{ x: 17, y: 1 }, { x: 30, y: 23 }, { x: 17, y: 44 }, { x: 4, y: 23 }], true), Z.fillStyle(16777215, 0.58).fillTriangle(17, 2, 17, 23, 5, 23), Z.lineStyle(1, 16777215, 0.8).lineBetween(17, 2, 17, 42).lineBetween(5, 23, 29, 23), Z.generateTexture(K, 34, 46), Z.clear();
+    for (const [H, K] of [["ruby", 16730955], ["crystal", 4380149]]) Z.lineStyle(1.6, 16777215, 1).fillStyle(K), Z.fillPoints([{ x: 17, y: 1 }, { x: 30, y: 23 }, { x: 17, y: 44 }, { x: 4, y: 23 }], true), Z.strokePoints([{ x: 17, y: 1 }, { x: 30, y: 23 }, { x: 17, y: 44 }, { x: 4, y: 23 }], true), Z.fillStyle(16777215, 0.58).fillTriangle(17, 2, 17, 23, 5, 23), Z.lineStyle(1, 16777215, 0.8).lineBetween(17, 2, 17, 42).lineBetween(5, 23, 29, 23), Z.generateTexture(H, 34, 46), Z.clear();
     Z.fillStyle(16777215).fillTriangle(8, 0, 10, 8, 8, 16).fillTriangle(0, 8, 8, 6, 16, 8).fillTriangle(0, 8, 8, 10, 16, 8), Z.generateTexture("spark", 16, 16), Z.destroy();
   }
-  update(Z, K) {
+  update(Z, H) {
     if (!this.backdrop) return;
-    const H = this.cameras.main.scrollX * 0.18 % (ft.width * 2);
-    if (this.backdrop.setX(-H + (H > ft.width ? ft.width * 2 : 0)), this.backdropTwin.setX(ft.width - H), this.phase !== "playing") return;
-    this.elapsedMs += Math.min(K, 100);
+    const K = this.cameras.main.scrollX * 0.18 % (ft.width * 2);
+    if (this.backdrop.setX(-K + (K > ft.width ? ft.width * 2 : 0)), this.backdropTwin.setX(ft.width - K), this.phase !== "playing") return;
+    this.elapsedMs += Math.min(H, 100);
     const j = this.player.body;
     let J = !this.flight && (j.blocked.down || j.touching.down);
     if (!this.flight) {
@@ -27117,7 +27122,7 @@ class ee extends yt.Scene {
     const r = this.elapsedMs < this.boostUntil, n = this.elapsedMs < this.windUntil;
     n || (this.windStacks = 0);
     const e = d, s = (t ? 170 : 132) - (S ? 103 : 0) + (r ? 122 : 0) + (n ? 125 + (this.windStacks - 1) * 65 : 0);
-    if (this.flight || j.setVelocityX(e ? 0 : yt.Math.Linear(j.velocity.x, Math.max(0, s), 1 - Math.exp(-K / 180))), !this.flight && !this.lift && !e && (this.lift = this.course.cascades.find((a) => a.ascent && this.player.x >= a.x - 48 && this.player.x < a.nextX + 60 && this.player.y > a.toY - 32 && this.player.y < a.fromY + 55) ?? null, this.lift && (this.liftSpeed = Math.max(300, j.velocity.x, s))), this.lift) {
+    if (this.flight || j.setVelocityX(e ? 0 : yt.Math.Linear(j.velocity.x, Math.max(0, s), 1 - Math.exp(-H / 180))), !this.flight && !this.lift && !e && (this.lift = this.course.cascades.find((a) => a.ascent && this.player.x >= a.x - 48 && this.player.x < a.nextX + 60 && this.player.y > a.toY - 32 && this.player.y < a.fromY + 55) ?? null, this.lift && (this.liftSpeed = Math.max(300, j.velocity.x, s))), this.lift) {
       const a = this.lift;
       if (j.setAllowGravity(false), this.player.y <= a.toY - 32) this.player.x >= a.nextX + 60 ? (this.lift = null, j.setVelocityY(0).setAllowGravity(true)) : j.setVelocityY(e ? 0 : -18);
       else {
@@ -27129,7 +27134,7 @@ class ee extends yt.Scene {
     this.previousJump = c, this.previousBoost = o;
     let h = null;
     if (this.flight) {
-      const a = Ut(this.flight, this.elapsedMs);
+      const a = zt(this.flight, this.elapsedMs);
       j.reset(a.x, a.y), h = a.angle * 0.48, a.done && (this.checkpoint = { x: a.x, y: this.flight.ring.targetY + 18 }, this.flight = null, j.setAllowGravity(true).setVelocity(170, 0), this.immuneUntil = Math.max(this.immuneUntil, this.elapsedMs + 700), this.cameras.main.setLerp(0.09, 0.22), this.waterway.splash(a.x, a.y + 18), this.sparkles.explode(16, a.x, a.y), this.message = "着地！ 次の風に乗って進もう", this.messageUntil = this.elapsedMs + 1800);
     }
     !this.flight && this.player.y > this.checkpoint.y + 250 && this.damage(true);
@@ -27140,7 +27145,7 @@ class ee extends yt.Scene {
       const l = a.bob === void 0 ? 0 : Math.sin(this.elapsedMs / 330 + a.bob) * 5, f = a.x > this.cameras.main.scrollX - 60 && a.x < this.cameras.main.scrollX + ft.width + 60;
       a.image.setVisible(f), f && a.image.setY(gt(a.x, a.y, this.player.x) + l);
     }
-    this.waterway.draw(this.player.x, this.player.y, this.elapsedMs, Math.min(K, 100), J && j.velocity.y >= 0, r || n, this.atmosphere.detail), this.hazards.update(this.player.x, this.player.y, this.elapsedMs, Math.min(K, 100)), this.windEffect.draw(this.elapsedMs, Math.max(0, this.windUntil - this.elapsedMs), this.windStacks), this.weather.draw(this.player.x / this.course.goalX, this.elapsedMs, Math.min(K, 100), this.atmosphere.detail, this.atmosphere.reducedMotion), this.atmosphere.update(this.player.x, this.elapsedMs, K, this.weather.intensity), this.backdrop.setTint(this.weather.tint), this.backdropTwin.setTint(this.weather.tint), this.mooring.draw(this.player.x, this.elapsedMs), this.rings.draw(this.player.x, this.elapsedMs, this.flight, this.atmosphere.reducedMotion), this.guide.draw(this.player.x, this.elapsedMs, j, this.hazards.guidePoints()), this.yacht.setAlpha(!this.flight && this.elapsedMs < this.immuneUntil && Math.floor(this.elapsedMs / 100) % 2 ? 0.55 : 1), this.elapsedMs - this.lastTrail > (this.flight || r || n ? 45 : 140) / this.atmosphere.detail && (this.sparkles.emitParticleAt(this.player.x - 88, this.player.y + 1, this.flight ? 5 : r || n ? 3 : 1), this.lastTrail = this.elapsedMs), this.player.x >= this.course.goalX ? this.finish("cleared") : this.elapsedMs > this.course.timeLimitMs && this.finish("failed"), this.elapsedMs - this.lastHud > 100 && this.publishHud();
+    this.waterway.draw(this.player.x, this.player.y, this.elapsedMs, Math.min(H, 100), J && j.velocity.y >= 0, r || n, this.atmosphere.detail), this.hazards.update(this.player.x, this.player.y, this.elapsedMs, Math.min(H, 100)), this.windEffect.draw(this.elapsedMs, Math.max(0, this.windUntil - this.elapsedMs), this.windStacks), this.weather.draw(this.player.x / this.course.goalX, this.elapsedMs, Math.min(H, 100), this.atmosphere.detail, this.atmosphere.reducedMotion), this.atmosphere.update(this.player.x, this.elapsedMs, H, this.weather.intensity), this.backdrop.setTint(this.weather.tint), this.backdropTwin.setTint(this.weather.tint), this.mooring.draw(this.player.x, this.elapsedMs), this.rings.draw(this.player.x, this.elapsedMs, this.flight, this.atmosphere.reducedMotion), this.guide.draw(this.player.x, this.elapsedMs, j, this.hazards.guidePoints()), this.yacht.setAlpha(!this.flight && this.elapsedMs < this.immuneUntil && Math.floor(this.elapsedMs / 100) % 2 ? 0.55 : 1), this.elapsedMs - this.lastTrail > (this.flight || r || n ? 45 : 140) / this.atmosphere.detail && (this.sparkles.emitParticleAt(this.player.x - 88, this.player.y + 1, this.flight ? 5 : r || n ? 3 : 1), this.lastTrail = this.elapsedMs), this.player.x >= this.course.goalX ? this.finish("cleared") : this.elapsedMs > this.course.timeLimitMs && this.finish("failed"), this.elapsedMs - this.lastHud > 100 && this.publishHud();
   }
   damage(Z = false) {
     if (!(this.phase !== "playing" || this.flight || this.elapsedMs < this.immuneUntil)) {
@@ -27150,8 +27155,8 @@ class ee extends yt.Scene {
       }
       if (this.immuneUntil = this.elapsedMs + 1300, Z) {
         this.lift = null;
-        const K = this.player.x, H = this.course.channels.find((p) => p.x + p.width - 52 >= K) ?? this.course.channels.at(-1), j = Math.max(K, H.x + 60);
-        this.player.body.setAllowGravity(true).reset(j, H.y - 36), this.checkpoint = { x: j, y: H.y }, this.previousJump = false;
+        const H = this.player.x, K = this.course.channels.find((p) => p.x + p.width - 52 >= H) ?? this.course.channels.at(-1), j = Math.max(H, K.x + 60);
+        this.player.body.setAllowGravity(true).reset(j, K.y - 36), this.checkpoint = { x: j, y: K.y }, this.previousJump = false;
       }
       this.publishHud();
     }
@@ -27159,14 +27164,14 @@ class ee extends yt.Scene {
   finish(Z) {
     if (this.phase !== "playing") return;
     this.phase = Z, this.player.body.setVelocity(0, 0).setAllowGravity(false);
-    const H = { run_id: this.configData.run_id, attempt_id: `${this.configData.run_id}:${this.attempt}`, course_id: this.course.id, status: Z, elapsed_ms: Math.round(this.elapsedMs), hit_count: this.hits, crystals: this.collected, total_crystals: this.course.crystals.length };
+    const K = { run_id: this.configData.run_id, attempt_id: `${this.configData.run_id}:${this.attempt}`, course_id: this.course.id, status: Z, elapsed_ms: Math.round(this.elapsedMs), hit_count: this.hits, crystals: this.collected, total_crystals: this.course.crystals.length };
     this.publishHud(), Z === "cleared" && (this.audio.play("clear"), this.sparkles.explode(65, this.player.x, this.player.y - 65), this.tweens.add({ targets: this.yacht, y: this.yacht.y - 12, duration: 1e3, yoyo: true, repeat: -1, ease: "Sine.easeInOut" })), this.time.delayedCall(Z === "cleared" ? 900 : 300, () => {
-      this.hooks.phase(Z, H), this.hooks.result(H);
+      this.hooks.phase(Z, K), this.hooks.result(K);
     });
   }
   publishHud() {
     this.lastHud = this.elapsedMs;
-    const Z = this.course.channels.find((d) => d.x + d.width > this.player.x && d.x + d.width - this.player.x < 320 && d !== this.course.channels.at(-1)), K = this.course.hazards.find((d) => d.x - this.player.x > 60 && d.x - this.player.x < 290), H = this.player.body, j = (H.blocked.down || H.touching.down) && H.velocity.y >= 0, J = (K == null ? void 0 : K.kind) === "cactus" ? "サボテン！ Aでジャンプ" : (K == null ? void 0 : K.kind) === "iceberg" ? "氷山！ Aで越えよう" : "岩があるよ！ Aでジャンプ", p = this.course.cascades.find((d) => d.x - this.player.x > -60 && d.x - this.player.x < 320), S = this.rings.upcoming(this.player.x), t = this.flight ? this.message : S ? "金色のスターリングを通って、遠くへ！" : this.hazards.cue || (this.lift ? this.message : p ? p.ascent ? this.course.theme === "cloud" ? "金色の上昇気流に乗ろう" : "光る滝で、滝登り！" : "大きな落差！ 下の航路へ" : j ? Z ? this.course.theme === "cloud" ? "雲の切れ目！ 次の段へジャンプ" : "滝の切れ目！ Aでひとっとび" : K ? J : this.elapsedMs < this.messageUntil ? this.message : "" : "");
+    const Z = this.course.channels.find((d) => d.x + d.width > this.player.x && d.x + d.width - this.player.x < 320 && d !== this.course.channels.at(-1)), H = this.course.hazards.find((d) => d.x - this.player.x > 60 && d.x - this.player.x < 290), K = this.player.body, j = (K.blocked.down || K.touching.down) && K.velocity.y >= 0, J = (H == null ? void 0 : H.kind) === "cactus" ? "サボテン！ Aでジャンプ" : (H == null ? void 0 : H.kind) === "iceberg" ? "氷山！ Aで越えよう" : "岩があるよ！ Aでジャンプ", p = this.course.cascades.find((d) => d.x - this.player.x > -60 && d.x - this.player.x < 320), S = this.rings.upcoming(this.player.x), t = this.flight ? this.message : S ? "金色のスターリングを通って、遠くへ！" : this.hazards.cue || (this.lift ? this.message : p ? p.ascent ? this.course.theme === "cloud" ? "金色の上昇気流に乗ろう" : "光る滝で、滝登り！" : "大きな落差！ 下の航路へ" : j ? Z ? this.course.theme === "cloud" ? "雲の切れ目！ 次の段へジャンプ" : "滝の切れ目！ Aでひとっとび" : H ? J : this.elapsedMs < this.messageUntil ? this.message : "" : "");
     this.hooks.hud({ elapsedMs: this.elapsedMs, hits: this.hits, crystals: this.collected, progress: Math.min(1, this.player.x / this.course.goalX), boostReady: yt.Math.Clamp(1 - (this.boostReadyAt - this.elapsedMs) / 3400, 0, 1), windMs: Math.max(0, this.windUntil - this.elapsedMs), windStacks: this.elapsedMs < this.windUntil ? this.windStacks : 0, cue: t, weather: this.weather.label, storm: this.weather.intensity });
   }
   pauseVoyage() {
@@ -27204,20 +27209,20 @@ class ie {
   }
   play(Z) {
     if (!this.enabled || !this.context || this.context.state !== "running") return;
-    const K = this.context;
+    const H = this.context;
     ({ jump: [330, 660], boost: [180, 480], collect: [880, 1320], hit: [180, 80], clear: [523, 659, 784, 1047], launch: [196, 392, 784, 1568] })[Z].forEach((j, J) => {
-      const p = K.createOscillator(), S = K.createGain(), t = K.currentTime + J * 0.075;
-      p.type = "sine", p.frequency.setValueAtTime(j, t), S.gain.setValueAtTime(0, t), S.gain.linearRampToValueAtTime(0.045, t + 0.012), S.gain.exponentialRampToValueAtTime(1e-3, t + 0.18), p.connect(S), S.connect(K.destination), p.start(t), p.stop(t + 0.2), p.onended = () => {
+      const p = H.createOscillator(), S = H.createGain(), t = H.currentTime + J * 0.075;
+      p.type = "sine", p.frequency.setValueAtTime(j, t), S.gain.setValueAtTime(0, t), S.gain.linearRampToValueAtTime(0.045, t + 0.012), S.gain.exponentialRampToValueAtTime(1e-3, t + 0.18), p.connect(S), S.connect(H.destination), p.start(t), p.stop(t + 0.2), p.onended = () => {
         p.disconnect(), S.disconnect();
       };
     });
   }
   splash() {
     if (!this.enabled || !this.context || this.context.state !== "running") return;
-    const Z = this.context, K = Z.currentTime, H = Z.createBuffer(1, Math.floor(Z.sampleRate * 0.22), Z.sampleRate), j = H.getChannelData(0);
+    const Z = this.context, H = Z.currentTime, K = Z.createBuffer(1, Math.floor(Z.sampleRate * 0.22), Z.sampleRate), j = K.getChannelData(0);
     for (let t = 0; t < j.length; t++) j[t] = (Math.random() * 2 - 1) * (1 - t / j.length);
     const J = Z.createBufferSource(), p = Z.createBiquadFilter(), S = Z.createGain();
-    J.buffer = H, p.type = "lowpass", p.frequency.value = 1700, S.gain.setValueAtTime(0.045, K), S.gain.exponentialRampToValueAtTime(1e-3, K + 0.22), J.connect(p), p.connect(S), S.connect(Z.destination), J.start(K), J.onended = () => {
+    J.buffer = K, p.type = "lowpass", p.frequency.value = 1700, S.gain.setValueAtTime(0.045, H), S.gain.exponentialRampToValueAtTime(1e-3, H + 0.22), J.connect(p), p.connect(S), S.connect(Z.destination), J.start(H), J.onended = () => {
       J.disconnect(), p.disconnect(), S.disconnect();
     };
   }
@@ -27226,8 +27231,8 @@ class ie {
     (_a = this.context) == null ? void 0 : _a.close();
   }
 }
-class zt {
-  constructor(Z, K = false) {
+class Xt {
+  constructor(Z, H = false) {
     __publicField(this, "enabled", false);
     __publicField(this, "volume", 0.5);
     __publicField(this, "context");
@@ -27239,7 +27244,7 @@ class zt {
     __publicField(this, "playing", false);
     __publicField(this, "disposed", false);
     __publicField(this, "suspendTimer");
-    this.urls = Z, this.enabled = this.available && K;
+    this.urls = Z, this.enabled = this.available && H;
   }
   get available() {
     return this.urls.length > 0;
@@ -27264,10 +27269,10 @@ class zt {
   }
   async load() {
     for (const Z of this.urls) try {
-      const K = await fetch(Z);
-      if (!K.ok) throw new Error("Music unavailable");
-      const H = await this.context.decodeAudioData(await K.arrayBuffer());
-      this.disposed || (this.buffer = H);
+      const H = await fetch(Z);
+      if (!H.ok) throw new Error("Music unavailable");
+      const K = await this.context.decodeAudioData(await H.arrayBuffer());
+      this.disposed || (this.buffer = K);
       return;
     } catch {
     }
@@ -27276,8 +27281,8 @@ class zt {
   start() {
     !this.buffer || !this.context || !this.filter || (this.source = this.context.createBufferSource(), this.source.buffer = this.buffer, this.source.loop = true, this.source.connect(this.filter), this.source.start());
   }
-  setPlaying(Z, K = false) {
-    this.playing = Z, K && this.source && (this.source.stop(), this.source.disconnect(), this.source = void 0, this.start()), !(!this.enabled || !this.context) && (Z ? (clearTimeout(this.suspendTimer), this.context.resume().then(() => {
+  setPlaying(Z, H = false) {
+    this.playing = Z, H && this.source && (this.source.stop(), this.source.disconnect(), this.source = void 0, this.start()), !(!this.enabled || !this.context) && (Z ? (clearTimeout(this.suspendTimer), this.context.resume().then(() => {
       !this.disposed && this.enabled && this.playing && this.fade(this.volume, 0.55);
     }).catch(() => {
     })) : this.fade(0, 0.45, true));
@@ -27288,25 +27293,25 @@ class zt {
   setWeather(Z) {
     this.context && this.filter && this.filter.frequency.setTargetAtTime(18e3 - Z * 8500, this.context.currentTime, 0.3);
   }
-  fade(Z, K, H = false) {
+  fade(Z, H, K = false) {
     if (clearTimeout(this.suspendTimer), !this.context || !this.gain) return;
     const j = this.gain.gain, J = this.context.currentTime;
-    j.cancelScheduledValues(J), j.setValueAtTime(j.value, J), j.linearRampToValueAtTime(Z, J + K), H && (this.suspendTimer = setTimeout(() => {
+    j.cancelScheduledValues(J), j.setValueAtTime(j.value, J), j.linearRampToValueAtTime(Z, J + H), K && (this.suspendTimer = setTimeout(() => {
       var _a;
       !this.disposed && (!this.enabled || !this.playing) && ((_a = this.context) == null ? void 0 : _a.suspend());
-    }, K * 1e3 + 30));
+    }, H * 1e3 + 30));
   }
   dispose() {
     var _a, _b, _c, _d, _e;
     this.disposed = true, clearTimeout(this.suspendTimer), (_a = this.source) == null ? void 0 : _a.stop(), (_b = this.source) == null ? void 0 : _b.disconnect(), (_c = this.filter) == null ? void 0 : _c.disconnect(), (_d = this.gain) == null ? void 0 : _d.disconnect(), (_e = this.context) == null ? void 0 : _e.close(), this.buffer = void 0;
   }
 }
-const Bt = (at) => new URL("assets/" + at, import.meta.url).href, se = ({ parentElement: at, data: Z, setStateValue: K }) => {
-  const H = at.querySelector(".sky-sailer-root");
-  if (!H) return;
+const Bt = (at) => new URL("assets/" + at, import.meta.url).href, se = ({ parentElement: at, data: Z, setStateValue: H }) => {
+  const K = at.querySelector(".sky-sailer-root");
+  if (!K) return;
   const j = Z.course_id;
-  if (H.__home) return H.__home.update(j), H.__home.cleanup;
-  H.classList.add("ss-home"), H.innerHTML = `<section class="ss-course-picker" aria-label="コース選択">
+  if (K.__home) return K.__home.update(j), K.__home.cleanup;
+  K.classList.add("ss-home"), K.innerHTML = `<section class="ss-course-picker" aria-label="コース選択">
     <div class="ss-picker-heading"><div><small>CHOOSE YOUR VOYAGE</small><h2>次は、どの世界へ？</h2></div><span>左右にスワイプ ↔</span></div>
     <div class="ss-carousel-controls"><button data-prev aria-label="前のコース">‹</button><div class="ss-course-carousel" role="region" aria-label="コースのカード" tabindex="0">
     ${St.map((T) => `<button class="ss-course-card" data-course-card="${T.id}" aria-label="${T.id} ${T.title}" aria-pressed="false"><img src="${Bt(T.world)}" width="1536" height="1024" loading="${T.id === j ? "eager" : "lazy"}" decoding="async" alt=""><span class="ss-card-shade"></span><span class="ss-card-number">${T.id}</span><span class="ss-card-copy"><span class="ss-world-caption">${{ sea: "THE SUNLIT SEA", ice: "AURORA & ICE", desert: "THE GOLDEN OASIS", cloud: "ABOVE THE CLOUDS" }[T.theme]}</span><strong>${T.title}</strong><small>${T.description}</small></span><span class="ss-card-selected">✦ 選択中</span></button>`).join("")}
@@ -27314,17 +27319,17 @@ const Bt = (at) => new URL("assets/" + at, import.meta.url).href, se = ({ parent
     <div class="ss-course-dots">${St.map((T) => `<button data-course-dot="${T.id}" aria-label="${T.id}を選択">${T.id}</button>`).join("")}</div>
     <div class="ss-home-music"><button class="ss-system" data-home-music aria-pressed="false" aria-label="ホームBGMを有効にする">♫ BGM OFF</button><label>ホームBGM<input data-home-volume type="range" min="0" max="100" value="50" aria-label="ホームBGM音量"></label><small>Beyond the Far Horizon</small></div><p data-home-music-message role="status" hidden></p>
   </section>`;
-  const J = H.querySelector(".ss-course-carousel"), p = Array.from(H.querySelectorAll("[data-course-card]")), S = H.querySelector("[data-prev]"), t = H.querySelector("[data-next]"), d = H.querySelector("[data-home-music]"), c = H.querySelector("[data-home-volume]"), o = H.querySelector("[data-home-music-message]"), r = new zt([Bt("music/course-1-1-loop.ogg"), Bt("music/course-1-1-loop.mp3")]);
+  const J = K.querySelector(".ss-course-carousel"), p = Array.from(K.querySelectorAll("[data-course-card]")), S = K.querySelector("[data-prev]"), t = K.querySelector("[data-next]"), d = K.querySelector("[data-home-music]"), c = K.querySelector("[data-home-volume]"), o = K.querySelector("[data-home-music-message]"), r = new Xt([Bt("music/course-1-1-loop.ogg"), Bt("music/course-1-1-loop.mp3")]);
   r.setPlaying(!document.hidden);
   let n = St.findIndex((T) => T.id === j);
   n < 0 && (n = 0);
   let e = false, s;
   const h = window.matchMedia("(prefers-reduced-motion: reduce)").matches, i = () => {
-    H.dataset.selectedCourse = St[n].id, p.forEach((T, C) => T.setAttribute("aria-pressed", String(C === n))), H.querySelectorAll("[data-course-dot]").forEach((T) => T.setAttribute("aria-pressed", String(T.dataset.courseDot === St[n].id))), S.disabled = n === 0, t.disabled = n === p.length - 1;
+    K.dataset.selectedCourse = St[n].id, p.forEach((T, C) => T.setAttribute("aria-pressed", String(C === n))), K.querySelectorAll("[data-course-dot]").forEach((T) => T.setAttribute("aria-pressed", String(T.dataset.courseDot === St[n].id))), S.disabled = n === 0, t.disabled = n === p.length - 1;
   }, a = (T = "auto") => J.scrollTo({ left: p[n].offsetLeft - (J.clientWidth - p[n].clientWidth) / 2, behavior: T }), l = (T, C = true) => {
     T = Math.max(0, Math.min(p.length - 1, T));
     const E = n !== T;
-    n = T, i(), C && a(h ? "auto" : "smooth"), E && K("selected_course", St[n].id);
+    n = T, i(), C && a(h ? "auto" : "smooth"), E && H("selected_course", St[n].id);
   }, f = (T) => {
     const C = T.target, E = C.closest("[data-course-card],[data-course-dot]");
     E && l(St.findIndex((A) => A.id === (E.dataset.courseCard ?? E.dataset.courseDot))), C.closest("[data-prev]") && l(n - 1), C.closest("[data-next]") && l(n + 1), C.closest("[data-home-music]") && (d.disabled = true, o.hidden = true, r.toggle().then((A) => {
@@ -27346,24 +27351,24 @@ const Bt = (at) => new URL("assets/" + at, import.meta.url).href, se = ({ parent
   }, v = (T) => {
     (T.key === "ArrowRight" || T.key === "ArrowLeft") && (T.preventDefault(), l(n + (T.key === "ArrowRight" ? 1 : -1)));
   }, m = () => r.setVolume(Number(c.value) / 100), x = () => r.setPlaying(!document.hidden);
-  H.addEventListener("click", f), J.addEventListener("scroll", u, { passive: true }), J.addEventListener("keydown", v), c.addEventListener("input", m), document.addEventListener("visibilitychange", x);
+  K.addEventListener("click", f), J.addEventListener("scroll", u, { passive: true }), J.addEventListener("keydown", v), c.addEventListener("input", m), document.addEventListener("visibilitychange", x);
   const g = new ResizeObserver(() => a());
   g.observe(J), i(), requestAnimationFrame(() => {
     e || a();
   });
   const y = () => {
-    e || (e = true, clearTimeout(s), g.disconnect(), r.dispose(), H.removeEventListener("click", f), J.removeEventListener("scroll", u), J.removeEventListener("keydown", v), c.removeEventListener("input", m), document.removeEventListener("visibilitychange", x), H.replaceChildren(), H.classList.remove("ss-home"), delete H.__home);
+    e || (e = true, clearTimeout(s), g.disconnect(), r.dispose(), K.removeEventListener("click", f), J.removeEventListener("scroll", u), J.removeEventListener("keydown", v), c.removeEventListener("input", m), document.removeEventListener("visibilitychange", x), K.replaceChildren(), K.classList.remove("ss-home"), delete K.__home);
   };
-  return H.__home = { cleanup: y, update: (T) => {
+  return K.__home = { cleanup: y, update: (T) => {
     const C = St.findIndex((E) => E.id === T);
     C >= 0 && C !== n && (n = C, i(), a());
   } }, y;
-}, It = (at) => `${Math.floor(at / 6e4).toString().padStart(2, "0")}:${Math.floor(at / 1e3 % 60).toString().padStart(2, "0")}`, Rt = (at) => new URL("assets/" + at, import.meta.url).href, ne = ({ parentElement: at, data: Z, setStateValue: K }) => {
+}, It = (at) => `${Math.floor(at / 6e4).toString().padStart(2, "0")}:${Math.floor(at / 1e3 % 60).toString().padStart(2, "0")}`, Rt = (at) => new URL("assets/" + at, import.meta.url).href, ne = ({ parentElement: at, data: Z, setStateValue: H }) => {
   var _a, _b;
-  if (Z.mode === "home") return se({ parentElement: at, data: Z, setStateValue: K });
-  const H = Z, j = Lt(H.course_id), J = at.querySelector(".sky-sailer-root");
+  if (Z.mode === "home") return se({ parentElement: at, data: Z, setStateValue: H });
+  const K = Z, j = Lt(K.course_id), J = at.querySelector(".sky-sailer-root");
   if (!J) return;
-  if (((_a = J.__skySailer) == null ? void 0 : _a.runId) === H.run_id) return J.__skySailer.evaluate(H.evaluation), J.__skySailer.cleanup;
+  if (((_a = J.__skySailer) == null ? void 0 : _a.runId) === K.run_id) return J.__skySailer.evaluate(K.evaluation), J.__skySailer.cleanup;
   (_b = J.__skySailer) == null ? void 0 : _b.cleanup(), J.dataset.course = j.id, J.innerHTML = `
     <section class="ss-shell" aria-label="Sky Sailer ゲームコンソール">
       <div class="ss-brand"><img class="ss-brand-mark" src="${Rt("streamlit-mark.svg")}" alt="Streamlit"><span>SKY SAILER</span><span class="ss-brand-right">${j.id} · ${j.title}</span></div>
@@ -27392,9 +27397,9 @@ const Bt = (at) => new URL("assets/" + at, import.meta.url).href, se = ({ parent
     </section>`;
   const p = J.querySelector(".ss-mount"), S = J.querySelector(".ss-overlay"), t = J.querySelector(".ss-lives"), d = J.querySelector(".ss-clock"), c = J.querySelector("[data-crystals]"), o = J.querySelector("[data-progress]"), r = J.querySelector(".ss-boost-meter i"), n = J.querySelector("[data-pause]"), e = J.querySelector("[data-sound]"), s = J.querySelector("[data-guide]"), h = J.querySelector("[data-music]"), i = J.querySelector("[data-music-volume]"), a = J.querySelector("[data-music-message]"), l = J.querySelector("[data-weather]");
   let f = false;
-  const u = J.querySelector("[data-cue]"), v = J.querySelector("[data-wind]"), m = J.querySelector("[data-wind-time]"), x = v.querySelector("i"), g = { left: false, right: false, jump: false, boost: false, brake: false }, y = /* @__PURE__ */ new Map(), T = new ie(), C = new zt(j.id === "4-1" ? [] : [Rt(`music/course-${j.id}-loop.ogg`), Rt(`music/course-${j.id}-loop.mp3`)], true);
+  const u = J.querySelector("[data-cue]"), v = J.querySelector("[data-wind]"), m = J.querySelector("[data-wind-time]"), x = v.querySelector("i"), g = { left: false, right: false, jump: false, boost: false, brake: false }, y = /* @__PURE__ */ new Map(), T = new ie(), C = new Xt(j.id === "4-1" ? [] : [Rt(`music/course-${j.id}-loop.ogg`), Rt(`music/course-${j.id}-loop.mp3`)], true);
   i.disabled = !C.available;
-  let E = "loading", A, P = H.evaluation, M = false;
+  let E = "loading", A, P = K.evaluation, M = false;
   const R = (W) => {
     if (P = W, !W || W.attempt_id !== (A == null ? void 0 : A.attempt_id) || !["S", "A", "B", "C"].includes(W.rank)) return;
     const Q = J.querySelector(".ss-result-rank"), $ = J.querySelector(".ss-result-comment");
@@ -27407,10 +27412,10 @@ const Bt = (at) => new URL("assets/" + at, import.meta.url).href, se = ({ parent
   }, I = (W) => {
     d.textContent = It(W.elapsedMs), c.textContent = String(W.crystals), t.innerHTML = Array.from({ length: 3 }, (Q, $) => `<span class="${$ < 3 - W.hits ? "" : "is-lost"}">♥</span>`).join(" "), t.setAttribute("aria-label", `残りライフ ${Math.max(0, 3 - W.hits)}`), o.style.width = `${W.progress * 100}%`, r.style.width = `${W.boostReady * 100}%`, r.parentElement.classList.toggle("is-ready", W.boostReady === 1), u.textContent = W.cue, u.hidden = !W.cue, v.hidden = W.windMs <= 0, m.textContent = `追い風 ×${W.windStacks} · ${(W.windMs / 1e3).toFixed(1)}s`, x.style.width = `${Math.min(100, W.windMs / 4500 * 100)}%`, J.dataset.wind = W.windMs > 0 ? "active" : "idle", l.textContent = `${W.storm > 0.55 ? "☁" : "☀"} ${W.weather}`, J.dataset.weather = W.storm > 0.55 ? "storm" : "sunny", C.setWeather(W.storm);
   }, U = (W, Q) => {
-    M || (J.dataset.phase = W, C.setPlaying(W === "playing", W === "playing" && E === "loading"), E = W, S.hidden = W === "playing", n.disabled = W !== "playing" && W !== "paused", n.textContent = W === "paused" ? "▶ RESUME" : "Ⅱ PAUSE", W === "paused" ? (D(), S.innerHTML = '<span class="ss-overline">TAKE A BREATH</span><h2>風待ちのひととき</h2><p>準備ができたら、航海を続けよう。</p><div class="ss-overlay-actions"><button class="ss-button" data-resume>航海を再開</button><button class="ss-button ss-button-secondary" data-home>ホームに戻る</button></div>') : W === "loading" ? S.innerHTML = `<span class="ss-overline">COURSE ${j.id}</span><h2>${j.title}へ</h2><p>帆に風を集めています…</p><span class="ss-loading">✦</span>` : W === "error" ? S.innerHTML = '<span class="ss-overline">WAITING FOR THE WIND</span><h2>航路を読み込めませんでした。</h2><p>通信を確認して、もう一度出航しよう。</p><button class="ss-button" data-reload>再読み込み</button>' : Q && (D(), A = Q, S.innerHTML = Q.status === "cleared" ? `<span class="ss-overline">${j.id} · VOYAGE COMPLETE</span><div class="ss-result-rank">✦</div><h2>${j.goal_label}へ、到着。</h2><p class="ss-result-comment">航海を評価しています…</p><div class="ss-result-stats">${It(Q.elapsed_ms)}<span>◆ ${Q.crystals} / ${Q.total_crystals}</span><span>ミス ${Q.hit_count}</span></div><div class="ss-overlay-actions">${H.next_course_id ? '<button class="ss-button" data-next-stage>次のステージへ</button>' : ""}<button class="ss-button ss-button-secondary" data-home>ホームに戻る</button><button class="ss-text-button" data-retry>もう一度出航する</button></div>` : `<span class="ss-overline">${j.id} · THE SKY IS WAITING</span><h2>次の風に、乗ろう。</h2><p>${j.description}</p><div class="ss-result-stats">${It(Q.elapsed_ms)}<span>◆ ${Q.crystals} / ${Q.total_crystals}</span></div><div class="ss-overlay-actions"><button class="ss-button" data-retry>もう一度出航する</button><button class="ss-button ss-button-secondary" data-home>ホームに戻る</button></div>`, R(P)));
-  }, N = new ee(H, g, T, { phase: U, hud: I, result: (W) => {
-    M || K("result", W);
-  } }), w = new yt.Game({ type: yt.AUTO, width: ft.width, height: ft.height, parent: p, banner: false, physics: { default: "arcade", arcade: { gravity: { x: 0, y: 900 * H.gravity }, debug: false } }, scale: { mode: yt.Scale.FIT, autoCenter: yt.Scale.CENTER_BOTH }, scene: [N], render: { antialias: true, roundPixels: false }, fps: { target: 60 } }), B = (W) => {
+    M || (J.dataset.phase = W, C.setPlaying(W === "playing", W === "playing" && E === "loading"), E = W, S.hidden = W === "playing", n.disabled = W !== "playing" && W !== "paused", n.textContent = W === "paused" ? "▶ RESUME" : "Ⅱ PAUSE", W === "paused" ? (D(), S.innerHTML = '<span class="ss-overline">TAKE A BREATH</span><h2>風待ちのひととき</h2><p>準備ができたら、航海を続けよう。</p><div class="ss-overlay-actions"><button class="ss-button" data-resume>航海を再開</button><button class="ss-button ss-button-secondary" data-home>ホームに戻る</button></div>') : W === "loading" ? S.innerHTML = `<span class="ss-overline">COURSE ${j.id}</span><h2>${j.title}へ</h2><p>帆に風を集めています…</p><span class="ss-loading">✦</span>` : W === "error" ? S.innerHTML = '<span class="ss-overline">WAITING FOR THE WIND</span><h2>航路を読み込めませんでした。</h2><p>通信を確認して、もう一度出航しよう。</p><button class="ss-button" data-reload>再読み込み</button>' : Q && (D(), A = Q, S.innerHTML = Q.status === "cleared" ? `<span class="ss-overline">${j.id} · VOYAGE COMPLETE</span><div class="ss-result-rank">✦</div><h2>${j.goal_label}へ、到着。</h2><p class="ss-result-comment">航海を評価しています…</p><div class="ss-result-stats">${It(Q.elapsed_ms)}<span>◆ ${Q.crystals} / ${Q.total_crystals}</span><span>ミス ${Q.hit_count}</span></div><div class="ss-overlay-actions">${K.next_course_id ? '<button class="ss-button" data-next-stage>次のステージへ</button>' : ""}<button class="ss-button ss-button-secondary" data-home>ホームに戻る</button><button class="ss-text-button" data-retry>もう一度出航する</button></div>` : `<span class="ss-overline">${j.id} · THE SKY IS WAITING</span><h2>次の風に、乗ろう。</h2><p>${j.description}</p><div class="ss-result-stats">${It(Q.elapsed_ms)}<span>◆ ${Q.crystals} / ${Q.total_crystals}</span></div><div class="ss-overlay-actions"><button class="ss-button" data-retry>もう一度出航する</button><button class="ss-button ss-button-secondary" data-home>ホームに戻る</button></div>`, R(P)));
+  }, N = new ee(K, g, T, { phase: U, hud: I, result: (W) => {
+    M || H("result", W);
+  } }), w = new yt.Game({ type: yt.AUTO, width: ft.width, height: ft.height, parent: p, banner: false, physics: { default: "arcade", arcade: { gravity: { x: 0, y: 900 * K.gravity }, debug: false } }, scale: { mode: yt.Scale.FIT, autoCenter: yt.Scale.CENTER_BOTH }, scene: [N], render: { antialias: true, roundPixels: false }, fps: { target: 60 } }), B = (W) => {
     C.unlock();
     const Q = W.target.closest("[data-act]");
     !Q || N.phase !== "playing" || (y.set(W.pointerId, Q.dataset.act), Q.dataset.act === "jump" && N.requestJump(), Q.dataset.act === "boost" && N.requestBoost(), Q.setPointerCapture(W.pointerId), F(), W.preventDefault());
@@ -27426,10 +27431,10 @@ const Bt = (at) => new URL("assets/" + at, import.meta.url).href, se = ({ parent
       M || (h.disabled = false);
     })), Q.closest("[data-pause]") && (D(), N.phase === "paused" ? N.resumeVoyage() : N.pauseVoyage()), Q.closest("[data-resume]") && N.resumeVoyage(), Q.closest("[data-home]") || Q.closest("[data-next-stage]")) {
       const $ = Q.closest("[data-home]") ? "home" : "next";
-      if ($ === "next" && (N.phase !== "cleared" || !H.next_course_id)) return;
-      D(), N.pauseVoyage(), C.setPlaying(false), S.querySelectorAll("button").forEach((k) => k.disabled = true), K("navigation", { action: $, run_id: H.run_id });
+      if ($ === "next" && (N.phase !== "cleared" || !K.next_course_id)) return;
+      D(), N.pauseVoyage(), C.setPlaying(false), S.querySelectorAll("button").forEach((k) => k.disabled = true), H("navigation", { action: $, run_id: K.run_id });
     }
-    Q.closest("[data-reload]") && window.location.reload(), Q.closest("[data-retry]") && (A = void 0, D(), K("result", null), N.restartVoyage()), Q.closest("[data-sound]") && T.toggle().then(($) => {
+    Q.closest("[data-reload]") && window.location.reload(), Q.closest("[data-retry]") && (A = void 0, D(), H("result", null), N.restartVoyage()), Q.closest("[data-sound]") && T.toggle().then(($) => {
       M || (e.textContent = $ ? "♪ SOUND ON" : "♪ SOUND OFF", e.setAttribute("aria-pressed", String($)), e.setAttribute("aria-label", $ ? "効果音を無効にする" : "効果音を有効にする"));
     });
   }, O = () => {
@@ -27447,7 +27452,7 @@ const Bt = (at) => new URL("assets/" + at, import.meta.url).href, se = ({ parent
   const b = () => {
     M || (M = true, Y.disconnect(), T.dispose(), C.dispose(), w.destroy(true), J.removeEventListener("pointerdown", B), J.removeEventListener("pointerup", L), J.removeEventListener("pointercancel", L), J.removeEventListener("lostpointercapture", L), J.removeEventListener("click", G), i.removeEventListener("input", z), document.removeEventListener("visibilitychange", O), window.removeEventListener("blur", X), window.removeEventListener("keydown", V), J.replaceChildren(), delete J.__skySailer);
   };
-  return J.__skySailer = { runId: H.run_id, cleanup: b, evaluate: R }, C.available && C.enable().catch((W) => {
+  return J.__skySailer = { runId: K.run_id, cleanup: b, evaluate: R }, C.available && C.enable().catch((W) => {
     M || (h.textContent = "♫ BGM OFF", h.setAttribute("aria-pressed", "false"), h.setAttribute("aria-label", "BGMを有効にする"), a.textContent = W.message, a.hidden = false);
   }), b;
 };

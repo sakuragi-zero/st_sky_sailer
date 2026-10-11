@@ -43,16 +43,16 @@ export function getCourse(id = "1-1"): Course {
     const levels = [0, 0, 0, 170, 170, 0, 0, -160, -160, 0, 0, 0];
     base.forEach((channel, i) => { channel.y += levels[i]; });
   }
-  // At six wind stacks plus B boost, the ship can travel 742 px/s.
-  // A normal jump spans about 840 px; leave room to land and react before
-  // the next obstacle or gap. Keep the gaps and vertical steps themselves.
+  // Reserve extra landing room only on obstacle stretches; keep the rest
+  // compact so collecting wind crystals maintains the voyage's rhythm.
   let laneX = 0;
   base.forEach((channel, i) => {
     // Save the next original gap before changing this lane's position/width.
     const next = base[i + 1];
     const nextGap = next ? next.x - channel.x - channel.width : 0;
     channel.x = laneX;
-    channel.width = Math.max(channel.width, theme === "cloud" ? 1100 : 1800);
+    const obstacleLane = theme === "sea" ? ROCK_LANES.includes(i) : theme === "ice" ? i % 2 === 1 : theme === "desert" ? i % 3 === 1 : false;
+    channel.width = Math.max(channel.width, theme === "cloud" ? 650 : obstacleLane ? 1500 : 900);
     laneX = channel.x + channel.width + nextGap;
   });
   // A second voyage region lies beyond a broad sky gap, reached by a star flight.
@@ -73,10 +73,6 @@ export function getCourse(id = "1-1"): Course {
     return next.x - channel.x - channel.width < 300 && Math.abs(next.y-channel.y) > 100 ? [{x:channel.x+channel.width,nextX:next.x,fromY:channel.y,toY:next.y,ascent:next.y<channel.y}] : [];
   });
   const last = channels.at(-1)!;
-  const crystals = channels.flatMap((channel, i) => [
-    { x: channel.x + (i === 0 ? 360 : Math.min(190, channel.width * 0.4)), y: channel.y - (i % 2 === 0 ? 27 : 72), red: i % 3 === 0 },
-    { x: channel.x + channel.width - 110, y: channel.y - 98, red: i % 3 === 2 },
-  ]);
   const candidates: Obstacle[] = theme === "sea" ? [0, base.length].flatMap(offset => ROCK_LANES.map(index => {
     const lane = channels[offset + index];
     return { x: lane.x + lane.width / 2, y: lane.y, kind: "rock" as const };
@@ -89,6 +85,14 @@ export function getCourse(id = "1-1"): Course {
     return { ...hazard, x: lane.x + lane.width / 2 };
   });
   const icicles = theme === "ice" ? channels.filter((lane,i) => i % 2 === 0 && !rings.some(ring => ring.x >= lane.x && ring.x < lane.x + lane.width) && !hazards.some(hazard => hazard.x >= lane.x && hazard.x < lane.x + lane.width)).map(channel => ({ x: channel.x + channel.width / 2, y: channel.y })) : [];
+  // Low pickups sustain acceleration without requiring another jump merely
+  // to renew the wind. Keep the middle pickup ahead of any central obstacle.
+  const crystals = channels.flatMap((channel, i) => {
+    const obstructed = hazards.some(hazard => hazard.x >= channel.x && hazard.x < channel.x + channel.width) || icicles.some(spike => spike.x >= channel.x && spike.x < channel.x + channel.width);
+    const positions = [i === 0 ? 360 : 190, channel.width - 150];
+    if (theme !== "cloud") positions.splice(1,0,channel.width / 2 - (obstructed ? 180 : 0));
+    return positions.map((offset,j) => ({ x: channel.x + offset, y: channel.y - 27, red: (i+j) % 3 === 0 }));
+  });
   // Move skipped pickups onto the flight arc, keeping every crystal reachable.
   for (const ring of rings) {
     const airborne = crystals.filter(point => point.x > ring.x + 80 && point.x < ring.targetX - 80);
