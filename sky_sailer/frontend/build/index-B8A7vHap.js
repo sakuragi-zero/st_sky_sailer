@@ -26829,40 +26829,43 @@ const Dt = (at, K, W) => {
   return H * H * (3 - 2 * H);
 };
 class kt {
-  constructor(K, W) {
+  constructor(K, W, H = () => {
+  }) {
     __publicField(this, "intensity", 0);
     __publicField(this, "label", "晴れ");
     __publicField(this, "sky");
     __publicField(this, "rain");
     __publicField(this, "lastDraw", -1e3);
-    this.theme = W, this.sky = K.add.graphics().setScrollFactor(0).setDepth(1), this.rain = K.add.graphics().setScrollFactor(0).setDepth(14);
+    __publicField(this, "thunderCycle", -1);
+    __publicField(this, "thunderAt", null);
+    this.theme = W, this.onThunder = H, this.sky = K.add.graphics().setScrollFactor(0).setDepth(1), this.rain = K.add.graphics().setScrollFactor(0).setDepth(14);
   }
   draw(K, W, H, j = 1, J = false) {
     const p = Dt(0.24, 0.38, K) * (1 - Dt(0.64, 0.83, K));
     this.intensity = yt.Math.Linear(this.intensity, p, 1 - Math.exp(-H / 650));
-    const S = this.intensity;
-    if (this.label = S > 0.55 ? this.theme === "ice" ? "吹雪" : this.theme === "desert" ? "砂嵐" : "嵐" : S > 0.12 ? K > 0.64 ? "晴れ間へ" : "雲行きが変わる…" : "晴れ", W - this.lastDraw < 1e3 / 30) return;
+    const S = this.intensity, t = Math.floor(W / 9400);
+    if (S > 0.8 && t !== this.thunderCycle && this.thunderAt === null && (this.thunderCycle = t, this.thunderAt = W + 700), S <= 0.55 && (this.thunderAt = null), this.thunderAt !== null && W >= this.thunderAt && (this.thunderAt = null, this.onThunder(S)), this.label = S > 0.55 ? this.theme === "ice" ? "吹雪" : this.theme === "desert" ? "砂嵐" : "嵐" : S > 0.12 ? K > 0.64 ? "晴れ間へ" : "雲行きが変わる…" : "晴れ", W - this.lastDraw < 1e3 / 30) return;
     this.lastDraw = W;
-    const t = this.sky.clear(), d = this.rain.clear();
+    const d = this.sky.clear(), c = this.rain.clear();
     if (S > 0.015) {
-      t.fillStyle(this.theme === "desert" ? 9068605 : 2701144, 0.42 * S).fillRect(0, 0, ft.width, ft.height);
-      for (let o = 0; o < 8; o++) {
-        const r = (o * 173 + W * (0.018 + o % 3 * 4e-3)) % 1080 - 180;
-        t.fillStyle(this.theme === "desert" ? 12096358 : 4346218, 0.27 * S).fillEllipse(r, 30 + o % 3 * 36, 330, 105);
+      d.fillStyle(this.theme === "desert" ? 9068605 : 2701144, 0.42 * S).fillRect(0, 0, ft.width, ft.height);
+      for (let r = 0; r < 8; r++) {
+        const n = (r * 173 + W * (0.018 + r % 3 * 4e-3)) % 1080 - 180;
+        d.fillStyle(this.theme === "desert" ? 12096358 : 4346218, 0.27 * S).fillEllipse(n, 30 + r % 3 * 36, 330, 105);
       }
-      for (let o = 0; o < Math.round(64 * j); o++) {
-        const n = ((o * 137 - W * (this.theme === "desert" ? 0.65 : 0.19)) % 880 + 880) % 880 - 80, e = (o * 83 + W * (this.theme === "desert" ? 0.055 : 0.48 + o % 3 * 0.04)) % 540 - 30;
-        this.theme === "ice" ? d.fillStyle(15792639, S * 0.8).fillCircle(n, e, 1.5 + o % 3) : this.theme === "desert" ? d.lineStyle(1.5, 16766875, S * 0.52).lineBetween(n, e, n + 13 + o % 4 * 5, e - 3) : d.lineStyle(1.2, 14543615, S * 0.57).lineBetween(n, e, n - 9, e + 24);
+      for (let r = 0; r < Math.round(64 * j); r++) {
+        const e = ((r * 137 - W * (this.theme === "desert" ? 0.65 : 0.19)) % 880 + 880) % 880 - 80, s = (r * 83 + W * (this.theme === "desert" ? 0.055 : 0.48 + r % 3 * 0.04)) % 540 - 30;
+        this.theme === "ice" ? c.fillStyle(15792639, S * 0.8).fillCircle(e, s, 1.5 + r % 3) : this.theme === "desert" ? c.lineStyle(1.5, 16766875, S * 0.52).lineBetween(e, s, e + 13 + r % 4 * 5, s - 3) : c.lineStyle(1.2, 14543615, S * 0.57).lineBetween(e, s, e - 9, s + 24);
       }
       if (!J && this.theme !== "desert" && S > 0.8) {
-        const o = W % 9400;
-        (o < 95 || o > 180 && o < 230) && t.fillStyle(15857407, 0.21 * S).fillRect(0, 0, ft.width, ft.height);
+        const r = W % 9400;
+        (r < 95 || r > 180 && r < 230) && d.fillStyle(15857407, 0.21 * S).fillRect(0, 0, ft.width, ft.height);
       }
     }
-    const c = 1 - S;
-    if (t.fillStyle(16774082, 0.07 * c).fillCircle(600, 75, 76), t.fillStyle(16774870, 0.12 * c).fillCircle(600, 75, 41), K > 0.7) {
-      const o = Dt(0.7, 0.88, K) * c;
-      t.fillStyle(16772533, 0.11 * o).fillTriangle(610, -20, 405, 480, 510, 480), t.fillStyle(16777215, 0.07 * o).fillTriangle(680, -20, 590, 480, 660, 480);
+    const o = 1 - S;
+    if (d.fillStyle(16774082, 0.07 * o).fillCircle(600, 75, 76), d.fillStyle(16774870, 0.12 * o).fillCircle(600, 75, 41), K > 0.7) {
+      const r = Dt(0.7, 0.88, K) * o;
+      d.fillStyle(16772533, 0.11 * r).fillTriangle(610, -20, 405, 480, 510, 480), d.fillStyle(16777215, 0.07 * r).fillTriangle(680, -20, 590, 480, 660, 480);
     }
   }
   get tint() {
@@ -27069,7 +27072,7 @@ class ee extends yt.Scene {
     }
     this.attempt++, this.elapsedMs = this.hits = this.collected = 0, this.lastGrounded = this.jumpBuffer = this.lastHud = this.lastTrail = -1e3, this.boostUntil = this.boostReadyAt = this.immuneUntil = this.windUntil = 0, this.windStacks = 0, this.previousJump = this.previousBoost = false, this.boostQueued = false, this.lift = null, this.flight = null, this.projected = [], this.message = this.course.intro, this.messageUntil = 5e3, this.checkpoint = { x: 200, y: this.course.channels[0].y }, this.physics.world.setBounds(0, this.course.minY - 400, this.course.goalX + 750, 1900 - this.course.minY);
     const W = this.cameras.main;
-    W.setBounds(0, this.course.minY, this.course.goalX + 600, ft.height - this.course.minY + Math.max(0, ...this.course.channels.map((d) => d.y - 406))), this.backdrop = this.add.image(0, 0, "world").setOrigin(0).setDisplaySize(ft.width, ft.height).setScrollFactor(0), this.backdropTwin = this.add.image(ft.width, 0, "world").setOrigin(0).setDisplaySize(ft.width, ft.height).setFlipX(true).setScrollFactor(0), this.atmosphere = new qt(this, this.course), this.waterway = new Zt(this, () => this.audio.splash(), this.course), this.windEffect = new Qt(this), this.guide = new $t(this), this.guide.enabled = this.guideEnabled, this.mooring = new jt(this, this.course), this.weather = new kt(this, this.course.theme), this.rings = new _t(this, this.course);
+    W.setBounds(0, this.course.minY, this.course.goalX + 600, ft.height - this.course.minY + Math.max(0, ...this.course.channels.map((d) => d.y - 406))), this.backdrop = this.add.image(0, 0, "world").setOrigin(0).setDisplaySize(ft.width, ft.height).setScrollFactor(0), this.backdropTwin = this.add.image(ft.width, 0, "world").setOrigin(0).setDisplaySize(ft.width, ft.height).setFlipX(true).setScrollFactor(0), this.atmosphere = new qt(this, this.course), this.waterway = new Zt(this, () => this.audio.splash(), this.course), this.windEffect = new Qt(this), this.guide = new $t(this), this.guide.enabled = this.guideEnabled, this.mooring = new jt(this, this.course), this.weather = new kt(this, this.course.theme, (d) => this.audio.thunder(d)), this.rings = new _t(this, this.course);
     const H = this.physics.add.staticGroup();
     for (const d of this.course.channels) {
       const c = this.add.rectangle(d.x + d.width / 2, d.y + 8, d.width - 8, 16, 16777215, 0);
@@ -27201,23 +27204,54 @@ class ee extends yt.Scene {
   }
 }
 class ie {
-  constructor() {
+  constructor(K) {
     __publicField(this, "enabled", true);
     __publicField(this, "context");
     __publicField(this, "cannonNoise");
     __publicField(this, "disposed", false);
+    __publicField(this, "thunderBuffer");
+    __publicField(this, "thunderLoading");
+    __publicField(this, "thunderSource");
+    __publicField(this, "playing", true);
+    this.thunderUrl = K;
+  }
+  loadThunder() {
+    if (!this.thunderUrl || !this.context || this.thunderLoading || this.thunderBuffer || this.disposed) return;
+    const K = this.context;
+    this.thunderLoading = fetch(this.thunderUrl).then(async (W) => {
+      if (!W.ok) throw new Error("Thunder unavailable");
+      const H = await K.decodeAudioData(await W.arrayBuffer());
+      this.disposed || (this.thunderBuffer = H);
+    }).catch(() => {
+    }).finally(() => {
+      this.thunderLoading = void 0;
+    });
+  }
+  thunder(K) {
+    if (!this.enabled || !this.playing || this.disposed || !this.context || this.context.state !== "running" || this.thunderSource || (this.loadThunder(), !this.thunderBuffer)) return;
+    const W = this.context.createBufferSource(), H = this.context.createGain();
+    W.buffer = this.thunderBuffer, H.gain.value = 0.55 + Math.max(0, Math.min(1, K)) * 0.2, W.connect(H), H.connect(this.context.destination), this.thunderSource = W, W.onended = () => {
+      W.disconnect(), H.disconnect(), this.thunderSource === W && (this.thunderSource = void 0);
+    }, W.start();
+  }
+  setPlaying(K) {
+    this.playing = K, K || this.stopThunder();
+  }
+  stopThunder() {
+    var _a;
+    (_a = this.thunderSource) == null ? void 0 : _a.stop(), this.thunderSource = void 0;
   }
   unlock() {
     if (!(!this.enabled || this.disposed)) try {
-      this.context ?? (this.context = new AudioContext()), this.context.state !== "running" && this.context.resume().catch(() => {
+      this.context ?? (this.context = new AudioContext()), this.loadThunder(), this.context.state !== "running" && this.context.resume().catch(() => {
       });
     } catch {
     }
   }
   async toggle() {
     if (this.disposed) return false;
-    if (this.enabled = !this.enabled, this.enabled) try {
-      this.context ?? (this.context = new AudioContext()), await this.context.resume(), this.enabled && !this.disposed && this.play("collect");
+    if (this.enabled = !this.enabled, this.enabled || this.stopThunder(), this.enabled) try {
+      this.context ?? (this.context = new AudioContext()), this.loadThunder(), await this.context.resume(), this.enabled && !this.disposed && this.play("collect");
     } catch {
       this.enabled = false;
     }
@@ -27274,7 +27308,7 @@ class ie {
   }
   dispose() {
     var _a;
-    this.disposed = true, this.enabled = false, (_a = this.context) == null ? void 0 : _a.close();
+    this.disposed = true, this.enabled = false, this.stopThunder(), (_a = this.context) == null ? void 0 : _a.close();
   }
 }
 class Vt {
@@ -27443,7 +27477,7 @@ const Bt = (at) => new URL("assets/" + at, import.meta.url).href, se = ({ parent
     </section>`;
   const p = J.querySelector(".ss-mount"), S = J.querySelector(".ss-overlay"), t = J.querySelector(".ss-lives"), d = J.querySelector(".ss-clock"), c = J.querySelector("[data-crystals]"), o = J.querySelector("[data-progress]"), r = J.querySelector(".ss-boost-meter i"), n = J.querySelector("[data-pause]"), e = J.querySelector("[data-sound]"), s = J.querySelector("[data-guide]"), h = J.querySelector("[data-music]"), i = J.querySelector("[data-music-volume]"), a = J.querySelector("[data-music-message]"), l = J.querySelector("[data-weather]");
   let f = false;
-  const u = J.querySelector("[data-cue]"), v = J.querySelector("[data-wind]"), m = J.querySelector("[data-wind-time]"), x = v.querySelector("i"), g = { left: false, right: false, jump: false, boost: false, brake: false }, y = /* @__PURE__ */ new Map(), T = new ie(), C = j.id === "3-1" ? "?v=golden-light-v1" : "", E = new Vt([Rt(`music/course-${j.id}-loop.ogg`) + C, Rt(`music/course-${j.id}-loop.mp3`) + C], true);
+  const u = J.querySelector("[data-cue]"), v = J.querySelector("[data-wind]"), m = J.querySelector("[data-wind-time]"), x = v.querySelector("i"), g = { left: false, right: false, jump: false, boost: false, brake: false }, y = /* @__PURE__ */ new Map(), T = new ie(Rt("sfx/thunder-v1.mp3")), C = j.id === "3-1" ? "?v=golden-light-v1" : "", E = new Vt([Rt(`music/course-${j.id}-loop.ogg`) + C, Rt(`music/course-${j.id}-loop.mp3`) + C], true);
   i.disabled = !E.available;
   let A = "loading", M, P = H.evaluation, R = false;
   const F = (Z) => {
@@ -27458,7 +27492,7 @@ const Bt = (at) => new URL("assets/" + at, import.meta.url).href, se = ({ parent
   }, U = (Z) => {
     d.textContent = It(Z.elapsedMs), c.textContent = String(Z.crystals), t.innerHTML = Array.from({ length: 3 }, (Q, k) => `<span class="${k < 3 - Z.hits ? "" : "is-lost"}">♥</span>`).join(" "), t.setAttribute("aria-label", `残りライフ ${Math.max(0, 3 - Z.hits)}`), o.style.width = `${Z.progress * 100}%`, r.style.width = `${Z.boostReady * 100}%`, r.parentElement.classList.toggle("is-ready", Z.boostReady === 1), u.textContent = Z.cue, u.hidden = !Z.cue, v.hidden = Z.windMs <= 0, m.textContent = `追い風 ×${Z.windStacks} · ${(Z.windMs / 1e3).toFixed(1)}s`, x.style.width = `${Math.min(100, Z.windMs / 4500 * 100)}%`, J.dataset.wind = Z.windMs > 0 ? "active" : "idle", l.textContent = `${Z.storm > 0.55 ? "☁" : "☀"} ${Z.weather}`, J.dataset.weather = Z.storm > 0.55 ? "storm" : "sunny", E.setWeather(Z.storm);
   }, N = (Z, Q) => {
-    R || (J.dataset.phase = Z, E.setPlaying(Z === "playing", Z === "playing" && A === "loading"), A = Z, S.hidden = Z === "playing", n.disabled = Z !== "playing" && Z !== "paused", n.textContent = Z === "paused" ? "▶ RESUME" : "Ⅱ PAUSE", Z === "paused" ? (I(), S.innerHTML = '<span class="ss-overline">TAKE A BREATH</span><h2>風待ちのひととき</h2><p>準備ができたら、航海を続けよう。</p><div class="ss-overlay-actions"><button class="ss-button" data-resume>航海を再開</button><button class="ss-button ss-button-secondary" data-home>ホームに戻る</button></div>') : Z === "loading" ? S.innerHTML = `<span class="ss-overline">COURSE ${j.id}</span><h2>${j.title}へ</h2><p>帆に風を集めています…</p><span class="ss-loading">✦</span>` : Z === "error" ? S.innerHTML = '<span class="ss-overline">WAITING FOR THE WIND</span><h2>航路を読み込めませんでした。</h2><p>通信を確認して、もう一度出航しよう。</p><button class="ss-button" data-reload>再読み込み</button>' : Q && (I(), M = Q, S.innerHTML = Q.status === "cleared" ? `<span class="ss-overline">${j.id} · VOYAGE COMPLETE</span><div class="ss-result-rank">✦</div><h2>${j.goal_label}へ、到着。</h2><p class="ss-result-comment">航海を評価しています…</p><div class="ss-result-stats">${It(Q.elapsed_ms)}<span>◆ ${Q.crystals} / ${Q.total_crystals}</span><span>ミス ${Q.hit_count}</span></div><div class="ss-overlay-actions">${H.next_course_id ? '<button class="ss-button" data-next-stage>次のステージへ</button>' : ""}<button class="ss-button ss-button-secondary" data-home>ホームに戻る</button><button class="ss-text-button" data-retry>もう一度出航する</button></div>` : `<span class="ss-overline">${j.id} · THE SKY IS WAITING</span><h2>次の風に、乗ろう。</h2><p>${j.description}</p><div class="ss-result-stats">${It(Q.elapsed_ms)}<span>◆ ${Q.crystals} / ${Q.total_crystals}</span></div><div class="ss-overlay-actions"><button class="ss-button" data-retry>もう一度出航する</button><button class="ss-button ss-button-secondary" data-home>ホームに戻る</button></div>`, F(P)));
+    R || (J.dataset.phase = Z, T.setPlaying(Z === "playing"), E.setPlaying(Z === "playing", Z === "playing" && A === "loading"), A = Z, S.hidden = Z === "playing", n.disabled = Z !== "playing" && Z !== "paused", n.textContent = Z === "paused" ? "▶ RESUME" : "Ⅱ PAUSE", Z === "paused" ? (I(), S.innerHTML = '<span class="ss-overline">TAKE A BREATH</span><h2>風待ちのひととき</h2><p>準備ができたら、航海を続けよう。</p><div class="ss-overlay-actions"><button class="ss-button" data-resume>航海を再開</button><button class="ss-button ss-button-secondary" data-home>ホームに戻る</button></div>') : Z === "loading" ? S.innerHTML = `<span class="ss-overline">COURSE ${j.id}</span><h2>${j.title}へ</h2><p>帆に風を集めています…</p><span class="ss-loading">✦</span>` : Z === "error" ? S.innerHTML = '<span class="ss-overline">WAITING FOR THE WIND</span><h2>航路を読み込めませんでした。</h2><p>通信を確認して、もう一度出航しよう。</p><button class="ss-button" data-reload>再読み込み</button>' : Q && (I(), M = Q, S.innerHTML = Q.status === "cleared" ? `<span class="ss-overline">${j.id} · VOYAGE COMPLETE</span><div class="ss-result-rank">✦</div><h2>${j.goal_label}へ、到着。</h2><p class="ss-result-comment">航海を評価しています…</p><div class="ss-result-stats">${It(Q.elapsed_ms)}<span>◆ ${Q.crystals} / ${Q.total_crystals}</span><span>ミス ${Q.hit_count}</span></div><div class="ss-overlay-actions">${H.next_course_id ? '<button class="ss-button" data-next-stage>次のステージへ</button>' : ""}<button class="ss-button ss-button-secondary" data-home>ホームに戻る</button><button class="ss-text-button" data-retry>もう一度出航する</button></div>` : `<span class="ss-overline">${j.id} · THE SKY IS WAITING</span><h2>次の風に、乗ろう。</h2><p>${j.description}</p><div class="ss-result-stats">${It(Q.elapsed_ms)}<span>◆ ${Q.crystals} / ${Q.total_crystals}</span></div><div class="ss-overlay-actions"><button class="ss-button" data-retry>もう一度出航する</button><button class="ss-button ss-button-secondary" data-home>ホームに戻る</button></div>`, F(P)));
   }, w = new ee(H, g, T, { phase: N, hud: U, result: (Z) => {
     R || W("result", Z);
   } }), B = new yt.Game({ type: yt.AUTO, width: ft.width, height: ft.height, parent: p, banner: false, physics: { default: "arcade", arcade: { gravity: { x: 0, y: 900 * H.gravity }, debug: false } }, scale: { mode: yt.Scale.FIT, autoCenter: yt.Scale.CENTER_BOTH }, scene: [w], render: { antialias: true, roundPixels: false }, fps: { target: 60 } }), L = (Z) => {

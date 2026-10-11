@@ -100,7 +100,7 @@ export class VoyageScene extends Phaser.Scene {
     this.windEffect = new WindEffect(this);
     this.guide = new SpiritGuide(this); this.guide.enabled = this.guideEnabled;
     this.mooring = new Mooring(this,this.course);
-    this.weather = new VoyageWeather(this,this.course.theme);
+    this.weather = new VoyageWeather(this,this.course.theme,strength => this.audio.thunder(strength));
     this.rings = new StarRings(this, this.course);
     const waterSurfaces = this.physics.add.staticGroup();
     for (const channel of this.course.channels) {

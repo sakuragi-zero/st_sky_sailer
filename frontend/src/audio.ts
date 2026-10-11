@@ -4,12 +4,55 @@ export class VoyageAudio {
   private context?: AudioContext;
   private cannonNoise?: AudioBuffer;
   private disposed = false;
+  private thunderBuffer?: AudioBuffer;
+  private thunderLoading?: Promise<void>;
+  private thunderSource?: AudioBufferSourceNode;
+  private playing = true;
+
+  constructor(private readonly thunderUrl?: string) {}
+
+  private loadThunder() {
+    if (!this.thunderUrl || !this.context || this.thunderLoading || this.thunderBuffer || this.disposed) return;
+    const context = this.context;
+    this.thunderLoading = fetch(this.thunderUrl).then(async response => {
+      if (!response.ok) throw new Error("Thunder unavailable");
+      const buffer = await context.decodeAudioData(await response.arrayBuffer());
+      if (!this.disposed) this.thunderBuffer = buffer;
+    }).catch(() => {}).finally(() => { this.thunderLoading = undefined; });
+  }
+
+  thunder(strength: number) {
+    if (!this.enabled || !this.playing || this.disposed || !this.context || this.context.state !== "running" || this.thunderSource) return;
+    this.loadThunder();
+    if (!this.thunderBuffer) return;
+    const source = this.context.createBufferSource(), gain = this.context.createGain();
+    source.buffer = this.thunderBuffer;
+    gain.gain.value = 0.55 + Math.max(0,Math.min(1,strength))*0.2;
+    source.connect(gain); gain.connect(this.context.destination);
+    this.thunderSource = source;
+    source.onended = () => {
+      source.disconnect(); gain.disconnect();
+      if (this.thunderSource === source) this.thunderSource = undefined;
+    };
+    source.start();
+  }
+
+  setPlaying(playing: boolean) {
+    this.playing = playing;
+    if (!playing) this.stopThunder();
+  }
+
+  private stopThunder() {
+    this.thunderSource?.stop();
+    this.thunderSource = undefined;
+  }
 
   /** Called synchronously from pointer/key gestures to unlock browser audio. */
   unlock() {
     if (!this.enabled || this.disposed) return;
     try {
       this.context ??= new AudioContext();
+      this.loadThunder();
       if (this.context.state !== "running") void this.context.resume().catch(() => {});
     } catch { /* A later gesture can retry if audio is temporarily unavailable. */ }
   }
@@ -17,9 +60,11 @@ export class VoyageAudio {
   async toggle(): Promise<boolean> {
     if (this.disposed) return false;
     this.enabled = !this.enabled;
+    if (!this.enabled) this.stopThunder();
     if (this.enabled) {
       try {
         this.context ??= new AudioContext();
+        this.loadThunder();
         await this.context.resume();
         if (this.enabled && !this.disposed) this.play("collect");
       } catch { this.enabled = false; }
@@ -110,5 +155,5 @@ export class VoyageAudio {
     source.onended = () => { source.disconnect(); filter.disconnect(); gain.disconnect(); };
   }
 
-  dispose() { this.disposed = true; this.enabled = false; void this.context?.close(); }
+  dispose() { this.disposed = true; this.enabled = false; this.stopThunder(); void this.context?.close(); }
 }

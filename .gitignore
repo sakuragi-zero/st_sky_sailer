@@ -114,3 +114,8 @@ frontend/.visual-*
 /Where_the_Tide_Meets_Sky.mp3
 /The_Well_of_Golden_Light.mp3
 /Crown_of_the_Sky.mp3
+/ElevenLabs_遠くの雷鳴。.mp3
+/雷鳴.mp3
+!/frontend/public/assets/sfx/
+/frontend/public/assets/sfx/*
+!/frontend/public/assets/sfx/thunder-v1.mp3

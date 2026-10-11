@@ -10,7 +10,9 @@ export class VoyageWeather {
   private readonly sky:Phaser.GameObjects.Graphics;
   private readonly rain:Phaser.GameObjects.Graphics;
   private lastDraw = -1000;
-  constructor(scene:Phaser.Scene,private readonly theme:Theme) {
+  private thunderCycle = -1;
+  private thunderAt: number | null = null;
+  constructor(scene:Phaser.Scene,private readonly theme:Theme,private readonly onThunder:(strength:number)=>void = () => {}) {
     this.sky=scene.add.graphics().setScrollFactor(0).setDepth(1);
     this.rain=scene.add.graphics().setScrollFactor(0).setDepth(14);
   }
@@ -18,6 +20,16 @@ export class VoyageWeather {
     const target=smooth(.24,.38,progress)*(1-smooth(.64,.83,progress));
     this.intensity=Phaser.Math.Linear(this.intensity,target,1-Math.exp(-delta/650));
     const strength=this.intensity;
+    // Schedule one distant rumble per lightning cycle, including the storm's
+    // arrival. Simulation time freezes this delay while the voyage is paused.
+    const cycle = Math.floor(time/9400);
+    if (strength > .8 && cycle !== this.thunderCycle && this.thunderAt === null) {
+      this.thunderCycle = cycle; this.thunderAt = time+700;
+    }
+    if (strength <= .55) this.thunderAt = null;
+    if (this.thunderAt !== null && time >= this.thunderAt) {
+      this.thunderAt = null; this.onThunder(strength);
+    }
     this.label=strength>.55 ? this.theme==="ice" ? "吹雪" : this.theme==="desert" ? "砂嵐" : "嵐" : strength>.12 ? progress>.64 ? "晴れ間へ" : "雲行きが変わる…" : "晴れ";
     if(time-this.lastDraw < 1000/30) return;
     this.lastDraw=time;
