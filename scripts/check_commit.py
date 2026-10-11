@@ -15,6 +15,7 @@ PRIVATE_PREFIXES = ("assets/", "docs/screenshots/", "docs/audio/", "docs/securit
 PRIVATE_NAMES = ("AGENTS*.md", "CLAUDE*.md", "GEMINI.md", "SKILL.md", "CODEX*.md", "copilot-instructions.md", ".env", ".env.*", ".aider*", ".npmrc", ".pypirc", ".netrc", ".gitconfig", "secrets.toml", "credentials*.json", "service-account*.json", "*service_account*.json", "*.pem", "*.key", "*.p12", "*.pfx", "*.keystore", "id_rsa*", "id_ed25519*", "*.log", "*.tmp", "*.bak", "*.sqlite*", "*.db", "*.pyc", "*.map", ".preview-*", ".visual-*")
 REFERENCE_NAMES = {"空翔るヨットの幻想世界.png", "浮遊島を望むStreamlit帆船.png", "魔法 sailor キャプテンの四面図.png", "Beyond_the_Far_Horizon.mp3", "Before_the_Morning_Thaw.mp3", "Where_the_Tide_Meets_Sky.mp3", "The_Well_of_Golden_Light.mp3", "Crown_of_the_Sky.mp3"}
 APPROVED_PUBLIC = {
+    "assets/temple-mural-v1.webp",
     "assets/sfx/thunder-v1.mp3",
     "assets/sfx/goal-v1.mp3", "assets/sfx/star-launch-v1.mp3",
     "assets/sfx/goal-alt-v1.mp3",
@@ -44,7 +45,7 @@ def git(*args):
 def private_path(name):
     normalized = unicodedata.normalize("NFC", name)
     path = PurePosixPath(normalized)
-    if len(path.parts) == 1 and normalized in {"ElevenLabs_遠くの雷鳴。.mp3", "雷鳴.mp3", "A_triumphant_10-seco_#2.mp3", "A_triumphant_10-seco_#1.mp3", "A_massive,_thunderou_#1.mp3"}:
+    if len(path.parts) == 1 and normalized in {"ElevenLabs_遠くの雷鳴。.mp3", "雷鳴.mp3", "A_triumphant_10-seco_#2.mp3", "A_triumphant_10-seco_#1.mp3", "A_massive,_thunderou_#1.mp3", "古代神殿の女神と黄金帆船壁画.png"}:
         return True
     if any(part in PRIVATE_PARTS or "handoff" in part.lower() or part.endswith(".egg-info") for part in path.parts):
         return True

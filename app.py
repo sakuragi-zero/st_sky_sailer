@@ -75,6 +75,7 @@ def asset_uri(filename: str) -> str:
 
 
 world = asset_uri(course["world"])
+page_background = asset_uri("temple-mural-v1.webp")
 yacht = asset_uri("yacht-v2.webp")
 captain = asset_uri("captain-v3.webp")
 mark = asset_uri("streamlit-mark.svg")
@@ -99,9 +100,9 @@ h1,h2,h3{color:#17346b}
 
 st.markdown(f"""
 <style>
-.stApp{{background:linear-gradient(180deg,#edf7ff66 0%,#effaff22 42%,#d9f0fc66 100%),url('{world}') center center/cover fixed}}
-[data-testid="stHeader"]{{background:#eef8ff66;backdrop-filter:blur(8px)}}
-.hero-mark{{display:none}}.hero h1{{text-shadow:0 2px 0 #fff,0 3px 14px #ffffffaa}}.hero p{{text-shadow:0 1px 5px #fff;background:#f4fbff99;border-radius:99px;width:fit-content;padding:2px 10px;margin-left:auto;margin-right:auto}}
+.stApp{{background:linear-gradient(180deg,#101a2422 0%,#101a240d 42%,#101a2444 100%),url('{page_background}') center center/cover fixed}}
+[data-testid="stHeader"]{{background:#17222c66;backdrop-filter:blur(8px)}}
+.hero-mark{{display:none}}.hero h1{{color:#fff0c4;text-shadow:0 2px 5px #101a24,0 3px 18px #101a24bb}}.hero p{{color:#fff0ce;text-shadow:0 1px 3px #101a24;background:#15212cc4;border-radius:99px;width:fit-content;padding:2px 10px;margin-left:auto;margin-right:auto}}
 .hero-logo{{width:48px;height:auto;vertical-align:middle;margin-right:10px}}.hero.is-playing .hero-logo{{width:29px}}
 .voyage-cover{{background:#c8e9fc;aspect-ratio:16/8;border:2px solid #fffc;box-shadow:0 14px 34px #1e6e9b33}}
 .cover-world{{object-position:center 57%;filter:none}}

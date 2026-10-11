@@ -34,6 +34,7 @@ CODEX*.md
 /assets/
 /frontend/public/assets/*
 !/frontend/public/assets/world-v2.webp
+!/frontend/public/assets/temple-mural-v1.webp
 !/frontend/public/assets/world-ice-v1.webp
 !/frontend/public/assets/world-desert-v1.webp
 !/frontend/public/assets/world-cloud-v1.webp
@@ -124,4 +125,5 @@ frontend/.visual-*
 /A_triumphant_10-seco_#2.mp3
 /A_massive,_thunderou_#1.mp3
 /A_triumphant_10-seco_#1.mp3
+/古代神殿の女神と黄金帆船壁画.png
 !/frontend/public/assets/sfx/goal-alt-v1.mp3
