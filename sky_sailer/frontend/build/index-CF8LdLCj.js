@@ -3563,7 +3563,7 @@ function bt() {
           if (c === void 0 && (c = false), o === void 0) return o = { local: { x: 0, y: 0, width: 0, height: 0 }, global: { x: 0, y: 0, width: 0, height: 0 }, lines: { shortest: 0, longest: 0, lengths: null, height: 0 }, wrappedText: "", words: [], characters: [], scaleX: 0, scaleY: 0 }, o;
           var r = t.text, n = r.length, e = t.maxWidth, s = t.wordWrapCharCode, h = Number.MAX_VALUE, i = Number.MAX_VALUE, a = 0, l = 0, f = t.fontData.chars, u = t.fontData.lineHeight, v = t.letterSpacing, m = t.lineSpacing, x = 0, g = 0, y = 0, T = null, C = t._align, E = 0, A = 0, M = t.fontSize / t.fontData.size, P = M * t.scaleX, R = M * t.scaleY, F = null, D = 0, I = [], U = Number.MAX_VALUE, N = 0, w = 0, B = 0, L, G, O, z = [], V = [], X = null, Y = function(ct, xt) {
             for (var dt = 0, pt = 0; pt < ct.length; pt++) {
-              var mt = ct.charCodeAt(pt), Tt = xt.chars[mt];
+              var gt = ct.charCodeAt(pt), Tt = xt.chars[gt];
               Tt && (dt += Tt.xAdvance);
             }
             return dt * P;
@@ -3768,8 +3768,8 @@ function bt() {
                     et = ut.x, it = ut.y, W = ut.scale, $ = ut.rotation, ut.color ? (E = ut.color, A = ut.color, M = ut.color, P = ut.color) : (E = ut.tint.topLeft, A = ut.tint.topRight, M = ut.tint.bottomLeft, P = ut.tint.bottomRight), E = o.getTintAppendFloatAlpha(E, h.alpha * s._alphaTL), A = o.getTintAppendFloatAlpha(A, h.alpha * s._alphaTR), M = o.getTintAppendFloatAlpha(M, h.alpha * s._alphaBL), P = o.getTintAppendFloatAlpha(P, h.alpha * s._alphaBR);
                   }
                   et *= W, it *= W, et -= s.displayOriginX, it -= s.displayOriginY, et += k, x.applyITRS(et, it, $, W, W), m.multiply(x, v);
-                  var vt = w.u0, ht = w.v0, lt = w.u1, ct = w.v1, xt = B, dt = L, pt = v.e, mt = v.f, Tt = dt * v.c + v.e, Et = dt * v.d + v.f, Mt = xt * v.a + dt * v.c + v.e, Pt = xt * v.b + dt * v.d + v.f, At = xt * v.a + v.e, Rt = xt * v.b + v.f;
-                  st && (pt = Math.round(pt), mt = Math.round(mt), Tt = Math.round(Tt), Et = Math.round(Et), Mt = Math.round(Mt), Pt = Math.round(Pt), At = Math.round(At), Rt = Math.round(Rt)), f.shouldFlush(6) && (f.flush(), R = f.setGameObject(s)), f.batchQuad(s, pt, mt, Tt, Et, Mt, Pt, At, Rt, vt, ht, lt, ct, E, A, M, P, C, T, R);
+                  var vt = w.u0, ht = w.v0, lt = w.u1, ct = w.v1, xt = B, dt = L, pt = v.e, gt = v.f, Tt = dt * v.c + v.e, Et = dt * v.d + v.f, Mt = xt * v.a + dt * v.c + v.e, Pt = xt * v.b + dt * v.d + v.f, At = xt * v.a + v.e, Rt = xt * v.b + v.f;
+                  st && (pt = Math.round(pt), gt = Math.round(gt), Tt = Math.round(Tt), Et = Math.round(Et), Mt = Math.round(Mt), Pt = Math.round(Pt), At = Math.round(At), Rt = Math.round(Rt)), f.shouldFlush(6) && (f.flush(), R = f.setGameObject(s)), f.batchQuad(s, pt, gt, Tt, Et, Mt, Pt, At, Rt, vt, ht, lt, ct, E, A, M, P, C, T, R);
                 }
               }
             }
@@ -9687,7 +9687,7 @@ function bt() {
           Array.isArray(F) || (F = [F]), Array.isArray(D) || (D = [D]);
           var vt = 0, ht = 0;
           for (k = 0; k < z; k++) for (Q = 0; Q < O; Q++) {
-            var lt = (Q + V * k) * 2, ct = (Q + V * (k + 1)) * 2, xt = (Q + 1 + V * (k + 1)) * 2, dt = (Q + 1 + V * k) * 2, pt = F[ht], mt = D[vt], Tt = new n(J[lt], J[lt + 1], 0, $[lt], $[lt + 1], pt, mt).transformMat4(h), Et = new n(J[ct], J[ct + 1], 0, $[ct], $[ct + 1], pt, mt).transformMat4(h), Mt = new n(J[dt], J[dt + 1], 0, $[dt], $[dt + 1], pt, mt).transformMat4(h), Pt = new n(J[ct], J[ct + 1], 0, $[ct], $[ct + 1], pt, mt).transformMat4(h), At = new n(J[xt], J[xt + 1], 0, $[xt], $[xt + 1], pt, mt).transformMat4(h), Rt = new n(J[dt], J[dt + 1], 0, $[dt], $[dt + 1], pt, mt).transformMat4(h);
+            var lt = (Q + V * k) * 2, ct = (Q + V * (k + 1)) * 2, xt = (Q + 1 + V * (k + 1)) * 2, dt = (Q + 1 + V * k) * 2, pt = F[ht], gt = D[vt], Tt = new n(J[lt], J[lt + 1], 0, $[lt], $[lt + 1], pt, gt).transformMat4(h), Et = new n(J[ct], J[ct + 1], 0, $[ct], $[ct + 1], pt, gt).transformMat4(h), Mt = new n(J[dt], J[dt + 1], 0, $[dt], $[dt + 1], pt, gt).transformMat4(h), Pt = new n(J[ct], J[ct + 1], 0, $[ct], $[ct + 1], pt, gt).transformMat4(h), At = new n(J[xt], J[xt + 1], 0, $[xt], $[xt + 1], pt, gt).transformMat4(h), Rt = new n(J[dt], J[dt + 1], 0, $[dt], $[dt + 1], pt, gt).transformMat4(h);
             I && (Tt.setUVs(tt, nt), Et.setUVs(tt, st), Mt.setUVs(q, nt), Pt.setUVs(tt, st), At.setUVs(q, st), Rt.setUVs(q, nt)), ht++, ht === F.length && (ht = 0), vt++, vt === D.length && (vt = 0), w.verts.push(Tt, Et, Mt, Pt, At, Rt), w.faces.push(new d(Tt, Et, Mt), new d(Pt, At, Rt));
           }
           return l && (l.faces = l.faces.concat(w.faces), l.vertices = l.vertices.concat(w.verts)), w;
@@ -15464,8 +15464,8 @@ return new ` + this.key + `();
           if (!tt && k === 0 || W && $ || L.customSeparateX || G.customSeparateX) return ht.x = void 0, ht.y = void 0, ht;
           var lt = !L.pushable && !G.pushable;
           if (tt) {
-            var ct = X.x - Y.x, xt = X.y - Y.y, dt = Math.sqrt(Math.pow(ct, 2) + Math.pow(xt, 2)), pt = (Y.x - X.x) / dt || 0, mt = (Y.y - X.y) / dt || 0, Tt = 2 * (J.x * pt + J.y * mt - Q.x * pt - Q.y * mt) / (L.mass + G.mass);
-            (W || $ || !L.pushable || !G.pushable) && (Tt *= 2), !W && L.pushable && (J.x = J.x - Tt / L.mass * pt, J.y = J.y - Tt / L.mass * mt, J.multiply(L.bounce)), !$ && G.pushable && (Q.x = Q.x + Tt / G.mass * pt, Q.y = Q.y + Tt / G.mass * mt, Q.multiply(G.bounce)), !W && !$ && (ut *= 0.5, vt *= 0.5), (!W || L.pushable || lt) && (L.x -= ut, L.y -= vt, L.updateCenter()), (!$ || G.pushable || lt) && (G.x += ut, G.y += vt, G.updateCenter()), ht.result = true;
+            var ct = X.x - Y.x, xt = X.y - Y.y, dt = Math.sqrt(Math.pow(ct, 2) + Math.pow(xt, 2)), pt = (Y.x - X.x) / dt || 0, gt = (Y.y - X.y) / dt || 0, Tt = 2 * (J.x * pt + J.y * gt - Q.x * pt - Q.y * gt) / (L.mass + G.mass);
+            (W || $ || !L.pushable || !G.pushable) && (Tt *= 2), !W && L.pushable && (J.x = J.x - Tt / L.mass * pt, J.y = J.y - Tt / L.mass * gt, J.multiply(L.bounce)), !$ && G.pushable && (Q.x = Q.x + Tt / G.mass * pt, Q.y = Q.y + Tt / G.mass * gt, Q.multiply(G.bounce)), !W && !$ && (ut *= 0.5, vt *= 0.5), (!W || L.pushable || lt) && (L.x -= ut, L.y -= vt, L.updateCenter()), (!$ || G.pushable || lt) && (G.x += ut, G.y += vt, G.updateCenter()), ht.result = true;
           } else !W && (L.pushable || lt) && (L.x -= ut, L.y -= vt, L.updateCenter()), !$ && (G.pushable || lt) && (G.x += ut, G.y += vt, G.updateCenter()), ht.x = void 0, ht.y = void 0;
           return ht;
         }, intersects: function(L, G) {
@@ -17439,8 +17439,8 @@ return new ` + this.key + `();
                     var dt = X.tangentImpulse;
                     X.tangentImpulse += m, X.tangentImpulse < -x && (X.tangentImpulse = -x), X.tangentImpulse > x && (X.tangentImpulse = x), m = X.tangentImpulse - dt;
                   }
-                  var pt = M * ct + R * m, mt = P * ct + F * m;
-                  E.isStatic || E.isSleeping || (E.positionPrev.x += pt * E.inverseMass, E.positionPrev.y += mt * E.inverseMass, E.anglePrev += (W * mt - $ * pt) * E.inverseInertia), A.isStatic || A.isSleeping || (A.positionPrev.x -= pt * A.inverseMass, A.positionPrev.y -= mt * A.inverseMass, A.anglePrev -= (J * mt - Q * pt) * A.inverseInertia);
+                  var pt = M * ct + R * m, gt = P * ct + F * m;
+                  E.isStatic || E.isSleeping || (E.positionPrev.x += pt * E.inverseMass, E.positionPrev.y += gt * E.inverseMass, E.anglePrev += (W * gt - $ * pt) * E.inverseInertia), A.isStatic || A.isSleeping || (A.positionPrev.x -= pt * A.inverseMass, A.positionPrev.y -= gt * A.inverseMass, A.anglePrev -= (J * gt - Q * pt) * A.inverseInertia);
                 }
               }
             }
@@ -26563,8 +26563,8 @@ function Dt(at, H) {
     p.fillStyle = "#f2d9a3", p.beginPath(), p.arc(60, 20, 3, 0, Math.PI * 2), p.fill();
   });
 }
-const gt = (at, H, b) => H - (at - b) * 0.13;
-class Zt {
+const Zt = (at) => 25 * Math.sin(at / 220) + 7 * Math.sin(at / 83 + 0.7), Jt = (at) => 25 / 220 * Math.cos(at / 220) + 7 / 83 * Math.cos(at / 83 + 0.7), mt = (at, H, b) => H - (at - b) * 0.13 + Zt(at);
+class Qt {
   constructor(H, b, K = Lt()) {
     __publicField(this, "clouds");
     __publicField(this, "water");
@@ -26574,7 +26574,7 @@ class Zt {
     __publicField(this, "afloat", false);
     __publicField(this, "cloudPuffs", []);
     __publicField(this, "waterPaint", []);
-    if (this.scene = H, this.onSplash = b, this.course = K, this.clouds = H.add.graphics().setDepth(2), this.water = H.add.graphics().setDepth(3), this.foam = H.add.graphics().setDepth(11), K.theme !== "cloud" && (Dt(H, K.theme), this.waterPaint = Array.from({ length: 5 }, () => H.add.tileSprite(0, 0, 512, 76, `water-paint-${K.theme}`).setOrigin(0, 0.5).setRotation(-Math.atan(0.13)).setDepth(3.2).setAlpha(0.6).setVisible(false))), K.theme === "cloud") {
+    if (this.scene = H, this.onSplash = b, this.course = K, this.clouds = H.add.graphics().setDepth(2), this.water = H.add.graphics().setDepth(3), this.foam = H.add.graphics().setDepth(11), K.theme !== "cloud" && (Dt(H, K.theme), this.waterPaint = Array.from({ length: 24 }, () => H.add.tileSprite(0, 0, 64, 76, `water-paint-${K.theme}`).setOrigin(0, 0.5).setDepth(3.2).setAlpha(0.6).setVisible(false))), K.theme === "cloud") {
       if (!H.textures.exists("cloud-bank")) {
         const j = H.textures.createCanvas("cloud-bank", 192, 112);
         if (j) {
@@ -26604,52 +26604,61 @@ class Zt {
     r.slice(0, n === "cloud" ? 0 : -1).forEach((a, l) => {
       const f = a.x + a.width, u = r[l + 1];
       if (f > d + ft.width + 120 || u.x < d - 120) return;
-      const v = gt(f, a.y - 43, H), m = gt(u.x, u.y - 43, H);
+      const v = mt(f, a.y - 43, H), m = mt(u.x, u.y - 43, H);
       c.fillStyle(n === "desert" ? 16773852 : 15202303, 0.95).fillPoints([{ x: f, y: v }, { x: u.x, y: m }, { x: u.x + 30, y: m + 270 }, { x: f - 30, y: v + 270 }], true), c.fillStyle(16777215, 0.85).fillEllipse((f + u.x) / 2, Math.max(v, m) + 160, u.x - f + 55, 60);
     });
     for (const a of r) {
       if (a.x > d + ft.width + 180 || a.x + a.width < d - 200) continue;
-      const l = Math.max(a.x, d - 160), f = Math.min(a.x + a.width, d + ft.width + 180), u = (g, y = 0) => gt(g, a.y + y, H);
+      const l = Math.max(a.x, d - 160), f = Math.min(a.x + a.width, d + ft.width + 180), u = (y, T = 0) => mt(y, a.y + T, H);
       if (n === "cloud") {
-        const g = Math.max(0, Math.floor((l - a.x) / 70));
-        for (let y = g; a.x + 28 + y * 70 < f; y++) {
-          const T = a.x + 28 + y * 70, C = this.cloudPuffs[e++];
-          if (!C) break;
-          C.setPosition(T, u(T, 10) + Math.sin(y * 2.1) * 3).setVisible(true);
+        const y = Math.max(0, Math.floor((l - a.x) / 70));
+        for (let T = y; a.x + 28 + T * 70 < f; T++) {
+          const C = a.x + 28 + T * 70, E = this.cloudPuffs[e++];
+          if (!E) break;
+          E.setPosition(C, u(C, 10) + Math.sin(T * 2.1) * 3).setVisible(true);
         }
         continue;
       }
-      t.fillStyle(n === "desert" ? 3389873 : 5025780, 0.35).fillPoints([{ x: l, y: u(l, 32) }, { x: f, y: u(f, 32) }, { x: f, y: u(f, 84) }, { x: l, y: u(l, 84) }], true), t.fillStyle(n === "desert" ? 6405301 : n === "ice" ? 8830419 : 6862556, 0.55).fillPoints([{ x: l, y: u(l, -42) }, { x: f, y: u(f, -42) }, { x: f, y: u(f, 33) }, { x: l, y: u(l, 33) }], true);
-      const v = this.waterPaint[s++];
-      v && (v.setPosition(l, u(l, -4)).setSize((f - l) * Math.sqrt(1 + 0.13 ** 2), 74).setVisible(true), v.tilePositionX = l - K * 0.025, v.tileScaleY = 0.52), (n === "ice" || n === "desert") && t.lineStyle(n === "ice" ? 7 : 10, n === "ice" ? 15793407 : 15911825, 0.9).lineBetween(l, u(l, -43), f, u(f, -43)), t.fillStyle(10350335, 0.24).fillPoints([{ x: l, y: u(l, -40) }, { x: f, y: u(f, -40) }, { x: f, y: u(f, -8) }, { x: l, y: u(l, -8) }], true);
-      for (let g = 0; g < (S < 1 ? 3 : 5); g++) for (let y = l - 100 + (K * 0.1 + g * 47) % 140; y < f; y += 140) {
-        const T = Math.max(l, y), C = Math.min(f, y + 64 + g * 5);
-        if (T >= C) continue;
-        const E = -32 + g * 15 + Math.sin(y / 80 + K / 850) * 3;
-        t.lineStyle(g % 2 ? 1 : 1.5, 15334655, 0.22), t.beginPath().moveTo(T, u(T, E));
-        for (let A = T + 8; A < C; A += 8) t.lineTo(A, u(A, E + Math.sin((A - T) / (C - T) * Math.PI * 2) * 2));
-        t.lineTo(C, u(C, E)).strokePath();
+      const v = [l];
+      for (let y = l + 32; y < f; y += 32) v.push(y);
+      v.push(f);
+      const m = (y, T) => [...v.map((C) => ({ x: C, y: u(C, y) })), ...v.slice().reverse().map((C) => ({ x: C, y: u(C, T) }))];
+      t.fillStyle(n === "desert" ? 3389873 : 5025780, 0.35).fillPoints(m(32, 84), true), t.fillStyle(n === "desert" ? 6405301 : n === "ice" ? 8830419 : 6862556, 0.55).fillPoints(m(-42, 33), true);
+      for (let y = l; y < f; y += 64) {
+        const T = this.waterPaint[s++];
+        if (!T) break;
+        const C = Math.min(f, y + 64), E = u(C, -4) - u(y, -4), A = C - y;
+        T.setPosition(y, u(y, -4)).setRotation(Math.atan2(E, A)).setSize(Math.hypot(A, E) + 1, 74).setVisible(true), T.tilePositionX = y - K * 0.025, T.tileScaleY = 0.52;
+      }
+      (n === "ice" || n === "desert") && (t.lineStyle(n === "ice" ? 7 : 10, n === "ice" ? 15793407 : 15911825, 0.9).beginPath().moveTo(l, u(l, -43)), v.slice(1).forEach((y) => t.lineTo(y, u(y, -43))), t.strokePath()), t.fillStyle(10350335, 0.24).fillPoints(m(-40, -8), true);
+      for (let y = 0; y < (S < 1 ? 2 : 3); y++) for (let T = l - 100 + (K * 0.1 + y * 47) % 140; T < f; T += 140) {
+        const C = Math.max(l, T), E = Math.min(f, T + 64 + y * 5);
+        if (C >= E) continue;
+        const A = -32 + y * 15 + Math.sin(T / 80 + K / 850) * 3;
+        t.lineStyle(y % 2 ? 1 : 1.5, 15334655, 0.22), t.beginPath().moveTo(C, u(C, A));
+        for (let M = C + 14; M < E; M += 14) t.lineTo(M, u(M, A + Math.sin((M - C) / (E - C) * Math.PI * 2) * 2));
+        t.lineTo(E, u(E, A)).strokePath();
       }
       t.lineStyle(1.5, 15794175, 0.4).beginPath().moveTo(l, u(l, 32));
-      for (let g = l + 10; g < f; g += 10) t.lineTo(g, u(g, 32 + Math.sin(g / 41 + K / 1700) * 1.8));
+      for (let y = l + 10; y < f; y += 10) t.lineTo(y, u(y, 32 + Math.sin(y / 41 + K / 1700) * 1.8));
       t.lineTo(f, u(f, 32)).strokePath();
-      for (let g = 0; g < Math.ceil((f - l) / 100) * S; g++) {
-        const y = l + (g * 103 + K * 0.035) % (f - l), T = Math.max(0, Math.sin(K / 540 + g * 2.7)), C = u(y, 9 + Math.sin(g * 3) * 20);
-        t.lineStyle(1.5, 16774353, T * 0.72).lineBetween(y - 7, C, y + 7, C), T > 0.75 && t.lineStyle(1, 16777215, T * 0.65).lineBetween(y, C - 4, y, C + 4);
+      for (let y = 0; y < Math.ceil((f - l) / 100) * S; y++) {
+        const T = l + (y * 103 + K * 0.035) % (f - l), C = Math.max(0, Math.sin(K / 540 + y * 2.7)), E = u(T, 9 + Math.sin(y * 3) * 20);
+        t.lineStyle(1.5, 16774353, C * 0.72).lineBetween(T - 7, E, T + 7, E), C > 0.75 && t.lineStyle(1, 16777215, C * 0.65).lineBetween(T, E - 4, T, E + 4);
       }
-      const m = a.x + a.width;
-      if (m < d - 140 || m > d + ft.width + 160 || a === r.at(-1)) continue;
-      const x = u(m);
-      t.fillStyle(11464447, 0.57).fillPoints([{ x: m - 9, y: x - 42 }, { x: m + 12, y: x + 33 }, { x: m + 34, y: x + 245 }, { x: m - 42, y: x + 215 }], true);
-      for (let g = 0; g < 12; g++) {
-        const y = x - 39 + g * 6, T = m - 6 + g * 1.1, C = (K * 0.33 + g * 31) % 210;
-        t.lineStyle(2 + g % 3, 16777215, 0.34), t.lineBetween(T, y + C, T + (g - 5) * 1.4, y + C + 46);
+      const x = a.x + a.width;
+      if (x < d - 140 || x > d + ft.width + 160 || a === r.at(-1)) continue;
+      const g = u(x);
+      t.fillStyle(11464447, 0.57).fillPoints([{ x: x - 9, y: g - 42 }, { x: x + 12, y: g + 33 }, { x: x + 34, y: g + 245 }, { x: x - 42, y: g + 215 }], true);
+      for (let y = 0; y < 12; y++) {
+        const T = g - 39 + y * 6, C = x - 6 + y * 1.1, E = (K * 0.33 + y * 31) % 210;
+        t.lineStyle(2 + y % 3, 16777215, 0.34), t.lineBetween(C, T + E, C + (y - 5) * 1.4, T + E + 46);
       }
-      t.lineStyle(5, 16777215, 0.82).lineBetween(m - 9, x - 41, m + 12, x + 33), t.fillStyle(15596287, 0.21).fillEllipse(m - 5, x + 210, 120, 35);
+      t.lineStyle(5, 16777215, 0.82).lineBetween(x - 9, g - 41, x + 12, g + 33), t.fillStyle(15596287, 0.21).fillEllipse(x - 5, g + 210, 120, 35);
     }
     for (const a of this.course.cascades) {
       if (a.nextX < d - 120 || a.x > d + ft.width + 100) continue;
-      const l = (a.x + a.nextX) / 2, f = Math.min(a.fromY, a.toY), u = Math.max(a.fromY, a.toY), v = gt(l, f - 30, H), m = gt(l, u + 45, H);
+      const l = (a.x + a.nextX) / 2, f = Math.min(a.fromY, a.toY), u = Math.max(a.fromY, a.toY), v = mt(l, f - 30, H), m = mt(l, u + 45, H);
       t.fillStyle(n === "cloud" ? 16770209 : 10414586, n === "cloud" ? 0.12 : 0.6).fillRoundedRect(l - 42, v, 84, m - v, 20);
       for (let x = 0; x < 10; x++) {
         const y = ((K * (a.ascent ? -6e-4 : 7e-4) + x * 0.1) % 1 + 1) % 1, T = l - 37 + x * 8;
@@ -26665,7 +26674,7 @@ class Zt {
     this.wakes = this.wakes.filter((a) => a.age < (a.splash ? 750 : 1300));
     for (const a of this.wakes) {
       a.age += j;
-      const l = a.age / (a.splash ? 750 : 1300), f = (a.splash ? 160 : 100) + l * 150, u = gt(a.x, a.y, H);
+      const l = a.age / (a.splash ? 750 : 1300), f = (a.splash ? 160 : 100) + l * 150, u = mt(a.x, a.y, H);
       if (n === "cloud") {
         i.fillStyle(16777215, Math.max(0, (1 - l) * 0.65)).fillEllipse(a.x - l * 30, u, f * 0.65, 18 + l * 22);
         continue;
@@ -26679,16 +26688,16 @@ class Zt {
       }
     }
     if (Z && n !== "cloud") {
-      const a = Math.sin(K / 170) * 2;
-      i.lineStyle(p ? 3.8 : 2.7, 16121855, 0.85), i.beginPath().moveTo(H - 120, b + 8 + a), i.lineTo(H - 54, b + 22 + a), i.lineTo(H + 40, b + 21 + a), i.lineTo(H + 124, b + 4 + a).strokePath();
-      for (let l = 0; l < 7; l++) {
-        const f = (K / (p ? 280 : 420) + l / 7) % 1;
-        i.fillStyle(16777215, (1 - f) * 0.8), i.fillEllipse(H + 111 + f * 27, b + 5 - Math.sin(f * Math.PI) * 22, 3, 5);
+      const a = Math.sin(K / 170) * 2, l = mt(H, b, H);
+      i.lineStyle(p ? 3.8 : 2.7, 16121855, 0.85), i.beginPath().moveTo(H - 120, l + 8 + a), i.lineTo(H - 54, l + 22 + a), i.lineTo(H + 40, l + 21 + a), i.lineTo(H + 124, l + 4 + a).strokePath();
+      for (let f = 0; f < 7; f++) {
+        const u = (K / (p ? 280 : 420) + f / 7) % 1;
+        i.fillStyle(16777215, (1 - u) * 0.8), i.fillEllipse(H + 111 + u * 27, l + 5 - Math.sin(u * Math.PI) * 22, 3, 5);
       }
     }
   }
 }
-class Jt {
+class $t {
   constructor(H, b, K, j, Z) {
     __publicField(this, "raised", []);
     __publicField(this, "icicles", []);
@@ -26726,16 +26735,16 @@ class Jt {
           continue;
         }
         const o = yt.Math.Clamp((K - S.began - 550) / 750, 0, 1);
-        d.setVisible(o > 0).setAlpha(Math.min(1, o * 1.5)).setY(gt(t.x, t.y + (1 - o) * 116, H)), S.body.enable = o > 0.6, o < 1 && (this.warning(Z, t.x, gt(t.x, t.y, H), K, 7122930), this.cue = "氷山がせり上がるよ！"), o > 0.4 && !S.splashed && (S.splashed = true, this.onSplash(t.x, t.y));
+        d.setVisible(o > 0).setAlpha(Math.min(1, o * 1.5)).setY(mt(t.x, t.y + (1 - o) * 116, H)), S.body.enable = o > 0.6, o < 1 && (this.warning(Z, t.x, mt(t.x, t.y, H), K, 7122930), this.cue = "氷山がせり上がるよ！"), o > 0.4 && !S.splashed && (S.splashed = true, this.onSplash(t.x, t.y));
       } else {
-        if (d.setY(gt(t.x, t.y, H)), t.kind === "rock") {
-          const o = gt(t.x, t.y, H);
+        if (d.setY(mt(t.x, t.y, H)), t.kind === "rock") {
+          const o = mt(t.x, t.y, H);
           Z.lineStyle(1.3, 14744319, 0.45).strokeEllipse(t.x, o + 1, 96 + Math.sin(K / 380) * 5, 13), Z.lineStyle(1, 16777215, 0.25).strokeEllipse(t.x, o + 3, 112, 18);
         }
-        if (t.kind === "cactus") for (let o = 3; o >= 0; o--) Z.fillStyle(o % 2 ? 15057292 : 12820078, 0.17).fillEllipse(t.x, gt(t.x, t.y + 7, H), 72 + o * 9, 13 + o * 4);
+        if (t.kind === "cactus") for (let o = 3; o >= 0; o--) Z.fillStyle(o % 2 ? 15057292 : 12820078, 0.17).fillEllipse(t.x, mt(t.x, t.y + 7, H), 72 + o * 9, 13 + o * 4);
       }
     }
-    for (const S of this.icicles) S.state === "waiting" && S.x - H < 320 && S.x - H > -35 && (S.state = "warning", S.began = K), S.state === "warning" && (this.warning(Z, S.x, gt(S.x, S.surfaceY, H), K, 16740990), this.cue = "上からツララ！ 風で抜けよう", K - S.began > 1e3 && (S.state = "falling", S.art.setVisible(true))), S.state === "falling" && (S.velocity = Math.min(920, S.velocity + j * 1.05), S.y += S.velocity * j / 1e3, S.art.setPosition(S.x, gt(S.x, S.y, H)), !S.hit && Math.abs(S.x - H) < 47 && S.y + 39 > b - 145 && S.y - 39 < b + 13 && (S.hit = true, this.onHit()), S.y > S.surfaceY + 80 && (S.state = "spent", S.art.setVisible(false), this.onSplash(S.x, S.surfaceY)));
+    for (const S of this.icicles) S.state === "waiting" && S.x - H < 320 && S.x - H > -35 && (S.state = "warning", S.began = K), S.state === "warning" && (this.warning(Z, S.x, mt(S.x, S.surfaceY, H), K, 16740990), this.cue = "上からツララ！ 風で抜けよう", K - S.began > 1e3 && (S.state = "falling", S.art.setVisible(true))), S.state === "falling" && (S.velocity = Math.min(920, S.velocity + j * 1.05), S.y += S.velocity * j / 1e3, S.art.setPosition(S.x, mt(S.x, S.y, H)), !S.hit && Math.abs(S.x - H) < 47 && S.y + 39 > b - 145 && S.y - 39 < b + 13 && (S.hit = true, this.onHit()), S.y > S.surfaceY + 80 && (S.state = "spent", S.art.setVisible(false), this.onSplash(S.x, S.surfaceY)));
     const p = this.weather.clear();
     if (this.course.theme === "ice") for (let S = 0; S < 14; S++) {
       const t = (S * 139 + K * (0.012 + S % 3 * 4e-3)) % 740 - 10, d = (S * 77 + K * (0.025 + S % 4 * 8e-3)) % 510 - 20;
@@ -26747,7 +26756,7 @@ class Jt {
     H.lineStyle(3, Z, p + 0.3).strokeEllipse(b, K, 88, 26), H.fillStyle(Z, p).fillTriangle(b - 13, K - 69, b + 13, K - 69, b, K - 46), H.lineStyle(2, 16777215, 1).lineBetween(b, K - 65, b, K - 56), H.fillStyle(16777215).fillCircle(b, K - 52, 1.5);
   }
 }
-class Qt {
+class jt {
   constructor(H) {
     __publicField(this, "streaks");
     if (!H.textures.exists("wind-streak")) {
@@ -26765,7 +26774,7 @@ class Qt {
     });
   }
 }
-class $t {
+class kt {
   constructor(H) {
     __publicField(this, "enabled", false);
     __publicField(this, "lights", []);
@@ -26790,16 +26799,16 @@ class $t {
       const r = 1 + Math.sin(b / 430 + t * 0.03) * 0.1, n = (c + 27) * 2 * r;
       o.setPosition(t, d).setDisplaySize(n, n).setVisible(true);
     };
-    S(K.center.x, K.center.y, 22);
+    S(K.center.x, mt(K.center.x, K.center.y, H), 22);
     for (const t of this.scene.physics.world.staticBodies.entries) if (!(!t.enable || t.right < Z.scrollX - 60 || t.x > Z.scrollX + 780)) if (t.width > 200) {
       const d = Math.max(0, Math.ceil((Z.scrollX - 40 - t.x - 12) / 92));
-      for (let c = t.x + 12 + d * 92; c < Math.min(t.right, Z.scrollX + 760); c += 92) S(c, gt(c, t.y, H), 13);
-      S(t.right, gt(t.right, t.y, H), 13);
-    } else S(t.center.x, gt(t.center.x, t.center.y, H), Math.max(17, Math.min(32, t.height / 2)));
-    j.forEach((t) => S(t.x, gt(t.x, t.y, H), 24));
+      for (let c = t.x + 12 + d * 92; c < Math.min(t.right, Z.scrollX + 760); c += 92) S(c, mt(c, t.y, H), 13);
+      S(t.right, mt(t.right, t.y, H), 13);
+    } else S(t.center.x, mt(t.center.x, t.center.y, H), Math.max(17, Math.min(32, t.height / 2)));
+    j.forEach((t) => S(t.x, mt(t.x, t.y, H), 24));
   }
 }
-class jt {
+class qt {
   constructor(H, b) {
     __publicField(this, "shore");
     __publicField(this, "pier");
@@ -26826,7 +26835,7 @@ class jt {
     this.shore = H.add.image(b.goalX + 280, 0, `harbor-shore-${b.theme}`).setOrigin(0.5, 0.92).setDepth(3).setDisplaySize(410, b.theme === "desert" ? 140 : 230), this.pier = H.add.image(b.goalX + 165, 0, K).setOrigin(0.5, 0.57).setDepth(5).setDisplaySize(295, 130), this.glow = H.add.ellipse(b.goalX + 175, 0, 145, 20, 16772538, 0.14).setDepth(6), this.label = H.add.text(b.goalX + 195, 0, b.goal_label, { fontFamily: "serif", fontSize: "20px", color: "#fff9e8", stroke: "#405977", strokeThickness: 3 }).setOrigin(0.5, 1).setDepth(7);
   }
   draw(H, b) {
-    const K = gt(this.course.goalX + 165, this.course.goalY, H), j = Math.abs(H - this.course.goalX) < 1050;
+    const K = mt(this.course.goalX + 165, this.course.goalY, H), j = Math.abs(H - this.course.goalX) < 1050;
     this.shore.setVisible(j).setY(K + 15), this.pier.setVisible(j).setY(K + 12), this.glow.setVisible(j).setY(K - 8).setAlpha(0.12 + Math.sin(b / 700) * 0.035), this.label.setVisible(j).setY(K - 230);
   }
 }
@@ -26834,7 +26843,7 @@ const wt = (at, H, b) => {
   const K = yt.Math.Clamp((b - at) / (H - at), 0, 1);
   return K * K * (3 - 2 * K);
 };
-class kt {
+class _t {
   constructor(H, b, K = () => {
   }) {
     __publicField(this, "intensity", 0);
@@ -26899,7 +26908,7 @@ class kt {
     return yt.Display.Color.GetColor(Math.round(255 - 66 * H), Math.round(255 - 78 * H), Math.round(255 - (this.theme === "desert" ? 106 : 45) * H));
   }
 }
-class qt {
+class te {
   constructor(H, b) {
     __publicField(this, "reducedMotion", window.matchMedia("(prefers-reduced-motion: reduce)").matches);
     __publicField(this, "detail", 1);
@@ -26943,7 +26952,7 @@ class qt {
       d.setPosition(c, o).setScale(0.13 + t % 3 * 0.07).setAlpha((0.12 + Math.sin(S / 950 + t) * 0.09) * (1 - j * 0.6));
     }
     for (const t of this.shores) {
-      const d = gt(t.x, t.y, H), c = t.art.displayWidth / 2 + 30, o = t.x > p.scrollX - c && t.x < p.scrollX + ft.width + c && d > p.scrollY - 40 && d < p.scrollY + ft.height + t.art.displayHeight;
+      const d = mt(t.x, t.y, H), c = t.art.displayWidth / 2 + 30, o = t.x > p.scrollX - c && t.x < p.scrollX + ft.width + c && d > p.scrollY - 40 && d < p.scrollY + ft.height + t.art.displayHeight;
       if (t.art.setVisible(o), o && (t.art.setY(d), this.course.theme !== "ice")) {
         const r = this.course.theme === "sea";
         t.art.setTint(yt.Display.Color.GetColor(Math.round((r ? 228 : 255) - 45 * j), Math.round((r ? 242 : 239) - 53 * j), Math.round((r ? 255 : 217) - 30 * j)));
@@ -26990,7 +26999,7 @@ function zt(at, H) {
   const b = yt.Math.Clamp((H - at.began) / at.duration, 0, 1), { ring: K, startX: j, startY: Z } = at;
   return { x: j + (K.targetX - j) * b, y: Z + (K.targetY - Z) * b - 4 * K.height * b * (1 - b), angle: Math.atan2(K.targetY - Z - 4 * K.height * (1 - 2 * b), K.targetX - j), done: b >= 1 };
 }
-class _t {
+class ee {
   constructor(H, b) {
     __publicField(this, "pen");
     __publicField(this, "labels");
@@ -27014,7 +27023,7 @@ class _t {
   draw(H, b, K, j) {
     const Z = this.pen.clear(), p = this.scene.cameras.main;
     if (this.course.rings.forEach((S, t) => {
-      const d = gt(S.x, S.y - 65, H), c = S.x > p.scrollX - 160 && S.x < p.scrollX + p.width + 160 && d > p.scrollY - 160 && d < p.scrollY + p.height + 160;
+      const d = mt(S.x, S.y - 65, H), c = S.x > p.scrollX - 160 && S.x < p.scrollX + p.width + 160 && d > p.scrollY - 160 && d < p.scrollY + p.height + 160;
       if (this.labels[t].setVisible(c).setPosition(S.x, d - 151).setAlpha(this.used.has(S) ? 0.35 : 1), !c) return;
       const o = j ? 1 : 1 + Math.sin(b / 420) * 0.035, r = this.used.has(S) ? 0.25 : 1;
       Z.lineStyle(20, 16766340, 0.06 * r).strokeEllipse(S.x, d, 117 * o, 259 * o), Z.lineStyle(11, 16770980, 0.16 * r).strokeEllipse(S.x, d, 106 * o, 244 * o), Z.lineStyle(5, 12094531, r).strokeEllipse(S.x, d, 96 * o, 234 * o), Z.lineStyle(3, 16770464, r).strokeEllipse(S.x - 1, d - 1, 96 * o, 234 * o), Z.lineStyle(1, 16776168, 0.9 * r).strokeEllipse(S.x - 3, d - 1, 90 * o, 229 * o);
@@ -27037,8 +27046,8 @@ class _t {
     this.pen.fillStyle(16772529, j).fillPoints(Z, true), this.pen.lineStyle(1, 16775647, j).strokePoints(Z, true);
   }
 }
-const te = (at) => new URL("assets/" + at, import.meta.url).href;
-class ee extends yt.Scene {
+const ie = (at) => new URL("assets/" + at, import.meta.url).href;
+class se extends yt.Scene {
   constructor(H, b, K, j) {
     super({ key: "voyage" });
     __publicField(this, "phase", "loading");
@@ -27089,7 +27098,7 @@ class ee extends yt.Scene {
   preload() {
     const H = { world: this.course.world, yacht: "yacht-v2.webp", captain: "captain-v3.webp", mark: "streamlit-mark.svg" };
     this.course.theme === "sea" && (H["shore-sea"] = "ruins-v1.webp", H.rock = "rock-v2.webp"), this.course.theme === "desert" && (H["shore-desert"] = "palms-v1.webp");
-    for (const [b, K] of Object.entries(H)) this.textures.exists(b) || this.load.image(b, te(K));
+    for (const [b, K] of Object.entries(H)) this.textures.exists(b) || this.load.image(b, ie(K));
   }
   create() {
     if (!["world", "yacht", "captain", "mark", ...this.course.theme === "sea" ? ["shore-sea", "rock"] : this.course.theme === "desert" ? ["shore-desert"] : []].every((c) => this.textures.exists(c))) {
@@ -27100,7 +27109,7 @@ class ee extends yt.Scene {
     const b = Math.max(1900, ...this.course.channels.map((c) => c.y + 900));
     this.physics.world.setBounds(0, this.course.minY - 400, this.course.goalX + 750, b - this.course.minY + 400);
     const K = this.cameras.main;
-    K.setBounds(0, this.course.minY, this.course.goalX + 600, ft.height - this.course.minY + Math.max(0, ...this.course.channels.map((c) => c.y - 406))), this.backdrop = this.add.image(0, 0, "world").setOrigin(0).setDisplaySize(ft.width, ft.height).setScrollFactor(0), this.backdropTwin = this.add.image(ft.width, 0, "world").setOrigin(0).setDisplaySize(ft.width, ft.height).setFlipX(true).setScrollFactor(0), this.atmosphere = new qt(this, this.course), this.waterway = new Zt(this, () => this.audio.splash(), this.course), this.windEffect = new Qt(this), this.guide = new $t(this), this.guide.enabled = this.guideEnabled, this.mooring = new jt(this, this.course), this.weather = new kt(this, this.course.theme, (c) => this.audio.thunder(c)), this.rings = new _t(this, this.course);
+    K.setBounds(0, this.course.minY, this.course.goalX + 600, ft.height - this.course.minY + Math.max(0, ...this.course.channels.map((c) => c.y - 406))), this.backdrop = this.add.image(0, 0, "world").setOrigin(0).setDisplaySize(ft.width, ft.height).setScrollFactor(0), this.backdropTwin = this.add.image(ft.width, 0, "world").setOrigin(0).setDisplaySize(ft.width, ft.height).setFlipX(true).setScrollFactor(0), this.atmosphere = new te(this, this.course), this.waterway = new Qt(this, () => this.audio.splash(), this.course), this.windEffect = new jt(this), this.guide = new kt(this), this.guide.enabled = this.guideEnabled, this.mooring = new qt(this, this.course), this.weather = new _t(this, this.course.theme, (c) => this.audio.thunder(c)), this.rings = new ee(this, this.course);
     const j = this.physics.add.staticGroup();
     for (const c of this.course.channels) {
       const o = this.add.rectangle(c.x + c.width / 2, c.y + 8, c.width - 8, 16, 16777215, 0);
@@ -27116,7 +27125,7 @@ class ee extends yt.Scene {
     }), this.physics.add.overlap(this.player, d, (c, o) => {
       const r = o;
       this.phase !== "playing" || !r.active || (this.sparkles.explode(12, r.x, r.y), this.tweens.killTweensOf(r), r.destroy(), this.collected++, this.audio.play("collect"), this.elapsedMs >= this.windUntil && (this.windStacks = 0), this.windStacks = Math.min(6, this.windStacks + 1), this.windUntil = Math.min(this.elapsedMs + 4500, Math.max(this.windUntil, this.elapsedMs) + 2800), this.message = `クリスタルの風 ×${this.windStacks}！ スピードアップ♪`, this.messageUntil = this.elapsedMs + 2200, (this.collected % 4 === 0 || this.collected === 1) && this.tweens.add({ targets: this.captain, y: -59, duration: 180, yoyo: true, ease: "Sine.easeOut" }));
-    }), this.hazards = new Jt(this, this.course, this.player, () => this.damage(), (c, o) => this.waterway.splash(c, o)), this.sparkles = this.add.particles(0, 0, "spark", { emitting: false, maxParticles: 64, lifespan: 650, speed: { min: 30, max: 105 }, angle: { min: 0, max: 360 }, scale: { start: 0.9, end: 0 }, alpha: { start: 0.9, end: 0 }, blendMode: yt.BlendModes.ADD }).setDepth(12), this.input.keyboard) {
+    }), this.hazards = new $t(this, this.course, this.player, () => this.damage(), (c, o) => this.waterway.splash(c, o)), this.sparkles = this.add.particles(0, 0, "spark", { emitting: false, maxParticles: 64, lifespan: 650, speed: { min: 30, max: 105 }, angle: { min: 0, max: 360 }, scale: { start: 0.9, end: 0 }, alpha: { start: 0.9, end: 0 }, blendMode: yt.BlendModes.ADD }).setDepth(12), this.input.keyboard) {
       this.keys = this.input.keyboard.addKeys({ left: "LEFT", right: "RIGHT", a: "A", d: "D", space: "SPACE", up: "UP", w: "W", shift: "SHIFT", down: "DOWN" });
       const c = (o) => {
         o.repeat || (["Space", "ArrowUp", "KeyW"].includes(o.code) && this.requestJump(), ["ShiftLeft", "ShiftRight"].includes(o.code) && this.requestBoost());
@@ -27143,46 +27152,46 @@ class ee extends yt.Scene {
     const j = this.player.body;
     let Z = !this.flight && (j.blocked.down || j.touching.down);
     if (!this.flight) {
-      const a = this.rings.crossed(this.player.x, this.player.y);
-      a && (this.flight = { ring: a, startX: this.player.x, startY: this.player.y, began: this.elapsedMs, duration: this.course.theme === "cloud" ? Math.max(6500, (a.targetX - this.player.x) / 620 * 1e3) : Math.max(2200, (a.targetX - this.player.x) / 820 * 1e3) }, this.lift = null, this.jumpBuffer = this.lastGrounded = -1e3, this.boostQueued = false, j.setVelocity(0, 0).setAllowGravity(false), this.sparkles.explode(35, this.player.x, this.player.y - 65), this.audio.play("launch"), this.message = "スターリング！ 遠くの航路へ、ひとっ飛び！", this.messageUntil = this.elapsedMs + this.flight.duration + 1400, this.cameras.main.setLerp(0.28, 0.3), Z = false);
+      const l = this.rings.crossed(this.player.x, this.player.y);
+      l && (this.flight = { ring: l, startX: this.player.x, startY: this.player.y, began: this.elapsedMs, duration: this.course.theme === "cloud" ? Math.max(6500, (l.targetX - this.player.x) / 620 * 1e3) : Math.max(2200, (l.targetX - this.player.x) / 820 * 1e3) }, this.lift = null, this.jumpBuffer = this.lastGrounded = -1e3, this.boostQueued = false, j.setVelocity(0, 0).setAllowGravity(false), this.sparkles.explode(35, this.player.x, this.player.y - 65), this.audio.play("launch"), this.message = "スターリング！ 遠くの航路へ、ひとっ飛び！", this.messageUntil = this.elapsedMs + this.flight.duration + 1400, this.cameras.main.setLerp(0.28, 0.3), Z = false);
     }
-    const p = (a) => {
+    const p = (l) => {
       var _a, _b;
-      return ((_b = (_a = this.keys) == null ? void 0 : _a[a]) == null ? void 0 : _b.isDown) ?? false;
+      return ((_b = (_a = this.keys) == null ? void 0 : _a[l]) == null ? void 0 : _b.isDown) ?? false;
     }, S = this.controls.left || p("left") || p("a"), t = this.controls.right || p("right") || p("d"), d = this.controls.brake || p("down"), c = this.controls.jump || p("space") || p("up") || p("w"), o = this.controls.boost || p("shift");
     if (c && !this.previousJump && (this.jumpBuffer = this.elapsedMs + 150), Z && !this.flight) {
       this.lastGrounded = this.elapsedMs;
-      const a = this.course.channels.find((l) => this.player.x > l.x + 30 && this.player.x < l.x + l.width - 45);
-      a && (this.checkpoint = { x: Math.max(a.x + 100, this.player.x - 65), y: a.y });
+      const l = this.course.channels.find((f) => this.player.x > f.x + 30 && this.player.x < f.x + f.width - 45);
+      l && (this.checkpoint = { x: Math.max(l.x + 100, this.player.x - 65), y: l.y });
     }
     !this.flight && this.jumpBuffer >= this.elapsedMs && this.elapsedMs - this.lastGrounded < 115 && (j.setVelocityY(-510 * this.configData.jump_power), this.jumpBuffer = this.lastGrounded = -1e3, this.sparkles.explode(8, this.player.x - 40, this.player.y + 10), this.audio.play("jump"), this.waterway.splash(this.player.x, this.player.y + 14)), !this.flight && (this.boostQueued || o && !this.previousBoost) && this.elapsedMs >= this.boostReadyAt && (this.boostUntil = this.elapsedMs + 1150, this.boostReadyAt = this.elapsedMs + 3400, this.audio.play("boost"), this.message = "風をつかまえて！", this.messageUntil = this.elapsedMs + 1600), this.boostQueued = false;
     const r = this.elapsedMs < this.boostUntil, n = this.elapsedMs < this.windUntil;
     n || (this.windStacks = 0);
     const e = d, s = (t ? 170 : 132) - (S ? 103 : 0) + (r ? 122 : 0) + (n ? 125 + (this.windStacks - 1) * 45 : 0);
-    if (this.flight || j.setVelocityX(e ? 0 : yt.Math.Linear(j.velocity.x, Math.max(0, s), 1 - Math.exp(-b / 180))), !this.flight && !this.lift && !e && (this.lift = this.course.cascades.find((a) => a.ascent && this.player.x >= a.x - 48 && this.player.x < a.nextX + 60 && this.player.y > a.toY - 32 && this.player.y < a.fromY + 55) ?? null, this.lift && (this.liftSpeed = Math.max(300, j.velocity.x, s))), this.lift) {
-      const a = this.lift;
-      if (j.setAllowGravity(false), this.player.y <= a.toY - 32) this.player.x >= a.nextX + 60 ? (this.lift = null, j.setVelocityY(0).setAllowGravity(true)) : j.setVelocityY(e ? 0 : -18);
+    if (this.flight || j.setVelocityX(e ? 0 : yt.Math.Linear(j.velocity.x, Math.max(0, s), 1 - Math.exp(-b / 180))), !this.flight && !this.lift && !e && (this.lift = this.course.cascades.find((l) => l.ascent && this.player.x >= l.x - 48 && this.player.x < l.nextX + 60 && this.player.y > l.toY - 32 && this.player.y < l.fromY + 55) ?? null, this.lift && (this.liftSpeed = Math.max(300, j.velocity.x, s))), this.lift) {
+      const l = this.lift;
+      if (j.setAllowGravity(false), this.player.y <= l.toY - 32) this.player.x >= l.nextX + 60 ? (this.lift = null, j.setVelocityY(0).setAllowGravity(true)) : j.setVelocityY(e ? 0 : -18);
       else {
-        const l = Math.max(14, a.nextX - 38 - this.player.x), f = Math.max(0, this.player.y - (a.toY - 32)), u = Math.max(620, f / l * this.liftSpeed);
-        j.setVelocityY(e ? 0 : -Math.min(1350, u));
+        const f = Math.max(14, l.nextX - 38 - this.player.x), u = Math.max(0, this.player.y - (l.toY - 32)), v = Math.max(620, u / f * this.liftSpeed);
+        j.setVelocityY(e ? 0 : -Math.min(1350, v));
       }
       e || j.setVelocityX(this.liftSpeed), this.message = this.course.theme === "cloud" ? "上昇気流で、雲の上へ！" : "滝の流れに乗って、上へ！", this.messageUntil = this.elapsedMs + 400;
     }
     this.previousJump = c, this.previousBoost = o;
     let h = null;
     if (this.flight) {
-      const a = zt(this.flight, this.elapsedMs);
-      j.reset(a.x, a.y), h = a.angle * 0.48, this.course.theme === "cloud" && a.angle > 0.5 && !a.done && (this.message = "雲の底は、まだ見えない…！", this.messageUntil = this.elapsedMs + 500), a.done && (this.checkpoint = { x: a.x, y: this.flight.ring.targetY + 18 }, this.flight = null, j.setAllowGravity(true).setVelocity(170, 0), this.immuneUntil = Math.max(this.immuneUntil, this.elapsedMs + 700), this.cameras.main.setLerp(0.09, 0.22), this.waterway.splash(a.x, a.y + 18), this.sparkles.explode(16, a.x, a.y), this.message = "着地！ 次の風に乗って進もう", this.messageUntil = this.elapsedMs + 1800);
+      const l = zt(this.flight, this.elapsedMs);
+      j.reset(l.x, l.y), h = l.angle * 0.48, this.course.theme === "cloud" && l.angle > 0.5 && !l.done && (this.message = "雲の底は、まだ見えない…！", this.messageUntil = this.elapsedMs + 500), l.done && (this.checkpoint = { x: l.x, y: this.flight.ring.targetY + 18 }, this.flight = null, j.setAllowGravity(true).setVelocity(170, 0), this.immuneUntil = Math.max(this.immuneUntil, this.elapsedMs + 700), this.cameras.main.setLerp(0.09, 0.22), this.waterway.splash(l.x, l.y + 18), this.sparkles.explode(16, l.x, l.y), this.message = "着地！ 次の風に乗って進もう", this.messageUntil = this.elapsedMs + 1800);
     }
     !this.flight && this.player.y > this.checkpoint.y + 250 && this.damage(true);
-    const i = Z ? Math.sin(this.elapsedMs / 270) * 2.4 : 0;
-    this.yacht.setPosition(this.player.x - 6, this.player.y + 15 + i).setRotation(h ?? yt.Math.Clamp(j.velocity.y / 4800, -0.11, 0.1) + (Z ? Math.sin(this.elapsedMs / 430) * 9e-3 : 0)), this.captain.setRotation(-this.yacht.rotation * 0.6 + Math.sin(this.elapsedMs / 600) * 0.018), this.shadow.setPosition(this.player.x - 8, this.player.y + 29).setVisible(Z), this.reflection.setPosition(this.player.x - 6, this.player.y + 33).setVisible(Z && this.course.theme !== "cloud");
-    for (const a of this.projected) {
-      if (!a.image.active) continue;
-      const l = a.bob === void 0 ? 0 : Math.sin(this.elapsedMs / 330 + a.bob) * 5, f = a.x > this.cameras.main.scrollX - 60 && a.x < this.cameras.main.scrollX + ft.width + 60;
-      a.image.setVisible(f), f && a.image.setY(gt(a.x, a.y, this.player.x) + l);
+    const i = Z ? Math.sin(this.elapsedMs / 270) * 2.4 : 0, a = mt(this.player.x, this.player.y, this.player.x);
+    this.yacht.setPosition(this.player.x - 6, a + 15 + i).setRotation(h ?? yt.Math.Clamp(j.velocity.y / 4800, -0.11, 0.1) + (Z ? Math.atan(Jt(this.player.x)) * 0.6 + Math.sin(this.elapsedMs / 430) * 9e-3 : 0)), this.captain.setRotation(-this.yacht.rotation * 0.6 + Math.sin(this.elapsedMs / 600) * 0.018), this.shadow.setPosition(this.player.x - 8, a + 29).setVisible(Z), this.reflection.setPosition(this.player.x - 6, a + 33).setVisible(Z && this.course.theme !== "cloud");
+    for (const l of this.projected) {
+      if (!l.image.active) continue;
+      const f = l.bob === void 0 ? 0 : Math.sin(this.elapsedMs / 330 + l.bob) * 5, u = l.x > this.cameras.main.scrollX - 60 && l.x < this.cameras.main.scrollX + ft.width + 60;
+      l.image.setVisible(u), u && l.image.setY(mt(l.x, l.y, this.player.x) + f);
     }
-    this.waterway.draw(this.player.x, this.player.y, this.elapsedMs, Math.min(b, 100), Z && j.velocity.y >= 0, r || n, this.atmosphere.detail), this.hazards.update(this.player.x, this.player.y, this.elapsedMs, Math.min(b, 100)), this.windEffect.draw(this.elapsedMs, Math.max(0, this.windUntil - this.elapsedMs), this.windStacks, this.atmosphere.detail), this.weather.draw(this.player.x / this.course.goalX, this.elapsedMs, Math.min(b, 100), this.atmosphere.detail, this.atmosphere.reducedMotion), this.atmosphere.update(this.player.x, this.elapsedMs, b, this.weather.intensity), this.backdrop.setTint(this.weather.tint), this.backdropTwin.setTint(this.weather.tint), this.mooring.draw(this.player.x, this.elapsedMs), this.rings.draw(this.player.x, this.elapsedMs, this.flight, this.atmosphere.reducedMotion), this.guide.draw(this.player.x, this.elapsedMs, j, this.hazards.guidePoints()), this.yacht.setAlpha(!this.flight && this.elapsedMs < this.immuneUntil && Math.floor(this.elapsedMs / 100) % 2 ? 0.55 : 1), this.elapsedMs - this.lastTrail > (this.flight || r || n ? 65 : 140) / this.atmosphere.detail && (this.sparkles.emitParticleAt(this.player.x - 88, this.player.y + 1, this.flight ? 3 : r || n ? 2 : 1), this.lastTrail = this.elapsedMs), this.player.x >= this.course.goalX ? this.finish("cleared") : this.elapsedMs > this.course.timeLimitMs && this.finish("failed"), this.elapsedMs - this.lastHud > 100 && this.publishHud();
+    this.waterway.draw(this.player.x, this.player.y, this.elapsedMs, Math.min(b, 100), Z && j.velocity.y >= 0, r || n, this.atmosphere.detail), this.hazards.update(this.player.x, this.player.y, this.elapsedMs, Math.min(b, 100)), this.windEffect.draw(this.elapsedMs, Math.max(0, this.windUntil - this.elapsedMs), this.windStacks, this.atmosphere.detail), this.weather.draw(this.player.x / this.course.goalX, this.elapsedMs, Math.min(b, 100), this.atmosphere.detail, this.atmosphere.reducedMotion), this.atmosphere.update(this.player.x, this.elapsedMs, b, this.weather.intensity), this.backdrop.setTint(this.weather.tint), this.backdropTwin.setTint(this.weather.tint), this.mooring.draw(this.player.x, this.elapsedMs), this.rings.draw(this.player.x, this.elapsedMs, this.flight, this.atmosphere.reducedMotion), this.guide.draw(this.player.x, this.elapsedMs, j, this.hazards.guidePoints()), this.yacht.setAlpha(!this.flight && this.elapsedMs < this.immuneUntil && Math.floor(this.elapsedMs / 100) % 2 ? 0.55 : 1), this.elapsedMs - this.lastTrail > (this.flight || r || n ? 65 : 140) / this.atmosphere.detail && (this.sparkles.emitParticleAt(this.player.x - 88, a + 1, this.flight ? 3 : r || n ? 2 : 1), this.lastTrail = this.elapsedMs), this.player.x >= this.course.goalX ? this.finish("cleared") : this.elapsedMs > this.course.timeLimitMs && this.finish("failed"), this.elapsedMs - this.lastHud > 100 && this.publishHud();
   }
   damage(H = false) {
     if (!(this.phase !== "playing" || this.flight || this.elapsedMs < this.immuneUntil)) {
@@ -27231,7 +27240,7 @@ class ee extends yt.Scene {
     this.phase === "playing" && (this.boostQueued = true);
   }
 }
-class ie {
+class ne {
   constructor(H, b = {}) {
     __publicField(this, "enabled", true);
     __publicField(this, "context");
@@ -27449,7 +27458,7 @@ class Vt {
     this.disposed = true, clearTimeout(this.suspendTimer), (_a = this.source) == null ? void 0 : _a.stop(), (_b = this.source) == null ? void 0 : _b.disconnect(), (_c = this.filter) == null ? void 0 : _c.disconnect(), (_d = this.gain) == null ? void 0 : _d.disconnect(), (_e = this.context) == null ? void 0 : _e.close(), this.buffer = void 0;
   }
 }
-const Bt = (at) => new URL("assets/" + at, import.meta.url).href, se = ({ parentElement: at, data: H, setStateValue: b }) => {
+const Bt = (at) => new URL("assets/" + at, import.meta.url).href, re = ({ parentElement: at, data: H, setStateValue: b }) => {
   const K = at.querySelector(".sky-sailer-root");
   if (!K) return;
   const j = H.course_id;
@@ -27506,9 +27515,9 @@ const Bt = (at) => new URL("assets/" + at, import.meta.url).href, se = ({ parent
     const C = St.findIndex((E) => E.id === T);
     C >= 0 && C !== n && (n = C, i(), a());
   } }, y;
-}, It = (at) => `${Math.floor(at / 6e4).toString().padStart(2, "0")}:${Math.floor(at / 1e3 % 60).toString().padStart(2, "0")}`, Ct = (at) => new URL("assets/" + at, import.meta.url).href, ne = ({ parentElement: at, data: H, setStateValue: b }) => {
+}, It = (at) => `${Math.floor(at / 6e4).toString().padStart(2, "0")}:${Math.floor(at / 1e3 % 60).toString().padStart(2, "0")}`, Ct = (at) => new URL("assets/" + at, import.meta.url).href, ae = ({ parentElement: at, data: H, setStateValue: b }) => {
   var _a, _b;
-  if (H.mode === "home") return se({ parentElement: at, data: H, setStateValue: b });
+  if (H.mode === "home") return re({ parentElement: at, data: H, setStateValue: b });
   const K = H, j = Lt(K.course_id), Z = at.querySelector(".sky-sailer-root");
   if (!Z) return;
   if (((_a = Z.__skySailer) == null ? void 0 : _a.runId) === K.run_id) return Z.__skySailer.evaluate(K.evaluation), Z.__skySailer.cleanup;
@@ -27540,7 +27549,7 @@ const Bt = (at) => new URL("assets/" + at, import.meta.url).href, se = ({ parent
     </section>`;
   const p = Z.querySelector(".ss-mount"), S = Z.querySelector(".ss-overlay"), t = Z.querySelector(".ss-lives"), d = Z.querySelector(".ss-clock"), c = Z.querySelector("[data-crystals]"), o = Z.querySelector("[data-progress]"), r = Z.querySelector(".ss-boost-meter i"), n = Z.querySelector("[data-pause]"), e = Z.querySelector("[data-sound]"), s = Z.querySelector("[data-guide]"), h = Z.querySelector("[data-music]"), i = Z.querySelector("[data-music-volume]"), a = Z.querySelector("[data-music-message]"), l = Z.querySelector("[data-weather]");
   let f = false;
-  const u = Z.querySelector("[data-cue]"), v = Z.querySelector("[data-wind]"), m = Z.querySelector("[data-wind-time]"), x = v.querySelector("i"), g = { left: false, right: false, jump: false, boost: false, brake: false }, y = /* @__PURE__ */ new Map(), T = new ie(Ct("sfx/thunder-v1.mp3"), { clear: [Ct("sfx/goal-v1.mp3"), Ct("sfx/goal-alt-v1.mp3")], launch: Ct("sfx/star-launch-v1.mp3") }), C = j.id === "3-1" ? "?v=golden-light-v1" : "", E = new Vt([Ct(`music/course-${j.id}-loop.ogg`) + C, Ct(`music/course-${j.id}-loop.mp3`) + C], true);
+  const u = Z.querySelector("[data-cue]"), v = Z.querySelector("[data-wind]"), m = Z.querySelector("[data-wind-time]"), x = v.querySelector("i"), g = { left: false, right: false, jump: false, boost: false, brake: false }, y = /* @__PURE__ */ new Map(), T = new ne(Ct("sfx/thunder-v1.mp3"), { clear: [Ct("sfx/goal-v1.mp3"), Ct("sfx/goal-alt-v1.mp3")], launch: Ct("sfx/star-launch-v1.mp3") }), C = j.id === "3-1" ? "?v=golden-light-v1" : "", E = new Vt([Ct(`music/course-${j.id}-loop.ogg`) + C, Ct(`music/course-${j.id}-loop.mp3`) + C], true);
   i.disabled = !E.available;
   let A = "loading", M, P = K.evaluation, R = false;
   const F = (J) => {
@@ -27556,7 +27565,7 @@ const Bt = (at) => new URL("assets/" + at, import.meta.url).href, se = ({ parent
     d.textContent = It(J.elapsedMs), c.textContent = String(J.crystals), t.innerHTML = Array.from({ length: 3 }, (Q, k) => `<span class="${k < 3 - J.hits ? "" : "is-lost"}">♥</span>`).join(" "), t.setAttribute("aria-label", `残りライフ ${Math.max(0, 3 - J.hits)}`), o.style.width = `${J.progress * 100}%`, r.style.width = `${J.boostReady * 100}%`, r.parentElement.classList.toggle("is-ready", J.boostReady === 1), u.textContent = J.cue, u.hidden = !J.cue, v.hidden = J.windMs <= 0, m.textContent = `追い風 ×${J.windStacks} · ${(J.windMs / 1e3).toFixed(1)}s`, x.style.width = `${Math.min(100, J.windMs / 4500 * 100)}%`, Z.dataset.wind = J.windMs > 0 ? "active" : "idle", l.textContent = `${J.storm > 0.55 ? "☁" : "☀"} ${J.weather}`, Z.dataset.weather = J.storm > 0.55 ? "storm" : "sunny", E.setWeather(J.storm), J.progress >= 1 && E.setPlaying(false);
   }, N = (J, Q) => {
     R || (Z.dataset.phase = J, T.setPlaying(J === "playing"), E.setPlaying(J === "playing", J === "playing" && A === "loading"), A = J, S.hidden = J === "playing", n.disabled = J !== "playing" && J !== "paused", n.textContent = J === "paused" ? "▶ RESUME" : "Ⅱ PAUSE", J === "paused" ? (I(), S.innerHTML = '<span class="ss-overline">TAKE A BREATH</span><h2>風待ちのひととき</h2><p>準備ができたら、航海を続けよう。</p><div class="ss-overlay-actions"><button class="ss-button" data-resume>航海を再開</button><button class="ss-button ss-button-secondary" data-home>ホームに戻る</button></div>') : J === "loading" ? S.innerHTML = `<span class="ss-overline">COURSE ${j.id}</span><h2>${j.title}へ</h2><p>帆に風を集めています…</p><span class="ss-loading">✦</span>` : J === "error" ? S.innerHTML = '<span class="ss-overline">WAITING FOR THE WIND</span><h2>航路を読み込めませんでした。</h2><p>通信を確認して、もう一度出航しよう。</p><button class="ss-button" data-reload>再読み込み</button>' : Q && (I(), M = Q, S.innerHTML = Q.status === "cleared" ? `<span class="ss-overline">${j.id} · VOYAGE COMPLETE</span><div class="ss-result-rank">✦</div><h2>${j.goal_label}へ、到着。</h2><p class="ss-result-comment">航海を評価しています…</p><div class="ss-result-stats">${It(Q.elapsed_ms)}<span>◆ ${Q.crystals} / ${Q.total_crystals}</span><span>ミス ${Q.hit_count}</span></div><div class="ss-overlay-actions">${K.next_course_id ? '<button class="ss-button" data-next-stage>次のステージへ</button>' : ""}<button class="ss-button ss-button-secondary" data-home>ホームに戻る</button><button class="ss-text-button" data-retry>もう一度出航する</button></div>` : `<span class="ss-overline">${j.id} · THE SKY IS WAITING</span><h2>次の風に、乗ろう。</h2><p>${j.description}</p><div class="ss-result-stats">${It(Q.elapsed_ms)}<span>◆ ${Q.crystals} / ${Q.total_crystals}</span></div><div class="ss-overlay-actions"><button class="ss-button" data-retry>もう一度出航する</button><button class="ss-button ss-button-secondary" data-home>ホームに戻る</button></div>`, F(P)));
-  }, w = new ee(K, g, T, { phase: N, hud: U, result: (J) => {
+  }, w = new se(K, g, T, { phase: N, hud: U, result: (J) => {
     R || b("result", J);
   } }), B = new yt.Game({ type: yt.AUTO, width: ft.width, height: ft.height, parent: p, banner: false, physics: { default: "arcade", arcade: { gravity: { x: 0, y: 900 * K.gravity }, debug: false } }, scale: { mode: yt.Scale.FIT, autoCenter: yt.Scale.CENTER_BOTH }, scene: [w], render: { antialias: true, roundPixels: false }, fps: { target: 60 } }), L = (J) => {
     T.unlock(), E.unlock();
@@ -27753,5 +27762,5 @@ const Bt = (at) => new URL("assets/" + at, import.meta.url).href, se = ({ parent
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
 export {
-  ne as default
+  ae as default
 };

@@ -1,7 +1,7 @@
 import Phaser from "phaser";
 import { getCourse, VIEW, type Course, type Controls, type GameData, type Hud, type Phase, type Result } from "./stage";
 import type { VoyageAudio } from "./audio";
-import { Waterway, waterY } from "./Waterway";
+import { Waterway, waterY, waveSlope } from "./Waterway";
 import { CourseHazards } from "./CourseHazards";
 import { WindEffect } from "./WindEffect";
 import { SpiritGuide } from "./SpiritGuide";
@@ -282,10 +282,11 @@ export class VoyageScene extends Phaser.Scene {
     }
     if (!this.flight && this.player.y > this.checkpoint.y + 250) this.damage(true);
     const bob = afloat ? Math.sin(this.elapsedMs / 270) * 2.4 : 0;
-    this.yacht.setPosition(this.player.x - 6, this.player.y + 15 + bob).setRotation(flightAngle ?? Phaser.Math.Clamp(body.velocity.y / 4800, -0.11, 0.10) + (afloat ? Math.sin(this.elapsedMs / 430) * 0.009 : 0));
+    const shipY = waterY(this.player.x,this.player.y,this.player.x);
+    this.yacht.setPosition(this.player.x - 6, shipY + 15 + bob).setRotation(flightAngle ?? Phaser.Math.Clamp(body.velocity.y / 4800, -0.11, 0.10) + (afloat ? Math.atan(waveSlope(this.player.x)) * .6 + Math.sin(this.elapsedMs / 430) * 0.009 : 0));
     this.captain.setRotation(-this.yacht.rotation * 0.6 + Math.sin(this.elapsedMs / 600) * 0.018);
-    this.shadow.setPosition(this.player.x - 8, this.player.y + 29).setVisible(afloat);
-    this.reflection.setPosition(this.player.x - 6, this.player.y + 33).setVisible(afloat && this.course.theme !== "cloud");
+    this.shadow.setPosition(this.player.x - 8, shipY + 29).setVisible(afloat);
+    this.reflection.setPosition(this.player.x - 6, shipY + 33).setVisible(afloat && this.course.theme !== "cloud");
     for (const object of this.projected) {
       if (!object.image.active) continue;
       const bob = object.bob === undefined ? 0 : Math.sin(this.elapsedMs / 330 + object.bob) * 5;
@@ -304,7 +305,7 @@ export class VoyageScene extends Phaser.Scene {
     this.guide.draw(this.player.x,this.elapsedMs,body,this.hazards.guidePoints());
     this.yacht.setAlpha(!this.flight && this.elapsedMs < this.immuneUntil ? (Math.floor(this.elapsedMs / 100) % 2 ? 0.55 : 1) : 1);
     if (this.elapsedMs - this.lastTrail > (this.flight || boosted || windy ? 65 : 140) / this.atmosphere.detail) {
-      this.sparkles.emitParticleAt(this.player.x - 88, this.player.y + 1, this.flight ? 3 : boosted || windy ? 2 : 1); this.lastTrail = this.elapsedMs;
+      this.sparkles.emitParticleAt(this.player.x - 88, shipY + 1, this.flight ? 3 : boosted || windy ? 2 : 1); this.lastTrail = this.elapsedMs;
     }
     if (this.player.x >= this.course.goalX) this.finish("cleared");
     else if (this.elapsedMs > this.course.timeLimitMs) this.finish("failed");

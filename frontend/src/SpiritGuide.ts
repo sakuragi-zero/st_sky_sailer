@@ -37,7 +37,7 @@ export class SpiritGuide {
       sprite.setPosition(x,y).setDisplaySize(size,size).setVisible(true);
     };
     // Reserve the first sprite for the captain even on densely packed cloud steps.
-    light(player.center.x,player.center.y,22);
+    light(player.center.x,waterY(player.center.x,player.center.y,anchorX),22);
     for (const body of this.scene.physics.world.staticBodies.entries) {
       if(!body.enable || body.right<camera.scrollX-60 || body.x>camera.scrollX+780) continue;
       if(body.width>200) {

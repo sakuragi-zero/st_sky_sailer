@@ -4,8 +4,10 @@ import { makeSceneryTextures } from "./SceneryTextures";
 
 type Wake = { x: number; y: number; age: number; splash: boolean };
 
-/** Visual projection only. Collisions remain in the route's simple world space. */
-export const waterY = (x: number, y: number, anchorX: number) => y - (x - anchorX) * 0.13;
+/** Shared projection keeps boat, obstacles and pickups on the same rolling sea. */
+export const waveOffset = (x: number) => 25 * Math.sin(x / 220) + 7 * Math.sin(x / 83 + 0.7);
+export const waveSlope = (x: number) => 25 / 220 * Math.cos(x / 220) + 7 / 83 * Math.cos(x / 83 + 0.7);
+export const waterY = (x: number, y: number, anchorX: number) => y - (x - anchorX) * 0.13 + waveOffset(x);
 
 export class Waterway {
   private readonly clouds: Phaser.GameObjects.Graphics;
@@ -23,7 +25,7 @@ export class Waterway {
     this.foam = scene.add.graphics().setDepth(11);
     if (course.theme !== "cloud") {
       makeSceneryTextures(scene, course.theme);
-      this.waterPaint = Array.from({ length: 5 }, () => scene.add.tileSprite(0, 0, 512, 76, `water-paint-${course.theme}`).setOrigin(0, 0.5).setRotation(-Math.atan(0.13)).setDepth(3.2).setAlpha(0.6).setVisible(false));
+      this.waterPaint = Array.from({ length: 24 }, () => scene.add.tileSprite(0, 0, 64, 76, `water-paint-${course.theme}`).setOrigin(0, 0.5).setDepth(3.2).setAlpha(0.6).setVisible(false));
     }
     if (course.theme === "cloud") {
       if (!scene.textures.exists("cloud-bank")) {
@@ -95,37 +97,37 @@ export class Waterway {
         }
         continue;
       }
-      // Translucent water has a visible near edge and a slanted, broad upper face.
-      pen.fillStyle(theme === "desert" ? 0x33b9b1 : 0x4caff4, 0.35).fillPoints([
-        { x: start, y: y(start, 32) }, { x: end, y: y(end, 32) },
-        { x: end, y: y(end, 84) }, { x: start, y: y(start, 84) },
-      ], true);
-      pen.fillStyle(theme === "desert" ? 0x61bcb5 : theme === "ice" ? 0x86bdd3 : 0x68b6dc, 0.55).fillPoints([
-        { x: start, y: y(start, -42) }, { x: end, y: y(end, -42) },
-        { x: end, y: y(end, 33) }, { x: start, y: y(start, 33) },
-      ], true);
-      const paint = this.waterPaint[waterIndex++];
-      if (paint) {
-        paint.setPosition(start, y(start, -4)).setSize((end-start)*Math.sqrt(1+0.13**2), 74).setVisible(true);
-        paint.tilePositionX = start - elapsed * 0.025;
-        paint.tileScaleY = 0.52;
+      // Short reusable strips and sampled banks follow wave crests and troughs.
+      const points: number[] = [start];
+      for (let x=start+32;x<end;x+=32) points.push(x);
+      points.push(end);
+      const ribbon = (top:number,bottom:number) => [
+        ...points.map(x=>({x,y:y(x,top)})),
+        ...points.slice().reverse().map(x=>({x,y:y(x,bottom)})),
+      ];
+      pen.fillStyle(theme === "desert" ? 0x33b9b1 : 0x4caff4, 0.35).fillPoints(ribbon(32,84),true);
+      pen.fillStyle(theme === "desert" ? 0x61bcb5 : theme === "ice" ? 0x86bdd3 : 0x68b6dc, 0.55).fillPoints(ribbon(-42,33),true);
+      for (let x=start;x<end;x+=64) {
+        const paint = this.waterPaint[waterIndex++];
+        if (!paint) break;
+        const right=Math.min(end,x+64),dy=y(right,-4)-y(x,-4),width=right-x;
+        paint.setPosition(x,y(x,-4)).setRotation(Math.atan2(dy,width)).setSize(Math.hypot(width,dy)+1,74).setVisible(true);
+        paint.tilePositionX=x-elapsed*.025;paint.tileScaleY=.52;
       }
       if (theme === "ice" || theme === "desert") {
-        pen.lineStyle(theme === "ice" ? 7 : 10, theme === "ice" ? 0xf0fcff : 0xf2cb91, 0.9).lineBetween(start,y(start,-43),end,y(end,-43));
+        pen.lineStyle(theme === "ice" ? 7 : 10, theme === "ice" ? 0xf0fcff : 0xf2cb91, 0.9).beginPath().moveTo(start,y(start,-43));
+        points.slice(1).forEach(x=>pen.lineTo(x,y(x,-43)));pen.strokePath();
       }
-      pen.fillStyle(0x9deeff, 0.24).fillPoints([
-        { x: start, y: y(start, -40) }, { x: end, y: y(end, -40) },
-        { x: end, y: y(end, -8) }, { x: start, y: y(start, -8) },
-      ], true);
+      pen.fillStyle(0x9deeff, 0.24).fillPoints(ribbon(-40,-8),true);
       // Current strokes travel through the water rather than sitting on its edge.
-      for (let row = 0; row < (detail < 1 ? 3 : 5); row++) {
+      for (let row = 0; row < (detail < 1 ? 2 : 3); row++) {
         for (let x = start - 100 + ((elapsed * 0.10 + row * 47) % 140); x < end; x += 140) {
           const left = Math.max(start, x), right = Math.min(end, x + 64 + row * 5);
           if (left >= right) continue;
           const offset = -32 + row * 15 + Math.sin(x / 80 + elapsed / 850) * 3;
           pen.lineStyle(row % 2 ? 1 : 1.5, 0xe9fcff, 0.22);
           pen.beginPath().moveTo(left, y(left, offset));
-          for (let x = left + 8; x < right; x += 8) pen.lineTo(x, y(x, offset + Math.sin((x-left)/(right-left)*Math.PI*2)*2));
+          for (let x = left + 14; x < right; x += 14) pen.lineTo(x, y(x, offset + Math.sin((x-left)/(right-left)*Math.PI*2)*2));
           pen.lineTo(right, y(right, offset)).strokePath();
         }
       }
@@ -212,15 +214,16 @@ export class Waterway {
     if (afloat && theme !== "cloud") {
       // Foam at the keel and bow remains with the boat while its trail recedes.
       const bob = Math.sin(elapsed / 170) * 2;
+      const hullY = waterY(anchorX,shipY,anchorX);
       foam.lineStyle(boosted ? 3.8 : 2.7, 0xf5ffff, 0.85);
-      foam.beginPath().moveTo(anchorX - 120, shipY + 8 + bob);
-      foam.lineTo(anchorX - 54, shipY + 22 + bob);
-      foam.lineTo(anchorX + 40, shipY + 21 + bob);
-      foam.lineTo(anchorX + 124, shipY + 4 + bob).strokePath();
+      foam.beginPath().moveTo(anchorX - 120, hullY + 8 + bob);
+      foam.lineTo(anchorX - 54, hullY + 22 + bob);
+      foam.lineTo(anchorX + 40, hullY + 21 + bob);
+      foam.lineTo(anchorX + 124, hullY + 4 + bob).strokePath();
       for (let i = 0; i < 7; i++) {
         const p = ((elapsed / (boosted ? 280 : 420)) + i / 7) % 1;
         foam.fillStyle(0xffffff, (1 - p) * 0.8);
-        foam.fillEllipse(anchorX + 111 + p * 27, shipY + 5 - Math.sin(p * Math.PI) * 22, 3, 5);
+        foam.fillEllipse(anchorX + 111 + p * 27, hullY + 5 - Math.sin(p * Math.PI) * 22, 3, 5);
       }
     }
   }
