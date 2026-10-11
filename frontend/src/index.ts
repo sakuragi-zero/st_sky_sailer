@@ -74,7 +74,8 @@ const renderer: FrontendRenderer<GameState> = ({ parentElement, data: rawData, s
   const controls: Controls = { left: false, right: false, jump: false, boost: false, brake: false };
   const pointers = new Map<number, keyof Controls>();
   const audio = new VoyageAudio();
-  const music = new VoyageMusic(course.id==="4-1" ? [] : [assetUrl(`music/course-${course.id}-loop.ogg`),assetUrl(`music/course-${course.id}-loop.mp3`)],true);
+  const musicRevision = course.id === "3-1" ? "?v=golden-light-v1" : "";
+  const music = new VoyageMusic(course.id==="4-1" ? [] : [assetUrl(`music/course-${course.id}-loop.ogg`)+musicRevision,assetUrl(`music/course-${course.id}-loop.mp3`)+musicRevision],true);
   musicVolume.disabled=!music.available;
   let lastPhase:Phase="loading";
   let currentResult: Result | undefined;

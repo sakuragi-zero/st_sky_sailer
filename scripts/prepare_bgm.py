@@ -2,6 +2,7 @@
 
 Dependencies: numpy, matplotlib, imageio-ffmpeg. Originals are never overwritten.
 """
+import argparse
 import json
 import re
 import subprocess
@@ -17,7 +18,12 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
 RATE = 44100
-TRACKS = [("1-1", "Beyond_the_Far_Horizon.mp3"), ("2-1", "Before_the_Morning_Thaw.mp3"), ("3-1", "Where_the_Tide_Meets_Sky.mp3")]
+TRACKS = [("1-1", "Beyond_the_Far_Horizon.mp3"), ("2-1", "Before_the_Morning_Thaw.mp3"), ("3-1", "The_Well_of_Golden_Light.mp3")]
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--course", choices=[course for course, _ in TRACKS], help="Prepare only this course's music")
+args = parser.parse_args()
+if args.course:
+    TRACKS = [(course, filename) for course, filename in TRACKS if course == args.course]
 DEST = ROOT / "frontend/public/assets/music"
 REPORT = ROOT / "docs/audio"
 DEST.mkdir(parents=True, exist_ok=True)
@@ -136,4 +142,7 @@ for course, filename in TRACKS:
     plt.close(fig)
     print(json.dumps(record), flush=True)
 
+if args.course and (REPORT / "analysis.json").exists():
+    previous = json.loads((REPORT / "analysis.json").read_text())
+    records = sorted([record for record in previous.get("tracks", []) if record["course"] != args.course] + records, key=lambda record: record["course"])
 (REPORT / "analysis.json").write_text(json.dumps({"sample_rate": RATE, "normalization_target_lufs": -18, "true_peak_target_db": -1.5, "method": "PCM analysis, envelope-based pulse estimate, spectral/dynamic endpoint matching, equal-power wrap crossfade, two-pass loudness normalization. Instrumentation cannot be identified from waveform alone.", "tracks": records}, indent=2) + "\n")
