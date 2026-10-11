@@ -49,7 +49,7 @@ const renderer: FrontendRenderer<GameState> = ({ parentElement, data: rawData, s
         </div>
       </div>
       <div class="ss-system-row"><button class="ss-system" data-pause aria-label="航海を一時停止">Ⅱ PAUSE</button><button class="ss-system" data-guide aria-label="精霊ガイドを切り替える" aria-pressed="false">✧ GUIDE OFF</button><button class="ss-system" data-sound aria-label="効果音を無効にする" aria-pressed="true">♪ SOUND ON</button></div>
-      <div class="ss-music-row"><button class="ss-system" data-music aria-label="${course.id==="4-1" ? "BGM未設定" : "BGMを無効にする"}" aria-pressed="${course.id!=="4-1"}" ${course.id==="4-1" ? "disabled" : ""}>♫ ${course.id==="4-1" ? "BGM 未設定" : "BGM ON"}</button><label>BGM音量<input data-music-volume type="range" min="0" max="100" value="50" aria-label="BGM音量"></label></div><p class="ss-music-message" data-music-message role="status" hidden></p>
+      <div class="ss-music-row"><button class="ss-system" data-music aria-label="BGMを無効にする" aria-pressed="true">♫ BGM ON</button><label>BGM音量<input data-music-volume type="range" min="0" max="100" value="50" aria-label="BGM音量"></label></div><p class="ss-music-message" data-music-message role="status" hidden></p>
       <p class="ss-hint">A / Space ジャンプ　B / Shift ブースト</p>
     </section>`;
   const mount = root.querySelector<HTMLElement>(".ss-mount")!;
@@ -75,7 +75,7 @@ const renderer: FrontendRenderer<GameState> = ({ parentElement, data: rawData, s
   const pointers = new Map<number, keyof Controls>();
   const audio = new VoyageAudio();
   const musicRevision = course.id === "3-1" ? "?v=golden-light-v1" : "";
-  const music = new VoyageMusic(course.id==="4-1" ? [] : [assetUrl(`music/course-${course.id}-loop.ogg`)+musicRevision,assetUrl(`music/course-${course.id}-loop.mp3`)+musicRevision],true);
+  const music = new VoyageMusic([assetUrl(`music/course-${course.id}-loop.ogg`)+musicRevision,assetUrl(`music/course-${course.id}-loop.mp3`)+musicRevision],true);
   musicVolume.disabled=!music.available;
   let lastPhase:Phase="loading";
   let currentResult: Result | undefined;

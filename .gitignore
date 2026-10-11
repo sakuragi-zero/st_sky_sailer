@@ -51,6 +51,8 @@ CODEX*.md
 !/frontend/public/assets/music/course-2-1-loop.mp3
 !/frontend/public/assets/music/course-3-1-loop.ogg
 !/frontend/public/assets/music/course-3-1-loop.mp3
+!/frontend/public/assets/music/course-4-1-loop.ogg
+!/frontend/public/assets/music/course-4-1-loop.mp3
 /docs/screenshots/
 /docs/audio/
 /docs/security/
@@ -111,3 +113,4 @@ frontend/.visual-*
 /Before_the_Morning_Thaw.mp3
 /Where_the_Tide_Meets_Sky.mp3
 /The_Well_of_Golden_Light.mp3
+/Crown_of_the_Sky.mp3

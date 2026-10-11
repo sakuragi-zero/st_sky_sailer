@@ -18,7 +18,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
 RATE = 44100
-TRACKS = [("1-1", "Beyond_the_Far_Horizon.mp3"), ("2-1", "Before_the_Morning_Thaw.mp3"), ("3-1", "The_Well_of_Golden_Light.mp3")]
+TRACKS = [("1-1", "Beyond_the_Far_Horizon.mp3"), ("2-1", "Before_the_Morning_Thaw.mp3"), ("3-1", "The_Well_of_Golden_Light.mp3"), ("4-1", "Crown_of_the_Sky.mp3")]
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("--course", choices=[course for course, _ in TRACKS], help="Prepare only this course's music")
 args = parser.parse_args()

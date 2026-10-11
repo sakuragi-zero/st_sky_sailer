@@ -27438,12 +27438,12 @@ const Bt = (at) => new URL("assets/" + at, import.meta.url).href, se = ({ parent
         </div>
       </div>
       <div class="ss-system-row"><button class="ss-system" data-pause aria-label="航海を一時停止">Ⅱ PAUSE</button><button class="ss-system" data-guide aria-label="精霊ガイドを切り替える" aria-pressed="false">✧ GUIDE OFF</button><button class="ss-system" data-sound aria-label="効果音を無効にする" aria-pressed="true">♪ SOUND ON</button></div>
-      <div class="ss-music-row"><button class="ss-system" data-music aria-label="${j.id === "4-1" ? "BGM未設定" : "BGMを無効にする"}" aria-pressed="${j.id !== "4-1"}" ${j.id === "4-1" ? "disabled" : ""}>♫ ${j.id === "4-1" ? "BGM 未設定" : "BGM ON"}</button><label>BGM音量<input data-music-volume type="range" min="0" max="100" value="50" aria-label="BGM音量"></label></div><p class="ss-music-message" data-music-message role="status" hidden></p>
+      <div class="ss-music-row"><button class="ss-system" data-music aria-label="BGMを無効にする" aria-pressed="true">♫ BGM ON</button><label>BGM音量<input data-music-volume type="range" min="0" max="100" value="50" aria-label="BGM音量"></label></div><p class="ss-music-message" data-music-message role="status" hidden></p>
       <p class="ss-hint">A / Space ジャンプ　B / Shift ブースト</p>
     </section>`;
   const p = J.querySelector(".ss-mount"), S = J.querySelector(".ss-overlay"), t = J.querySelector(".ss-lives"), d = J.querySelector(".ss-clock"), c = J.querySelector("[data-crystals]"), o = J.querySelector("[data-progress]"), r = J.querySelector(".ss-boost-meter i"), n = J.querySelector("[data-pause]"), e = J.querySelector("[data-sound]"), s = J.querySelector("[data-guide]"), h = J.querySelector("[data-music]"), i = J.querySelector("[data-music-volume]"), a = J.querySelector("[data-music-message]"), l = J.querySelector("[data-weather]");
   let f = false;
-  const u = J.querySelector("[data-cue]"), v = J.querySelector("[data-wind]"), m = J.querySelector("[data-wind-time]"), x = v.querySelector("i"), g = { left: false, right: false, jump: false, boost: false, brake: false }, y = /* @__PURE__ */ new Map(), T = new ie(), C = j.id === "3-1" ? "?v=golden-light-v1" : "", E = new Vt(j.id === "4-1" ? [] : [Rt(`music/course-${j.id}-loop.ogg`) + C, Rt(`music/course-${j.id}-loop.mp3`) + C], true);
+  const u = J.querySelector("[data-cue]"), v = J.querySelector("[data-wind]"), m = J.querySelector("[data-wind-time]"), x = v.querySelector("i"), g = { left: false, right: false, jump: false, boost: false, brake: false }, y = /* @__PURE__ */ new Map(), T = new ie(), C = j.id === "3-1" ? "?v=golden-light-v1" : "", E = new Vt([Rt(`music/course-${j.id}-loop.ogg`) + C, Rt(`music/course-${j.id}-loop.mp3`) + C], true);
   i.disabled = !E.available;
   let A = "loading", M, P = H.evaluation, R = false;
   const F = (Z) => {
